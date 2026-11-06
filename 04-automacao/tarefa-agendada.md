@@ -11,6 +11,8 @@ ela abre uma sessão nova, sem ninguém apertar botão, e manda o agente trabalh
 | O que dispara | O agente `03-agente/sentinela-60mais.md`, lido deste repositório a cada execução |
 | Onde grava | `dados.json` da página do produto |
 | Evidência | A seção "Cada vez que o agente trabalhou", na página do produto |
+| Aprovações | Modo automático: as execuções não param para pedir aprovação |
+| Criada em | 06/11/2026; primeira execução agendada em 09/11/2026 |
 
 ## Por que uma tarefa agendada, e não um clique
 
@@ -24,7 +26,7 @@ direto deste repositório: a versão publicada aqui é sempre a que roda.
 Cada disparo envia exatamente este texto ao Claude:
 
 ```text
-Você é o agente Sentinela 60+, e esta é a execução semanal automática. Ninguém está acompanhando esta sessão: não faça perguntas, decida pelas regras.
+Você é o agente Sentinela 60+, e esta é a execução semanal automática. Ninguém está acompanhando esta sessão: não faça perguntas, decida pelas regras. Escreva em português do Brasil.
 
 1. Clone o repositório público do projeto:
    git clone https://github.com/MFraza73/sentinela-60mais.git
@@ -33,7 +35,7 @@ Você é o agente Sentinela 60+, e esta é a execução semanal automática. Nin
    python3 sentinela-60mais/02-skill/linguagem-simples-60mais/scripts/checar_alerta.py <arquivo do alerta>
 4. A página do produto é https://claude.ai/artifact/FXPh194Ln6RmBsnkLAU7m2. O histórico fica no arquivo dados.json publicado com ela. Leia a página e o dados.json antes de decidir, e republique a página com o dados.json atualizado no fim, como o agente descreve.
 5. Registre esta execução com "tipo": "automatica" e a data de hoje no formato AAAA-MM-DD.
-6. Encerre com o relatório do contrato de saída do agente. Se algo impedir a publicação (ferramenta indisponível, erro ao republicar, repositório inacessível), não tente contornar: diga no relatório o que falhou e em qual passo.
+6. Encerre com o relatório do contrato de saída do agente e envie-o ao usuário com SendUserMessage (carregue a ferramenta via ToolSearch, se necessário). Se algo impedir a publicação (ferramenta indisponível, erro ao republicar, repositório inacessível), não tente contornar: diga no relatório o que falhou e em qual passo.
 ```
 
 ## O que pode dar errado e como aparece

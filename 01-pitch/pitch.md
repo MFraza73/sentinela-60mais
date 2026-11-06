@@ -11,12 +11,14 @@
 
 ## Introdução
 
-O Sentinela 60+ transforma, toda semana, os golpes digitais em circulação em alertas curtos e em linguagem
-simples para pessoas com 60 anos ou mais e para quem cuida delas.
+O Sentinela 60+ acompanha todo dia os golpes digitais em circulação e, toda semana, transforma o mais
+importante deles num alerta curto e em linguagem simples para pessoas com 60 anos ou mais e para quem cuida
+delas.
 
 O produto foi construído com Claude para a N2 de Vibe Coding & Arquitetura de Produtos com IA (FAAP, Profª
 Drª Eliana Loureiro). Ele integra os três componentes pedidos: uma skill de linguagem simples, um agente que
-pesquisa e verifica, e uma automação semanal que publica sem intervenção humana.
+pesquisa e verifica, e uma automação diária que varre o noticiário e publica toda semana sem intervenção
+humana.
 
 Tudo é aberto: a skill está neste repositório público e o produto, numa página com link.
 
@@ -83,27 +85,28 @@ Cada componente tem um papel distinto: a automação decide quando, o agente dec
 
 ```mermaid
 flowchart TD
-    A["1 · Automação<br/>Tarefa agendada no Claude, toda segunda às 7h40"] --> B["2 · Agente pesquisa<br/>Golpes dos últimos 14 dias em órgãos e imprensa"]
+    A["1 · Automação<br/>Tarefa agendada no Claude, todo dia às 7h40"] --> B["2 · Agente varre<br/>Golpes recentes em órgãos e imprensa"]
     B --> C{"Novo, confirmado em<br/>duas fontes e relevante 60+?"}
-    C -- não --> D["Registra a semana sem alerta"]
+    C -- não --> D["Registra a varredura"]
     C -- sim --> E["3 · Agente redige com a skill<br/>linguagem-simples-60mais"]
     E --> F["Verificador: regras da Lei 15.263/2025"]
-    F --> G["4 · Página pública<br/>Alerta, fontes, card para WhatsApp e histórico"]
+    F --> Q["Fila de golpes confirmados"]
+    Q -->|"toda segunda, o mais relevante"| G["4 · Página pública<br/>Alerta, fontes, card para WhatsApp, fila e histórico"]
     D --> G
 ```
 
-Só o golpe novo e confirmado em duas fontes vira alerta; o restante volta à checagem na semana seguinte.
+Só o golpe novo e confirmado em duas fontes entra na fila; toda segunda, o mais relevante vira o alerta da semana. Um golpe muito grave, com orientação oficial nova, pode sair antes, no máximo uma vez por semana.
 
 ## Diferenciação e critérios de sucesso
 
-O diferencial não é ter alertas, e sim o padrão: cadência semanal, uma ação por alerta e linguagem simples
+O diferencial não é ter alertas, e sim o padrão: varredura diária com publicação semanal, uma ação por alerta e linguagem simples
 verificável contra uma norma pública.
 
 | Componente | Critério de sucesso | Evidência na entrega |
 | --- | --- | --- |
 | Skill | 10 casos de teste aprovados no checklist do art. 5º da Lei 15.263/2025 | Pares antes/depois no repositório |
 | Agente | Todo alerta com ao menos duas fontes citadas; nenhum publicado sem fonte | Fontes visíveis em cada alerta |
-| Automação | Ao menos duas execuções semanais reais, sem intervenção humana, antes de 27/11 | Histórico de execuções na página |
+| Automação | Execuções diárias reais, sem intervenção humana, com ao menos duas publicações de segunda antes de 27/11 | Histórico de execuções e fila na página |
 | Produto | Página pública legível no celular, com fonte grande e contraste nível AA da WCAG | Link publicado e checagem de acessibilidade |
 
 ## Fontes

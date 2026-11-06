@@ -259,9 +259,26 @@ a:hover { color: var(--azul-escuro); }
   border: 1px solid currentColor;
   white-space: nowrap;
 }
-.chip.publicado { color: var(--acao); background: var(--acao-fundo); }
+.chip.publicado, .chip.alerta-extra { color: var(--acao); background: var(--acao-fundo); }
 .chip.sem-alerta { color: var(--sinal); background: var(--sinal-fundo); }
-.chip.tipo { color: var(--tinta-2); }
+.chip.na-fila { color: var(--azul); background: var(--lavado); }
+.chip.nada-novo, .chip.tipo, .chip.modo { color: var(--tinta-2); }
+.execucao .obs { font-size: var(--t-s); color: var(--tinta-2); font-style: italic; }
+.mais-execucoes > summary { cursor: pointer; font-weight: 700; color: var(--azul); min-height: 48px; display: flex; align-items: center; }
+.mais-execucoes > div { display: grid; gap: 0.75rem; }
+
+/* Fila */
+.fila { display: grid; gap: 0.6rem; }
+.fila h3 { font-size: var(--t-l); }
+.fila ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.5rem; }
+.fila li {
+  border-left: 4px solid var(--azul);
+  background: var(--lavado);
+  border-radius: 0 var(--raio) var(--raio) 0;
+  padding: 0.6rem 0.9rem;
+}
+.fila li b { display: block; }
+.fila li span { font-size: var(--t-s); color: var(--tinta-2); }
 .execucao .numeros { font-size: var(--t-s); color: var(--tinta-2); font-variant-numeric: tabular-nums; }
 .execucao details summary { cursor: pointer; font-size: var(--t-s); font-weight: 700; color: var(--azul); min-height: 44px; display: flex; align-items: center; }
 .execucao details ul { margin: 0.25rem 0 0; padding-left: 1.2rem; display: grid; gap: 0.5rem; font-size: var(--t-s); }
@@ -341,11 +358,17 @@ a:hover { color: var(--azul-escuro); }
     <section class="secao" id="como-funciona" aria-labelledby="titulo-como">
       <h2 id="titulo-como">Como o Sentinela funciona</h2>
       <ol class="passos">
-        <li><div><b>Uma vez por semana, uma tarefa agendada acorda o agente.</b><span>Ninguém precisa apertar um botão.</span></div></li>
-        <li><div><b>O agente pesquisa os golpes noticiados nos últimos 14 dias.</b><span>Ele escolhe um que seja novo, confirmado em duas fontes independentes e ligado a quem tem 60 anos ou mais. Se nenhum passar, a semana fica sem alerta.</span></div></li>
+        <li><div><b>Todo dia, às 7h40, uma tarefa agendada acorda o agente.</b><span>Ninguém precisa apertar um botão.</span></div></li>
+        <li><div><b>O agente pesquisa os golpes noticiados.</b><span>Cada golpe novo, confirmado em duas fontes independentes e ligado a quem tem 60 anos ou mais, entra numa fila.</span></div></li>
         <li><div><b>Uma skill escreve o alerta em linguagem simples.</b><span>Um verificador confere as regras da Lei 15.263/2025, a Política Nacional de Linguagem Simples.</span></div></li>
+        <li><div><b>Toda segunda, o golpe mais importante da fila vira o alerta da semana.</b><span>Um golpe muito grave, com orientação oficial nova, pode sair antes, no máximo uma vez por semana. Se a fila estiver vazia, a semana fica sem alerta.</span></div></li>
         <li><div><b>O alerta aparece aqui.</b><span>Com as fontes e um texto pronto para o WhatsApp.</span></div></li>
       </ol>
+      <div class="fila" id="bloco-fila" hidden>
+        <h3>Na fila para a próxima segunda</h3>
+        <ul id="lista-fila"></ul>
+        <p class="vazio" id="fila-vazia" hidden>A fila está vazia. Nenhum golpe novo foi confirmado desde o último alerta.</p>
+      </div>
       <div class="execucoes" id="bloco-execucoes" hidden>
         <h3>Cada vez que o agente trabalhou</h3>
         <div id="lista-execucoes" style="display:grid; gap:0.75rem;"></div>
@@ -355,7 +378,7 @@ a:hover { color: var(--azul-escuro); }
 
   <footer class="rodape">
     <p><strong>O Sentinela 60+ não substitui seu banco, o Procon ou a polícia.</strong> Cada alerta mostra as fontes de onde veio.</p>
-    <p>Projeto acadêmico de Marcelo Frazão para a disciplina Vibe Coding &amp; Arquitetura de Produtos com IA, da Profª Drª Eliana Loureiro, no curso de Tecnologia em Inteligência Artificial da FAAP. Feito com Claude: uma skill de linguagem simples, um agente de pesquisa e uma automação semanal.</p>
+    <p>Projeto acadêmico de Marcelo Frazão para a disciplina Vibe Coding &amp; Arquitetura de Produtos com IA, da Profª Drª Eliana Loureiro, no curso de Tecnologia em Inteligência Artificial da FAAP. Feito com Claude: uma skill de linguagem simples, um agente de pesquisa e uma automação que roda todo dia.</p>
     <p id="atualizado"></p>
   </footer>
 </div>
@@ -441,7 +464,7 @@ a:hover { color: var(--azul-escuro); }
   });
 
   function renderAlerta(a) {
-    texto("eyebrow-alerta", "Alerta da semana · " + dataLonga(a.publicado_em));
+    texto("eyebrow-alerta", (a.extra ? "Alerta extra · " : "Alerta da semana · ") + dataLonga(a.publicado_em));
     texto("titulo-alerta", a.titulo);
     texto("c-como", a.como_chega);
     texto("c-pedem", a.o_que_pedem);
@@ -511,10 +534,33 @@ a:hover { color: var(--azul-escuro); }
     });
   }
 
-  function renderExecucoes(lista) {
-    var caixa = el("lista-execucoes");
-    caixa.innerHTML = "";
-    lista.forEach(function (x) {
+  var RESULTADOS = {
+    "publicado": "Publicou o alerta da semana",
+    "sem-alerta": "Semana sem alerta",
+    "na-fila": "Guardou na fila",
+    "nada-novo": "Nada novo confirmado",
+    "alerta-extra": "Publicou alerta extra"
+  };
+
+  function renderFila(fila) {
+    var aguardando = fila.filter(function (f) { return f.status === "aguardando"; })
+      .sort(function (a, b) { return (b.relevancia || 0) - (a.relevancia || 0) || String(b.noticiado_em).localeCompare(String(a.noticiado_em)); });
+    var ul = el("lista-fila");
+    ul.innerHTML = "";
+    aguardando.forEach(function (f) {
+      var li = document.createElement("li");
+      var b = document.createElement("b");
+      b.textContent = f.nome;
+      var s = document.createElement("span");
+      s.textContent = "Confirmado em " + dataLonga(f.adicionado_em) + " · relevância " + f.relevancia + " de 3";
+      li.appendChild(b); li.appendChild(s);
+      ul.appendChild(li);
+    });
+    el("fila-vazia").hidden = aguardando.length > 0;
+    el("bloco-fila").hidden = false;
+  }
+
+  function cartaoExecucao(x) {
       var art = document.createElement("article");
       art.className = "execucao";
       var l1 = document.createElement("div");
@@ -522,13 +568,19 @@ a:hover { color: var(--azul-escuro); }
       var q = document.createElement("span");
       q.className = "quando";
       q.textContent = dataLonga(x.data);
-      var tipo = document.createElement("span");
-      tipo.className = "chip tipo";
-      tipo.textContent = x.tipo === "automatica" ? "Automática" : "Teste";
+      var modo = document.createElement("span");
+      modo.className = "chip modo";
+      modo.textContent = x.modo === "varredura" ? "Varredura" : "Publicação";
       var res = document.createElement("span");
-      res.className = "chip " + (x.resultado === "publicado" ? "publicado" : "sem-alerta");
-      res.textContent = x.resultado === "publicado" ? "Publicou alerta" : "Sem alerta novo";
-      l1.appendChild(q); l1.appendChild(tipo); l1.appendChild(res);
+      res.className = "chip " + (RESULTADOS[x.resultado] ? x.resultado : "sem-alerta");
+      res.textContent = RESULTADOS[x.resultado] || x.resultado;
+      l1.appendChild(q); l1.appendChild(modo); l1.appendChild(res);
+      if (x.tipo !== "automatica") {
+        var tipo = document.createElement("span");
+        tipo.className = "chip tipo";
+        tipo.textContent = "Teste";
+        l1.appendChild(tipo);
+      }
       art.appendChild(l1);
       var n = document.createElement("p");
       n.className = "numeros";
@@ -556,8 +608,31 @@ a:hover { color: var(--azul-escuro); }
         m.textContent = x.motivo;
         art.appendChild(m);
       }
-      caixa.appendChild(art);
-    });
+      if (x.observacao) {
+        var o = document.createElement("p");
+        o.className = "obs";
+        o.textContent = x.observacao;
+        art.appendChild(o);
+      }
+      return art;
+  }
+
+  function renderExecucoes(lista) {
+    var caixa = el("lista-execucoes");
+    caixa.innerHTML = "";
+    var VISIVEIS = 7;
+    lista.slice(0, VISIVEIS).forEach(function (x) { caixa.appendChild(cartaoExecucao(x)); });
+    if (lista.length > VISIVEIS) {
+      var mais = document.createElement("details");
+      mais.className = "mais-execucoes";
+      var s = document.createElement("summary");
+      s.textContent = "Ver execuções anteriores (" + (lista.length - VISIVEIS) + ")";
+      mais.appendChild(s);
+      var div = document.createElement("div");
+      lista.slice(VISIVEIS).forEach(function (x) { div.appendChild(cartaoExecucao(x)); });
+      mais.appendChild(div);
+      caixa.appendChild(mais);
+    }
     el("bloco-execucoes").hidden = !lista.length;
   }
 
@@ -571,15 +646,19 @@ a:hover { color: var(--azul-escuro); }
     secao.appendChild(p);
   }
 
-  function porData(campo) {
-    return function (a, b) { return String(b[campo]).localeCompare(String(a[campo])); };
+  /* Mais recente primeiro; na mesma data, o que foi gravado por último vem antes */
+  function maisRecentes(lista, campo) {
+    return (lista || []).map(function (item, i) { return { item: item, i: i }; })
+      .sort(function (a, b) { return String(b.item[campo]).localeCompare(String(a.item[campo])) || b.i - a.i; })
+      .map(function (p) { return p.item; });
   }
 
   fetch("dados.json", { cache: "no-store" })
     .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
     .then(function (d) {
-      var alertas = (d.alertas || []).slice().sort(porData("publicado_em"));
-      var execucoes = (d.execucoes || []).slice().sort(porData("data"));
+      var alertas = maisRecentes(d.alertas, "publicado_em");
+      var execucoes = maisRecentes(d.execucoes, "data");
+      renderFila(d.fila || []);
       if (alertas.length) {
         renderAlerta(alertas[0]);
         renderAnteriores(alertas.slice(1));

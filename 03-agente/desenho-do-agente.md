@@ -37,8 +37,30 @@ agente age sobre uma crença do estado do mundo, não sobre o estado em si.
 | Definição do agente | Objetivo, ferramentas, laço, regras de decisão e limites | `sentinela-60mais.md` |
 | Skill | Como escrever: padrão de linguagem simples e verificador | `../02-skill/` |
 | Ferramentas | Busca na web, leitura de páginas, republicação da página do produto | Do próprio Claude |
-| Estado | Histórico de alertas e de execuções | `dados.json`, publicado junto da página (`../05-produto/`) |
-| Gatilho | Tarefa agendada semanal no Claude | `../04-automacao/` (a construir) |
+| Estado | Alertas, fila de golpes confirmados e histórico de execuções | `dados.json`, publicado junto da página (`../05-produto/`) |
+| Gatilho | Tarefa agendada diária no Claude, às 7h40 | `../04-automacao/` |
+
+## Dois ritmos: varredura diária, publicação semanal
+
+O agente olha o noticiário todo dia, mas publica uma vez por semana. As duas frequências foram separadas de
+propósito:
+
+- **Varredura diária (terça a domingo).** Cada golpe que passa nas quatro perguntas é escrito, aprovado no
+  verificador e guardado numa fila. Mais olhares por semana dão mais candidatos para escolher e mais tempo para
+  as fontes amadurecerem.
+- **Publicação semanal (segunda).** O golpe mais relevante da fila vira o alerta da semana. Publicar todo dia
+  baixaria a régua de confirmação, cansaria quem recebe (avisos repetidos viram papel de parede, como mostram
+  Anderson e colegas no *Journal of Management Information Systems*, 2016) e transformaria o repasse no
+  WhatsApp em corrente.
+- **Alerta extra.** Um golpe de relevância máxima, com fonte oficial e noticiado nas últimas 48 horas, pode sair
+  antes da segunda, no máximo uma vez por semana.
+
+## Lição do primeiro disparo automático
+
+No teste de 06/11, a mensagem que acompanhava o disparo foi lida como um segundo pedido, e o agente rodou duas
+vezes, publicando dois alertas extras. Daí veio a trava de uma execução por dia e por modo: antes de
+qualquer busca, o agente confere no `dados.json` se a execução do dia já aconteceu. Em sistemas que rodam
+sozinhos, isso se chama idempotência: repetir o mesmo disparo não pode repetir o efeito.
 
 **Por que o estado fica num arquivo publicado com a página:** cada disparo da automação abre uma sessão nova
 do Claude, sem memória da anterior. O histórico precisa morar fora da conversa, num lugar que o agente leia
@@ -59,6 +81,8 @@ qualquer visitante. O custo é que cada execução republica a página inteira, 
 | Mesma notícia contada duas vezes | Veículos do mesmo grupo contam como uma fonte |
 | Texto difícil para o público | Skill + verificador; sem status APROVADO, não publica |
 | Acusar uma empresa | Marca imitada aparece como "mensagem que imita"; nunca como culpada |
+| Disparo repetido publicar duas vezes | Trava de uma execução por dia e por modo, conferida no `dados.json` |
+| Excesso de alertas | No máximo um alerta normal e um extra por semana |
 
 ## Nível de capacidade na matriz da Gartner
 
@@ -66,12 +90,13 @@ Posição honesta do agente na matriz *Levels of agent capabilities* (aula 11, s
 
 | Dimensão | Nível | Por quê | Como subir um nível |
 | --- | --- | --- | --- |
-| Perception | Basic — *Attentive* | Varre várias frentes, mas só uma vez por semana | Monitorar fontes todo dia e disparar ao surgir alerta oficial |
+| Perception | Intermediate — *Active* | Varre várias frentes todo dia e guarda o que confirma numa fila que atravessa os dias | Ser acionado por evento (um alerta oficial novo), e não só pelo relógio |
 | Decisioning | Basic — *Analytical* | Aplica critérios explícitos com julgamento sobre evidência | Ponderar risco, alcance e recência num placar |
-| Actioning | Basic — *Situational* | Escolhe entre publicar, não publicar e pesquisar mais conforme o caso | Coordenar subagentes: um pesquisa, outro verifica |
+| Actioning | Basic — *Situational* | Escolhe entre guardar na fila, publicar, publicar alerta extra ou não fazer nada, conforme o caso | Coordenar subagentes: um pesquisa, outro verifica |
 | Agency | Intermediate — *Autonomous* | Roda e publica sem humano, dentro de um escopo estreito e com regras de parada | Já é o teto desejável aqui: um alerta errado causa dano real |
 | Adaptability | Emerging — *Contextual* | Responde ao noticiário da semana, mas as regras não mudam sozinhas | Ajustar critérios a partir do histórico de alertas e de erros |
 | Knowledge | Emerging — *Specialized* | Conhece um domínio: golpes contra pessoas físicas e linguagem simples | Ampliar para outros públicos vulneráveis |
 
-**Leitura:** é um agente de nível básico com autonomia intermediária. A combinação é deliberada: autonomia
-alta só é aceitável porque o escopo é estreito e as regras de parada são conservadoras.
+**Leitura:** é um agente de nível básico, com percepção e autonomia intermediárias. A combinação é
+deliberada: autonomia alta só é aceitável porque o escopo é estreito e as regras de parada são
+conservadoras. A percepção subiu de nível com a varredura diária, sem aumentar o volume de alertas.

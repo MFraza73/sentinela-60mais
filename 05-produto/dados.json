@@ -25,6 +25,66 @@
       "card_whatsapp": "*Falso aviso de bloqueio por biometria*\nMensagem ameaça bloquear sua aposentadoria e manda um link.\nQuem já recebe o benefício não precisa fazer biometria.\nNão clique. Na dúvida, ligue para o 135.\n*Ameaça de bloqueio com link? Não clique.*"
     }
   ],
+  "fila": [
+    {
+      "golpe": "numero-secundario-whatsapp",
+      "nome": "Golpe do número secundário no WhatsApp",
+      "adicionado_em": "2026-11-06",
+      "noticiado_em": "2026-10-29",
+      "relevancia": 2,
+      "status": "aguardando",
+      "motivo_status": "Publicado num disparo de teste da automação; voltou para a fila na mudança para publicação semanal.",
+      "alerta": {
+        "golpe": "numero-secundario-whatsapp",
+        "titulo": "Golpe do número secundário: não deixe usar o seu número",
+        "como_chega": "Uma mensagem no WhatsApp, às vezes de um contato conhecido. A pessoa diz que um site de compras pede um número secundário.",
+        "o_que_pedem": "Que você deixe cadastrar o seu número. Depois, alguém liga como atendente e ensina um passo a passo no celular.",
+        "sinal": "Pedido para usar seu número num cadastro, e depois a ligação de um falso atendente.",
+        "o_que_fazer": "Não autorize o cadastro do seu número, mesmo que o pedido venha de um conhecido.",
+        "para_lembrar": "Pediram seu número para um cadastro? Diga não.",
+        "fontes": [
+          {
+            "nome": "Polícia Civil alerta para novo golpe pelo WhatsApp em cidades da região — SF Notícias (29/10/2026)",
+            "url": "https://sfnoticias.com.br/2026/10/29/policia-civil-alerta-para-novo-golpe-pelo-whatsapp-em-cidades-da-regiao-morador-de-sao-fidelis-perde-r-10-mil/"
+          },
+          {
+            "nome": "Golpe do \"número de confiança\" faz vítimas em Monteiro — Cariri in Foco (29/09/2026)",
+            "url": "https://www.caririinfoco.com.br/golpe-do-numero-de-confianca-faz-vitimas-em-monteiro-e-acende-alerta-para-invasao-de-whatsapp-e-redes-sociais/"
+          }
+        ],
+        "card_whatsapp": "*Golpe do número secundário*\nMensagem pede para usar seu número num cadastro de site de compras.\nDepois, um falso atendente liga e ensina um passo a passo.\nNão autorize o cadastro, mesmo que seja um conhecido.\n*Pediram seu número para um cadastro? Diga não.*"
+      }
+    },
+    {
+      "golpe": "falso-gerente-banco",
+      "nome": "Golpe do falso gerente de banco",
+      "adicionado_em": "2026-11-06",
+      "noticiado_em": "2026-11-06",
+      "relevancia": 3,
+      "status": "aguardando",
+      "motivo_status": "Publicado num disparo de teste da automação; voltou para a fila na mudança para publicação semanal.",
+      "alerta": {
+        "golpe": "falso-gerente-banco",
+        "titulo": "Golpe do falso gerente: desligue e ligue você para o banco",
+        "como_chega": "Uma ligação de alguém que diz ser do seu banco. Ele fala de uma movimentação suspeita na sua conta.",
+        "o_que_pedem": "Que você faça um Pix para uma \"conta segura\" ou diga sua senha e códigos.",
+        "sinal": "O banco não pede senha, código nem Pix para proteger seu dinheiro.",
+        "o_que_fazer": "Desligue e procure o banco pelo aplicativo ou pelo telefone do site.",
+        "para_lembrar": "Banco ligou pedindo Pix? Desligue e ligue você.",
+        "fontes": [
+          {
+            "nome": "Polícia Civil alerta para golpe da falsa central bancária e orienta como evitar prejuízos — MegaZine, com a Polícia Civil do Paraná (16/10/2026)",
+            "url": "https://www.megazinenews.com.br/noticia/policia-civil-alerta-para-golpe-da-falsa-central-bancaria-e-orienta-como-evitar-prejuizos"
+          },
+          {
+            "nome": "Polícia Civil de Pernambuco alerta para golpe do falso gerente de banco — Petrolândia Notícias (21/10/2026)",
+            "url": "https://petrolandianoticias.com.br/policia-civil-de-pernambuco-alerta-para-golpe-do-falso-gerente-de-banco-e-orienta-populacao-sobre-como-se-proteger/"
+          }
+        ],
+        "card_whatsapp": "*Golpe do falso gerente*\nAlguém liga dizendo ser do seu banco e fala de movimentação suspeita.\nO banco não pede senha, código nem Pix para proteger seu dinheiro.\nDesligue e procure o banco pelo aplicativo ou pelo telefone do site.\n*Banco ligou pedindo Pix? Desligue e ligue você.*"
+      }
+    }
+  ],
   "execucoes": [
     {
       "data": "2026-11-06",
@@ -60,7 +120,88 @@
           "golpe": "Lojas falsas de Black Friday",
           "decisao": "Recusado por ora: sem alerta oficial recente. Reavaliar perto de 27 de novembro."
         }
-      ]
+      ],
+      "modo": "publicacao"
+    },
+    {
+      "data": "2026-11-06",
+      "tipo": "automatica",
+      "consultas": 15,
+      "candidatos": 7,
+      "aprovados": 1,
+      "resultado": "na-fila",
+      "escolhido": "numero-secundario-whatsapp",
+      "motivo": "Único candidato aprovado nas quatro perguntas: alerta da Polícia Civil de 29/10 e relato independente na Paraíba descrevem o mesmo golpe e a mesma ação.",
+      "decisoes": [
+        {
+          "golpe": "Golpe do número secundário no WhatsApp",
+          "decisao": "Escolhido: alerta policial de 29/10 confirmado por fonte independente, com a mesma ação; relevância 2."
+        },
+        {
+          "golpe": "Falsa consultoria que promete cancelar descontos da aposentadoria (operação em Minas Gerais)",
+          "decisao": "Recusado: relevância 3, mas só uma fonte do Estado de Minas trazia ação de proteção; O Tempo, BH 24 Horas e Gazeta de Varginha não traziam."
+        },
+        {
+          "golpe": "Golpe do falso advogado",
+          "decisao": "Recusado: alerta da Febraban é de dezembro de 2025, fora da janela de 14 dias."
+        },
+        {
+          "golpe": "Falso funcionário do INSS em visita a domicílio",
+          "decisao": "Recusado: alerta de abril de 2026, fora da janela de 14 dias."
+        },
+        {
+          "golpe": "Mensagem com dados reais do aposentado imitando o INSS",
+          "decisao": "Recusado: notícia de agosto de 2026, fora da janela de 14 dias."
+        },
+        {
+          "golpe": "Risco de golpes após acesso indevido a dados de investidores",
+          "decisao": "Recusado: trata de vazamento de dados, não de um golpe descrito."
+        },
+        {
+          "golpe": "Lojas falsas de Black Friday",
+          "decisao": "Recusado: pouco ligado ao público de 60 anos ou mais; reavaliar perto de 27 de novembro."
+        }
+      ],
+      "modo": "publicacao",
+      "observacao": "Disparo de teste da automação, feito durante a montagem. O alerta foi publicado e, na mudança para publicação semanal, voltou para a fila da próxima segunda."
+    },
+    {
+      "data": "2026-11-06",
+      "tipo": "automatica",
+      "consultas": 11,
+      "candidatos": 6,
+      "aprovados": 1,
+      "resultado": "na-fila",
+      "escolhido": "falso-gerente-banco",
+      "motivo": "Golpe noticiado de novo entre 4 e 6 de novembro, com relevância 3, e confirmado por alertas das Polícias Civis do Paraná e de Pernambuco com a mesma ação.",
+      "decisoes": [
+        {
+          "golpe": "Golpe do falso gerente de banco",
+          "decisao": "Escolhido: casos noticiados em 4 a 6 de novembro; duas polícias diferentes descrevem o mesmo golpe e mandam desligar e procurar o banco; relevância 3."
+        },
+        {
+          "golpe": "Falso bancário com falso delegado e pedido de sigilo (Distrito Federal)",
+          "decisao": "Recusado: Agência Brasil, Correio Braziliense e O Hoje noticiaram, mas nenhuma trazia ação de proteção."
+        },
+        {
+          "golpe": "Golpe do falso advogado (denúncias na OAB do Rio de Janeiro)",
+          "decisao": "Recusado: relevância 2 e a página da Agência Brasil não abriu, então não foi confirmado."
+        },
+        {
+          "golpe": "Falsa prova de vida com ameaça de corte do benefício",
+          "decisao": "Recusado: alertas de setembro e 14 de outubro, fora da janela, e muito parecido com o alerta da biometria."
+        },
+        {
+          "golpe": "Falso pedido de atualização do SouGov para servidores aposentados",
+          "decisao": "Recusado: página sem data e com uma só fonte."
+        },
+        {
+          "golpe": "Golpe dos valores a receber do Banco Central",
+          "decisao": "Recusado: alerta de fevereiro de 2024, fora da janela."
+        }
+      ],
+      "modo": "publicacao",
+      "observacao": "Segunda execução no mesmo disparo de teste: a mensagem de teste foi lida como um novo pedido. O alerta voltou para a fila. O caso criou a regra de uma execução por dia."
     }
   ]
 }

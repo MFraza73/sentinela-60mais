@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "O alerta entregue passa em scripts/checar_alerta.py com status APROVADO (nenhum ERRO)",
+      "passed": true,
+      "evidence": "Status APROVADO: 0 erro(s), 0 aviso(s); 68 palavras no corpo, maior frase com 15 palavras, card com 217 caracteres, 2 fontes."
+    },
+    {
+      "text": "O sinal de golpe é o nome de quem vai receber o dinheiro ser diferente do da empresa",
+      "passed": true,
+      "evidence": "Sinal de golpe: \"Na hora de pagar, o nome de quem vai receber não é o da empresa.\""
+    },
+    {
+      "text": "O alerta não usa a palavra 'beneficiário'",
+      "passed": true,
+      "evidence": "A palavra não aparece no alerta nem no card."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  }
+}

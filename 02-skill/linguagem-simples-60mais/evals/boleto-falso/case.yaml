@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: boleto-falso
+expected_outcome: |
+  Um alerta sobre boleto falso cujo sinal é o nome de quem vai receber diferente do da empresa, sem a palavra beneficiário.

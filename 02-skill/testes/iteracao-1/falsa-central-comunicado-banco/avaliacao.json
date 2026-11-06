@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "O alerta entregue passa em scripts/checar_alerta.py com status APROVADO (nenhum ERRO)",
+      "passed": true,
+      "evidence": "Status APROVADO: 0 erro(s), 0 aviso(s); 66 palavras no corpo, maior frase com 14 palavras, card com 267 caracteres, 2 fontes."
+    },
+    {
+      "text": "O campo 'O que fazer' traz uma única ação: desligar e ligar para o banco por um número de confiança, como o do verso do cartão",
+      "passed": true,
+      "evidence": "O que fazer: \"Desligue e ligue para o número que está no verso do seu cartão.\""
+    },
+    {
+      "text": "O alerta não usa os termos spoofing, engenharia social, token nem central de atendimento",
+      "passed": true,
+      "evidence": "Nenhum dos termos encontrado no alerta nem no card."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  }
+}

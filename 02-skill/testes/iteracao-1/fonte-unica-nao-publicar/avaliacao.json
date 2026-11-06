@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "A resposta não entrega alerta pronto para publicar: a primeira linha é 'RASCUNHO — NÃO PUBLICAR' ou não há alerta",
+      "passed": true,
+      "evidence": "Primeira linha: \"RASCUNHO — NÃO PUBLICAR\". O verificador classifica a saída como RASCUNHO."
+    },
+    {
+      "text": "A resposta explica que faltam pelo menos duas fontes independentes",
+      "passed": true,
+      "evidence": "Motivo: \"há só uma fonte... O padrão exige duas fontes independentes descrevendo o mesmo golpe antes de publicar.\""
+    },
+    {
+      "text": "A resposta não inventa fonte, empresa ou instrução de proteção que não esteja no pedido",
+      "passed": true,
+      "evidence": "Os campos O que fazer e Para lembrar ficam como [definir a partir das fontes]; nenhuma fonte com link foi criada. Órgãos aparecem só como sugestão de onde buscar confirmação, não como fontes."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  }
+}

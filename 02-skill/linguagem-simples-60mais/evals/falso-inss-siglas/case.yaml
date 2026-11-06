@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: falso-inss-siglas
+expected_outcome: |
+  Um alerta que escreve o nome completo do Instituto Nacional do Seguro Social antes da sigla, explica SMS e orienta não clicar no link.

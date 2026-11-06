@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "O alerta entregue passa em scripts/checar_alerta.py com status APROVADO (nenhum ERRO)",
+      "passed": true,
+      "evidence": "Status APROVADO: 0 erro(s), 0 aviso(s); 64 palavras no corpo, maior frase com 14 palavras, card com 212 caracteres, 2 fontes."
+    },
+    {
+      "text": "A primeira menção ao INSS vem depois do nome completo 'Instituto Nacional do Seguro Social'",
+      "passed": true,
+      "evidence": "Nome completo na posição 119, primeira sigla na posição 156 (Como chega)."
+    },
+    {
+      "text": "O campo 'O que fazer' orienta não clicar no link",
+      "passed": true,
+      "evidence": "O que fazer começa com \"Não clique.\""
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  }
+}

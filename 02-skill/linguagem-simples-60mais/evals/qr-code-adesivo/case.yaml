@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: qr-code-adesivo
+expected_outcome: |
+  Um alerta que troca 'QR code' por 'código QR' e explica o que é, com a ação de conferir o nome de quem vai receber antes de confirmar o Pix.

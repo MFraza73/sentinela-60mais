@@ -1,0 +1,176 @@
+{
+  "data": "2026-11-06",
+  "tipo": "teste manual assistido (antes da automação)",
+  "historico_lido": {
+    "alertas_ultimas_8_semanas": [],
+    "observacao": "Primeira execução: histórico vazio."
+  },
+  "consultas": [
+    "novo golpe alerta novembro 2026",
+    "golpe aposentados INSS alerta outubro novembro 2026",
+    "Febraban alerta golpe 2026",
+    "Procon alerta golpe consumidores novembro 2026",
+    "polícia civil alerta golpe WhatsApp ligação idosos 2026",
+    "golpe Black Friday 2026 alerta falsas lojas",
+    "site:gov.br INSS biometria bloqueio benefício falso alerta 2026",
+    "Polícia Civil Minas presos golpe devolver descontos INSS idosos R$ 300 mil outubro 2026",
+    "Auxílio Reconstrução 2026 golpe Ministério da Integração alerta gov.br"
+  ],
+  "candidatos": [
+    {
+      "golpe": "falso-bloqueio-biometria-inss",
+      "nome": "Falso aviso de bloqueio do benefício por falta de biometria",
+      "e_golpe": [
+        true,
+        "Mensagem falsa que leva a link para capturar dados pessoais e bancários."
+      ],
+      "e_novo": [
+        true,
+        "Noticiado entre 28/10 e 05/11; histórico vazio."
+      ],
+      "confirmado": [
+        true,
+        "Agência Brasil (28/10) e Tribuna de Minas (28/10) descrevem o mesmo mecanismo e a mesma ação: não clicar e conferir pelo 135 ou Meu INSS. Ambas se apoiam em nota do próprio INSS. TV Brasil (05/11) também confirma, mas é do mesmo grupo da Agência Brasil e conta como a mesma fonte."
+      ],
+      "relevancia_60mais": [
+        3,
+        "Mira aposentados e pensionistas do INSS."
+      ],
+      "fontes_abertas": [
+        "https://www.diariodepernambuco.com.br/brasil/2026/10/11727859-inss-alerta-para-golpes-que-usam-informacao-falsa-sobre-biometria.html",
+        "https://tribunademinas.com.br/noticias/brasil-e-mundo/28-10-2026/inss-alerta-aposentados-e-pensionistas-sobre-golpe-envolvendo-biometria.html",
+        "https://tvbrasil.ebc.com.br/reporter-brasil/2026/11/inss-alerta-para-golpe-da-biometria-falsa-contra-aposentados"
+      ],
+      "decisao": "aprovado"
+    },
+    {
+      "golpe": "falsa-consultoria-descontos-inss",
+      "nome": "Falsa consultoria que promete cancelar descontos do INSS",
+      "e_golpe": [
+        true,
+        "Ligação de falsa consultoria; com dados e reconhecimento facial, o grupo contratava empréstimos em nome das vítimas."
+      ],
+      "e_novo": [
+        true,
+        "Prisões em 28/10, noticiadas em 29/10."
+      ],
+      "confirmado": [
+        false,
+        "O Tribunal de Justiça de Minas Gerais confirma o mecanismo, mas não traz orientação de proteção. A outra fonte é o blog de uma empresa de crédito consignado, que tem interesse comercial no tema e não conta como fonte independente."
+      ],
+      "relevancia_60mais": [
+        3,
+        "Vítimas aposentadas e pensionistas de 63 a 84 anos."
+      ],
+      "fontes_abertas": [
+        "https://tjmg.jus.br/portal-tjmg/noticias/justica-determina-prisao-de-nove-suspeitos-de-aplicar-golpes-contra-idosos.htm",
+        "https://meutudo.com.br/blog/noticias/2026/10/29/novo-golpe-do-inss-ligacao-que-prometia-devolver-descontos-indevidos-roubou-r-300-mil"
+      ],
+      "decisao": "reprovado na pergunta 3; reavaliar se surgir orientação oficial"
+    },
+    {
+      "golpe": "falso-auxilio-reconstrucao",
+      "nome": "Falso Auxílio Reconstrução de R$ 1.680",
+      "e_golpe": [
+        true,
+        "Página falsa coleta dados com promessa de benefício inexistente."
+      ],
+      "e_novo": [
+        true,
+        "Alerta do Ministério da Integração em 30/10."
+      ],
+      "confirmado": [
+        null,
+        "Não verificado a fundo: perde em relevância para um candidato de nota 3 já confirmado. Uma fonte aberta (ISTOÉ, 30/10)."
+      ],
+      "relevancia_60mais": [
+        2,
+        "Benefício social divulgado em redes sociais; não mira especificamente pessoas 60+."
+      ],
+      "fontes_abertas": [
+        "https://istoe.com.br/governo-alerta-golpe-auxilio-reconstrucao-1680"
+      ],
+      "decisao": "não escolhido (relevância menor)"
+    },
+    {
+      "golpe": "golpe-pix-mei",
+      "nome": "Golpes com Pix envolvendo MEI",
+      "e_golpe": [
+        true,
+        "Alerta do governo federal (03/11)."
+      ],
+      "e_novo": [
+        true,
+        "Noticiado em 03/11."
+      ],
+      "confirmado": [
+        null,
+        "Não verificado: reprovado antes, na relevância."
+      ],
+      "relevancia_60mais": [
+        1,
+        "Mira microempreendedores."
+      ],
+      "fontes_abertas": [],
+      "decisao": "reprovado na pergunta 4"
+    },
+    {
+      "golpe": "falso-nome-febraban",
+      "nome": "Golpistas usando o nome da Febraban",
+      "e_golpe": [
+        true,
+        "Mensagens em nome da federação dos bancos."
+      ],
+      "e_novo": [
+        false,
+        "Alerta de 09/10, fora da janela de 14 dias."
+      ],
+      "confirmado": [
+        null,
+        "Não verificado."
+      ],
+      "relevancia_60mais": [
+        2,
+        "Imita entidade bancária."
+      ],
+      "fontes_abertas": [],
+      "decisao": "reprovado na pergunta 2"
+    },
+    {
+      "golpe": "lojas-falsas-black-friday",
+      "nome": "Lojas falsas de Black Friday",
+      "e_golpe": [
+        true,
+        "Sites falsos de lojas."
+      ],
+      "e_novo": [
+        false,
+        "Os resultados encontrados são de 2025 ou orientações genéricas, sem alerta de órgão nos últimos 14 dias."
+      ],
+      "confirmado": [
+        null,
+        "Não verificado."
+      ],
+      "relevancia_60mais": [
+        2,
+        "Compras online; público amplo."
+      ],
+      "fontes_abertas": [],
+      "decisao": "reprovado na pergunta 2; reavaliar perto de 27/11"
+    }
+  ],
+  "escolhido": "falso-bloqueio-biometria-inss",
+  "motivo_escolha": "Único candidato de relevância 3 com duas fontes independentes que concordam no mecanismo e na ação.",
+  "verificador": {
+    "status": "APROVADO",
+    "erros": 0,
+    "avisos": 0,
+    "metricas": {
+      "palavras_corpo": 74,
+      "maior_frase_palavras": 15,
+      "caracteres_card": 239,
+      "fontes_com_link": 2
+    }
+  },
+  "resultado": "publicado (pendente: a página do produto ainda não existe; o alerta será o primeiro registro do banco)"
+}

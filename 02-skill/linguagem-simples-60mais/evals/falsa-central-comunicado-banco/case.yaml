@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: falsa-central-comunicado-banco
+expected_outcome: |
+  Um alerta no formato da skill sobre o golpe da falsa central, sem jargão técnico, com uma única ação (desligar e ligar para o banco por um número de confiança), duas fontes e card de WhatsApp.

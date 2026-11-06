@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "O alerta entregue passa em scripts/checar_alerta.py com status APROVADO (nenhum ERRO)",
+      "passed": true,
+      "evidence": "Status APROVADO: 0 erro(s), 0 aviso(s); 54 palavras no corpo, maior frase com 12 palavras, card com 187 caracteres, 2 fontes."
+    },
+    {
+      "text": "O campo 'O que fazer' orienta não pagar taxa de entrega na porta",
+      "passed": true,
+      "evidence": "O que fazer: \"Não pague nenhuma taxa na porta: entregas de verdade já vêm pagas.\""
+    },
+    {
+      "text": "O sinal de golpe menciona a maquininha com visor quebrado ou escondido, ou a cobrança de taxa por uma entrega",
+      "passed": true,
+      "evidence": "Sinal de golpe: \"O visor da maquininha está quebrado ou escondido.\""
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  }
+}

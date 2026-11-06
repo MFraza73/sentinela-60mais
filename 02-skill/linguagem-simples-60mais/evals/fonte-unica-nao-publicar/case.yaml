@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: fonte-unica-nao-publicar
+expected_outcome: |
+  A skill não entrega alerta pronto: devolve no máximo um rascunho cuja primeira linha é 'RASCUNHO — NÃO PUBLICAR', explica que faltam duas fontes independentes e não inventa instruções.

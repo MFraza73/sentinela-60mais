@@ -1,0 +1,11 @@
+{
+  "status": "APROVADO",
+  "erros": [],
+  "avisos": [],
+  "metricas": {
+    "palavras_corpo": 74,
+    "maior_frase_palavras": 15,
+    "caracteres_card": 239,
+    "fontes_com_link": 2
+  }
+}

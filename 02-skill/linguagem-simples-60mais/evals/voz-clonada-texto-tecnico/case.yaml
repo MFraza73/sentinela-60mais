@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: voz-clonada-texto-tecnico
+expected_outcome: |
+  Um alerta que explica, sem os termos deepfake ou clonagem de voz, que a voz de um parente pode ser copiada por computador, com uma única ação concreta.

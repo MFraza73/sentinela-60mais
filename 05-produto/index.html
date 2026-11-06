@@ -1,0 +1,596 @@
+<title>Sentinela 60+</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Um golpe digital por semana, explicado em linguagem simples para quem tem 60 anos ou mais.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+/* Layout: uma coluna de leitura (até 38rem). O alerta é uma pilha de faixas rotuladas, como um aviso público impresso; a ação vem destacada em verde, o sinal em âmbar. Tema claro único, de alto contraste, pensado para leitores com 60 anos ou mais. */
+:root {
+  --papel: #FFFFFF;
+  --lavado: #F2F5F9;
+  --tinta: #0E1A2B;
+  --tinta-2: #34445A;
+  --linha: #C9D3DF;
+  --azul: #0A58A8;
+  --azul-escuro: #07437F;
+  --acao: #0B6B3A;
+  --acao-fundo: #E4F3EA;
+  --sinal: #7A4B00;
+  --sinal-fundo: #FFF2D9;
+  --bolha: #DCF8C6;
+  --bolha-tinta: #111B21;
+  --foco: #F2B300;
+
+  --f-texto: "Atkinson Hyperlegible", Verdana, "Segoe UI", system-ui, sans-serif;
+
+  --t-xs: 0.85rem;
+  --t-s: 0.95rem;
+  --t-m: 1rem;
+  --t-l: 1.25rem;
+  --t-xl: 1.6rem;
+  --t-xxl: clamp(1.75rem, 1.2rem + 2.4vw, 2.45rem);
+
+  --raio: 10px;
+  color-scheme: light;
+  font-size: 125%;
+}
+:root.letra-maior { font-size: 150%; }
+
+* { box-sizing: border-box; }
+body {
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--f-texto);
+  font-size: var(--t-m);
+  line-height: 1.55;
+  -webkit-text-size-adjust: 100%;
+}
+.pagina {
+  max-width: 38rem;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 1rem 2.5rem;
+  display: grid;
+  gap: 2.5rem;
+}
+h1, h2, h3 { text-wrap: balance; line-height: 1.2; margin: 0; }
+p { margin: 0; }
+a { color: var(--azul); text-underline-offset: 0.15em; }
+a:hover { color: var(--azul-escuro); }
+:focus-visible { outline: 3px solid var(--foco); outline-offset: 3px; border-radius: 4px; }
+
+/* Topo */
+.topo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--tinta);
+}
+.marca { display: grid; gap: 0.1rem; min-width: 0; }
+.marca strong { font-size: var(--t-l); letter-spacing: 0.01em; }
+.marca span { font-size: var(--t-s); color: var(--tinta-2); }
+.botao {
+  font: inherit;
+  font-size: var(--t-s);
+  font-weight: 700;
+  min-height: 48px;
+  padding: 0.5rem 1rem;
+  border-radius: var(--raio);
+  border: 2px solid var(--azul);
+  background: var(--papel);
+  color: var(--azul);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.botao:hover { background: var(--lavado); }
+.botao[aria-pressed="true"] { background: var(--azul); color: var(--papel); }
+.botao.cheio { background: var(--azul); color: var(--papel); }
+.botao.cheio:hover { background: var(--azul-escuro); border-color: var(--azul-escuro); }
+
+/* Alerta da semana */
+.alerta { display: grid; gap: 1.25rem; }
+.eyebrow {
+  font-size: var(--t-s);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--tinta-2);
+}
+.alerta h1 { font-size: var(--t-xxl); }
+.acoes-alerta { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+.campos { display: grid; gap: 0; margin: 0; border-top: 1px solid var(--linha); }
+.campo {
+  display: grid;
+  gap: 0.25rem;
+  padding-block: 1rem;
+  border-bottom: 1px solid var(--linha);
+}
+.campo dt {
+  font-size: var(--t-s);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--tinta-2);
+}
+.campo dd { margin: 0; font-size: var(--t-l); }
+.campo.sinal, .campo.fazer {
+  border: 0;
+  border-radius: var(--raio);
+  padding: 1rem 1.1rem;
+  margin-block: 0.75rem 0;
+}
+.campo.sinal { background: var(--sinal-fundo); border-left: 6px solid var(--sinal); }
+.campo.sinal dt { color: var(--sinal); }
+.campo.fazer { background: var(--acao-fundo); border-left: 6px solid var(--acao); }
+.campo.fazer dt { color: var(--acao); }
+.campo.fazer dd { font-weight: 700; }
+
+.lembrar {
+  margin: 0;
+  padding: 1.25rem 1.1rem;
+  border: 3px solid var(--tinta);
+  border-radius: var(--raio);
+  display: grid;
+  gap: 0.35rem;
+}
+.lembrar .rotulo {
+  font-size: var(--t-s);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--tinta-2);
+}
+.lembrar .frase { font-size: var(--t-xl); font-weight: 700; line-height: 1.25; }
+
+.fontes { display: grid; gap: 0.5rem; }
+.fontes h2 { font-size: var(--t-m); }
+.fontes ol { margin: 0; padding-left: 1.4rem; display: grid; gap: 0.5rem; font-size: var(--t-s); }
+.fontes li { overflow-wrap: anywhere; }
+
+/* WhatsApp */
+.secao { display: grid; gap: 1rem; }
+.secao > h2 { font-size: var(--t-xl); }
+.secao > p.intro { color: var(--tinta-2); }
+.conversa {
+  background: var(--lavado);
+  border-radius: var(--raio);
+  padding: 1rem;
+  display: grid;
+  justify-items: end;
+}
+.bolha {
+  background: var(--bolha);
+  color: var(--bolha-tinta);
+  border-radius: 12px 12px 4px 12px;
+  padding: 0.75rem 0.9rem;
+  max-width: 100%;
+  width: min(100%, 24rem);
+  font-size: var(--t-s);
+  line-height: 1.45;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  box-shadow: 0 1px 1px rgba(14, 26, 43, 0.12);
+}
+.copiar-linha { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; }
+.aviso-copia { font-size: var(--t-s); color: var(--acao); font-weight: 700; }
+#card-texto {
+  width: 100%;
+  min-height: 9rem;
+  font: inherit;
+  font-size: var(--t-s);
+  padding: 0.75rem;
+  border: 2px solid var(--linha);
+  border-radius: var(--raio);
+  color: var(--tinta);
+  background: var(--papel);
+}
+
+/* Alertas anteriores */
+.lista-anteriores { display: grid; gap: 0.75rem; }
+.anterior {
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  padding: 0.25rem 1rem;
+}
+.anterior summary {
+  cursor: pointer;
+  font-weight: 700;
+  padding-block: 0.75rem;
+  min-height: 48px;
+}
+.anterior summary small { display: block; font-weight: 400; color: var(--tinta-2); font-size: var(--t-s); }
+.anterior .corpo { display: grid; gap: 0.6rem; padding-bottom: 1rem; font-size: var(--t-s); }
+.anterior .corpo b { display: block; font-size: var(--t-xs); text-transform: uppercase; letter-spacing: 0.05em; color: var(--tinta-2); }
+.vazio {
+  background: var(--lavado);
+  border-radius: var(--raio);
+  padding: 1rem 1.1rem;
+  color: var(--tinta-2);
+}
+
+/* Como funciona */
+.passos { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.9rem; counter-reset: passo; }
+.passos li {
+  counter-increment: passo;
+  display: grid;
+  grid-template-columns: 2.4rem 1fr;
+  gap: 0.75rem;
+  align-items: start;
+}
+.passos li::before {
+  content: counter(passo);
+  display: grid;
+  place-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  background: var(--tinta);
+  color: var(--papel);
+  font-weight: 700;
+}
+.passos li > div { min-width: 0; padding-top: 0.2rem; }
+.passos b { display: block; }
+.passos span { color: var(--tinta-2); font-size: var(--t-s); }
+
+.execucoes { display: grid; gap: 0.75rem; }
+.execucoes h3 { font-size: var(--t-l); }
+.execucao {
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  padding: 0.9rem 1rem;
+  display: grid;
+  gap: 0.5rem;
+}
+.execucao .linha1 { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.75rem; }
+.execucao .quando { font-weight: 700; font-variant-numeric: tabular-nums; }
+.chip {
+  font-size: var(--t-xs);
+  font-weight: 700;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  white-space: nowrap;
+}
+.chip.publicado { color: var(--acao); background: var(--acao-fundo); }
+.chip.sem-alerta { color: var(--sinal); background: var(--sinal-fundo); }
+.chip.tipo { color: var(--tinta-2); }
+.execucao .numeros { font-size: var(--t-s); color: var(--tinta-2); font-variant-numeric: tabular-nums; }
+.execucao details summary { cursor: pointer; font-size: var(--t-s); font-weight: 700; color: var(--azul); min-height: 44px; display: flex; align-items: center; }
+.execucao details ul { margin: 0.25rem 0 0; padding-left: 1.2rem; display: grid; gap: 0.5rem; font-size: var(--t-s); }
+
+/* Rodapé */
+.rodape {
+  border-top: 2px solid var(--tinta);
+  padding-top: 1.25rem;
+  display: grid;
+  gap: 0.75rem;
+  font-size: var(--t-s);
+  color: var(--tinta-2);
+}
+.rodape strong { color: var(--tinta); }
+
+.erro {
+  background: var(--sinal-fundo);
+  border-left: 6px solid var(--sinal);
+  border-radius: var(--raio);
+  padding: 1rem 1.1rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .alerta[data-pronto="sim"] { animation: surge 280ms ease-out; }
+  @keyframes surge { from { opacity: 0.6; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+}
+</style>
+
+<div class="pagina">
+  <header class="topo">
+    <div class="marca">
+      <strong>Sentinela 60+</strong>
+      <span>Um golpe por semana, explicado em linguagem simples.</span>
+    </div>
+    <button type="button" class="botao" id="btn-letra" aria-pressed="false">Letra maior</button>
+  </header>
+
+  <main class="pagina-conteudo" style="display:grid; gap:2.5rem;">
+    <section class="alerta" id="semana" aria-labelledby="titulo-alerta" aria-busy="true">
+      <p class="eyebrow" id="eyebrow-alerta">Alerta da semana</p>
+      <h1 id="titulo-alerta">Carregando o alerta da semana…</h1>
+      <div class="acoes-alerta" id="acoes-alerta" hidden>
+        <button type="button" class="botao" id="btn-ouvir" hidden>Ouvir o alerta</button>
+      </div>
+      <dl class="campos" id="campos" hidden>
+        <div class="campo"><dt>Como chega</dt><dd id="c-como"></dd></div>
+        <div class="campo"><dt>O que pedem</dt><dd id="c-pedem"></dd></div>
+        <div class="campo sinal"><dt>Sinal de golpe</dt><dd id="c-sinal"></dd></div>
+        <div class="campo fazer"><dt>O que fazer</dt><dd id="c-fazer"></dd></div>
+      </dl>
+      <blockquote class="lembrar" id="bloco-lembrar" hidden>
+        <p class="rotulo">Para lembrar</p>
+        <p class="frase" id="c-lembrar"></p>
+      </blockquote>
+      <div class="fontes" id="bloco-fontes" hidden>
+        <h2>De onde veio este alerta</h2>
+        <ol id="lista-fontes"></ol>
+      </div>
+    </section>
+
+    <section class="secao" id="whatsapp" aria-labelledby="titulo-whats" hidden>
+      <h2 id="titulo-whats">Mande para quem você quer proteger</h2>
+      <p class="intro">Copie o texto abaixo e cole numa conversa do WhatsApp.</p>
+      <div class="conversa"><div class="bolha" id="bolha"></div></div>
+      <div class="copiar-linha">
+        <button type="button" class="botao cheio" id="btn-copiar">Copiar texto</button>
+        <span class="aviso-copia" id="aviso-copia" role="status" aria-live="polite"></span>
+      </div>
+      <textarea id="card-texto" readonly hidden aria-label="Texto do alerta para copiar"></textarea>
+    </section>
+
+    <section class="secao" id="anteriores" aria-labelledby="titulo-anteriores" hidden>
+      <h2 id="titulo-anteriores">Alertas anteriores</h2>
+      <div class="lista-anteriores" id="lista-anteriores"></div>
+    </section>
+
+    <section class="secao" id="como-funciona" aria-labelledby="titulo-como">
+      <h2 id="titulo-como">Como o Sentinela funciona</h2>
+      <ol class="passos">
+        <li><div><b>Uma vez por semana, uma tarefa agendada acorda o agente.</b><span>Ninguém precisa apertar um botão.</span></div></li>
+        <li><div><b>O agente pesquisa os golpes noticiados nos últimos 14 dias.</b><span>Ele escolhe um que seja novo, confirmado em duas fontes independentes e ligado a quem tem 60 anos ou mais. Se nenhum passar, a semana fica sem alerta.</span></div></li>
+        <li><div><b>Uma skill escreve o alerta em linguagem simples.</b><span>Um verificador confere as regras da Lei 15.263/2025, a Política Nacional de Linguagem Simples.</span></div></li>
+        <li><div><b>O alerta aparece aqui.</b><span>Com as fontes e um texto pronto para o WhatsApp.</span></div></li>
+      </ol>
+      <div class="execucoes" id="bloco-execucoes" hidden>
+        <h3>Cada vez que o agente trabalhou</h3>
+        <div id="lista-execucoes" style="display:grid; gap:0.75rem;"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <p><strong>O Sentinela 60+ não substitui seu banco, o Procon ou a polícia.</strong> Cada alerta mostra as fontes de onde veio.</p>
+    <p>Projeto acadêmico de Marcelo Frazão para a disciplina Vibe Coding &amp; Arquitetura de Produtos com IA, da Profª Drª Eliana Loureiro, no curso de Tecnologia em Inteligência Artificial da FAAP. Feito com Claude: uma skill de linguagem simples, um agente de pesquisa e uma automação semanal.</p>
+    <p id="atualizado"></p>
+  </footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  document.documentElement.lang = "pt-BR";
+
+  var MESES = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+  function dataLonga(iso) {
+    var p = String(iso || "").split("-").map(Number);
+    if (p.length !== 3 || !p[0]) return String(iso || "");
+    return p[2] + " de " + MESES[p[1] - 1] + " de " + p[0];
+  }
+  function el(id) { return document.getElementById(id); }
+  function texto(id, valor) { el(id).textContent = valor || ""; }
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function negritoWhats(linha) { return esc(linha).replace(/\*([^*\n]+)\*/g, "<strong>$1</strong>"); }
+  function linkSeguro(url) { return /^https?:\/\//i.test(url) ? url : "#"; }
+
+  /* Letra maior: preferência só deste navegador */
+  var botaoLetra = el("btn-letra");
+  function aplicarLetra(maior) {
+    document.documentElement.classList.toggle("letra-maior", maior);
+    botaoLetra.setAttribute("aria-pressed", maior ? "true" : "false");
+    botaoLetra.textContent = maior ? "Letra normal" : "Letra maior";
+  }
+  try { aplicarLetra(localStorage.getItem("sentinela-letra") === "maior"); } catch (e) { aplicarLetra(false); }
+  botaoLetra.addEventListener("click", function () {
+    var maior = !document.documentElement.classList.contains("letra-maior");
+    aplicarLetra(maior);
+    try { localStorage.setItem("sentinela-letra", maior ? "maior" : "normal"); } catch (e) {}
+  });
+
+  /* Ouvir em voz alta, quando o navegador tiver voz em português */
+  var falaTexto = "";
+  var vozPt = null;
+  function procurarVoz() {
+    if (!("speechSynthesis" in window)) return;
+    var vozes = window.speechSynthesis.getVoices() || [];
+    vozPt = vozes.filter(function (v) { return /^pt(-|_)BR/i.test(v.lang); })[0]
+         || vozes.filter(function (v) { return /^pt/i.test(v.lang); })[0] || null;
+    el("btn-ouvir").hidden = !(vozPt && falaTexto);
+  }
+  if ("speechSynthesis" in window) {
+    try { window.speechSynthesis.addEventListener("voiceschanged", procurarVoz); } catch (e) {}
+  }
+  var botaoOuvir = el("btn-ouvir");
+  botaoOuvir.addEventListener("click", function () {
+    var s = window.speechSynthesis;
+    if (s.speaking) { s.cancel(); botaoOuvir.textContent = "Ouvir o alerta"; return; }
+    var u = new SpeechSynthesisUtterance(falaTexto);
+    u.lang = "pt-BR";
+    if (vozPt) u.voice = vozPt;
+    u.rate = 0.92;
+    u.onend = u.onerror = function () { botaoOuvir.textContent = "Ouvir o alerta"; };
+    botaoOuvir.textContent = "Parar";
+    s.speak(u);
+  });
+
+  /* Copiar o card */
+  var botaoCopiar = el("btn-copiar");
+  botaoCopiar.addEventListener("click", function () {
+    var t = el("card-texto").value;
+    var aviso = el("aviso-copia");
+    function plano() {
+      var area = el("card-texto");
+      area.hidden = false;
+      area.focus();
+      area.select();
+      aviso.textContent = "Selecionei o texto. Copie com o menu do seu aparelho.";
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(t).then(function () {
+        aviso.textContent = "Texto copiado. Agora é só colar no WhatsApp.";
+      }, plano);
+    } else { plano(); }
+  });
+
+  function renderAlerta(a) {
+    texto("eyebrow-alerta", "Alerta da semana · " + dataLonga(a.publicado_em));
+    texto("titulo-alerta", a.titulo);
+    texto("c-como", a.como_chega);
+    texto("c-pedem", a.o_que_pedem);
+    texto("c-sinal", a.sinal);
+    texto("c-fazer", a.o_que_fazer);
+    texto("c-lembrar", "“" + a.para_lembrar + "”");
+    var lista = el("lista-fontes");
+    lista.innerHTML = "";
+    (a.fontes || []).forEach(function (f) {
+      var li = document.createElement("li");
+      var link = document.createElement("a");
+      link.href = linkSeguro(f.url);
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.textContent = f.nome;
+      li.appendChild(link);
+      lista.appendChild(li);
+    });
+    ["campos", "bloco-lembrar", "bloco-fontes", "acoes-alerta"].forEach(function (id) { el(id).hidden = false; });
+
+    var card = String(a.card_whatsapp || "");
+    el("bolha").innerHTML = card.split("\n").map(negritoWhats).join("\n");
+    el("card-texto").value = card;
+    el("whatsapp").hidden = !card;
+
+    falaTexto = [a.titulo, "Como chega: " + a.como_chega, "O que pedem: " + a.o_que_pedem,
+      "Sinal de golpe: " + a.sinal, "O que fazer: " + a.o_que_fazer, "Para lembrar: " + a.para_lembrar]
+      .join(". ").replace(/\(INSS\)/g, "").replace(/\bINSS\b/g, "I N S S");
+    procurarVoz();
+
+    var secao = el("semana");
+    secao.setAttribute("aria-busy", "false");
+    secao.setAttribute("data-pronto", "sim");
+  }
+
+  function renderAnteriores(lista) {
+    var caixa = el("lista-anteriores");
+    caixa.innerHTML = "";
+    if (!lista.length) {
+      var p = document.createElement("p");
+      p.className = "vazio";
+      p.textContent = "Este é o primeiro alerta do Sentinela. Os próximos alertas ficam guardados aqui, do mais novo para o mais antigo.";
+      caixa.appendChild(p);
+      return;
+    }
+    lista.forEach(function (a) {
+      var d = document.createElement("details");
+      d.className = "anterior";
+      var s = document.createElement("summary");
+      s.textContent = a.titulo;
+      var sm = document.createElement("small");
+      sm.textContent = dataLonga(a.publicado_em);
+      s.appendChild(sm);
+      d.appendChild(s);
+      var corpo = document.createElement("div");
+      corpo.className = "corpo";
+      [["Sinal de golpe", a.sinal], ["O que fazer", a.o_que_fazer], ["Para lembrar", a.para_lembrar]].forEach(function (par) {
+        var p = document.createElement("p");
+        var b = document.createElement("b");
+        b.textContent = par[0];
+        p.appendChild(b);
+        p.appendChild(document.createTextNode(par[1] || ""));
+        corpo.appendChild(p);
+      });
+      d.appendChild(corpo);
+      caixa.appendChild(d);
+    });
+  }
+
+  function renderExecucoes(lista) {
+    var caixa = el("lista-execucoes");
+    caixa.innerHTML = "";
+    lista.forEach(function (x) {
+      var art = document.createElement("article");
+      art.className = "execucao";
+      var l1 = document.createElement("div");
+      l1.className = "linha1";
+      var q = document.createElement("span");
+      q.className = "quando";
+      q.textContent = dataLonga(x.data);
+      var tipo = document.createElement("span");
+      tipo.className = "chip tipo";
+      tipo.textContent = x.tipo === "automatica" ? "Automática" : "Teste";
+      var res = document.createElement("span");
+      res.className = "chip " + (x.resultado === "publicado" ? "publicado" : "sem-alerta");
+      res.textContent = x.resultado === "publicado" ? "Publicou alerta" : "Sem alerta novo";
+      l1.appendChild(q); l1.appendChild(tipo); l1.appendChild(res);
+      art.appendChild(l1);
+      var n = document.createElement("p");
+      n.className = "numeros";
+      n.textContent = x.consultas + " buscas · " + x.candidatos + " golpes avaliados · " + x.aprovados + " aprovado" + (x.aprovados === 1 ? "" : "s");
+      art.appendChild(n);
+      if (x.decisoes && x.decisoes.length) {
+        var det = document.createElement("details");
+        var sum = document.createElement("summary");
+        sum.textContent = "Ver como o agente decidiu";
+        det.appendChild(sum);
+        var ul = document.createElement("ul");
+        x.decisoes.forEach(function (dc) {
+          var li = document.createElement("li");
+          var b = document.createElement("b");
+          b.textContent = dc.golpe + ". ";
+          li.appendChild(b);
+          li.appendChild(document.createTextNode(dc.decisao));
+          ul.appendChild(li);
+        });
+        det.appendChild(ul);
+        art.appendChild(det);
+      } else if (x.motivo) {
+        var m = document.createElement("p");
+        m.className = "numeros";
+        m.textContent = x.motivo;
+        art.appendChild(m);
+      }
+      caixa.appendChild(art);
+    });
+    el("bloco-execucoes").hidden = !lista.length;
+  }
+
+  function mostrarErro() {
+    var secao = el("semana");
+    secao.setAttribute("aria-busy", "false");
+    texto("titulo-alerta", "Não consegui carregar o alerta agora.");
+    var p = document.createElement("p");
+    p.className = "erro";
+    p.textContent = "Tente abrir a página de novo em alguns minutos. Se o problema continuar, a internet pode estar instável.";
+    secao.appendChild(p);
+  }
+
+  function porData(campo) {
+    return function (a, b) { return String(b[campo]).localeCompare(String(a[campo])); };
+  }
+
+  fetch("dados.json", { cache: "no-store" })
+    .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+    .then(function (d) {
+      var alertas = (d.alertas || []).slice().sort(porData("publicado_em"));
+      var execucoes = (d.execucoes || []).slice().sort(porData("data"));
+      if (alertas.length) {
+        renderAlerta(alertas[0]);
+        renderAnteriores(alertas.slice(1));
+        el("anteriores").hidden = false;
+      } else {
+        el("semana").setAttribute("aria-busy", "false");
+        texto("titulo-alerta", "O primeiro alerta sai em breve.");
+      }
+      renderExecucoes(execucoes);
+      if (d.atualizado_em) texto("atualizado", "Página atualizada em " + dataLonga(d.atualizado_em) + ".");
+    })
+    .catch(mostrarErro);
+})();
+</script>

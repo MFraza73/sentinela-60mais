@@ -1,0 +1,66 @@
+{
+  "projeto": "Sentinela 60+",
+  "atualizado_em": "2026-11-06",
+  "alertas": [
+    {
+      "id": "2026-11-06-falso-bloqueio-biometria-inss",
+      "golpe": "falso-bloqueio-biometria-inss",
+      "publicado_em": "2026-11-06",
+      "titulo": "Falso aviso de bloqueio por biometria: não clique no link",
+      "como_chega": "Uma mensagem nas redes sociais ameaça bloquear sua aposentadoria. Ela usa o nome do Instituto Nacional do Seguro Social (INSS).",
+      "o_que_pedem": "Que você clique num link para fazer a biometria e passe seus dados.",
+      "sinal": "Quem já recebe o benefício não precisa cadastrar biometria.",
+      "o_que_fazer": "Não clique no link; se tiver dúvida, ligue para o 135, a central do INSS.",
+      "para_lembrar": "Ameaça de bloqueio com link? Não clique.",
+      "fontes": [
+        {
+          "nome": "INSS alerta para golpes que usam informação falsa sobre biometria — Agência Brasil, republicada pelo Diario de Pernambuco (28/10/2026)",
+          "url": "https://www.diariodepernambuco.com.br/brasil/2026/10/11727859-inss-alerta-para-golpes-que-usam-informacao-falsa-sobre-biometria.html"
+        },
+        {
+          "nome": "INSS alerta aposentados e pensionistas sobre golpe envolvendo biometria — Tribuna de Minas (28/10/2026)",
+          "url": "https://tribunademinas.com.br/noticias/brasil-e-mundo/28-10-2026/inss-alerta-aposentados-e-pensionistas-sobre-golpe-envolvendo-biometria.html"
+        }
+      ],
+      "card_whatsapp": "*Falso aviso de bloqueio por biometria*\nMensagem ameaça bloquear sua aposentadoria e manda um link.\nQuem já recebe o benefício não precisa fazer biometria.\nNão clique. Na dúvida, ligue para o 135.\n*Ameaça de bloqueio com link? Não clique.*"
+    }
+  ],
+  "execucoes": [
+    {
+      "data": "2026-11-06",
+      "tipo": "teste",
+      "consultas": 9,
+      "candidatos": 6,
+      "aprovados": 1,
+      "resultado": "publicado",
+      "escolhido": "falso-bloqueio-biometria-inss",
+      "motivo": "Único candidato de relevância 3 com duas fontes independentes que concordam no mecanismo e na ação.",
+      "decisoes": [
+        {
+          "golpe": "Falso aviso de bloqueio por biometria do INSS",
+          "decisao": "Escolhido: confirmado em duas fontes independentes e relevante para aposentados."
+        },
+        {
+          "golpe": "Falsa consultoria que promete cancelar descontos do INSS",
+          "decisao": "Recusado: nenhuma fonte independente trazia orientação de proteção."
+        },
+        {
+          "golpe": "Falso Auxílio Reconstrução de R$ 1.680",
+          "decisao": "Não escolhido: menos ligado ao público de 60 anos ou mais."
+        },
+        {
+          "golpe": "Golpes com Pix envolvendo MEI",
+          "decisao": "Recusado: mira microempreendedores."
+        },
+        {
+          "golpe": "Golpistas usando o nome da Febraban",
+          "decisao": "Recusado: alerta de 9 de outubro, fora da janela de 14 dias."
+        },
+        {
+          "golpe": "Lojas falsas de Black Friday",
+          "decisao": "Recusado por ora: sem alerta oficial recente. Reavaliar perto de 27 de novembro."
+        }
+      ]
+    }
+  ]
+}

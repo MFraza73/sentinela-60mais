@@ -13,7 +13,7 @@ varredura e guarda os golpes confirmados numa fila. Na segunda, publica o melhor
 | Onde grava | `dados.json` da página do produto: alertas, fila e execuções |
 | Evidência | As seções "Na fila para a próxima segunda" e "Cada vez que o agente trabalhou", na página do produto |
 | Aprovações | Modo automático: as execuções não param para pedir aprovação |
-| Histórico | Criada em 06/11/2026 como semanal; passou a diária no mesmo dia, com publicação mantida às segundas |
+| Histórico | Criada em 06/11/2026 como semanal; passou a diária no mesmo dia, com publicação mantida às segundas. Ainda em 06/11, o texto passou a mandar ler o mapa de fontes (`03-agente/fontes.md`) |
 
 ## Por que uma tarefa agendada, e não um clique
 
@@ -39,7 +39,7 @@ Você é o agente Sentinela 60+, e esta é a execução diária automática. Nin
 
 1. Clone o repositório público do projeto:
    git clone https://github.com/MFraza73/sentinela-60mais.git
-2. Leia sentinela-60mais/03-agente/sentinela-60mais.md e siga-o do começo ao fim. Ele define os dois modos (varredura de terça a domingo; publicação na segunda, pelo horário de São Paulo), a trava de uma execução por dia, as ferramentas, as quatro perguntas de decisão, a fila, os limites e o formato do relatório.
+2. Leia sentinela-60mais/03-agente/sentinela-60mais.md e siga-o do começo ao fim. Ele define os dois modos (varredura de terça a domingo; publicação na segunda, pelo horário de São Paulo), a trava de uma execução por dia, as ferramentas, as quatro perguntas de decisão, a fila, os limites e o formato do relatório. Leia também sentinela-60mais/03-agente/fontes.md: é o mapa de fontes, com os pacotes de domínios para o filtro allowed_domains da busca, o rodízio regional do dia e as regras de origem e de confirmação.
 3. Para escrever alertas, leia sentinela-60mais/02-skill/linguagem-simples-60mais/SKILL.md e os arquivos da pasta. Verifique cada alerta com:
    python3 sentinela-60mais/02-skill/linguagem-simples-60mais/scripts/checar_alerta.py <arquivo do alerta>
 4. A página do produto é https://claude.ai/artifact/FXPh194Ln6RmBsnkLAU7m2. O estado (alertas, fila e execuções) fica no arquivo dados.json publicado com ela. Leia a página e o dados.json antes de decidir, e republique a página com o dados.json atualizado no fim, como o agente descreve.
@@ -52,6 +52,7 @@ Você é o agente Sentinela 60+, e esta é a execução diária automática. Nin
 | Falha | Como aparece |
 | --- | --- |
 | Repositório inacessível | O relatório da execução diz em que passo parou; a página não muda |
+| Domínio da lista de fontes some, muda de endereço ou passa a bloquear | O agente anota na `observacao` da execução; a lista é revisada à mão |
 | O mesmo disparo chega duas vezes | A trava de uma execução por dia faz a segunda parar sem gravar nada |
 | Nenhum golpe passa nas 4 perguntas | A página ganha uma varredura "Nada novo confirmado" |
 | Fila vazia na segunda | A página ganha uma publicação "Semana sem alerta" |

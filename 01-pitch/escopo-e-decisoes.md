@@ -25,17 +25,18 @@ Pitch editável: https://claude.ai/artifact/Ar6XfmaFShFphuWGdWwcKB
 - Estado do agente (histórico de alertas e de execuções) fica em `dados.json`, publicado junto da página do produto: cada disparo da automação abre uma sessão nova, sem memória da anterior. O banco de dados das páginas do Claude foi descartado porque só entrega dados a quem está conectado ao Claude; visitantes sem conta veriam a página vazia.
 - Produto publicado em 06/11: https://claude.ai/artifact/FXPh194Ln6RmBsnkLAU7m2 (privado até ser compartilhado por link público no menu Compartilhar).
 - Regras do agente aprendidas na execução de 06/11: veículos do mesmo grupo contam como uma fonte; fonte com interesse comercial no tema não conta; sem orientação de proteção confirmada, não há alerta.
+- Mapa de fontes (06/11), validado com as próprias ferramentas do agente: três papéis (sinal, confirmação, apoio); um dos dois confirmadores tem de ser primário (órgão público, polícia, Procon ou Febraban); agências de checagem só indicam; cada fonte leva o campo `origem` e cada candidato registra `indicado_por`. Busca por pacotes de até 7 domínios, com rodízio regional diário. A validação mostrou que Estadão, UOL, BBC e globo.com são recusados pela ferramenta de busca, que g1, O Globo e Folha não devolvem resultado, e que 11 das 27 polícias civis bloqueiam a abertura de página. Detalhes em `03-agente/fontes.md`.
 
 
 ## Arquitetura
 1. Automação: tarefa agendada no Claude, todo dia às 7h40, dispara o agente.
-2. Agente: de terça a domingo, varre o noticiário (órgãos, polícias, imprensa) e guarda numa fila os golpes novos, confirmados em 2 fontes e relevantes para 60+, já escritos e aprovados no verificador; na segunda, publica o mais relevante da fila.
+2. Agente: de terça a domingo, varre órgãos públicos, Febraban, imprensa, agências de checagem e um pacote regional de polícias e Procons, e guarda numa fila os golpes novos, confirmados em 2 fontes (uma delas primária) e relevantes para 60+, já escritos e aprovados no verificador; na segunda, publica o mais relevante da fila.
 3. Skill `linguagem-simples-60mais`: art. 5º da Lei 15.263/2025 + ISO 24495-1:2023 + regras próprias (um golpe, um sinal, uma ação, uma frase para lembrar; tom de autonomia, não de medo).
 4. Produto: página pública com alerta da semana, arquivo, fila, histórico de execuções e card para WhatsApp (repassado por pessoa de confiança; sem disparo automático a pessoas idosas).
 
 ## Critérios de sucesso
 - Skill: 10 casos de teste aprovados no checklist do art. 5º (pares antes/depois no repositório).
-- Agente: todo alerta com 2 fontes citadas ou mais.
+- Agente: todo alerta com 2 fontes citadas ou mais, uma delas primária, cada uma com a sua `origem`.
 - Automação: execuções diárias reais, com ao menos duas publicações de segunda (9, 16 ou 23/11) antes de 27/11.
 - Produto: página pública legível no celular, fonte grande, contraste nível AA da WCAG.
 

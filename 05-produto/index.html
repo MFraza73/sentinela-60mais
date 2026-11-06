@@ -279,6 +279,7 @@ a:hover { color: var(--azul-escuro); }
 }
 .fila li b { display: block; }
 .fila li span { font-size: var(--t-s); color: var(--tinta-2); }
+.origem { color: var(--tinta-2); font-size: var(--t-xs); }
 .execucao .numeros { font-size: var(--t-s); color: var(--tinta-2); font-variant-numeric: tabular-nums; }
 .execucao details summary { cursor: pointer; font-size: var(--t-s); font-weight: 700; color: var(--azul); min-height: 44px; display: flex; align-items: center; }
 .execucao details ul { margin: 0.25rem 0 0; padding-left: 1.2rem; display: grid; gap: 0.5rem; font-size: var(--t-s); }
@@ -359,7 +360,7 @@ a:hover { color: var(--azul-escuro); }
       <h2 id="titulo-como">Como o Sentinela funciona</h2>
       <ol class="passos">
         <li><div><b>Todo dia, às 7h40, uma tarefa agendada acorda o agente.</b><span>Ninguém precisa apertar um botão.</span></div></li>
-        <li><div><b>O agente pesquisa os golpes noticiados.</b><span>Cada golpe novo, confirmado em duas fontes independentes e ligado a quem tem 60 anos ou mais, entra numa fila.</span></div></li>
+        <li><div><b>O agente pesquisa órgãos públicos, bancos, polícias, Procons, imprensa e agências de checagem.</b><span>Cada golpe novo, confirmado em duas fontes independentes e ligado a quem tem 60 anos ou mais, entra numa fila. Uma das fontes tem de ser um órgão público, a polícia, o Procon ou a federação dos bancos.</span></div></li>
         <li><div><b>Uma skill escreve o alerta em linguagem simples.</b><span>Um verificador confere as regras da Lei 15.263/2025, a Política Nacional de Linguagem Simples.</span></div></li>
         <li><div><b>Toda segunda, o golpe mais importante da fila vira o alerta da semana.</b><span>Um golpe muito grave, com orientação oficial nova, pode sair antes, no máximo uma vez por semana. Se a fila estiver vazia, a semana fica sem alerta.</span></div></li>
         <li><div><b>O alerta aparece aqui.</b><span>Com as fontes e um texto pronto para o WhatsApp.</span></div></li>
@@ -481,6 +482,12 @@ a:hover { color: var(--azul-escuro); }
       link.rel = "noopener noreferrer";
       link.textContent = f.nome;
       li.appendChild(link);
+      if (ORIGENS[f.origem]) {
+        var or = document.createElement("span");
+        or.className = "origem";
+        or.textContent = " · " + ORIGENS[f.origem];
+        li.appendChild(or);
+      }
       lista.appendChild(li);
     });
     ["campos", "bloco-lembrar", "bloco-fontes", "acoes-alerta"].forEach(function (id) { el(id).hidden = false; });
@@ -534,6 +541,24 @@ a:hover { color: var(--azul-escuro); }
     });
   }
 
+  var ORIGENS = {
+    "orgao": "órgão público",
+    "policia": "polícia",
+    "procon": "Procon",
+    "banco": "federação dos bancos",
+    "imprensa": "imprensa",
+    "checador": "agência de checagem",
+    "outro": "outro site",
+    "apoio": "orientação geral"
+  };
+
+  function nomeIndicador(i) {
+    if (!i) return "";
+    if (typeof i === "string") return i;
+    var nome = i.nome || "";
+    return ORIGENS[i.origem] ? nome + " (" + ORIGENS[i.origem] + ")" : nome;
+  }
+
   var RESULTADOS = {
     "publicado": "Publicou o alerta da semana",
     "sem-alerta": "Semana sem alerta",
@@ -552,7 +577,8 @@ a:hover { color: var(--azul-escuro); }
       var b = document.createElement("b");
       b.textContent = f.nome;
       var s = document.createElement("span");
-      s.textContent = "Confirmado em " + dataLonga(f.adicionado_em) + " · relevância " + f.relevancia + " de 3";
+      s.textContent = "Confirmado em " + dataLonga(f.adicionado_em) + " · relevância " + f.relevancia + " de 3" +
+        (f.indicado_por ? " · indicado por " + nomeIndicador(f.indicado_por) : "");
       li.appendChild(b); li.appendChild(s);
       ul.appendChild(li);
     });
@@ -598,6 +624,12 @@ a:hover { color: var(--azul-escuro); }
           b.textContent = dc.golpe + ". ";
           li.appendChild(b);
           li.appendChild(document.createTextNode(dc.decisao));
+          if (dc.indicado_por) {
+            var ind = document.createElement("span");
+            ind.className = "origem";
+            ind.textContent = " Indicado por " + nomeIndicador(dc.indicado_por) + ".";
+            li.appendChild(ind);
+          }
           ul.appendChild(li);
         });
         det.appendChild(ul);

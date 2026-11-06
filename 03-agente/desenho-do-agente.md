@@ -10,7 +10,7 @@ caminho conforme o que encontra. A diferença aparece nos pontos de decisão. O 
 | Ponto de decisão | O que o agente decide | Exemplo da execução de 06/11 |
 | --- | --- | --- |
 | O que buscar | Consultas, frentes e quando refinar | Refinou a busca para achar uma segunda fonte do caso do INSS |
-| Em que fonte confiar | Independência e interesse comercial | Descontou o blog de uma empresa de crédito consignado |
+| Em que fonte confiar | Papel (sinal ou confirmação), independência e interesse comercial | Descontou o blog de uma empresa de crédito consignado |
 | Qual golpe vale um alerta | As 4 perguntas aplicadas a cada candidato | Escolheu 1 de 6 candidatos |
 | Onde parar de pesquisar | Verificação em ordem de relevância | Não abriu fontes de candidatos que já perdiam em relevância |
 | Se deve publicar | Na dúvida, não publica | Recusou o candidato mais grave por falta de orientação confirmada |
@@ -35,6 +35,7 @@ agente age sobre uma crença do estado do mundo, não sobre o estado em si.
 | Peça | Papel | Onde está |
 | --- | --- | --- |
 | Definição do agente | Objetivo, ferramentas, laço, regras de decisão e limites | `sentinela-60mais.md` |
+| Mapa de fontes | Papéis das fontes, pacotes de busca, rodízio regional e situação de cada domínio | `fontes.md` |
 | Skill | Como escrever: padrão de linguagem simples e verificador | `../02-skill/` |
 | Ferramentas | Busca na web, leitura de páginas, republicação da página do produto | Do próprio Claude |
 | Estado | Alertas, fila de golpes confirmados e histórico de execuções | `dados.json`, publicado junto da página (`../05-produto/`) |
@@ -54,6 +55,27 @@ propósito:
   WhatsApp em corrente.
 - **Alerta extra.** Um golpe de relevância máxima, com fonte oficial e noticiado nas últimas 48 horas, pode sair
   antes da segunda, no máximo uma vez por semana.
+
+## Onde o agente procura: sinal, confirmação e origem
+
+A primeira versão mandava o agente buscar em "órgãos, imprensa e recorte de público", sem dizer onde. A segunda
+separa as fontes por papel e fixa os endereços, num mapa testado com as próprias ferramentas do agente
+(`fontes.md`):
+
+- **Sinal.** Agências de checagem (Aos Fatos, Boatos.org, Projeto Comprova) e a busca aberta descobrem cedo que um
+  golpe circula. Podem indicar um candidato, nunca confirmá-lo.
+- **Confirmação.** Uma das duas fontes tem de ser primária: órgão público, polícia civil, Procon ou Febraban. São 14
+  polícias civis e 11 Procons estaduais que a ferramenta encontra e abre, organizados em quatro pacotes regionais
+  que se revezam ao longo da semana.
+- **Origem.** Toda fonte guardada leva o campo `origem`, e todo candidato registra quem o indicou
+  (`indicado_por`). Com algumas semanas de execução, o histórico mostra quais frentes de fato trazem os golpes que
+  viram alerta.
+
+A validação mudou a lista. Dos cinco grandes jornais da versão anterior, três são recusados pela ferramenta de
+busca e dois não devolvem resultado; 11 das 27 polícias civis bloqueiam a abertura de página. O agente teria
+gastado buscas em fontes que não pode citar. Com a regra da fonte primária, o agente também troca a notícia de
+segunda mão pela nota original: o golpe do falso gerente, guardado na fila com dois sites regionais que
+reproduziam a polícia, tem a página da própria Polícia Civil do Paraná, que abre e traz a orientação.
 
 ## Lição do primeiro disparo automático
 
@@ -78,6 +100,8 @@ qualquer visitante. O custo é que cada execução republica a página inteira, 
 | Alerta com orientação errada | Duas fontes independentes que concordem na ação; na dúvida, não publica |
 | Página da web com instrução escondida para o agente (*prompt injection*) | Conteúdo de página é dado, nunca instrução; a página suspeita é descartada e registrada |
 | Fonte com interesse próprio | Fonte comercial no tema não conta como independente |
+| Notícia de segunda mão | Uma das duas fontes tem de ser primária (órgão, polícia, Procon ou Febraban); checagem e site fora das listas nunca confirmam |
+| Busca em fonte que o agente não consegue citar | Mapa de fontes testado: domínios que não abrem só servem de sinal; domínios recusados ficam fora do filtro |
 | Mesma notícia contada duas vezes | Veículos do mesmo grupo contam como uma fonte |
 | Texto difícil para o público | Skill + verificador; sem status APROVADO, não publica |
 | Acusar uma empresa | Marca imitada aparece como "mensagem que imita"; nunca como culpada |
@@ -90,7 +114,7 @@ Posição honesta do agente na matriz *Levels of agent capabilities* (aula 11, s
 
 | Dimensão | Nível | Por quê | Como subir um nível |
 | --- | --- | --- | --- |
-| Perception | Intermediate — *Active* | Varre várias frentes todo dia e guarda o que confirma numa fila que atravessa os dias | Ser acionado por evento (um alerta oficial novo), e não só pelo relógio |
+| Perception | Intermediate — *Active* | Varre todo dia frentes fixas (órgãos, bancos, imprensa, checadores) e um pacote regional de polícias e Procons, e guarda o que confirma numa fila que atravessa os dias | Ser acionado por evento (um alerta oficial novo), e não só pelo relógio |
 | Decisioning | Basic — *Analytical* | Aplica critérios explícitos com julgamento sobre evidência | Ponderar risco, alcance e recência num placar |
 | Actioning | Basic — *Situational* | Escolhe entre guardar na fila, publicar, publicar alerta extra ou não fazer nada, conforme o caso | Coordenar subagentes: um pesquisa, outro verifica |
 | Agency | Intermediate — *Autonomous* | Roda e publica sem humano, dentro de um escopo estreito e com regras de parada | Já é o teto desejável aqui: um alerta errado causa dano real |

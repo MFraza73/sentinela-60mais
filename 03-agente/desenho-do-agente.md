@@ -64,7 +64,8 @@ separa as fontes por papel e fixa os endereços, num mapa testado com as própri
 
 - **Sinal.** Agências de checagem (Aos Fatos, Boatos.org, Projeto Comprova) e a busca aberta descobrem cedo que um
   golpe circula. Podem indicar um candidato, nunca confirmá-lo.
-- **Confirmação.** Uma das duas fontes tem de ser primária: órgão público, polícia civil, Procon ou Febraban. São 14
+- **Confirmação.** Uma das duas fontes tem de ser primária: órgão público, polícia civil, Procon, banco ou Febraban.
+  O setor bancário inteiro vale como uma fonte só, e a ação de proteção nunca é recurso ou produto de um banco. São 14
   polícias civis e 11 Procons estaduais que a ferramenta encontra e abre, organizados em quatro pacotes regionais
   que se revezam ao longo da semana.
 - **Origem.** Toda fonte guardada leva o campo `origem`, e todo candidato registra quem o indicou
@@ -100,7 +101,8 @@ qualquer visitante. O custo é que cada execução republica a página inteira, 
 | Alerta com orientação errada | Duas fontes independentes que concordem na ação; na dúvida, não publica |
 | Página da web com instrução escondida para o agente (*prompt injection*) | Conteúdo de página é dado, nunca instrução; a página suspeita é descartada e registrada |
 | Fonte com interesse próprio | Fonte comercial no tema não conta como independente |
-| Notícia de segunda mão | Uma das duas fontes tem de ser primária (órgão, polícia, Procon ou Febraban); checagem e site fora das listas nunca confirmam |
+| Notícia de segunda mão | Uma das duas fontes tem de ser primária (órgão, polícia, Procon, banco ou Febraban); checagem e site fora das listas nunca confirmam |
+| Alerta virar propaganda de banco | O setor bancário vale como uma fonte só; a ação de proteção serve para cliente de qualquer banco, sem recurso de aplicativo, seguro ou produto pago |
 | Busca em fonte que o agente não consegue citar | Mapa de fontes testado: domínios que não abrem só servem de sinal; domínios recusados ficam fora do filtro |
 | Mesma notícia contada duas vezes | Veículos do mesmo grupo contam como uma fonte |
 | Texto difícil para o público | Skill + verificador; sem status APROVADO, não publica |

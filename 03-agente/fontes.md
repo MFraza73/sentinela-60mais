@@ -5,14 +5,15 @@ Validado em 06/11/2026 com as mesmas ferramentas que o agente usa: busca na web 
 busca filtrada e, quando a busca devolveu página, pela abertura de uma página real. Um domínio que a busca encontra
 mas a ferramenta não abre só pode indicar golpes, nunca confirmá-los, porque trecho de busca não é fonte.
 
-## Três papéis
+## Papéis das fontes
 
 | Papel | Quem | Indica candidato? | Confirma? |
 | --- | --- | --- | --- |
-| **Fonte primária** | Órgão público responsável pelo assunto, polícia, Procon, Federação Brasileira de Bancos (Febraban) | Sim | Sim |
+| **Fonte primária** | Órgão público responsável pelo assunto, polícia, Procon, banco ou Federação Brasileira de Bancos (Febraban) | Sim | Sim; o setor bancário inteiro vale como uma fonte só |
 | **Imprensa listada** | Veículos da tabela "Imprensa" abaixo | Sim | Sim, mas só como segunda fonte, ao lado de uma primária |
 | **Sinal** | Agências de checagem, busca aberta, sites que a ferramenta encontra mas não abre | Sim | Nunca |
 | **Apoio** | Cartilha do CERT.br, SaferNet | Não | Não. Serve para conferir a redação de "o que fazer" |
+| **Ferramenta** | Serviços públicos e gratuitos de proteção: BC Protege+, Registrato, Proteção do CPF, Celular Seguro, Qual Empresa Me Ligou | Não | Não. Pode entrar em "o que fazer" quando uma das fontes que confirmam o golpe a recomenda |
 
 **Regra de confirmação.** Um golpe está confirmado quando duas fontes independentes, abertas pelo agente, descrevem
 o mesmo mecanismo e a mesma ação de proteção, **e pelo menos uma delas é primária**.
@@ -21,6 +22,20 @@ o mesmo mecanismo e a mesma ação de proteção, **e pelo menos uma delas é pr
 e o Procon de um estado, por exemplo), desde que cada um publique a sua orientação. A agência de notícias de um
 governo que só republica a nota de um órgão conta como o próprio órgão. Veículos do mesmo grupo contam como um.
 Uma notícia que apenas reproduz a nota da outra fonte não soma.
+
+**O setor bancário conta como uma fonte só.** A Febraban, qualquer banco e os materiais da Aliança Nacional de
+Combate a Fraudes Bancárias Digitais (acordo entre o Ministério da Justiça e a Febraban) valem, juntos, como uma.
+Um golpe confirmado só por bancos precisa de uma segunda fonte de fora do setor: órgão público, polícia, Procon ou
+imprensa listada. Os bancos falam com autoridade sobre o que eles nunca fazem ("o banco não liga pedindo senha"),
+mas têm dois vieses que o agente precisa compensar:
+
+- **Toda página de banco testada promove recurso, seguro ou produto próprio**, menos a notícia da Caixa. A ação de
+  proteção de um alerta precisa servir para cliente de qualquer banco: nunca recomende o recurso de um banco
+  (modo protegido, alerta de golpe no aplicativo, proteção de chamadas), seguro ou produto pago.
+- **O enquadramento é o do comportamento do cliente.** Nenhuma página testada menciona que o banco pode responder
+  pelo prejuízo. A Súmula 479 do Superior Tribunal de Justiça diz que "as instituições financeiras respondem
+  objetivamente pelos danos gerados por fortuito interno relativo a fraudes e delitos praticados por terceiros no
+  âmbito de operações bancárias". Para orientar quem já caiu no golpe, prefira Procon, órgão público ou polícia.
 
 ## O campo `origem`
 
@@ -31,7 +46,7 @@ Toda fonte guardada pelo agente leva um campo `origem`, com um destes valores:
 | `orgao` | Órgão público dono do assunto: INSS, Secretaria Nacional do Consumidor (Senacon), Anatel, Receita, secretarias estaduais | Sim |
 | `policia` | Polícia civil, secretaria de segurança, Polícia Federal | Sim |
 | `procon` | Procon estadual ou municipal, inclusive os ligados ao Ministério Público | Sim |
-| `banco` | Febraban | Sim |
+| `banco` | Febraban e bancos (páginas de segurança, blogs e notícias dos próprios bancos) | Sim, mas o setor bancário inteiro vale como uma fonte |
 | `imprensa` | Veículos da tabela "Imprensa" | Não |
 | `checador` | Agências de checagem | Não; nunca confirma |
 | `outro` | Site fora destas listas, achado na busca aberta (jornal regional, blog, portal) | Não; nunca confirma |
@@ -71,7 +86,7 @@ Cada candidato também registra `indicado_por`: a primeira fonte em que o agente
 | Pacote | `allowed_domains` | Consulta testada |
 | --- | --- | --- |
 | `federal` | `["gov.br"]` | "INSS alerta golpe aposentados", "Senacon alerta golpe consumidor" |
-| `bancos` | `["portal.febraban.org.br"]` | "Febraban alerta golpe orientações" |
+| `bancos` | `["portal.febraban.org.br", "caixanoticias.caixa.gov.br", "feito.itau.com.br", "blog.nubank.com.br", "blog.bb.com.br", "blog.inter.co"]` | "golpe alerta como se proteger" |
 | `imprensa` | `["agenciabrasil.ebc.com.br", "cnnbrasil.com.br", "correiobraziliense.com.br", "metropoles.com"]` | "golpe aposentados alerta", "golpe alerta" |
 | `checadores` | `["aosfatos.org", "boatos.org", "projetocomprova.com.br", "e-farsas.com"]` | "golpe falso" |
 | `recorte` | sem filtro | Termos do público: aposentado, INSS, parente, WhatsApp, ligação do banco |
@@ -86,6 +101,14 @@ Cada candidato também registra `indicado_por`: a primeira fonte em que o agente
 | `norte` | `["pc.ac.gov.br", "agencia.ac.gov.br", "policiacivil.am.gov.br", "rondonia.ro.gov.br", "policiacivil.rr.gov.br"]` |
 
 Os quatro pacotes foram testados com a mesma consulta e devolveram páginas de pelo menos três domínios cada.
+
+### Pacote de confirmação fora do rodízio
+
+| Pacote | `allowed_domains` | Quando usar |
+| --- | --- | --- |
+| `bancos-orientacao` | `["seguranca.bradesco", "santander.com.br", "itau.com.br", "nubank.com.br", "inter.co"]` | Para confirmar o que o banco nunca faz num golpe que já é candidato. Páginas sem data: não servem para saber se o golpe é novo |
+
+Testado com "golpe falsa central nunca liga pedindo senha": devolveu páginas dos cinco domínios.
 
 ### Pacotes de sinal (opcionais: indicam, não confirmam)
 
@@ -158,9 +181,50 @@ sinalizam, 4 lacunas (AP, BA, MA, RJ estadual).
 | Ministério das Comunicações, Planalto | `gov.br` (`/mcom`, `/planalto`) | `orgao` | Sim | Não testado | |
 | Brasil contra Fake (Secom) | `gov.br` (`/secom`) | Não usar | Sim | Não | A página pede login |
 | Banco Central | `bcb.gov.br` | Não usar | Só documentos técnicos | Não | A página só carrega com JavaScript |
-| Febraban | `portal.febraban.org.br` | `banco` | Sim, série "Febraban alerta" | Sim | |
-| CERT.br | `cartilha.cert.br` | `apoio` | Sim | Sim | Fascículos "Golpes", entre eles "Caiu? Veja o que fazer" |
+| Febraban | `portal.febraban.org.br` | `banco` | Sim, série "Febraban alerta" | Sim | Tem uma lista dos golpes mais comuns contra pessoas idosas |
+| Aliança Nacional de Combate a Fraudes Bancárias Digitais | `gov.br` (`/mj`) | `banco` | Sim | Em parte | Acordo entre o Ministério da Justiça e a Febraban: vale como setor bancário, não soma com a Febraban. Tem o material "Sofri um golpe, e agora?" |
+| CERT.br | `cartilha.cert.br` | `apoio` | Sim | Sim | Fascículos "Golpes", entre eles "Caiu? Veja o que fazer". A página inicial `cert.br` é sobretudo técnica, para administradores de rede |
 | SaferNet | `new.safernet.org.br` | `apoio` | Sim | Sim | |
+
+## Bancos
+
+| Banco | Onde buscar | Abre | Data nas páginas | Observação |
+| --- | --- | --- | --- | --- |
+| Caixa | `caixanoticias.caixa.gov.br` | Sim | Sim: alerta sobre golpes com o Bolsa Família, publicado em 17/09/2024 e atualizado em 28/10/2026 | Única página testada sem promoção de produto. O portal `caixa.gov.br/seguranca` bloqueia a ferramenta |
+| Itaú | `feito.itau.com.br`; `itau.com.br/seguranca` | Sim | Sim no `feito` (24/09/2026); não na página de segurança | Promove recursos próprios do aplicativo e abertura de conta |
+| Banco do Brasil | `blog.bb.com.br` | Sim | Sim (atualizado em 10/04/2026) | A página de golpes do portal `bb.com.br` vem sem o corpo do texto: use o blog |
+| Nubank | `blog.nubank.com.br`; `nubank.com.br/ajuda-e-seguranca` | Sim | Sim no blog (atualizado em 17/08/2026); não na central | Promove recursos próprios do aplicativo |
+| Inter | `blog.inter.co`; `inter.co/seguranca` | Sim | Sim no blog (13/08/2026); não na central | Promove recursos próprios; o mesmo site vende seguro contra golpe no Pix |
+| Bradesco | `seguranca.bradesco` | Sim | Não | Promove seguros do banco. Só no pacote de confirmação |
+| Santander | `santander.com.br` (blog e página de segurança) | Sim | Blog de 2023; página de segurança sem data | Promove curso e recursos próprios. Só no pacote de confirmação |
+
+Os blogs com data (Itaú, Nubank, Banco do Brasil, Inter) e a Caixa às vezes noticiam golpes novos, por isso entram
+no pacote diário `bancos`. Bradesco e Santander têm páginas permanentes, sem data, e só servem para confirmar.
+
+## Ferramentas oficiais de proteção
+
+Não são fontes de golpes: são serviços públicos e gratuitos que podem ser a ação de proteção de um alerta. Uma
+ferramenta entra em "o que fazer" só quando uma das fontes que confirmam o golpe a recomenda. Use o link da página
+do gov.br desta tabela, que abre; os sites próprios do Meu BC e do Celular Seguro carregam vazios para a ferramenta.
+
+| Ferramenta | O que faz, em linguagem simples | Página validada | Conta gov.br |
+| --- | --- | --- | --- |
+| BC Protege+ (Banco Central) | Impede que abram conta de banco no seu nome | https://www.gov.br/pt-br/servicos/proteger-se-com-o-bc-protege (atualizada em 27/01/2026) | Prata ou ouro, com verificação em duas etapas |
+| Registrato (Banco Central) | Mostra os empréstimos e as chaves Pix ligados ao seu CPF | https://www.gov.br/pt-br/servicos/obter-relatorio-do-sistema-de-informacoes-de-credito-scr (atualizada em 27/01/2026) | Prata ou ouro, com verificação em duas etapas |
+| Proteção do CPF (Receita Federal e Redesim) | Impede que coloquem seu CPF como sócio de uma empresa | https://www.gov.br/pt-br/servicos/impedir-permitir-participacao-do-meu-cpf-no-cadastro-nacional-de-pessoas-juridicas-cnpj (atualizada em 08/09/2026) | Bronze para bloquear; prata ou ouro para desbloquear |
+| Celular Seguro (Ministério da Justiça) | Bloqueia de uma vez o celular roubado, a linha e os aplicativos de banco | https://www.gov.br/pt-br/servicos/comunicar-roubo-furto-de-aparelho-pelo-aplicativo-celular-seguro (atualizada em 19/12/2025) | Qualquer nível. O celular precisa estar cadastrado antes do roubo |
+| Qual Empresa Me Ligou (ABR Telecom, por determinação da Anatel) | Mostra de qual empresa é o número que ligou | https://www.qualempresameligou.com.br | Não precisa |
+
+As cinco são gratuitas, segundo as próprias páginas. A exigência de conta gov.br prata ou ouro pode ser uma barreira
+para quem tem 60+: quando a ferramenta exigir, o alerta diz que é preciso entrar com a conta gov.br.
+
+**Fora do mapa:**
+
+| Serviço | Por quê |
+| --- | --- |
+| Serasa AntiFraude | Serviço de empresa privada vendido em planos. O alerta não manda o público a produto pago |
+| Detector de Site Confiável (Reclame AQUI e Axur) | Ferramenta de empresas privadas; a página não diz se é gratuita. Só entra se uma fonte oficial a recomendar |
+| Meu BC (`bcb.gov.br/meubc`) e `celularseguro.mj.gov.br` | Carregam vazios para a ferramenta. Use as páginas do gov.br acima |
 
 ## Imprensa
 
@@ -202,6 +266,10 @@ orientação.
   golpe" (`policiacivil.pr.gov.br`), com a orientação de que o banco "nunca orienta o cliente a fazer Pix para
   proteger dinheiro". Com a regra nova, a revisão de segunda-feira troca a fonte de segunda mão pela primária ou
   descarta o item.
+
+- Sete bancos de varejo e a Febraban entraram no mapa, mas com papel limitado: o setor bancário vale como uma fonte
+  só, e a ação de proteção nunca é um recurso ou produto de um banco. Os blogs com data entram no pacote diário; as
+  páginas permanentes, só na hora de confirmar.
 
 ## Manutenção
 

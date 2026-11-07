@@ -2,8 +2,8 @@
 
 Um golpe digital por semana, explicado em linguagem simples para quem tem 60 anos ou mais e para quem cuida
 dessas pessoas. Todo dia, um agente feito com Claude pesquisa os golpes noticiados e guarda numa fila os que
-forem novos, confirmados em duas fontes independentes (uma delas órgão público, polícia, Procon ou federação dos
-bancos) e relevantes para esse público. Toda segunda, o mais
+forem novos, confirmados em duas fontes independentes (uma delas órgão público, polícia, Procon ou
+banco) e relevantes para esse público. Toda segunda, o mais
 importante da fila vira o alerta da semana, com um texto pronto para o WhatsApp.
 
 **Página do produto:** https://claude.ai/artifact/FXPh194Ln6RmBsnkLAU7m2

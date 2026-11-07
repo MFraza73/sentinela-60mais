@@ -35,7 +35,9 @@ agente age sobre uma crença do estado do mundo, não sobre o estado em si.
 | Peça | Papel | Onde está |
 | --- | --- | --- |
 | Definição do agente | Objetivo, ferramentas, laço, regras de decisão e limites | `sentinela-60mais.md` |
-| Mapa de fontes | Papéis das fontes, pacotes de busca, rodízio regional e situação de cada domínio | `fontes.md` |
+| Mapa de fontes | Papéis das fontes, pacotes de busca, rodízio regional e situação de cada domínio | `fontes.md` e `fontes.json` |
+| Verificador de fontes | Regras de confirmação em código: o que pode ser checado sem interpretação | `scripts/checar_fontes.py` |
+| Testes de regressão | Casos das execuções reais e casos-limite, rodados a cada mudança | `../testes/` |
 | Skill | Como escrever: padrão de linguagem simples, verificador e gerador da imagem do alerta | `../02-skill/` |
 | Ferramentas | Busca na web, leitura de páginas, republicação da página do produto | Do próprio Claude |
 | Estado | Alertas, fila de golpes confirmados e histórico de execuções | `dados.json`, publicado junto da página (`../05-produto/`) |
@@ -78,6 +80,34 @@ gastado buscas em fontes que não pode citar. Com a regra da fonte primária, o 
 segunda mão pela nota original: o golpe do falso gerente, guardado na fila com dois sites regionais que
 reproduziam a polícia, tem a página da própria Polícia Civil do Paraná, que abre e traz a orientação.
 
+## Regras em código, julgamento com o agente
+
+Até 07/11, todas as regras eram texto que o agente interpretava. Mudamos as regras três vezes em dois dias sem
+saber se as decisões antigas continuavam certas. A partir daí, a divisão ficou assim:
+
+- **O que o código confere:** domínio da lista, origem coerente, fonte primária, organizações diferentes,
+  setor bancário como uma fonte, datas, janela de 14 dias, golpe repetido (`checar_fontes.py`); linguagem
+  simples (`checar_alerta.py`); imagem sem link nem telefone pessoal, com letra grande e contraste
+  (`gerar_imagem.py`).
+- **O que o agente julga:** se é golpe, se as fontes descrevem o mesmo mecanismo e a mesma ação, se uma só
+  reproduz a outra, se o golpe importa para quem tem 60+.
+
+Os 23 casos de `testes/casos_fontes.json` vêm das execuções reais e de casos-limite. Um teste de mutação mostrou
+que eles pegam a regressão: quando o setor bancário deixa de valer como uma fonte só, o caso "só setor bancário"
+falha. Os testes rodam no GitHub a cada envio. As decisões de julgamento ficam em
+`testes/casos-de-julgamento.md`, para rodar numa sessão nova do Claude quando as regras mudarem.
+
+O limite apareceu no primeiro uso: o alerta da biometria, corrigido em 07/11, passa no verificador com a nota do
+INSS e a notícia da Agência Brasil, mas a notícia só repete a nota. O código vê duas organizações; só a leitura
+vê uma fonte. Por isso a correção diz isso ao público.
+
+## Correções e transparência
+
+Um alerta publicado nunca é apagado. Fonte fora do ar, orientação mudada ou erro viram uma correção registrada em
+`dados.json` e mostrada na página, com data e motivo, ou a retirada do alerta, que sai do destaque. A seção
+"Como verificamos" explica ao público as regras de fonte e o que o programa confere. O modelo é o código de
+princípios das agências de checagem (IFCN): transparência de fontes e de método e correções abertas.
+
 ## Lição do primeiro disparo automático
 
 No teste de 06/11, a mensagem que acompanhava o disparo foi lida como um segundo pedido, e o agente rodou duas
@@ -107,6 +137,8 @@ qualquer visitante. O custo é que cada execução republica a página inteira, 
 | Mesma notícia contada duas vezes | Veículos do mesmo grupo contam como uma fonte |
 | Texto difícil para o público | Skill + verificador; sem status APROVADO, não publica |
 | Acusar uma empresa | Marca imitada aparece como "mensagem que imita"; nunca como culpada |
+| Regra mudar e quebrar decisão antiga | Testes de regressão a cada envio ao GitHub |
+| Alerta publicado ficar errado | Correção registrada e visível, ou retirada; nada é apagado |
 | Disparo repetido publicar duas vezes | Trava de uma execução por dia e por modo, conferida no `dados.json` |
 | Excesso de alertas | No máximo um alerta normal e um extra por semana |
 
@@ -117,7 +149,7 @@ Posição honesta do agente na matriz *Levels of agent capabilities* (aula 11, s
 | Dimensão | Nível | Por quê | Como subir um nível |
 | --- | --- | --- | --- |
 | Perception | Intermediate — *Active* | Varre todo dia frentes fixas (órgãos, bancos, imprensa, checadores) e um pacote regional de polícias e Procons, e guarda o que confirma numa fila que atravessa os dias | Ser acionado por evento (um alerta oficial novo), e não só pelo relógio |
-| Decisioning | Basic — *Analytical* | Aplica critérios explícitos com julgamento sobre evidência | Ponderar risco, alcance e recência num placar |
+| Decisioning | Basic — *Analytical* | Aplica critérios explícitos com julgamento sobre evidência; a parte estrutural é conferida por código | Ponderar risco, alcance e recência num placar |
 | Actioning | Basic — *Situational* | Escolhe entre guardar na fila, publicar, publicar alerta extra ou não fazer nada, conforme o caso | Coordenar subagentes: um pesquisa, outro verifica |
 | Agency | Intermediate — *Autonomous* | Roda e publica sem humano, dentro de um escopo estreito e com regras de parada | Já é o teto desejável aqui: um alerta errado causa dano real |
 | Adaptability | Emerging — *Contextual* | Responde ao noticiário da semana, mas as regras não mudam sozinhas | Ajustar critérios a partir do histórico de alertas e de erros |

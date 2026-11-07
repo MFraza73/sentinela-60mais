@@ -1,0 +1,341 @@
+{
+  "projeto": "Sentinela 60+",
+  "atualizado_em": "2026-11-07",
+  "alertas": [
+    {
+      "id": "2026-11-06-falso-bloqueio-biometria-inss",
+      "golpe": "falso-bloqueio-biometria-inss",
+      "publicado_em": "2026-11-06",
+      "titulo": "Falso aviso de bloqueio por biometria: não clique no link",
+      "como_chega": "Uma mensagem nas redes sociais ameaça bloquear sua aposentadoria. Ela usa o nome do Instituto Nacional do Seguro Social (INSS).",
+      "o_que_pedem": "Que você clique num link para fazer a biometria e passe seus dados.",
+      "sinal": "Quem já recebe o benefício não precisa cadastrar biometria.",
+      "o_que_fazer": "Não clique no link; se tiver dúvida, ligue para o 135, a central do INSS.",
+      "para_lembrar": "Ameaça de bloqueio com link? Não clique.",
+      "fontes": [
+        {
+          "nome": "INSS esclarece: é falsa a informação de que vai bloquear benefício de quem não tiver documento com biometria — INSS (27/10/2026)",
+          "url": "https://www.gov.br/inss/pt-br/assuntos/noticias/inss-esclarece-e-falsa-a-informacao-de-que-vai-bloquear-beneficio-de-quem-nao-tiver-documento-com-biometria",
+          "origem": "orgao",
+          "data": "2026-10-27"
+        },
+        {
+          "nome": "INSS alerta para golpes que usam informação falsa sobre biometria — Agência Brasil (28/10/2026)",
+          "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-10/inss-alerta-para-golpes-que-usam-informacao-falsa-sobre-biometria",
+          "origem": "imprensa",
+          "data": "2026-10-28"
+        },
+        {
+          "nome": "INSS alerta aposentados e pensionistas sobre golpe envolvendo biometria — Tribuna de Minas (28/10/2026)",
+          "url": "https://tribunademinas.com.br/noticias/brasil-e-mundo/28-10-2026/inss-alerta-aposentados-e-pensionistas-sobre-golpe-envolvendo-biometria.html",
+          "origem": "outro",
+          "data": "2026-10-28"
+        }
+      ],
+      "card_whatsapp": "*Falso aviso de bloqueio por biometria*\nMensagem ameaça bloquear sua aposentadoria e manda um link.\nQuem já recebe o benefício não precisa fazer biometria.\nNão clique. Na dúvida, ligue para o 135.\n*Ameaça de bloqueio com link? Não clique.*",
+      "imagem": "imagens/2026-11-06-falso-bloqueio-biometria-inss.png",
+      "imagem_alt": "Alerta de golpe do Sentinela 60+, 6 de novembro de 2026. Falso aviso de bloqueio por biometria: não clique no link. O sinal: Quem já recebe o benefício não precisa cadastrar biometria. O que fazer: Não clique no link; se tiver dúvida, ligue para o 135, a central do INSS. Para lembrar: Ameaça de bloqueio com link? Não clique."
+    }
+  ],
+  "fila": [
+    {
+      "golpe": "numero-secundario-whatsapp",
+      "nome": "Golpe do número secundário no WhatsApp",
+      "adicionado_em": "2026-11-06",
+      "noticiado_em": "2026-10-29",
+      "relevancia": 2,
+      "status": "aguardando",
+      "motivo_status": "Publicado num disparo de teste da automação; voltou para a fila na mudança para publicação semanal.",
+      "alerta": {
+        "golpe": "numero-secundario-whatsapp",
+        "titulo": "Golpe do número secundário: não deixe usar o seu número",
+        "como_chega": "Uma mensagem no WhatsApp, às vezes de um contato conhecido. A pessoa diz que um site de compras pede um número secundário.",
+        "o_que_pedem": "Que você deixe cadastrar o seu número. Depois, alguém liga como atendente e ensina um passo a passo no celular.",
+        "sinal": "Pedido para usar seu número num cadastro, e depois a ligação de um falso atendente.",
+        "o_que_fazer": "Não autorize o cadastro do seu número, mesmo que o pedido venha de um conhecido.",
+        "para_lembrar": "Pediram seu número para um cadastro? Diga não.",
+        "fontes": [
+          {
+            "nome": "Polícia Civil alerta para novo golpe pelo WhatsApp em cidades da região — SF Notícias (29/10/2026)",
+            "url": "https://sfnoticias.com.br/2026/10/29/policia-civil-alerta-para-novo-golpe-pelo-whatsapp-em-cidades-da-regiao-morador-de-sao-fidelis-perde-r-10-mil/"
+          },
+          {
+            "nome": "Golpe do \"número de confiança\" faz vítimas em Monteiro — Cariri in Foco (29/09/2026)",
+            "url": "https://www.caririinfoco.com.br/golpe-do-numero-de-confianca-faz-vitimas-em-monteiro-e-acende-alerta-para-invasao-de-whatsapp-e-redes-sociais/"
+          }
+        ],
+        "card_whatsapp": "*Golpe do número secundário*\nMensagem pede para usar seu número num cadastro de site de compras.\nDepois, um falso atendente liga e ensina um passo a passo.\nNão autorize o cadastro, mesmo que seja um conhecido.\n*Pediram seu número para um cadastro? Diga não.*"
+      }
+    },
+    {
+      "golpe": "falso-gerente-banco",
+      "nome": "Golpe do falso gerente de banco",
+      "adicionado_em": "2026-11-06",
+      "noticiado_em": "2026-11-06",
+      "relevancia": 3,
+      "status": "aguardando",
+      "motivo_status": "Publicado num disparo de teste da automação; voltou para a fila na mudança para publicação semanal.",
+      "alerta": {
+        "golpe": "falso-gerente-banco",
+        "titulo": "Golpe do falso gerente: desligue e ligue você para o banco",
+        "como_chega": "Uma ligação de alguém que diz ser do seu banco. Ele fala de uma movimentação suspeita na sua conta.",
+        "o_que_pedem": "Que você faça um Pix para uma \"conta segura\" ou diga sua senha e códigos.",
+        "sinal": "O banco não pede senha, código nem Pix para proteger seu dinheiro.",
+        "o_que_fazer": "Desligue e procure o banco pelo aplicativo ou pelo telefone do site.",
+        "para_lembrar": "Banco ligou pedindo Pix? Desligue e ligue você.",
+        "fontes": [
+          {
+            "nome": "Polícia Civil alerta para golpe da falsa central bancária e orienta como evitar prejuízos — MegaZine, com a Polícia Civil do Paraná (16/10/2026)",
+            "url": "https://www.megazinenews.com.br/noticia/policia-civil-alerta-para-golpe-da-falsa-central-bancaria-e-orienta-como-evitar-prejuizos"
+          },
+          {
+            "nome": "Polícia Civil de Pernambuco alerta para golpe do falso gerente de banco — Petrolândia Notícias (21/10/2026)",
+            "url": "https://petrolandianoticias.com.br/policia-civil-de-pernambuco-alerta-para-golpe-do-falso-gerente-de-banco-e-orienta-populacao-sobre-como-se-proteger/"
+          }
+        ],
+        "card_whatsapp": "*Golpe do falso gerente*\nAlguém liga dizendo ser do seu banco e fala de movimentação suspeita.\nO banco não pede senha, código nem Pix para proteger seu dinheiro.\nDesligue e procure o banco pelo aplicativo ou pelo telefone do site.\n*Banco ligou pedindo Pix? Desligue e ligue você.*"
+      }
+    },
+    {
+      "golpe": "falso-advogado",
+      "nome": "Golpe do falso advogado",
+      "adicionado_em": "2026-11-07",
+      "noticiado_em": "2026-10-28",
+      "relevancia": 2,
+      "indicado_por": {
+        "nome": "Febraban",
+        "url": "https://portal.febraban.org.br/noticia/4512/pt-br/",
+        "origem": "banco"
+      },
+      "status": "aguardando",
+      "alerta": {
+        "golpe": "falso-advogado",
+        "titulo": "Golpe do falso advogado: confirme antes de pagar",
+        "como_chega": "Uma mensagem ou ligação de alguém que diz ser advogado. Ele fala de dinheiro de um processo seu para receber.",
+        "o_que_pedem": "Um Pix para pagar uma taxa e liberar o dinheiro.",
+        "sinal": "Pedem pagamento antes de você receber o dinheiro do processo.",
+        "o_que_fazer": "Não pague. Ligue para o seu advogado num número que você já conhece.",
+        "para_lembrar": "Advogado pediu Pix? Ligue você para confirmar.",
+        "fontes": [
+          {
+            "nome": "Febraban: as abordagens do golpe do falso advogado e como se proteger (28/10/2026)",
+            "url": "https://portal.febraban.org.br/noticia/4512/pt-br/",
+            "origem": "banco"
+          },
+          {
+            "nome": "Polícia Civil de Santa Catarina: operação contra o golpe do falso advogado (21/10/2026)",
+            "url": "https://pc.sc.gov.br/?p=41731",
+            "origem": "policia"
+          }
+        ],
+        "card_whatsapp": "*Golpe do falso advogado*\nAlguém diz ser advogado e fala de dinheiro de um processo seu.\nEle pede um Pix para liberar o valor.\nNão pague. Ligue para o seu advogado num número que você já conhece.\n*Advogado pediu Pix? Ligue você para confirmar.*"
+      }
+    }
+  ],
+  "execucoes": [
+    {
+      "data": "2026-11-06",
+      "tipo": "teste",
+      "consultas": 9,
+      "candidatos": 6,
+      "aprovados": 1,
+      "resultado": "publicado",
+      "escolhido": "falso-bloqueio-biometria-inss",
+      "motivo": "Único candidato de relevância 3 com duas fontes independentes que concordam no mecanismo e na ação.",
+      "decisoes": [
+        {
+          "golpe": "Falso aviso de bloqueio por biometria do INSS",
+          "decisao": "Escolhido: confirmado em duas fontes independentes e relevante para aposentados."
+        },
+        {
+          "golpe": "Falsa consultoria que promete cancelar descontos do INSS",
+          "decisao": "Recusado: nenhuma fonte independente trazia orientação de proteção."
+        },
+        {
+          "golpe": "Falso Auxílio Reconstrução de R$ 1.680",
+          "decisao": "Não escolhido: menos ligado ao público de 60 anos ou mais."
+        },
+        {
+          "golpe": "Golpes com Pix envolvendo MEI",
+          "decisao": "Recusado: mira microempreendedores."
+        },
+        {
+          "golpe": "Golpistas usando o nome da Febraban",
+          "decisao": "Recusado: alerta de 9 de outubro, fora da janela de 14 dias."
+        },
+        {
+          "golpe": "Lojas falsas de Black Friday",
+          "decisao": "Recusado por ora: sem alerta oficial recente. Reavaliar perto de 27 de novembro."
+        }
+      ],
+      "modo": "publicacao"
+    },
+    {
+      "data": "2026-11-06",
+      "tipo": "automatica",
+      "consultas": 15,
+      "candidatos": 7,
+      "aprovados": 1,
+      "resultado": "na-fila",
+      "escolhido": "numero-secundario-whatsapp",
+      "motivo": "Único candidato aprovado nas quatro perguntas: alerta da Polícia Civil de 29/10 e relato independente na Paraíba descrevem o mesmo golpe e a mesma ação.",
+      "decisoes": [
+        {
+          "golpe": "Golpe do número secundário no WhatsApp",
+          "decisao": "Escolhido: alerta policial de 29/10 confirmado por fonte independente, com a mesma ação; relevância 2."
+        },
+        {
+          "golpe": "Falsa consultoria que promete cancelar descontos da aposentadoria (operação em Minas Gerais)",
+          "decisao": "Recusado: relevância 3, mas só uma fonte do Estado de Minas trazia ação de proteção; O Tempo, BH 24 Horas e Gazeta de Varginha não traziam."
+        },
+        {
+          "golpe": "Golpe do falso advogado",
+          "decisao": "Recusado: alerta da Febraban é de dezembro de 2025, fora da janela de 14 dias."
+        },
+        {
+          "golpe": "Falso funcionário do INSS em visita a domicílio",
+          "decisao": "Recusado: alerta de abril de 2026, fora da janela de 14 dias."
+        },
+        {
+          "golpe": "Mensagem com dados reais do aposentado imitando o INSS",
+          "decisao": "Recusado: notícia de agosto de 2026, fora da janela de 14 dias."
+        },
+        {
+          "golpe": "Risco de golpes após acesso indevido a dados de investidores",
+          "decisao": "Recusado: trata de vazamento de dados, não de um golpe descrito."
+        },
+        {
+          "golpe": "Lojas falsas de Black Friday",
+          "decisao": "Recusado: pouco ligado ao público de 60 anos ou mais; reavaliar perto de 27 de novembro."
+        }
+      ],
+      "modo": "publicacao",
+      "observacao": "Disparo de teste da automação, feito durante a montagem. O alerta foi publicado e, na mudança para publicação semanal, voltou para a fila da próxima segunda."
+    },
+    {
+      "data": "2026-11-06",
+      "tipo": "automatica",
+      "consultas": 11,
+      "candidatos": 6,
+      "aprovados": 1,
+      "resultado": "na-fila",
+      "escolhido": "falso-gerente-banco",
+      "motivo": "Golpe noticiado de novo entre 4 e 6 de novembro, com relevância 3, e confirmado por alertas das Polícias Civis do Paraná e de Pernambuco com a mesma ação.",
+      "decisoes": [
+        {
+          "golpe": "Golpe do falso gerente de banco",
+          "decisao": "Escolhido: casos noticiados em 4 a 6 de novembro; duas polícias diferentes descrevem o mesmo golpe e mandam desligar e procurar o banco; relevância 3."
+        },
+        {
+          "golpe": "Falso bancário com falso delegado e pedido de sigilo (Distrito Federal)",
+          "decisao": "Recusado: Agência Brasil, Correio Braziliense e O Hoje noticiaram, mas nenhuma trazia ação de proteção."
+        },
+        {
+          "golpe": "Golpe do falso advogado (denúncias na OAB do Rio de Janeiro)",
+          "decisao": "Recusado: relevância 2 e a página da Agência Brasil não abriu, então não foi confirmado."
+        },
+        {
+          "golpe": "Falsa prova de vida com ameaça de corte do benefício",
+          "decisao": "Recusado: alertas de setembro e 14 de outubro, fora da janela, e muito parecido com o alerta da biometria."
+        },
+        {
+          "golpe": "Falso pedido de atualização do SouGov para servidores aposentados",
+          "decisao": "Recusado: página sem data e com uma só fonte."
+        },
+        {
+          "golpe": "Golpe dos valores a receber do Banco Central",
+          "decisao": "Recusado: alerta de fevereiro de 2024, fora da janela."
+        }
+      ],
+      "modo": "publicacao",
+      "observacao": "Segunda execução no mesmo disparo de teste: a mensagem de teste foi lida como um novo pedido. O alerta voltou para a fila. O caso criou a regra de uma execução por dia."
+    },
+    {
+      "data": "2026-11-07",
+      "modo": "varredura",
+      "tipo": "automatica",
+      "consultas": 10,
+      "pacotes": [
+        "federal",
+        "bancos",
+        "imprensa",
+        "checadores",
+        "nordeste",
+        "recorte",
+        "sinal-nordeste"
+      ],
+      "candidatos": 6,
+      "aprovados": 1,
+      "resultado": "na-fila",
+      "escolhido": "falso-advogado",
+      "motivo": "Único candidato aprovado nas quatro perguntas: alerta da Febraban de 28/10 e operação da Polícia Civil de Santa Catarina de 21/10 com a mesma ação.",
+      "decisoes": [
+        {
+          "golpe": "Golpe do falso advogado",
+          "decisao": "Guardado na fila: Febraban (28/10) e Polícia Civil de Santa Catarina (21/10) descrevem o pedido de pagamento para liberar dinheiro de processo e mandam confirmar com o advogado por canal conhecido antes de pagar; relevância 2.",
+          "indicado_por": {
+            "nome": "Febraban",
+            "url": "https://portal.febraban.org.br/noticia/4512/pt-br/",
+            "origem": "banco"
+          }
+        },
+        {
+          "golpe": "Falsa revisão de aposentadoria e cancelamento de descontos (Chapecó, SC, e Belo Horizonte, MG)",
+          "decisao": "Recusado: relevância 3, mas a fonte de Minas (28/10) não traz ação de proteção, a de Santa Catarina (22/10) só saiu em sites regionais fora das listas e a página primária do INSS sobre o tema pede login.",
+          "indicado_por": {
+            "nome": "Correio Braziliense",
+            "url": "https://www.correiobraziliense.com.br/brasil/2026/10/7529355-golpe-contra-idosos-faz-21-vitimas-em-minas-prejuizo-e-de-rs-300-mil.html",
+            "origem": "imprensa"
+          }
+        },
+        {
+          "golpe": "Falsa devolução de descontos do INSS por telefone e WhatsApp",
+          "decisao": "Recusado: as páginas abertas (CNN Brasil, Correio Braziliense e Procon do Espírito Santo) são de abril e maio de 2025, fora da janela de 14 dias.",
+          "indicado_por": {
+            "nome": "CNN Brasil",
+            "url": "https://www.cnnbrasil.com.br/economia/financas/golpe-do-inss-aposentados-sao-alvo-de-falsas-promessas-de-devolucao/",
+            "origem": "imprensa"
+          }
+        },
+        {
+          "golpe": "Mensagem falsa de encomenda extraviada na Black Friday",
+          "decisao": "Recusado: checagem de novembro de 2025, fora da janela, e checador não confirma; reavaliar perto de 27 de novembro.",
+          "indicado_por": {
+            "nome": "Boatos.org",
+            "url": "https://www.boatos.org/tecnologia/sms-falso-rastreio-golpe-phishing-encomenda-perdida-black-friday.html",
+            "origem": "checador"
+          }
+        },
+        {
+          "golpe": "Falso aviso de versão incompatível do WhatsApp",
+          "decisao": "Recusado: checagem de outubro de 2025, fora da janela, sem fonte primária.",
+          "indicado_por": {
+            "nome": "Boatos.org",
+            "url": "https://www.boatos.org/tecnologia/mensagem-voce-recebeu-uma-mensagem-mas-sua-versao-do-whatsapp-nao-e-compativel-atualizar-o-whatsapp-e-real.html",
+            "origem": "checador"
+          }
+        },
+        {
+          "golpe": "Falsa central 0800 depois de mensagem com link",
+          "decisao": "Recusado: variação do falso gerente de banco, que já está na fila; página do Banco do Brasil atualizada em abril de 2026.",
+          "indicado_por": {
+            "nome": "Blog do Banco do Brasil",
+            "url": "https://blog.bb.com.br/golpe-0800/",
+            "origem": "banco"
+          }
+        }
+      ],
+      "observacao": "O pacote nordeste só devolveu páginas antigas (2019 a 2025). A notícia do INSS sobre falsa devolução de mensalidade pede login, e a página de notícia de Chapecó em pc.sc.gov.br abriu sem o texto do alerta."
+    }
+  ],
+  "correcoes": [
+    {
+      "data": "2026-11-07",
+      "alerta_id": "2026-11-06-falso-bloqueio-biometria-inss",
+      "tipo": "fontes",
+      "feita_por": "revisão do projeto",
+      "o_que_mudou": "Entrou a nota do próprio INSS, de 27 de outubro. A cópia publicada pelo Diario de Pernambuco deu lugar à notícia original da Agência Brasil.",
+      "por_que": "Depois da publicação, adotamos a regra de que uma das fontes tem de ser o órgão responsável. A orientação do alerta não mudou: o INSS confirma que a exigência de biometria vale só para pedidos novos. A notícia da Agência Brasil repete a nota do INSS, então, pela regra atual, este alerta ainda pediria uma segunda fonte independente."
+    }
+  ]
+}

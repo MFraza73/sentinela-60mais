@@ -39,9 +39,10 @@ zero e lê o estado de lá. A página lê o mesmo arquivo: o que o agente grava 
 - `atualizado_em`: data da última execução, no formato `AAAA-MM-DD`.
 - `alertas`: um item por alerta publicado, com `id` (`AAAA-MM-DD-golpe`), `golpe` (nome curto e estável,
   como `falsa-central`), `publicado_em`, `titulo`, `como_chega`, `o_que_pedem`, `sinal`, `o_que_fazer`,
-  `para_lembrar` (sem aspas), `fontes` (lista de `{nome, url, origem}`; os valores de `origem` estão em
-  `fontes.md`), `card_whatsapp` (com `\n` entre as linhas), `imagem` (`imagens/<id>.png`), `imagem_alt`
-  (o texto alternativo que o gerador devolve) e, só no alerta extra, `"extra": true`.
+  `para_lembrar` (sem aspas), `fontes` (lista de `{nome, url, origem, data}`; `data` é a data de publicação
+  da página, `AAAA-MM-DD`; os valores de `origem` estão em `fontes.md`), `card_whatsapp` (com `\n` entre as linhas), `imagem` (`imagens/<id>.png`), `imagem_alt`
+  (o texto alternativo que o gerador devolve), só no alerta extra `"extra": true` e, só se o alerta for
+  retirado, `"retirado": true`.
 - `fila`: um item por golpe confirmado e ainda não publicado, com `golpe`, `nome`, `adicionado_em`,
   `noticiado_em` (a data mais recente em que o golpe apareceu nas fontes), `relevancia` (2 ou 3),
   `indicado_por` (`{nome, url, origem}`: a primeira fonte em que o agente encontrou o golpe), `status`
@@ -52,6 +53,9 @@ zero e lê o estado de lá. A página lê o mesmo arquivo: o que o agente grava 
   `candidatos` (número), `aprovados` (número), `resultado`, `escolhido` (o `golpe`, ou vazio), `motivo` e
   `decisoes` (lista de `{golpe, decisao, indicado_por}`, uma frase por candidato). O `resultado` é um destes:
   `na-fila`, `nada-novo` ou `alerta-extra` na varredura; `publicado` ou `sem-alerta` na publicação.
+- `correcoes`: um item por correção de alerta publicado, com `data`, `alerta_id`, `tipo` (`fontes`,
+  `orientacao`, `texto` ou `retirado`), `o_que_mudou`, `por_que` e `feita_por` (`agente` ou `revisão do
+  projeto`). Veja "Correções".
 
 Nunca apague itens antigos. Em `alertas` e `execucoes`, só acrescente. Na `fila`, só mude `status` e
 `motivo_status`, e, na revisão de segunda-feira, as `fontes` do alerta guardado (passo 3 da publicação).
@@ -106,12 +110,27 @@ chegar duas vezes, e cada execução extra publicaria de novo.
 
    Responda primeiro às perguntas 1, 2 e 4, que são baratas. Faça a pergunta 3, que exige abrir páginas, em
    ordem de relevância.
+
+   **A pergunta 3 tem uma parte que o código confere.** Monte o candidato em JSON (`golpe`, `noticiado_em` e
+   `fontes` com `nome`, `url`, `origem` e `data`) e rode, a partir da pasta do repositório clonado:
+
+   ```
+   python3 03-agente/scripts/checar_fontes.py --item <candidato.json> --dados <dados.json>
+   ```
+
+   O verificador lê `03-agente/fontes.json` e barra o que pode ser checado sem interpretação: domínio fora
+   da lista ou que não abre, origem incoerente, falta de fonte primária, fontes da mesma organização, setor
+   bancário sozinho, fonte sem data, golpe fora da janela, golpe já publicado ou já na fila. Com REPROVADO,
+   a resposta à pergunta 3 é não, ou a 2, conforme o erro. Com APROVADO, a parte de leitura continua sua:
+   as duas fontes descrevem o mesmo mecanismo e a mesma ação? Uma só reproduz a outra? Os avisos
+   (`MESMO_ESTADO`, `DOMINIO_AMPLO`, `ORIENTACAO_ANTIGA`) pedem essa conferência.
 5. **Guarde na fila.** Para cada candidato com quatro respostas positivas, no máximo 3 por execução:
    escreva o alerta com a skill `linguagem-simples-60mais`, usando as duas fontes confirmadas. A ação de
    proteção tem de servir para cliente de qualquer banco: nunca um recurso de aplicativo, seguro ou produto
    de um banco. Uma ferramenta pública da tabela "Ferramentas oficiais de proteção" de `fontes.md` só entra
    se uma das fontes a recomendar, com o link do gov.br da tabela. Verifique
-   com `checar_alerta.py` até o status ser APROVADO, em no máximo 3 tentativas. Aprovado, acrescente-o à
+   com `checar_alerta.py` até o status ser APROVADO, em no máximo 3 tentativas, e confirme que o
+   `checar_fontes.py` aprova as fontes do alerta escrito. Aprovado nos dois, acrescente-o à
    `fila` com status `aguardando`, com `indicado_por` e com a `origem` de cada fonte. Reprovado 3 vezes, não
    guarde, e registre o motivo nas decisões.
 6. **Alerta extra, só em caso grave.** Publique na hora, sem esperar a segunda, apenas se um golpe recém-
@@ -133,14 +152,17 @@ chegar duas vezes, e cada execução extra publicaria de novo.
    motivo.
 3. **Escolha um.** Entre os itens `aguardando`, fique com o de maior relevância; no empate, o de
    `noticiado_em` mais recente. Abra de novo as duas fontes do escolhido e confira se elas cumprem a regra
-   de confirmação atual (pergunta 3). Se falta fonte primária, procure-a nos pacotes de confirmação: achou e
+   de confirmação atual: rode `checar_fontes.py --dados <dados.json> --golpe <golpe>`. Se falta fonte
+   primária, procure-a nos pacotes de confirmação: achou e
    abriu, troque a fonte mais fraca pela primária, com `origem`, e registre a troca na decisão; não achou,
    mude o item para `descartado`, com o motivo. Se alguma fonte saiu do ar ou mudou a orientação, faça o
    mesmo. Descartado um item, passe ao próximo.
 4. **Publique.** Acrescente o alerta escolhido em `alertas`, com `id` e `publicado_em` de hoje, gere a
    imagem (veja "A imagem do alerta") e mude o item da fila para `publicado`. Fila vazia? O resultado é
    `sem-alerta`.
-5. **Registre e republique.** Acrescente a execução com `"modo": "publicacao"` e o `resultado`
+5. **Revise os alertas recentes.** Abra de novo as fontes dos 4 alertas publicados mais recentes. Se alguma
+   saiu do ar ou mudou a orientação, siga "Correções".
+6. **Registre e republique.** Acrescente a execução com `"modo": "publicacao"` e o `resultado`
    (`publicado` ou `sem-alerta`); nas `decisoes`, inclua os candidatos da varredura e os itens da fila que
    você considerou. Atualize `atualizado_em`. Siga para "Como republicar".
 
@@ -161,6 +183,22 @@ alerta, rode de novo o `checar_alerta.py` e o gerador, em até 3 tentativas. Se 
 alerta sem imagem e registre o motivo na `observacao` da execução. Os avisos sobre números pedem que você
 confira, nas fontes abertas, que o número é o canal oficial.
 
+## Correções
+
+Um alerta publicado nunca é apagado. Quando uma revisão encontrar fonte fora do ar, orientação mudada ou erro de
+fato, corrija só o necessário e registre:
+
+- **Fonte fora do ar ou mais fraca que a regra atual:** troque por uma fonte que diga o mesmo e passe no
+  `checar_fontes.py`. Tipo `fontes`.
+- **Orientação mudou:** reescreva `o_que_fazer`, o card e a imagem com a skill, a partir das fontes novas.
+  Tipo `orientacao`.
+- **Orientação errada e sem fonte para corrigir:** marque o alerta com `"retirado": true`. Tipo `retirado`.
+  A página tira o alerta do destaque e mostra o motivo.
+
+Em todos os casos, acrescente um item em `correcoes` com `data` de hoje, `alerta_id`, `tipo`, `o_que_mudou`,
+`por_que` (em linguagem simples, porque o público lê) e `"feita_por": "agente"`. Na dúvida entre corrigir e
+retirar, retire.
+
 ## Como republicar
 
 Confira que o arquivo é JSON válido (`python3 -m json.tool dados.json`). Republique com a ferramenta
@@ -168,6 +206,21 @@ Artifact: `url` da página, `file_path` igual ao arquivo da página lido no pass
 `files: {"dados.json": "<seu arquivo>"}`, mais `"imagens/<id>.png": "<a imagem>"` quando houver alerta novo.
 Não passe `capabilities`: a página guarda as que já tem. As imagens de alertas anteriores continuam
 publicadas. Depois, leia `dados.json` de novo na página e confirme que a execução nova está lá.
+
+## Atualize o site público
+
+O mesmo conteúdo fica no site público do GitHub Pages (https://mfraza73.github.io/sentinela-60mais/), servido
+da pasta `docs/` do repositório. Depois de republicar a página do Claude, na pasta do repositório clonado:
+
+1. Copie o `dados.json` final para `05-produto/dados.json` e a imagem nova, se houver, para
+   `05-produto/imagens/`.
+2. Rode `python3 05-produto/montar_site.py`.
+3. Rode `python3 testes/rodar_testes.py`. Se algum teste falhar, não envie: registre a falha na `observacao`.
+4. Carregue a ferramenta `add_repo` (via ToolSearch) e peça acesso de envio a `MFraza73/sentinela-60mais`.
+   Faça `git pull --rebase`, um commit com a mensagem `Execução de AAAA-MM-DD (modo)` e `git push`.
+
+Se o envio falhar, a página do Claude continua valendo: registre o passo e o erro na `observacao` da execução
+e no relatório. Nunca altere outros arquivos do repositório.
 
 ## Limites
 
@@ -197,4 +250,7 @@ Fila: [n] aguardando ([golpes])
 Resultado: na-fila | nada-novo | alerta-extra | publicado | sem-alerta — [motivo em uma frase]
 Verificador: APROVADO ([palavras] palavras, maior frase [n]) — quando houver alerta escrito
 Imagem: APROVADO (escala [n]) | sem imagem — [motivo] — quando houver alerta publicado
+Fontes: APROVADO no checar_fontes.py — [avisos, se houver]
+Site público: atualizado (commit [hash]) | não atualizado — [passo e erro]
+Correções: [n] — [alerta e tipo] — quando houver
 ```

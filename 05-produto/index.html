@@ -308,6 +308,21 @@ a.botao:hover { color: var(--tinta); }
 }
 .rodape strong { color: var(--tinta); }
 
+.nota-correcao {
+  font-size: var(--t-s);
+  background: var(--lavado);
+  border-left: 4px solid var(--tinta);
+  border-radius: 0 var(--raio) var(--raio) 0;
+  padding: 0.6rem 0.9rem;
+}
+.nota-correcao b { display: block; }
+.metodo { display: grid; gap: 1.25rem; }
+.metodo h3 { font-size: var(--t-l); margin-bottom: 0.35rem; }
+.metodo ul { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.4rem; }
+.metodo ul.correcoes { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.6rem; }
+.correcoes li { border: 1px solid var(--linha); border-radius: var(--raio); padding: 0.75rem 1rem; display: grid; gap: 0.3rem; font-size: var(--t-s); }
+.correcoes li b { font-size: var(--t-m); }
+.selo-retirado { font-size: var(--t-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--sinal); }
 .erro {
   background: var(--sinal-fundo);
   border-left: 6px solid var(--sinal);
@@ -350,6 +365,7 @@ a.botao:hover { color: var(--tinta); }
       <div class="fontes" id="bloco-fontes" hidden>
         <h2>De onde veio este alerta</h2>
         <ol id="lista-fontes"></ol>
+        <div id="notas-correcao"></div>
       </div>
     </section>
 
@@ -400,6 +416,43 @@ a.botao:hover { color: var(--tinta); }
         <h3>Cada vez que o agente trabalhou</h3>
         <div id="lista-execucoes" style="display:grid; gap:0.75rem;"></div>
       </div>
+    </section>
+
+    <section class="secao metodo" id="como-verificamos" aria-labelledby="titulo-metodo">
+      <h2 id="titulo-metodo">Como verificamos</h2>
+      <div>
+        <h3>As fontes que aceitamos</h3>
+        <ul>
+          <li>Um alerta só sai com duas fontes de organizações diferentes, que contam o mesmo golpe e dão a mesma orientação.</li>
+          <li>Uma das fontes tem de ser quem cuida do assunto: um órgão público, a polícia, o Procon ou um banco.</li>
+          <li>Os bancos e a federação dos bancos contam juntos como uma fonte só.</li>
+          <li>Agências de checagem e sites pequenos ajudam a achar o golpe, mas não bastam para confirmar.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>O que um programa confere antes de publicar</h3>
+        <ul>
+          <li>As fontes: se estão na nossa lista, se têm data e se são de organizações diferentes.</li>
+          <li>O texto: as regras da Lei 15.263/2025, a Política Nacional de Linguagem Simples.</li>
+          <li>A imagem: letra grande, cores com bom contraste, sem link e sem telefone pessoal.</li>
+          <li>Testes automáticos rodam a cada mudança nessas regras.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>O que não fazemos</h3>
+        <ul>
+          <li>Não pedimos dados nem dinheiro, e não mandamos mensagens.</li>
+          <li>Não acusamos empresas: a marca imitada aparece como "mensagem que imita o banco".</li>
+          <li>Não recomendamos banco, aplicativo, seguro ou serviço pago.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Correções</h3>
+        <p>Quando um alerta precisa mudar, a mudança fica registrada aqui, com a data e o motivo. Nenhum alerta é apagado.</p>
+        <ul class="correcoes" id="lista-correcoes"></ul>
+        <p class="vazio" id="sem-correcoes" hidden>Nenhuma correção até agora.</p>
+      </div>
+      <p><a href="https://github.com/MFraza73/sentinela-60mais" target="_blank" rel="noopener noreferrer">Veja o método completo, a lista de fontes e o código no GitHub</a></p>
     </section>
   </main>
 
@@ -510,8 +563,13 @@ a.botao:hover { color: var(--tinta); }
     img.alt = String(a.imagem_alt || a.titulo || "Imagem do alerta");
     el("link-imagem").href = caminho;
     downloadsPromessa.then(function (downloads) {
+      var link = el("link-imagem");
       el("btn-baixar").hidden = !downloads;
-      el("link-imagem").hidden = !!downloads;
+      link.hidden = !!downloads;
+      if (!downloads) {
+        link.setAttribute("download", imagemAtual.nome);
+        link.textContent = "Baixar imagem";
+      }
     });
   }
 
@@ -583,6 +641,39 @@ a.botao:hover { color: var(--tinta); }
     secao.setAttribute("data-pronto", "sim");
   }
 
+  function renderCorrecoes(lista, alertas) {
+    var titulos = {};
+    (alertas || []).forEach(function (a) { titulos[a.id] = a.titulo; });
+    var ul = el("lista-correcoes");
+    ul.innerHTML = "";
+    maisRecentes(lista, "data").forEach(function (c) {
+      var li = document.createElement("li");
+      var b = document.createElement("b");
+      b.textContent = dataLonga(c.data) + " · " + (titulos[c.alerta_id] || c.alerta_id);
+      var m = document.createElement("span");
+      m.textContent = "O que mudou: " + (c.o_que_mudou || "");
+      var q = document.createElement("span");
+      q.textContent = "Por quê: " + (c.por_que || "");
+      li.appendChild(b); li.appendChild(m); li.appendChild(q);
+      ul.appendChild(li);
+    });
+    el("sem-correcoes").hidden = (lista || []).length > 0;
+  }
+
+  function notasDoAlerta(a, correcoes) {
+    var caixa = el("notas-correcao");
+    caixa.innerHTML = "";
+    (correcoes || []).filter(function (c) { return c.alerta_id === a.id; }).forEach(function (c) {
+      var p = document.createElement("p");
+      p.className = "nota-correcao";
+      var b = document.createElement("b");
+      b.textContent = "Corrigido em " + dataLonga(c.data);
+      p.appendChild(b);
+      p.appendChild(document.createTextNode(c.o_que_mudou || ""));
+      caixa.appendChild(p);
+    });
+  }
+
   function renderAnteriores(lista) {
     var caixa = el("lista-anteriores");
     caixa.innerHTML = "";
@@ -601,6 +692,12 @@ a.botao:hover { color: var(--tinta); }
       var sm = document.createElement("small");
       sm.textContent = dataLonga(a.publicado_em);
       s.appendChild(sm);
+      if (a.retirado) {
+        var ret = document.createElement("span");
+        ret.className = "selo-retirado";
+        ret.textContent = "Retirado: veja Correções";
+        s.appendChild(ret);
+      }
       d.appendChild(s);
       var corpo = document.createElement("div");
       corpo.className = "corpo";
@@ -764,11 +861,15 @@ a.botao:hover { color: var(--tinta); }
   fetch("dados.json", { cache: "no-store" })
     .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
     .then(function (d) {
-      var alertas = maisRecentes(d.alertas, "publicado_em");
+      var todos = maisRecentes(d.alertas, "publicado_em");
+      var vigentes = todos.filter(function (a) { return !a.retirado; });
+      var alertas = vigentes.length ? [vigentes[0]].concat(todos.filter(function (a) { return a !== vigentes[0]; })) : todos;
       var execucoes = maisRecentes(d.execucoes, "data");
       renderFila(d.fila || []);
-      if (alertas.length) {
+      renderCorrecoes(d.correcoes || [], d.alertas || []);
+      if (vigentes.length) {
         renderAlerta(alertas[0]);
+        notasDoAlerta(alertas[0], d.correcoes);
         renderAnteriores(alertas.slice(1));
         el("anteriores").hidden = false;
       } else {

@@ -6,7 +6,11 @@ forem novos, confirmados em duas fontes independentes (uma delas órgão públic
 banco) e relevantes para esse público. Toda segunda, o mais
 importante da fila vira o alerta da semana, com um texto e uma imagem prontos para o WhatsApp.
 
-**Página do produto:** https://claude.ai/artifact/FXPh194Ln6RmBsnkLAU7m2
+**Site público:** https://mfraza73.github.io/sentinela-60mais/ (sem login, servido da pasta [`docs/`](docs/))
+
+**Página no Claude:** https://claude.ai/artifact/FXPh194Ln6RmBsnkLAU7m2 (onde o agente lê e grava o estado)
+
+[![Testes](https://github.com/MFraza73/sentinela-60mais/actions/workflows/testes.yml/badge.svg)](https://github.com/MFraza73/sentinela-60mais/actions/workflows/testes.yml)
 
 | | |
 | --- | --- |
@@ -23,7 +27,9 @@ importante da fila vira o alerta da semana, com um texto e uma imagem prontos pa
 flowchart LR
     A["Automação<br/>tarefa agendada, todo dia 7h40"] -->|dispara| B["Agente<br/>varre todo dia, publica na segunda"]
     S["Skill<br/>linguagem-simples-60mais"] -->|como escrever| B
-    B -->|lê e grava dados.json| P["Página do produto"]
+    B -->|lê e grava dados.json| P["Página no Claude"]
+    B -->|envia ao repositório| G["Site público<br/>GitHub Pages"]
+    T["Testes de regressão<br/>a cada envio"] -.->|conferem| G
 ```
 
 | Componente | O que faz | Onde está |
@@ -31,7 +37,8 @@ flowchart LR
 | Skill | Escreve e revisa alertas de golpe em linguagem simples, pelo art. 5º da Lei 15.263/2025, com verificador automático | [`02-skill/`](02-skill/) |
 | Agente | Varre todo dia órgãos públicos, bancos, imprensa, agências de checagem e um pacote regional de polícias e Procons; aplica 4 perguntas de decisão a cada golpe, guarda os aprovados numa fila e publica o melhor às segundas | [`03-agente/`](03-agente/) |
 | Automação | Tarefa agendada do Claude que dispara o agente todo dia às 7h40, sem intervenção humana | [`04-automacao/`](04-automacao/) |
-| Produto | Página pública com o alerta da semana, imagem e card para WhatsApp, leitura em voz alta, a fila e o histórico de execuções | [`05-produto/`](05-produto/) |
+| Produto | Página com o alerta da semana, imagem e card para WhatsApp, leitura em voz alta, a fila, o histórico de execuções, o método e as correções | [`05-produto/`](05-produto/) e [`docs/`](docs/) |
+| Testes | Verificador de fontes, imagem, linguagem, sincronia do mapa de fontes e coerência dos dados, rodados no GitHub a cada envio | [`testes/`](testes/) |
 
 ## Por onde começar
 
@@ -49,19 +56,28 @@ flowchart LR
 4. **A automação:** [`04-automacao/tarefa-agendada.md`](04-automacao/tarefa-agendada.md), com o texto exato que a
    tarefa envia a cada disparo.
 5. **O produto:** [`05-produto/index.html`](05-produto/index.html) e [`05-produto/dados.json`](05-produto/dados.json).
-   O `dados.json` deste repositório é uma cópia de 06/11/2026; a versão viva, atualizada todo dia pelo agente,
-   é a publicada com a página.
+   A cada execução, o agente atualiza a página no Claude e envia os dados a este repositório;
+   [`05-produto/montar_site.py`](05-produto/montar_site.py) monta o site público em [`docs/`](docs/).
+6. **Os testes:** [`testes/rodar_testes.py`](testes/rodar_testes.py) roda tudo o que pode ser checado sem
+   interpretação; [`testes/casos-de-julgamento.md`](testes/casos-de-julgamento.md) guarda as decisões que dependem
+   de leitura.
 
-## Testar o verificador
+## Rodar os testes
 
-O verificador usa só a biblioteca padrão do Python:
+```bash
+pip install playwright && python -m playwright install chromium   # só para os testes da imagem
+python3 testes/rodar_testes.py                                     # ou --sem-imagem, sem o Playwright
+```
+
+Os verificadores, um a um:
 
 ```bash
 python3 02-skill/linguagem-simples-60mais/scripts/checar_alerta.py 03-agente/execucoes/2026-11-06-teste/alerta.md
+python3 03-agente/scripts/checar_fontes.py --dados 05-produto/dados.json --golpe falso-advogado
+python3 02-skill/linguagem-simples-60mais/scripts/gerar_imagem.py --dados 05-produto/dados.json --id 2026-11-06-falso-bloqueio-biometria-inss
 ```
 
-Ele aponta ERRO (impede a publicação) e AVISO (pede julgamento), cada um ligado a uma técnica do art. 5º da Lei
-15.263/2025.
+Cada um aponta ERRO (impede a publicação) e AVISO (pede julgamento).
 
 ## Decisões registradas
 

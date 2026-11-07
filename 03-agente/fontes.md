@@ -5,6 +5,10 @@ Validado em 06/11/2026 com as mesmas ferramentas que o agente usa: busca na web 
 busca filtrada e, quando a busca devolveu página, pela abertura de uma página real. Um domínio que a busca encontra
 mas a ferramenta não abre só pode indicar golpes, nunca confirmá-los, porque trecho de busca não é fonte.
 
+As regras deste arquivo também existem em código: `fontes.json` traz cada domínio com papel, origens aceitas e
+grupo (a organização), e `scripts/checar_fontes.py` barra o candidato que não cumpre a regra de confirmação. Ao
+mudar este arquivo, mude o `fontes.json` e rode `python3 testes/rodar_testes.py`.
+
 ## Papéis das fontes
 
 | Papel | Quem | Indica candidato? | Confirma? |

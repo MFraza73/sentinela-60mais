@@ -5,22 +5,22 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
 <style>
-/* Layout: uma coluna de leitura (até 38rem). O alerta é uma pilha de faixas rotuladas, como um aviso público impresso; a ação vem destacada em verde, o sinal em âmbar. Tema claro único, de alto contraste, pensado para leitores com 60 anos ou mais. */
+/* Layout: uma coluna de leitura (até 38rem). O alerta é uma pilha de faixas rotuladas, como um aviso público impresso. Paleta da imagem do alerta: grafite para o tom sério, laranja para a atenção; azul só nos links. Tema claro único, de alto contraste, pensado para leitores com 60 anos ou mais. */
 :root {
   --papel: #FFFFFF;
-  --lavado: #F2F5F9;
-  --tinta: #0E1A2B;
-  --tinta-2: #34445A;
-  --linha: #C9D3DF;
-  --azul: #0A58A8;
+  --lavado: #F4F4F2;
+  --tinta: #1D2329;
+  --tinta-2: #3F474F;
+  --linha: #D6D8DA;
+  --borda-campo: #8C939A;
+  --azul: #0A58A8;          /* só links */
   --azul-escuro: #07437F;
-  --acao: #0B6B3A;
-  --acao-fundo: #E4F3EA;
-  --sinal: #7A4B00;
-  --sinal-fundo: #FFF2D9;
-  --bolha: #DCF8C6;
+  --laranja: #F59A3C;
+  --sinal: #8A3A00;
+  --sinal-fundo: #FFF1E5;
+  --bolha: #DCF8C6;         /* balão do WhatsApp, para reconhecer o aplicativo */
   --bolha-tinta: #111B21;
-  --foco: #F2B300;
+  --foco: #8A3A00;
 
   --f-texto: "Atkinson Hyperlegible", Verdana, "Segoe UI", system-ui, sans-serif;
 
@@ -81,18 +81,20 @@ a:hover { color: var(--azul-escuro); }
   min-height: 48px;
   padding: 0.5rem 1rem;
   border-radius: var(--raio);
-  border: 2px solid var(--azul);
+  border: 2px solid var(--tinta);
   background: var(--papel);
-  color: var(--azul);
+  color: var(--tinta);
   cursor: pointer;
+  text-decoration: none;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
 }
 .botao:hover { background: var(--lavado); }
-.botao[aria-pressed="true"] { background: var(--azul); color: var(--papel); }
-.botao.cheio { background: var(--azul); color: var(--papel); }
-.botao.cheio:hover { background: var(--azul-escuro); border-color: var(--azul-escuro); }
+a.botao:hover { color: var(--tinta); }
+.botao[aria-pressed="true"] { background: var(--tinta); color: var(--papel); }
+.botao.cheio { background: var(--tinta); color: var(--papel); }
+.botao.cheio:hover { background: #000000; border-color: #000000; }
 
 /* Alerta da semana */
 .alerta { display: grid; gap: 1.25rem; }
@@ -129,14 +131,15 @@ a:hover { color: var(--azul-escuro); }
 }
 .campo.sinal { background: var(--sinal-fundo); border-left: 6px solid var(--sinal); }
 .campo.sinal dt { color: var(--sinal); }
-.campo.fazer { background: var(--acao-fundo); border-left: 6px solid var(--acao); }
-.campo.fazer dt { color: var(--acao); }
+.campo.fazer { background: var(--tinta); color: var(--papel); }
+.campo.fazer dt { color: var(--laranja); }
 .campo.fazer dd { font-weight: 700; }
 
 .lembrar {
   margin: 0;
   padding: 1.25rem 1.1rem;
-  border: 3px solid var(--tinta);
+  background: var(--laranja);
+  color: var(--tinta);
   border-radius: var(--raio);
   display: grid;
   gap: 0.35rem;
@@ -146,7 +149,7 @@ a:hover { color: var(--azul-escuro); }
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--tinta-2);
+  color: var(--tinta);
 }
 .lembrar .frase { font-size: var(--t-xl); font-weight: 700; line-height: 1.25; }
 
@@ -177,7 +180,7 @@ a:hover { color: var(--azul-escuro); }
   line-height: 1.45;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
-  box-shadow: 0 1px 1px rgba(14, 26, 43, 0.12);
+  box-shadow: 0 1px 1px rgba(29, 35, 41, 0.12);
 }
 .copiar-linha { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; }
 [hidden] { display: none !important; }
@@ -186,18 +189,18 @@ a:hover { color: var(--azul-escuro); }
   width: min(100%, 22rem);
   height: auto;
   border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(14, 26, 43, 0.25);
+  box-shadow: 0 1px 3px rgba(29, 35, 41, 0.25);
 }
 .imagem-alerta figcaption { font-size: var(--t-s); color: var(--tinta-2); }
 .subtitulo-envio { font-size: var(--t-l); margin-top: 0.5rem; }
-.aviso-copia { font-size: var(--t-s); color: var(--acao); font-weight: 700; }
+.aviso-copia { font-size: var(--t-s); color: var(--tinta); font-weight: 700; }
 #card-texto {
   width: 100%;
   min-height: 9rem;
   font: inherit;
   font-size: var(--t-s);
   padding: 0.75rem;
-  border: 2px solid var(--linha);
+  border: 2px solid var(--borda-campo);
   border-radius: var(--raio);
   color: var(--tinta);
   background: var(--papel);
@@ -269,12 +272,12 @@ a:hover { color: var(--azul-escuro); }
   border: 1px solid currentColor;
   white-space: nowrap;
 }
-.chip.publicado, .chip.alerta-extra { color: var(--acao); background: var(--acao-fundo); }
+.chip.publicado, .chip.alerta-extra { color: var(--papel); background: var(--tinta); border-color: var(--tinta); }
 .chip.sem-alerta { color: var(--sinal); background: var(--sinal-fundo); }
-.chip.na-fila { color: var(--azul); background: var(--lavado); }
+.chip.na-fila { color: var(--tinta); background: var(--lavado); }
 .chip.nada-novo, .chip.tipo, .chip.modo { color: var(--tinta-2); }
 .execucao .obs { font-size: var(--t-s); color: var(--tinta-2); font-style: italic; }
-.mais-execucoes > summary { cursor: pointer; font-weight: 700; color: var(--azul); min-height: 48px; display: flex; align-items: center; }
+.mais-execucoes > summary { cursor: pointer; font-weight: 700; color: var(--tinta); text-decoration: underline; text-underline-offset: 0.15em; min-height: 48px; display: flex; align-items: center; }
 .mais-execucoes > div { display: grid; gap: 0.75rem; }
 
 /* Fila */
@@ -282,7 +285,7 @@ a:hover { color: var(--azul-escuro); }
 .fila h3 { font-size: var(--t-l); }
 .fila ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.5rem; }
 .fila li {
-  border-left: 4px solid var(--azul);
+  border-left: 4px solid var(--laranja);
   background: var(--lavado);
   border-radius: 0 var(--raio) var(--raio) 0;
   padding: 0.6rem 0.9rem;
@@ -291,7 +294,7 @@ a:hover { color: var(--azul-escuro); }
 .fila li span { font-size: var(--t-s); color: var(--tinta-2); }
 .origem { color: var(--tinta-2); font-size: var(--t-xs); }
 .execucao .numeros { font-size: var(--t-s); color: var(--tinta-2); font-variant-numeric: tabular-nums; }
-.execucao details summary { cursor: pointer; font-size: var(--t-s); font-weight: 700; color: var(--azul); min-height: 44px; display: flex; align-items: center; }
+.execucao details summary { cursor: pointer; font-size: var(--t-s); font-weight: 700; color: var(--tinta); text-decoration: underline; text-underline-offset: 0.15em; min-height: 44px; display: flex; align-items: center; }
 .execucao details ul { margin: 0.25rem 0 0; padding-left: 1.2rem; display: grid; gap: 0.5rem; font-size: var(--t-s); }
 
 /* Rodapé */
@@ -386,7 +389,7 @@ a:hover { color: var(--azul-escuro); }
         <li><div><b>O agente pesquisa órgãos públicos, bancos, polícias, Procons, imprensa e agências de checagem.</b><span>Cada golpe novo, confirmado em duas fontes independentes e ligado a quem tem 60 anos ou mais, entra numa fila. Uma das fontes tem de ser um órgão público, a polícia, o Procon ou um banco.</span></div></li>
         <li><div><b>Uma skill escreve o alerta em linguagem simples.</b><span>Um verificador confere as regras da Lei 15.263/2025, a Política Nacional de Linguagem Simples.</span></div></li>
         <li><div><b>Toda segunda, o golpe mais importante da fila vira o alerta da semana.</b><span>Um golpe muito grave, com orientação oficial nova, pode sair antes, no máximo uma vez por semana. Se a fila estiver vazia, a semana fica sem alerta.</span></div></li>
-        <li><div><b>O alerta aparece aqui.</b><span>Com as fontes e um texto pronto para o WhatsApp.</span></div></li>
+        <li><div><b>O alerta aparece aqui.</b><span>Com as fontes, uma imagem e um texto prontos para o WhatsApp.</span></div></li>
       </ol>
       <div class="fila" id="bloco-fila" hidden>
         <h3>Na fila para a próxima segunda</h3>

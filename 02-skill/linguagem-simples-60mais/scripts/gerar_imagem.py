@@ -26,7 +26,7 @@ FONTE_MINIMA = {"#titulo": 68, "#sinal": 48, "#acao": 48, "#lembrar": 54}
 CONTRASTE_TEXTO = 7.0                # nível AAA da WCAG para texto
 CONTRASTE_ROTULO = 4.5               # rótulos e rodapé, em letra grande ou secundária
 PREFIXOS_SERVICO = ("0800", "0300", "3003", "4004", "4020")
-TEMAS_PERMITIDOS = {"atencao"}       # "institucional" e "alarme" existem só para comparação
+TEMAS_PERMITIDOS = {"calma"}         # "ambar", "petroleo" e "alarme" existem só para comparação
 
 RE_URL = re.compile(r"(https?://|www\.|\b[\w-]+\.(com|br|org|net|gov|app|io|info|site|online)\b)", re.I)
 RE_ARROBA = re.compile(r"@\w")
@@ -142,13 +142,14 @@ def renderizar(a, tema, saida, erros, avisos):
         cores = pagina.evaluate("""() => {
             const s = getComputedStyle(document.getElementById('quadro'));
             const v = n => s.getPropertyValue('--' + n).trim();
-            return Object.fromEntries(['fundo','texto','faixa-fundo','faixa-texto','sinal-fundo','sinal-rotulo',
+            return Object.fromEntries(['fundo','texto','faixa-fundo','faixa-texto','faixa-data','sinal-fundo','sinal-rotulo',
               'sinal-texto','acao-fundo','acao-rotulo','acao-texto','lembrar-fundo','lembrar-rotulo',
               'lembrar-texto','rodape'].map(n => [n, v(n)]));
         }""")
         pares = [
             ("título", "texto", "fundo", CONTRASTE_TEXTO),
             ("faixa", "faixa-texto", "faixa-fundo", CONTRASTE_TEXTO),
+            ("data da faixa", "faixa-data", "faixa-fundo", CONTRASTE_ROTULO),
             ("sinal", "sinal-texto", "sinal-fundo", CONTRASTE_TEXTO),
             ("ação", "acao-texto", "acao-fundo", CONTRASTE_TEXTO),
             ("para lembrar", "lembrar-texto", "lembrar-fundo", CONTRASTE_TEXTO),
@@ -176,7 +177,7 @@ def main():
     ap.add_argument("--id", help="id do alerta em dados.json")
     ap.add_argument("--alerta", help="arquivo JSON com um alerta (alternativa a --dados e --id)")
     ap.add_argument("--saida", help="caminho do PNG a gravar; sem ele, só confere")
-    ap.add_argument("--tema", default="atencao", help="atencao (padrão); institucional e alarme só para comparação")
+    ap.add_argument("--tema", default="calma", help="calma (padrão); ambar, petroleo e alarme só para comparação")
     args = ap.parse_args()
 
     if args.alerta:
@@ -195,7 +196,7 @@ def main():
 
     erros, avisos = [], []
     if args.tema not in TEMAS_PERMITIDOS:
-        avisos.append(f"tema {args.tema} serve só para comparação; a publicação usa o tema atencao")
+        avisos.append(f"tema {args.tema} serve só para comparação; a publicação usa o tema calma")
     checar_texto(alerta, erros, avisos)
     medidas = {}
     if not erros:

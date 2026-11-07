@@ -125,8 +125,9 @@ lembrar, com a data de publicação. Gere com `python scripts/gerar_imagem.py --
   Número só o do canal oficial que está nas fontes.
 - **Letra grande.** Fonte Atkinson Hyperlegible, criada pelo Braille Institute para leitores com baixa visão.
   Corpo de 56 pixels na imagem: perto de 20 pixels de tela quando a imagem ocupa a largura do celular.
-- **Urgência calma.** Branco, azul-noite e o âmbar da sinalização de atenção. Vermelho, "URGENTE" e contagem
-  regressiva ficam de fora: são a estética do próprio golpe.
+- **Urgência calma.** Duas cores sobre o branco: grafite, para o tom sério, e laranja, para a atenção. Vermelho,
+  "URGENTE" e contagem regressiva ficam de fora: são a estética do próprio golpe. Verde com amarelo também fica de
+  fora, para o alerta não ser lido como bandeira ou campanha.
 - **Contraste alto.** Todo texto principal com contraste de 7:1 ou mais (nível AAA da WCAG). A visão de cores
   muda com a idade, sobretudo entre azuis e amarelos claros, por isso a imagem separa as partes pela claridade
   e pelos rótulos escritos, não só pela cor.

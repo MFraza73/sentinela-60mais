@@ -17,25 +17,35 @@
   src: url("fontes/atkinson-hyperlegible-latin-ext-700-normal.woff2") format("woff2");
   unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
 
-/* Tema "atencao" (padrão): papel branco, tinta azul-noite, âmbar de sinalização como único acento quente. */
-.tema-atencao {
+/* Tema "calma" (padrão): grafite e laranja. Sem verde, sem azul: nada que lembre bandeira ou campanha. */
+.tema-calma {
   --fundo: #FFFFFF;
-  --texto: #0E1A2B;
-  --faixa-fundo: #F2B300; --faixa-texto: #0E1A2B;
-  --sinal-fundo: #FFF2D9; --sinal-borda: #6E4300; --sinal-rotulo: #6E4300; --sinal-texto: #0E1A2B;
-  --acao-fundo: #095A31; --acao-rotulo: #E4F3EA; --acao-texto: #FFFFFF;
-  --lembrar-fundo: #0E1A2B; --lembrar-rotulo: #F2B300; --lembrar-texto: #FFFFFF;
-  --rodape: #34445A;
+  --texto: #1D2329;
+  --faixa-fundo: #1D2329; --faixa-texto: #F59A3C; --faixa-data: #D5D9DE;
+  --sinal-fundo: #FFF1E5; --sinal-borda: #8A3A00; --sinal-rotulo: #8A3A00; --sinal-texto: #1D2329;
+  --acao-fundo: #1D2329; --acao-rotulo: #F59A3C; --acao-texto: #FFFFFF;
+  --lembrar-fundo: #F59A3C; --lembrar-rotulo: #1D2329; --lembrar-texto: #1D2329;
+  --rodape: #3F474F;
 }
-/* Tema "institucional": fundo azul-noite. Só para comparação. */
-.tema-institucional {
-  --fundo: #0E1A2B;
-  --texto: #FFFFFF;
-  --faixa-fundo: #0E1A2B; --faixa-texto: #F2B300;
-  --sinal-fundo: #1C2B40; --sinal-borda: #F2B300; --sinal-rotulo: #F2B300; --sinal-texto: #FFFFFF;
-  --acao-fundo: #FFFFFF; --acao-rotulo: #095A31; --acao-texto: #0E1A2B;
-  --lembrar-fundo: #F2B300; --lembrar-rotulo: #0E1A2B; --lembrar-texto: #0E1A2B;
-  --rodape: #C9D3DF;
+/* Tema "ambar": grafite e âmbar de sinalização. Só para comparação. */
+.tema-ambar {
+  --fundo: #FFFFFF;
+  --texto: #1D2329;
+  --faixa-fundo: #1D2329; --faixa-texto: #F2B300; --faixa-data: #D5D9DE;
+  --sinal-fundo: #FFF6D6; --sinal-borda: #6E4300; --sinal-rotulo: #6E4300; --sinal-texto: #1D2329;
+  --acao-fundo: #1D2329; --acao-rotulo: #F2B300; --acao-texto: #FFFFFF;
+  --lembrar-fundo: #F2B300; --lembrar-rotulo: #1D2329; --lembrar-texto: #1D2329;
+  --rodape: #3F474F;
+}
+/* Tema "petroleo": azul-petróleo e coral. Só para comparação. */
+.tema-petroleo {
+  --fundo: #FFFFFF;
+  --texto: #0F3D44;
+  --faixa-fundo: #0F3D44; --faixa-texto: #FFC2B0; --faixa-data: #D3E2E4;
+  --sinal-fundo: #FDEEEA; --sinal-borda: #8A321F; --sinal-rotulo: #8A321F; --sinal-texto: #0F3D44;
+  --acao-fundo: #0F3D44; --acao-rotulo: #FFC2B0; --acao-texto: #FFFFFF;
+  --lembrar-fundo: #FAD4C8; --lembrar-rotulo: #8A321F; --lembrar-texto: #0F3D44;
+  --rodape: #3F474F;
 }
 /* Tema "alarme": vermelho de urgência. Anti-exemplo, só para comparação. */
 .tema-alarme {
@@ -45,6 +55,7 @@
   --sinal-fundo: #FFFFFF; --sinal-borda: #D7141A; --sinal-rotulo: #D7141A; --sinal-texto: #111111;
   --acao-fundo: #D7141A; --acao-rotulo: #FFFFFF; --acao-texto: #FFFFFF;
   --lembrar-fundo: #111111; --lembrar-rotulo: #FFD400; --lembrar-texto: #FFFFFF;
+  --faixa-data: #FFFFFF;
   --rodape: #555555;
 }
 
@@ -63,11 +74,10 @@ body { font-family: "Atkinson Hyperlegible", Verdana, sans-serif; -webkit-font-s
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 64px; height: 120px; flex: none;
 }
-.tema-institucional .faixa { border-bottom: 8px solid #F2B300; }
 .faixa .marca { display: flex; align-items: center; gap: 22px;
   font-weight: 700; font-size: 44px; letter-spacing: 0.06em; text-transform: uppercase; }
 .faixa svg { width: 62px; height: 56px; flex: none; }
-.faixa .data { font-size: 32px; font-weight: 400; }
+.faixa .data { font-size: 32px; font-weight: 400; color: var(--faixa-data); }
 
 .corpo { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: calc(26px * var(--escala));
   padding: calc(40px * var(--escala)) 64px calc(36px * var(--escala)); min-height: 0; }
@@ -95,7 +105,7 @@ body { font-family: "Atkinson Hyperlegible", Verdana, sans-serif; -webkit-font-s
 </style>
 </head>
 <body>
-<div class="quadro tema-atencao" id="quadro">
+<div class="quadro tema-calma" id="quadro">
   <header class="faixa">
     <span class="marca">
       <svg viewBox="0 0 62 56" aria-hidden="true">
@@ -122,7 +132,7 @@ function preencher(a) {
   var p = (a.publicado_em || "").split("-");
   var data = p.length === 3 ? (+p[2]) + " de " + meses[+p[1] - 1] + " de " + p[0] : "";
   var q = document.getElementById("quadro");
-  q.className = "quadro tema-" + (a.tema || "atencao");
+  q.className = "quadro tema-" + (a.tema || "calma");
   document.getElementById("data").textContent = data;
   document.getElementById("titulo").textContent = a.titulo;
   document.getElementById("sinal").textContent = a.sinal;

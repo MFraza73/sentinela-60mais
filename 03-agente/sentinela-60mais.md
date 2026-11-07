@@ -40,7 +40,8 @@ zero e lê o estado de lá. A página lê o mesmo arquivo: o que o agente grava 
 - `alertas`: um item por alerta publicado, com `id` (`AAAA-MM-DD-golpe`), `golpe` (nome curto e estável,
   como `falsa-central`), `publicado_em`, `titulo`, `como_chega`, `o_que_pedem`, `sinal`, `o_que_fazer`,
   `para_lembrar` (sem aspas), `fontes` (lista de `{nome, url, origem}`; os valores de `origem` estão em
-  `fontes.md`), `card_whatsapp` (com `\n` entre as linhas) e, só no alerta extra, `"extra": true`.
+  `fontes.md`), `card_whatsapp` (com `\n` entre as linhas), `imagem` (`imagens/<id>.png`), `imagem_alt`
+  (o texto alternativo que o gerador devolve) e, só no alerta extra, `"extra": true`.
 - `fila`: um item por golpe confirmado e ainda não publicado, com `golpe`, `nome`, `adicionado_em`,
   `noticiado_em` (a data mais recente em que o golpe apareceu nas fontes), `relevancia` (2 ou 3),
   `indicado_por` (`{nome, url, origem}`: a primeira fonte em que o agente encontrou o golpe), `status`
@@ -119,8 +120,9 @@ chegar duas vezes, e cada execução extra publicaria de novo.
    - a fonte primária foi publicada nas últimas 48 horas;
    - nenhum alerta publicado nos últimos 3 dias e nenhum alerta extra nesta semana (segunda a domingo).
 
-   Para publicar, acrescente o alerta em `alertas` com `publicado_em` de hoje e `"extra": true`, e mude o
-   item da fila para `publicado`. Na dúvida, não publique: a segunda-feira está perto.
+   Para publicar, acrescente o alerta em `alertas` com `publicado_em` de hoje e `"extra": true`, gere a
+   imagem (veja "A imagem do alerta") e mude o item da fila para `publicado`. Na dúvida, não publique: a
+   segunda-feira está perto.
 7. **Registre e republique.** Acrescente a execução com `"modo": "varredura"` e o `resultado` (`na-fila`,
    `nada-novo` ou `alerta-extra`). Atualize `atualizado_em`. Siga para "Como republicar".
 
@@ -135,18 +137,37 @@ chegar duas vezes, e cada execução extra publicaria de novo.
    abriu, troque a fonte mais fraca pela primária, com `origem`, e registre a troca na decisão; não achou,
    mude o item para `descartado`, com o motivo. Se alguma fonte saiu do ar ou mudou a orientação, faça o
    mesmo. Descartado um item, passe ao próximo.
-4. **Publique.** Acrescente o alerta escolhido em `alertas`, com `id` e `publicado_em` de hoje, e mude o
-   item da fila para `publicado`. Fila vazia? O resultado é `sem-alerta`.
+4. **Publique.** Acrescente o alerta escolhido em `alertas`, com `id` e `publicado_em` de hoje, gere a
+   imagem (veja "A imagem do alerta") e mude o item da fila para `publicado`. Fila vazia? O resultado é
+   `sem-alerta`.
 5. **Registre e republique.** Acrescente a execução com `"modo": "publicacao"` e o `resultado`
    (`publicado` ou `sem-alerta`); nas `decisoes`, inclua os candidatos da varredura e os itens da fila que
    você considerou. Atualize `atualizado_em`. Siga para "Como republicar".
+
+## A imagem do alerta
+
+Todo alerta publicado ganha uma imagem de 1080 x 1350 pixels, para mandar no WhatsApp ou pôr no status. Depois
+de acrescentar o alerta em `alertas`, rode, a partir da pasta do repositório clonado:
+
+```
+python3 02-skill/linguagem-simples-60mais/scripts/gerar_imagem.py --dados dados.json --id <id> --saida imagens/<id>.png
+```
+
+O gerador usa o título, o sinal, a ação e a frase para lembrar do próprio alerta, sem acrescentar nada, e
+confere limites de palavras, ausência de link, perfil, emoji e telefone pessoal, se o texto cabe com letra
+grande e o contraste das cores. Com status APROVADO, grave em `imagem` o caminho `imagens/<id>.png` e em
+`imagem_alt` o texto alternativo do relatório. Com REPROVADO, a imagem não vai: encurte o campo apontado no
+alerta, rode de novo o `checar_alerta.py` e o gerador, em até 3 tentativas. Se ainda reprovar, publique o
+alerta sem imagem e registre o motivo na `observacao` da execução. Os avisos sobre números pedem que você
+confira, nas fontes abertas, que o número é o canal oficial.
 
 ## Como republicar
 
 Confira que o arquivo é JSON válido (`python3 -m json.tool dados.json`). Republique com a ferramenta
 Artifact: `url` da página, `file_path` igual ao arquivo da página lido no passo 1 e
-`files: {"dados.json": "<seu arquivo>"}`. Depois, leia `dados.json` de novo na página e confirme que a
-execução nova está lá.
+`files: {"dados.json": "<seu arquivo>"}`, mais `"imagens/<id>.png": "<a imagem>"` quando houver alerta novo.
+Não passe `capabilities`: a página guarda as que já tem. As imagens de alertas anteriores continuam
+publicadas. Depois, leia `dados.json` de novo na página e confirme que a execução nova está lá.
 
 ## Limites
 
@@ -175,4 +196,5 @@ Pacotes: [nomes] | Candidatos indicados por: [n] primárias, [n] imprensa, [n] c
 Fila: [n] aguardando ([golpes])
 Resultado: na-fila | nada-novo | alerta-extra | publicado | sem-alerta — [motivo em uma frase]
 Verificador: APROVADO ([palavras] palavras, maior frase [n]) — quando houver alerta escrito
+Imagem: APROVADO (escala [n]) | sem imagem — [motivo] — quando houver alerta publicado
 ```

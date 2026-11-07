@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Imagem do alerta</title>
+<style>
+@font-face { font-family: "Atkinson Hyperlegible"; font-weight: 400; font-style: normal;
+  src: url("fontes/atkinson-hyperlegible-latin-400-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Atkinson Hyperlegible"; font-weight: 700; font-style: normal;
+  src: url("fontes/atkinson-hyperlegible-latin-700-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Atkinson Hyperlegible"; font-weight: 400; font-style: normal;
+  src: url("fontes/atkinson-hyperlegible-latin-ext-400-normal.woff2") format("woff2");
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Atkinson Hyperlegible"; font-weight: 700; font-style: normal;
+  src: url("fontes/atkinson-hyperlegible-latin-ext-700-normal.woff2") format("woff2");
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+/* Tema "atencao" (padrão): papel branco, tinta azul-noite, âmbar de sinalização como único acento quente. */
+.tema-atencao {
+  --fundo: #FFFFFF;
+  --texto: #0E1A2B;
+  --faixa-fundo: #F2B300; --faixa-texto: #0E1A2B;
+  --sinal-fundo: #FFF2D9; --sinal-borda: #6E4300; --sinal-rotulo: #6E4300; --sinal-texto: #0E1A2B;
+  --acao-fundo: #095A31; --acao-rotulo: #E4F3EA; --acao-texto: #FFFFFF;
+  --lembrar-fundo: #0E1A2B; --lembrar-rotulo: #F2B300; --lembrar-texto: #FFFFFF;
+  --rodape: #34445A;
+}
+/* Tema "institucional": fundo azul-noite. Só para comparação. */
+.tema-institucional {
+  --fundo: #0E1A2B;
+  --texto: #FFFFFF;
+  --faixa-fundo: #0E1A2B; --faixa-texto: #F2B300;
+  --sinal-fundo: #1C2B40; --sinal-borda: #F2B300; --sinal-rotulo: #F2B300; --sinal-texto: #FFFFFF;
+  --acao-fundo: #FFFFFF; --acao-rotulo: #095A31; --acao-texto: #0E1A2B;
+  --lembrar-fundo: #F2B300; --lembrar-rotulo: #0E1A2B; --lembrar-texto: #0E1A2B;
+  --rodape: #C9D3DF;
+}
+/* Tema "alarme": vermelho de urgência. Anti-exemplo, só para comparação. */
+.tema-alarme {
+  --fundo: #FFFFFF;
+  --texto: #D7141A;
+  --faixa-fundo: #D7141A; --faixa-texto: #FFFFFF;
+  --sinal-fundo: #FFFFFF; --sinal-borda: #D7141A; --sinal-rotulo: #D7141A; --sinal-texto: #111111;
+  --acao-fundo: #D7141A; --acao-rotulo: #FFFFFF; --acao-texto: #FFFFFF;
+  --lembrar-fundo: #111111; --lembrar-rotulo: #FFD400; --lembrar-texto: #FFFFFF;
+  --rodape: #555555;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1080px; height: 1350px; }
+body { font-family: "Atkinson Hyperlegible", Verdana, sans-serif; -webkit-font-smoothing: antialiased; }
+
+.quadro {
+  --escala: 1;
+  width: 1080px; height: 1350px; overflow: hidden;
+  background: var(--fundo); color: var(--texto);
+  display: flex; flex-direction: column;
+}
+.faixa {
+  background: var(--faixa-fundo); color: var(--faixa-texto);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 64px; height: 120px; flex: none;
+}
+.tema-institucional .faixa { border-bottom: 8px solid #F2B300; }
+.faixa .marca { display: flex; align-items: center; gap: 22px;
+  font-weight: 700; font-size: 44px; letter-spacing: 0.06em; text-transform: uppercase; }
+.faixa svg { width: 62px; height: 56px; flex: none; }
+.faixa .data { font-size: 32px; font-weight: 400; }
+
+.corpo { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: calc(26px * var(--escala));
+  padding: calc(40px * var(--escala)) 64px calc(36px * var(--escala)); min-height: 0; }
+.titulo { font-weight: 700; font-size: calc(78px * var(--escala)); line-height: 1.12; letter-spacing: -0.005em; text-wrap: balance; }
+
+.bloco { border-radius: 18px; padding: calc(26px * var(--escala)) 36px; }
+.rotulo { font-weight: 700; font-size: 36px; letter-spacing: 0.09em; text-transform: uppercase; margin-bottom: 10px; }
+.texto { font-size: calc(56px * var(--escala)); line-height: 1.2; text-wrap: pretty; }
+
+.sinal { background: var(--sinal-fundo); border-left: 16px solid var(--sinal-borda); color: var(--sinal-texto); }
+.sinal .rotulo { color: var(--sinal-rotulo); }
+.acao { background: var(--acao-fundo); color: var(--acao-texto); }
+.acao .rotulo { color: var(--acao-rotulo); }
+.acao .texto { font-weight: 700; }
+
+.lembrar { background: var(--lembrar-fundo); color: var(--lembrar-texto);
+  padding: calc(30px * var(--escala)) 64px; flex: none; }
+.lembrar .rotulo { color: var(--lembrar-rotulo); }
+.lembrar .frase { font-weight: 700; font-size: calc(62px * var(--escala)); line-height: 1.14; text-wrap: balance; }
+
+.rodape { flex: none; height: 76px; display: flex; align-items: center; padding: 0 64px;
+  font-size: 34px; color: var(--rodape); background: var(--fundo); }
+.rodape b { color: var(--texto); margin-right: 14px; }
+.tema-alarme .rodape b { color: #111111; }
+</style>
+</head>
+<body>
+<div class="quadro tema-atencao" id="quadro">
+  <header class="faixa">
+    <span class="marca">
+      <svg viewBox="0 0 62 56" aria-hidden="true">
+        <path d="M31 4 L58 52 H4 Z" fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round"/>
+        <rect x="28" y="20" width="6" height="17" rx="3" fill="currentColor"/>
+        <circle cx="31" cy="43.5" r="3.6" fill="currentColor"/>
+      </svg>
+      <span id="rotulo-faixa">Alerta de golpe</span>
+    </span>
+    <span class="data" id="data"></span>
+  </header>
+  <main class="corpo" id="corpo">
+    <h1 class="titulo" id="titulo"></h1>
+    <section class="bloco sinal"><p class="rotulo">O sinal</p><p class="texto" id="sinal"></p></section>
+    <section class="bloco acao"><p class="rotulo">O que fazer</p><p class="texto" id="acao"></p></section>
+  </main>
+  <section class="lembrar"><p class="rotulo">Para lembrar</p><p class="frase" id="lembrar"></p></section>
+  <footer class="rodape"><b>Sentinela 60+</b><span>nunca pede dados nem dinheiro.</span></footer>
+</div>
+<script>
+/* O gerador (scripts/gerar_imagem.py) abre este arquivo e chama preencher(alerta). */
+function preencher(a) {
+  var meses = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
+  var p = (a.publicado_em || "").split("-");
+  var data = p.length === 3 ? (+p[2]) + " de " + meses[+p[1] - 1] + " de " + p[0] : "";
+  var q = document.getElementById("quadro");
+  q.className = "quadro tema-" + (a.tema || "atencao");
+  document.getElementById("data").textContent = data;
+  document.getElementById("titulo").textContent = a.titulo;
+  document.getElementById("sinal").textContent = a.sinal;
+  document.getElementById("acao").textContent = a.o_que_fazer;
+  document.getElementById("lembrar").textContent = a.para_lembrar;
+  if (a.rotulo_faixa) document.getElementById("rotulo-faixa").textContent = a.rotulo_faixa;
+  q.style.setProperty("--escala", a.escala || 1);
+}
+</script>
+</body>
+</html>

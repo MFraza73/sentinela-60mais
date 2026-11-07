@@ -4,7 +4,7 @@ Um golpe digital por semana, explicado em linguagem simples para quem tem 60 ano
 dessas pessoas. Todo dia, um agente feito com Claude pesquisa os golpes noticiados e guarda numa fila os que
 forem novos, confirmados em duas fontes independentes (uma delas órgão público, polícia, Procon ou
 banco) e relevantes para esse público. Toda segunda, o mais
-importante da fila vira o alerta da semana, com um texto pronto para o WhatsApp.
+importante da fila vira o alerta da semana, com um texto e uma imagem prontos para o WhatsApp.
 
 **Página do produto:** https://claude.ai/artifact/FXPh194Ln6RmBsnkLAU7m2
 
@@ -31,7 +31,7 @@ flowchart LR
 | Skill | Escreve e revisa alertas de golpe em linguagem simples, pelo art. 5º da Lei 15.263/2025, com verificador automático | [`02-skill/`](02-skill/) |
 | Agente | Varre todo dia órgãos públicos, bancos, imprensa, agências de checagem e um pacote regional de polícias e Procons; aplica 4 perguntas de decisão a cada golpe, guarda os aprovados numa fila e publica o melhor às segundas | [`03-agente/`](03-agente/) |
 | Automação | Tarefa agendada do Claude que dispara o agente todo dia às 7h40, sem intervenção humana | [`04-automacao/`](04-automacao/) |
-| Produto | Página pública com o alerta da semana, card para WhatsApp, leitura em voz alta, a fila e o histórico de execuções | [`05-produto/`](05-produto/) |
+| Produto | Página pública com o alerta da semana, imagem e card para WhatsApp, leitura em voz alta, a fila e o histórico de execuções | [`05-produto/`](05-produto/) |
 
 ## Por onde começar
 

@@ -180,6 +180,16 @@ a:hover { color: var(--azul-escuro); }
   box-shadow: 0 1px 1px rgba(14, 26, 43, 0.12);
 }
 .copiar-linha { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; }
+[hidden] { display: none !important; }
+.imagem-alerta { margin: 0; display: grid; gap: 0.6rem; justify-items: start; }
+.imagem-alerta img {
+  width: min(100%, 22rem);
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(14, 26, 43, 0.25);
+}
+.imagem-alerta figcaption { font-size: var(--t-s); color: var(--tinta-2); }
+.subtitulo-envio { font-size: var(--t-l); margin-top: 0.5rem; }
 .aviso-copia { font-size: var(--t-s); color: var(--acao); font-weight: 700; }
 #card-texto {
   width: 100%;
@@ -342,7 +352,20 @@ a:hover { color: var(--azul-escuro); }
 
     <section class="secao" id="whatsapp" aria-labelledby="titulo-whats" hidden>
       <h2 id="titulo-whats">Mande para quem você quer proteger</h2>
-      <p class="intro">Copie o texto abaixo e cole numa conversa do WhatsApp.</p>
+      <p class="intro">Mande a imagem, o texto ou os dois numa conversa do WhatsApp. A imagem também serve para o status.</p>
+      <div id="bloco-imagem" hidden>
+        <h3 class="subtitulo-envio">A imagem</h3>
+        <figure class="imagem-alerta">
+          <img id="img-alerta" alt="" width="1080" height="1350" loading="lazy">
+          <figcaption>Feita para ler no celular, com letra grande e sem link.</figcaption>
+        </figure>
+        <div class="copiar-linha">
+          <button type="button" class="botao cheio" id="btn-baixar" hidden>Baixar imagem</button>
+          <a class="botao" id="link-imagem" href="#" target="_blank" rel="noopener" hidden>Abrir a imagem</a>
+          <span class="aviso-copia" id="aviso-imagem" role="status" aria-live="polite"></span>
+        </div>
+        <h3 class="subtitulo-envio">O texto</h3>
+      </div>
       <div class="conversa"><div class="bolha" id="bolha"></div></div>
       <div class="copiar-linha">
         <button type="button" class="botao cheio" id="btn-copiar">Copiar texto</button>
@@ -464,6 +487,55 @@ a:hover { color: var(--azul-escuro); }
     } else { plano(); }
   });
 
+  /* Imagem do alerta: baixar pela capacidade de downloads; sem ela, abrir a imagem */
+  var imagemAtual = null;
+  var downloadsPromessa = (window.claude && typeof window.claude.use === "function")
+    ? window.claude.use("downloads").catch(function () { return null; })
+    : Promise.resolve(null);
+
+  function caminhoImagem(p) {
+    return /^imagens\/[\w.-]+\.png$/.test(String(p || "")) ? p : null;
+  }
+
+  function renderImagem(a) {
+    var caminho = caminhoImagem(a.imagem);
+    el("bloco-imagem").hidden = !caminho;
+    if (!caminho) return;
+    imagemAtual = { caminho: caminho, nome: "sentinela-60mais-" + a.id + ".png" };
+    var img = el("img-alerta");
+    img.src = caminho;
+    img.alt = String(a.imagem_alt || a.titulo || "Imagem do alerta");
+    el("link-imagem").href = caminho;
+    downloadsPromessa.then(function (downloads) {
+      el("btn-baixar").hidden = !downloads;
+      el("link-imagem").hidden = !!downloads;
+    });
+  }
+
+  el("btn-baixar").addEventListener("click", function () {
+    var aviso = el("aviso-imagem");
+    if (!imagemAtual) return;
+    aviso.textContent = "";
+    downloadsPromessa.then(function (downloads) {
+      if (!downloads) throw { code: "unavailable" };
+      return fetch(imagemAtual.caminho).then(function (r) {
+        if (!r.ok) throw { code: "bad_request" };
+        return r.blob();
+      }).then(function (blob) {
+        return downloads.save({ filename: imagemAtual.nome, data: blob });
+      });
+    }).then(function () {
+      aviso.textContent = "Imagem salva. Agora é só anexar no WhatsApp.";
+    }, function (erro) {
+      var codigo = erro && erro.code;
+      if (codigo === "declined") return;
+      if (codigo === "rate_limited") { aviso.textContent = "Espere um instante e tente de novo."; return; }
+      el("btn-baixar").hidden = true;
+      el("link-imagem").hidden = false;
+      aviso.textContent = "Não deu para baixar aqui. Abra a imagem e salve pelo menu do aparelho.";
+    });
+  });
+
   function renderAlerta(a) {
     texto("eyebrow-alerta", (a.extra ? "Alerta extra · " : "Alerta da semana · ") + dataLonga(a.publicado_em));
     texto("titulo-alerta", a.titulo);
@@ -496,6 +568,7 @@ a:hover { color: var(--azul-escuro); }
     el("bolha").innerHTML = card.split("\n").map(negritoWhats).join("\n");
     el("card-texto").value = card;
     el("whatsapp").hidden = !card;
+    renderImagem(a);
 
     falaTexto = [a.titulo, "Como chega: " + a.como_chega, "O que pedem: " + a.o_que_pedem,
       "Sinal de golpe: " + a.sinal, "O que fazer: " + a.o_que_fazer, "Para lembrar: " + a.para_lembrar]

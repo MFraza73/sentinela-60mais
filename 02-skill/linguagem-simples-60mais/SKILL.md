@@ -111,6 +111,28 @@ Garantia do Tempo de Serviço (FGTS); boletim de ocorrência (BO). Pix e CPF dis
 | `references/glossario.md` | Ao escrever: o glossário completo |
 | `references/exemplos.md` | Na primeira vez: dois pares antes/depois comentados |
 | `scripts/checar_alerta.py` | Sempre, antes de entregar |
+| `scripts/gerar_imagem.py` e `assets/imagem/` | Quando o alerta for publicado e precisar da imagem para WhatsApp |
+
+## Imagem do alerta
+
+Um alerta aprovado pode virar uma imagem de 1080 x 1350 pixels, para mandar no WhatsApp ou pôr no status. A
+imagem repete quatro campos do alerta, sem acrescentar nada: título, sinal de golpe, o que fazer e a frase para
+lembrar, com a data de publicação. Gere com `python scripts/gerar_imagem.py --alerta <alerta.json> --saida
+<imagem.png>`; só publique com status APROVADO.
+
+- **Pouco texto.** Até 12 palavras no título, 20 no sinal, 22 na ação, 10 na frase para lembrar e 60 no total.
+- **Nada que vire golpe.** Sem link, endereço de site, perfil de rede social, QR code, emoji ou telefone pessoal.
+  Número só o do canal oficial que está nas fontes.
+- **Letra grande.** Fonte Atkinson Hyperlegible, criada pelo Braille Institute para leitores com baixa visão.
+  Corpo de 56 pixels na imagem: perto de 20 pixels de tela quando a imagem ocupa a largura do celular.
+- **Urgência calma.** Branco, azul-noite e o âmbar da sinalização de atenção. Vermelho, "URGENTE" e contagem
+  regressiva ficam de fora: são a estética do próprio golpe.
+- **Contraste alto.** Todo texto principal com contraste de 7:1 ou mais (nível AAA da WCAG). A visão de cores
+  muda com a idade, sobretudo entre azuis e amarelos claros, por isso a imagem separa as partes pela claridade
+  e pelos rótulos escritos, não só pela cor.
+- **Texto alternativo.** O gerador devolve a descrição da imagem para leitores de tela. Mande também o texto do
+  card: a imagem complementa, não substitui.
+- **Data visível.** Imagem encaminhada circula por anos. A data mostra se o aviso é antigo.
 
 ## Critérios de boa entrega
 

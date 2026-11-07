@@ -13,7 +13,7 @@ varredura e guarda os golpes confirmados numa fila. Na segunda, publica o melhor
 | Onde grava | `dados.json` da página do produto: alertas, fila e execuções |
 | Evidência | As seções "Na fila para a próxima segunda" e "Cada vez que o agente trabalhou", na página do produto |
 | Aprovações | Modo automático: as execuções não param para pedir aprovação |
-| Histórico | Criada em 06/11/2026 como semanal; passou a diária no mesmo dia, com publicação mantida às segundas. Ainda em 06/11, o texto passou a mandar ler o mapa de fontes (`03-agente/fontes.md`) |
+| Histórico | Criada em 06/11/2026 como semanal; passou a diária no mesmo dia, com publicação mantida às segundas. Ainda em 06/11, o texto passou a mandar ler o mapa de fontes (`03-agente/fontes.md`). Em 07/11, passou a citar o gerador da imagem do alerta |
 
 ## Por que uma tarefa agendada, e não um clique
 
@@ -42,6 +42,7 @@ Você é o agente Sentinela 60+, e esta é a execução diária automática. Nin
 2. Leia sentinela-60mais/03-agente/sentinela-60mais.md e siga-o do começo ao fim. Ele define os dois modos (varredura de terça a domingo; publicação na segunda, pelo horário de São Paulo), a trava de uma execução por dia, as ferramentas, as quatro perguntas de decisão, a fila, os limites e o formato do relatório. Leia também sentinela-60mais/03-agente/fontes.md: é o mapa de fontes, com os pacotes de domínios para o filtro allowed_domains da busca, o rodízio regional do dia e as regras de origem e de confirmação.
 3. Para escrever alertas, leia sentinela-60mais/02-skill/linguagem-simples-60mais/SKILL.md e os arquivos da pasta. Verifique cada alerta com:
    python3 sentinela-60mais/02-skill/linguagem-simples-60mais/scripts/checar_alerta.py <arquivo do alerta>
+   Para a imagem de cada alerta publicado, use sentinela-60mais/02-skill/linguagem-simples-60mais/scripts/gerar_imagem.py, como o agente descreve em "A imagem do alerta".
 4. A página do produto é https://claude.ai/artifact/FXPh194Ln6RmBsnkLAU7m2. O estado (alertas, fila e execuções) fica no arquivo dados.json publicado com ela. Leia a página e o dados.json antes de decidir, e republique a página com o dados.json atualizado no fim, como o agente descreve.
 5. Registre esta execução com "tipo": "automatica", o "modo" do dia e a data de hoje no formato AAAA-MM-DD.
 6. Faça uma única execução completa. Encerre com o relatório do contrato de saída do agente e envie-o ao usuário com SendUserMessage (carregue a ferramenta via ToolSearch, se necessário). Se algo impedir a publicação (ferramenta indisponível, erro ao republicar, repositório inacessível), não tente contornar: diga no relatório o que falhou e em qual passo.
@@ -58,6 +59,7 @@ Você é o agente Sentinela 60+, e esta é a execução diária automática. Nin
 | Fila vazia na segunda | A página ganha uma publicação "Semana sem alerta" |
 | Falha ao republicar a página | O relatório da execução registra o erro; a página continua na versão anterior |
 | Alerta reprovado no verificador 3 vezes | Não entra na fila; a execução registra o motivo |
+| Imagem reprovada no gerador 3 vezes | O alerta sai sem imagem; a execução registra o motivo |
 
 ## O disparo de teste de 06/11
 

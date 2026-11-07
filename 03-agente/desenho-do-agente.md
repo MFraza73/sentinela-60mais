@@ -36,7 +36,7 @@ agente age sobre uma crença do estado do mundo, não sobre o estado em si.
 | --- | --- | --- |
 | Definição do agente | Objetivo, ferramentas, laço, regras de decisão e limites | `sentinela-60mais.md` |
 | Mapa de fontes | Papéis das fontes, pacotes de busca, rodízio regional e situação de cada domínio | `fontes.md` |
-| Skill | Como escrever: padrão de linguagem simples e verificador | `../02-skill/` |
+| Skill | Como escrever: padrão de linguagem simples, verificador e gerador da imagem do alerta | `../02-skill/` |
 | Ferramentas | Busca na web, leitura de páginas, republicação da página do produto | Do próprio Claude |
 | Estado | Alertas, fila de golpes confirmados e histórico de execuções | `dados.json`, publicado junto da página (`../05-produto/`) |
 | Gatilho | Tarefa agendada diária no Claude, às 7h40 | `../04-automacao/` |

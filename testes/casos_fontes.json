@@ -1,0 +1,695 @@
+{
+  "descricao": "Casos de regressão do verificador de fontes. Cada caso diz de onde veio (execução real ou caso-limite), a data de referência, o candidato e o resultado esperado: status, a lista exata de códigos de erro e os avisos que precisam aparecer.",
+  "casos": [
+    {
+      "nome": "falso-advogado-07-11",
+      "tipo": "execução real (07/11)",
+      "descricao": "Febraban e Polícia Civil de SC: setor bancário mais polícia",
+      "hoje": "2026-11-07",
+      "item": {
+        "golpe": "falso-advogado",
+        "noticiado_em": "2026-10-28",
+        "fontes": [
+          {
+            "nome": "Febraban: golpe do falso advogado",
+            "url": "https://portal.febraban.org.br/noticia/4512/pt-br/",
+            "origem": "banco",
+            "data": "2026-10-28"
+          },
+          {
+            "nome": "PCSC: operação contra o falso advogado",
+            "url": "https://pc.sc.gov.br/?p=41731",
+            "origem": "policia",
+            "data": "2026-10-21"
+          }
+        ]
+      },
+      "esperado": {
+        "status": "APROVADO",
+        "erros": []
+      }
+    },
+    {
+      "nome": "falso-gerente-fontes-regionais-06-11",
+      "tipo": "execução real (06/11)",
+      "descricao": "Dois sites regionais que reproduziam polícias, fora da lista",
+      "hoje": "2026-11-09",
+      "item": {
+        "golpe": "falso-gerente-banco",
+        "noticiado_em": "2026-11-06",
+        "fontes": [
+          {
+            "nome": "MegaZine, com a Polícia Civil do Paraná",
+            "url": "https://www.megazinenews.com.br/noticia/policia-civil-alerta-para-golpe-da-falsa-central-bancaria-e-orienta-como-evitar-prejuizos",
+            "origem": "outro",
+            "data": "2026-10-16"
+          },
+          {
+            "nome": "Petrolândia Notícias, com a Polícia Civil de PE",
+            "url": "https://petrolandianoticias.com.br/policia-civil-de-pernambuco-alerta-para-golpe-do-falso-gerente-de-banco-e-orienta-populacao-sobre-como-se-proteger/",
+            "origem": "outro",
+            "data": "2026-10-21"
+          }
+        ]
+      },
+      "esperado": {
+        "status": "REPROVADO",
+        "erros": [
+          "POUCAS_FONTES"
+        ],
+        "avisos": [
+          "NAO_CONTA"
+        ]
+      }
+    },
+    {
+      "nome": "falso-gerente-com-fonte-primaria",
+      "tipo": "correção possível na segunda",
+      "descricao": "Polícia Civil do PR (página original) e uma fonte do setor bancário; golpe noticiado em 06/11",
+      "hoje": "2026-11-09",
+      "item": {
+        "golpe": "falso-gerente-banco",
+        "noticiado_em": "2026-11-06",
+        "fontes": [
+          {
+            "nome": "PCPR alerta: recebeu uma ligação do banco pedindo Pix?",
+            "url": "https://www.policiacivil.pr.gov.br/Noticia/PCPR-alerta-recebeu-uma-ligacao-do-banco-pedindo-Pix-Pode-ser-golpe",
+            "origem": "policia",
+            "data": "2026-10-16"
+          },
+          {
+            "nome": "Febraban (fonte de exemplo do setor bancário)",
+            "url": "https://portal.febraban.org.br/noticia/exemplo/pt-br/",
+            "origem": "banco",
+            "data": "2026-10-30"
+          }
+        ]
+      },
+      "esperado": {
+        "status": "APROVADO",
+        "erros": []
+      }
+    },
+    {
+      "nome": "numero-secundario-06-11",
+      "tipo": "execução real (06/11)",
+      "descricao": "SF Notícias e Cariri in Foco, fora da lista",
+      "hoje": "2026-11-07",
+      "item": {
+        "golpe": "numero-secundario-whatsapp",
+        "noticiado_em": "2026-10-29",
+        "fontes": [
+          {
+            "nome": "SF Notícias",
+            "url": "https://sfnoticias.com.br/2026/10/29/policia-civil-alerta-para-novo-golpe-pelo-whatsapp-em-cidades-da-regiao-morador-de-sao-fidelis-perde-r-10-mil/",
+            "origem": "outro",
+            "data": "2026-10-29"
+          },
+          {
+            "nome": "Cariri in Foco",
+            "url": "https://www.caririinfoco.com.br/golpe-do-numero-de-confianca-faz-vitimas-em-monteiro-e-acende-alerta-para-invasao-de-whatsapp-e-redes-sociais/",
+            "origem": "outro",
+            "data": "2026-09-29"
+          }
+        ]
+      },
+      "esperado": {
+        "status": "REPROVADO",
+        "erros": [
+          "POUCAS_FONTES"
+        ]
+      }
+    },
+    {
+      "nome": "falso-bancario-df-sem-primaria",
+      "tipo": "execução real (06/11)",
+      "descricao": "Agência Brasil e Correio Braziliense, sem órgão nem polícia",
+      "hoje": "2026-11-06",
+      "item": {
+        "golpe": "falso-bancario-falso-delegado",
+        "fontes": [
+          {
+            "nome": "Agência Brasil",
+            "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-11/exemplo",
+            "origem": "imprensa",
+            "data": "2026-11-05"
+          },
+          {
+            "nome": "Correio Braziliense",
+            "url": "https://www.correiobraziliense.com.br/cidades-df/2026/11/exemplo",
+            "origem": "imprensa",
+            "data": "2026-11-05"
+          }
+        ]
+      },
+      "esperado": {
+        "status": "REPROVADO",
+        "erros": [
+          "SEM_PRIMARIA"
+        ]
+      }
+    },
+    {
+      "nome": "falsa-devolucao-inss-antiga",
+      "tipo": "execução real (07/11)",
+      "descricao": "Páginas de abril e maio de 2025",
+      "hoje": "2026-11-07",
+      "item": {
+        "golpe": "falsa-devolucao-descontos-inss",
+        "fontes": [
+          {
+            "nome": "CNN Brasil",
+            "url": "https://www.cnnbrasil.com.br/economia/financas/golpe-do-inss-aposentados-sao-alvo-de-falsas-promessas-de-devolucao/",
+            "origem": "imprensa",
+            "data": "2025-05-10"
+          },
+          {
+            "nome": "Procon-ES",
+            "url": "https://procon.es.gov.br/Not%C3%ADcia/exemplo",
+            "origem": "procon",
+            "data": "2025-04-30"
+          }
+        ]
+      },
+      "esperado": {
+        "status": "REPROVADO",
+        "erros": [
+          "FORA_DA_JANELA"
+        ]
+      }
+    },
+    {
+      "nome": "black-friday-so-checagem",
+      "tipo": "execução real (07/11)",
+      "descricao": "Só uma checagem do Boatos.org",
+      "hoje": "2026-11-07",
+      "item": {
+        "golpe": "encomenda-extraviada-black-friday",
+        "fontes": [
+          {
+            "nome": "Boatos.org",
+            "url": "https://www.boatos.org/tecnologia/sms-falso-rastreio-golpe-phishing-encomenda-perdida-black-friday.html",
+            "origem": "checador",
+            "data": "2025-11-20"
+          }
+        ]
+      },
+      "esperado": {
+        "status": "REPROVADO",
+        "erros": [
+          "POUCAS_FONTES",
+          "FORA_DA_JANELA"
+        ],
+        "avisos": [
+          "NAO_CONTA"
+        ]
+      }
+    },
+    {
+      "nome": "febraban-sozinha-antiga",
+      "tipo": "execução real (06/11)",
+      "descricao": "Só a Febraban, alerta de 09/10",
+      "hoje": "2026-11-06",
+      "item": {
+        "golpe": "golpistas-nome-febraban",
+        "fontes": [
+          {
+            "nome": "Febraban",
+            "url": "https://portal.febraban.org.br/noticia/4400/pt-br/",
+            "origem": "banco",
+            "data": "2026-10-09"
+          }
+        ]
+      },
+      "esperado": {
+        "status": "REPROVADO",
+        "erros": [
+          "POUCAS_FONTES",
+          "FORA_DA_JANELA"
+        ]
+      }
+    },
+    {
+      "nome": "so-setor-bancario",
+      "tipo": "caso-limite",
+      "descricao": "Blog do Nubank e Febraban: setor bancário vale como uma fonte",
+      "hoje": "2026-11-07",
+      "item": {
+        "golpe": "falsa-central",
+        "fontes": [
+          {
+            "nome": "Blog Nubank",
+            "url": "https://blog.nubank.com.br/golpe-da-falsa-central-de-atendimento/",
+            "origem": "banco",
+            "data": "2026-11-01"
+          },
+          {
+            "nome": "Febraban",
+            "url": "https://portal.febraban.org.br/noticia/4512/pt-br/",
+            "origem": "banco",
+            "data": "2026-10-28"
+          }
+        ]
+      },
+      "esperado": {
+        "status": "REPROVADO",
+        "erros": [
+          "SETOR_BANCARIO_SOZINHO"
+        ]
+      }
+    },
+    {
+      "nome": "ebc-duas-vezes",
+      "tipo": "caso-limite",
+      "descricao": "Agência Brasil e Radioagência Nacional são da EBC",
+      "hoje": "2026-11-07",
+      "item": {
+        "golpe": "x",
+        "fontes": [
+          {
+            "nome": "Agência Brasil",
+            "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-11/a",
+            "origem": "imprensa",
+            "data": "2026-11-05"
+          },
+          {
+            "nome": "Radioagência Nacional",
+            "url": "https://agenciabrasil.ebc.com.br/radioagencia-nacional/geral/audio/2026-11/b",
+            "origem": "imprensa",
+            "data": "2026-11-05"
+          }
+        ]
+      },
+      "esperado": {
+        "status": "REPROVADO",
+        "erros": [
+          "MESMO_GRUPO",
+          "SEM_PRIMARIA"
+        ]
+      }
+    },
+    {
+      "nome": "inss-e-senacon",
+      "tipo": "caso-limite",
+      "descricao": "Dois órgãos diferentes dentro de gov.br",
+      "hoje": "2026-11-07",
+      "item": {
+        "golpe": "x",
+        "fontes": [
+          {
+            "nome": "INSS",
+            "url": "https://www.gov.br/inss/pt-br/assuntos/noticias/a",
+            "origem": "orgao",
+            "data": "2026-11-03"
+          },
+          {
+            "nome": "Senacon",
+            "url": "https://www.gov.br/mj/pt-br/assuntos/noticias/b",
+            "origem": "orgao",
+            "data": "2026-11-04"
+          }
+        ]
+      },
+      "esperado": {
+        "status": "APROVADO",
+        "erros": [],
+        "avisos": [
+          "DOMINIO_AMPLO"
+        ]
+      }
+    },
+    {
+      "nome": "mesmo-orgao-gov-br",
+      "tipo": "caso-limite",
+      "descricao": "Duas páginas do INSS",
+      "hoje": "2026-11-07",
+      "item": {
+        "golpe": "x",
+        "fontes": [
+          {
+            "nome": "INSS 1",
+            "url": "https://www.gov.br/inss/pt-br/assuntos/noticias/a",
+            "origem": "orgao",
+            "data": "2026-11-03"
+          },
+          {
+            "nome": "INSS 2",
+            "url": "https://www.gov.br/inss/pt-br/assuntos/noticias/b",
+            "origem": "orgao",
+            "data": "2026-11-04"
+          }
+        ]
+      },
+      "esperado": {
+        "status": "REPROVADO",
+        "erros": [
+          "MESMO_GRUPO"
+        ]
+      }
+    },
+    {
+      "nome": "policia-que-nao-abre",
+      "tipo": "caso-limite",
+      "descricao": "Polícia Civil de MG bloqueia a ferramenta",
+      "hoje": "2026-11-07",
+      "item": {
+        "golpe": "x",
+        "fontes": [
+          {
+            "nome": "PCMG",
+            "url": "https://www.policiacivil.mg.gov.br/noticia/exibir?id=1",
+            "origem": "policia",
+            "data": "2026-11-03"
+          },
+          {
+            "nome": "Procon-SP",
+            "url": "https://www.procon.sp.gov.br/a/",
+            "origem": "procon",
+            "data": "2026-11-04"
+          }
+        ]
+      },
+      "esperado": {
+        "status": "REPROVADO",
+        "erros": [
+          "DOMINIO_SO_SINAL",
+          "POUCAS_FONTES"
+        ]
+      }
+    },
+    {
+      "nome": "dominio-recusado",
+      "tipo": "caso-limite",
+      "descricao": "Estadão é recusado pela ferramenta de busca",
+      "hoje": "2026-11-07",
+      "item": {
+        "golpe": "x",
+        "fontes": [
+          {
+            "nome": "Estadão",
+            "url": "https://www.estadao.com.br/economia/a/",
+            "origem": "imprensa",
+            "data": "2026-11-03"
+          },
+          {
+            "nome": "INSS",
+            "url": "https://www.gov.br/inss/pt-br/assuntos/noticias/a",
+            "origem": "orgao",
+            "data": "2026-11-04"
+          }
+        ]
+      },
+      "esperado": {
+        "status": "REPROVADO",
+        "erros": [
+          "DOMINIO_RECUSADO",
+          "POUCAS_FONTES"
+        ]
+      }
+    },
+    {
+      "nome": "origem-incoerente",
+      "tipo": "caso-limite",
+      "descricao": "Polícia declarada como Procon",
+      "hoje": "2026-11-07",
+      "item": {
+        "golpe": "x",
+        "fontes": [
+          {
+            "nome": "PCRS",
+            "url": "https://www.pc.rs.gov.br/a",
+            "origem": "procon",
+            "data": "2026-11-03"
+          },
+          {
+            "nome": "INSS",
+            "url": "https://www.gov.br/inss/pt-br/assuntos/noticias/a",
+            "origem": "orgao",
+            "data": "2026-11-04"
+          }
+        ]
+      },
+      "esperado": {
+        "status": "REPROVADO",
+        "erros": [
+          "ORIGEM_INCOERENTE",
+          "POUCAS_FONTES"
+        ]
+      }
+    },
+    {
+      "nome": "checagem-declarada-imprensa",
+      "tipo": "caso-limite",
+      "descricao": "Aos Fatos declarado como imprensa para contar como confirmação",
+      "hoje": "2026-11-07",
+      "item": {
+        "golpe": "x",
+        "fontes": [
+          {
+            "nome": "Aos Fatos",
+            "url": "https://www.aosfatos.org/noticias/a/",
+            "origem": "imprensa",
+            "data": "2026-11-03"
+          },
+          {
+            "nome": "INSS",
+            "url": "https://www.gov.br/inss/pt-br/assuntos/noticias/a",
+            "origem": "orgao",
+            "data": "2026-11-04"
+          }
+        ]
+      },
+      "esperado": {
+        "status": "REPROVADO",
+        "erros": [
+          "ORIGEM_INCOERENTE",
+          "POUCAS_FONTES"
+        ]
+      }
+    },
+    {
+      "nome": "sem-data",
+      "tipo": "caso-limite",
+      "descricao": "Fonte sem data no campo nem no nome",
+      "hoje": "2026-11-07",
+      "item": {
+        "golpe": "x",
+        "fontes": [
+          {
+            "nome": "PCRS",
+            "url": "https://www.pc.rs.gov.br/a",
+            "origem": "policia"
+          },
+          {
+            "nome": "INSS",
+            "url": "https://www.gov.br/inss/pt-br/assuntos/noticias/a",
+            "origem": "orgao",
+            "data": "2026-11-04"
+          }
+        ]
+      },
+      "esperado": {
+        "status": "REPROVADO",
+        "erros": [
+          "SEM_DATA"
+        ]
+      }
+    },
+    {
+      "nome": "data-futura",
+      "tipo": "caso-limite",
+      "descricao": "Data depois de hoje",
+      "hoje": "2026-11-07",
+      "item": {
+        "golpe": "x",
+        "fontes": [
+          {
+            "nome": "PCRS",
+            "url": "https://www.pc.rs.gov.br/a",
+            "origem": "policia",
+            "data": "2026-12-01"
+          },
+          {
+            "nome": "INSS",
+            "url": "https://www.gov.br/inss/pt-br/assuntos/noticias/a",
+            "origem": "orgao",
+            "data": "2026-11-04"
+          }
+        ]
+      },
+      "esperado": {
+        "status": "REPROVADO",
+        "erros": [
+          "DATA_FUTURA"
+        ]
+      }
+    },
+    {
+      "nome": "prefeitura-em-dominio-amplo",
+      "tipo": "caso-limite",
+      "descricao": "Câmara municipal dentro de ba.gov.br não é a polícia da Bahia",
+      "hoje": "2026-11-07",
+      "item": {
+        "golpe": "x",
+        "fontes": [
+          {
+            "nome": "Câmara municipal",
+            "url": "https://www.cmsfc.ba.gov.br/noticia/a",
+            "origem": "orgao",
+            "data": "2026-11-03"
+          },
+          {
+            "nome": "INSS",
+            "url": "https://www.gov.br/inss/pt-br/assuntos/noticias/a",
+            "origem": "orgao",
+            "data": "2026-11-04"
+          }
+        ]
+      },
+      "esperado": {
+        "status": "REPROVADO",
+        "erros": [
+          "DOMINIO_FORA_DA_LISTA",
+          "POUCAS_FONTES"
+        ]
+      }
+    },
+    {
+      "nome": "mesmo-estado",
+      "tipo": "caso-limite",
+      "descricao": "Polícia Civil do Acre e agência de notícias do Acre",
+      "hoje": "2026-11-07",
+      "item": {
+        "golpe": "x",
+        "fontes": [
+          {
+            "nome": "PCAC",
+            "url": "https://pc.ac.gov.br/a/",
+            "origem": "policia",
+            "data": "2026-11-03"
+          },
+          {
+            "nome": "Agência Acre",
+            "url": "https://agencia.ac.gov.br/b/",
+            "origem": "procon",
+            "data": "2026-11-04"
+          }
+        ]
+      },
+      "esperado": {
+        "status": "APROVADO",
+        "erros": [],
+        "avisos": [
+          "MESMO_ESTADO"
+        ]
+      }
+    },
+    {
+      "nome": "orientacao-antiga-golpe-recente",
+      "tipo": "caso-limite",
+      "descricao": "Orientação de 5 meses, golpe noticiado ontem",
+      "hoje": "2026-11-07",
+      "item": {
+        "golpe": "x",
+        "noticiado_em": "2026-11-06",
+        "fontes": [
+          {
+            "nome": "PCRS",
+            "url": "https://www.pc.rs.gov.br/a",
+            "origem": "policia",
+            "data": "2026-06-01"
+          },
+          {
+            "nome": "Procon-SP",
+            "url": "https://www.procon.sp.gov.br/a/",
+            "origem": "procon",
+            "data": "2026-05-20"
+          }
+        ]
+      },
+      "esperado": {
+        "status": "APROVADO",
+        "erros": [],
+        "avisos": [
+          "ORIENTACAO_ANTIGA"
+        ]
+      }
+    },
+    {
+      "nome": "ja-na-fila",
+      "tipo": "caso-limite",
+      "descricao": "Candidato igual a um item aguardando na fila",
+      "hoje": "2026-11-08",
+      "dados": {
+        "alertas": [],
+        "fila": [
+          {
+            "golpe": "falso-advogado",
+            "status": "aguardando"
+          }
+        ]
+      },
+      "item": {
+        "golpe": "falso-advogado",
+        "fontes": [
+          {
+            "nome": "Febraban",
+            "url": "https://portal.febraban.org.br/noticia/4512/pt-br/",
+            "origem": "banco",
+            "data": "2026-10-28"
+          },
+          {
+            "nome": "PCSC",
+            "url": "https://pc.sc.gov.br/?p=41731",
+            "origem": "policia",
+            "data": "2026-10-27"
+          }
+        ]
+      },
+      "esperado": {
+        "status": "REPROVADO",
+        "erros": [
+          "JA_NA_FILA"
+        ]
+      }
+    },
+    {
+      "nome": "ja-publicado",
+      "tipo": "caso-limite",
+      "descricao": "Golpe publicado há menos de 8 semanas",
+      "hoje": "2026-11-20",
+      "dados": {
+        "alertas": [
+          {
+            "golpe": "falso-bloqueio-biometria-inss",
+            "publicado_em": "2026-11-06"
+          }
+        ],
+        "fila": []
+      },
+      "item": {
+        "golpe": "falso-bloqueio-biometria-inss",
+        "fontes": [
+          {
+            "nome": "INSS",
+            "url": "https://www.gov.br/inss/pt-br/assuntos/noticias/a",
+            "origem": "orgao",
+            "data": "2026-11-15"
+          },
+          {
+            "nome": "Agência Brasil",
+            "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-11/a",
+            "origem": "imprensa",
+            "data": "2026-11-16"
+          }
+        ]
+      },
+      "esperado": {
+        "status": "REPROVADO",
+        "erros": [
+          "JA_PUBLICADO"
+        ]
+      }
+    }
+  ]
+}

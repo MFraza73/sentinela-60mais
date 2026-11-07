@@ -1,0 +1,749 @@
+{
+  "atualizado_em": "2026-11-07",
+  "descricao": "Lista legível por máquina do mapa de fontes (fontes.md). O verificador checar_fontes.py lê este arquivo. Mantenha os dois em sincronia.",
+  "origens_primarias": [
+    "orgao",
+    "policia",
+    "procon",
+    "banco"
+  ],
+  "origens_que_confirmam": [
+    "orgao",
+    "policia",
+    "procon",
+    "banco",
+    "imprensa"
+  ],
+  "janela_dias": 14,
+  "dominios": [
+    {
+      "dominio": "gov.br",
+      "origens": [
+        "orgao",
+        "policia",
+        "procon",
+        "banco"
+      ],
+      "papel": "confirma",
+      "grupo": "caminho",
+      "exato": true,
+      "nota": "Domínio amplo: só www.gov.br; o grupo é o órgão do caminho (/inss, /mj, /anatel...). Materiais da Aliança Nacional (gov.br/mj) sobre fraude bancária contam como setor bancário: declare origem banco."
+    },
+    {
+      "dominio": "portal.febraban.org.br",
+      "origens": [
+        "banco"
+      ],
+      "papel": "confirma",
+      "grupo": "setor-bancario"
+    },
+    {
+      "dominio": "caixanoticias.caixa.gov.br",
+      "origens": [
+        "banco"
+      ],
+      "papel": "confirma",
+      "grupo": "setor-bancario"
+    },
+    {
+      "dominio": "feito.itau.com.br",
+      "origens": [
+        "banco"
+      ],
+      "papel": "confirma",
+      "grupo": "setor-bancario"
+    },
+    {
+      "dominio": "itau.com.br",
+      "origens": [
+        "banco"
+      ],
+      "papel": "confirma",
+      "grupo": "setor-bancario"
+    },
+    {
+      "dominio": "blog.bb.com.br",
+      "origens": [
+        "banco"
+      ],
+      "papel": "confirma",
+      "grupo": "setor-bancario"
+    },
+    {
+      "dominio": "blog.nubank.com.br",
+      "origens": [
+        "banco"
+      ],
+      "papel": "confirma",
+      "grupo": "setor-bancario"
+    },
+    {
+      "dominio": "nubank.com.br",
+      "origens": [
+        "banco"
+      ],
+      "papel": "confirma",
+      "grupo": "setor-bancario"
+    },
+    {
+      "dominio": "blog.inter.co",
+      "origens": [
+        "banco"
+      ],
+      "papel": "confirma",
+      "grupo": "setor-bancario"
+    },
+    {
+      "dominio": "inter.co",
+      "origens": [
+        "banco"
+      ],
+      "papel": "confirma",
+      "grupo": "setor-bancario"
+    },
+    {
+      "dominio": "seguranca.bradesco",
+      "origens": [
+        "banco"
+      ],
+      "papel": "confirma",
+      "grupo": "setor-bancario"
+    },
+    {
+      "dominio": "santander.com.br",
+      "origens": [
+        "banco"
+      ],
+      "papel": "confirma",
+      "grupo": "setor-bancario"
+    },
+    {
+      "dominio": "caixa.gov.br",
+      "origens": [
+        "banco"
+      ],
+      "papel": "sinal",
+      "grupo": "setor-bancario",
+      "nota": "Portal bloqueia a ferramenta; use caixanoticias.caixa.gov.br"
+    },
+    {
+      "dominio": "bb.com.br",
+      "origens": [
+        "banco"
+      ],
+      "papel": "sinal",
+      "grupo": "setor-bancario",
+      "nota": "Página de golpes vem sem o texto; use blog.bb.com.br"
+    },
+    {
+      "dominio": "bcb.gov.br",
+      "origens": [
+        "orgao"
+      ],
+      "papel": "sinal",
+      "grupo": "banco-central",
+      "nota": "Página só carrega com JavaScript"
+    },
+    {
+      "dominio": "cartilha.cert.br",
+      "origens": [
+        "apoio"
+      ],
+      "papel": "apoio",
+      "grupo": "cert-br"
+    },
+    {
+      "dominio": "new.safernet.org.br",
+      "origens": [
+        "apoio"
+      ],
+      "papel": "apoio",
+      "grupo": "safernet"
+    },
+    {
+      "dominio": "agenciabrasil.ebc.com.br",
+      "origens": [
+        "imprensa"
+      ],
+      "papel": "confirma",
+      "grupo": "ebc"
+    },
+    {
+      "dominio": "cnnbrasil.com.br",
+      "origens": [
+        "imprensa"
+      ],
+      "papel": "confirma",
+      "grupo": "cnn-brasil"
+    },
+    {
+      "dominio": "correiobraziliense.com.br",
+      "origens": [
+        "imprensa"
+      ],
+      "papel": "confirma",
+      "grupo": "correio-braziliense"
+    },
+    {
+      "dominio": "metropoles.com",
+      "origens": [
+        "imprensa"
+      ],
+      "papel": "confirma",
+      "grupo": "metropoles"
+    },
+    {
+      "dominio": "aosfatos.org",
+      "origens": [
+        "checador"
+      ],
+      "papel": "sinal",
+      "grupo": "aos-fatos",
+      "nota": "Agência de checagem: indica, nunca confirma"
+    },
+    {
+      "dominio": "boatos.org",
+      "origens": [
+        "checador"
+      ],
+      "papel": "sinal",
+      "grupo": "boatos-org",
+      "nota": "Agência de checagem: indica, nunca confirma"
+    },
+    {
+      "dominio": "projetocomprova.com.br",
+      "origens": [
+        "checador"
+      ],
+      "papel": "sinal",
+      "grupo": "comprova",
+      "nota": "Agência de checagem: indica, nunca confirma"
+    },
+    {
+      "dominio": "e-farsas.com",
+      "origens": [
+        "checador"
+      ],
+      "papel": "sinal",
+      "grupo": "e-farsas",
+      "nota": "Agência de checagem: indica, nunca confirma"
+    },
+    {
+      "dominio": "estadao.com.br",
+      "origens": [],
+      "papel": "recusado",
+      "grupo": "estadao.com.br",
+      "nota": "A ferramenta de busca recusa o domínio"
+    },
+    {
+      "dominio": "uol.com.br",
+      "origens": [],
+      "papel": "recusado",
+      "grupo": "uol.com.br",
+      "nota": "A ferramenta de busca recusa o domínio"
+    },
+    {
+      "dominio": "globo.com",
+      "origens": [],
+      "papel": "recusado",
+      "grupo": "globo.com",
+      "nota": "A ferramenta de busca recusa o domínio"
+    },
+    {
+      "dominio": "bbc.com",
+      "origens": [],
+      "papel": "recusado",
+      "grupo": "bbc.com",
+      "nota": "A ferramenta de busca recusa o domínio"
+    },
+    {
+      "dominio": "pc.ac.gov.br",
+      "origens": [
+        "policia"
+      ],
+      "papel": "confirma",
+      "grupo": "pc-ac",
+      "uf": "AC"
+    },
+    {
+      "dominio": "agencia.ac.gov.br",
+      "origens": [
+        "orgao",
+        "policia",
+        "procon"
+      ],
+      "papel": "confirma",
+      "grupo": "governo-ac",
+      "uf": "AC"
+    },
+    {
+      "dominio": "policiacivil.am.gov.br",
+      "origens": [
+        "policia"
+      ],
+      "papel": "confirma",
+      "grupo": "pc-am",
+      "uf": "AM"
+    },
+    {
+      "dominio": "policiacivil.ce.gov.br",
+      "origens": [
+        "policia"
+      ],
+      "papel": "confirma",
+      "grupo": "pc-ce",
+      "uf": "CE"
+    },
+    {
+      "dominio": "pc.es.gov.br",
+      "origens": [
+        "policia"
+      ],
+      "papel": "confirma",
+      "grupo": "pc-es",
+      "uf": "ES"
+    },
+    {
+      "dominio": "procon.es.gov.br",
+      "origens": [
+        "procon"
+      ],
+      "papel": "confirma",
+      "grupo": "procon-es",
+      "uf": "ES"
+    },
+    {
+      "dominio": "policiacivil.ma.gov.br",
+      "origens": [
+        "policia"
+      ],
+      "papel": "confirma",
+      "grupo": "pc-ma",
+      "uf": "MA"
+    },
+    {
+      "dominio": "pc.ms.gov.br",
+      "origens": [
+        "policia"
+      ],
+      "papel": "confirma",
+      "grupo": "pc-ms",
+      "uf": "MS"
+    },
+    {
+      "dominio": "procon.ms.gov.br",
+      "origens": [
+        "procon"
+      ],
+      "papel": "confirma",
+      "grupo": "procon-ms",
+      "uf": "MS"
+    },
+    {
+      "dominio": "mpmg.mp.br",
+      "origens": [
+        "procon"
+      ],
+      "papel": "confirma",
+      "grupo": "procon-mg",
+      "uf": "MG"
+    },
+    {
+      "dominio": "policiacivil.pr.gov.br",
+      "origens": [
+        "policia"
+      ],
+      "papel": "confirma",
+      "grupo": "pc-pr",
+      "uf": "PR"
+    },
+    {
+      "dominio": "procon.pe.gov.br",
+      "origens": [
+        "procon"
+      ],
+      "papel": "confirma",
+      "grupo": "procon-pe",
+      "uf": "PE"
+    },
+    {
+      "dominio": "pc.rs.gov.br",
+      "origens": [
+        "policia"
+      ],
+      "papel": "confirma",
+      "grupo": "pc-rs",
+      "uf": "RS"
+    },
+    {
+      "dominio": "procon.rs.gov.br",
+      "origens": [
+        "procon"
+      ],
+      "papel": "confirma",
+      "grupo": "procon-rs",
+      "uf": "RS"
+    },
+    {
+      "dominio": "policiacivil.rr.gov.br",
+      "origens": [
+        "policia"
+      ],
+      "papel": "confirma",
+      "grupo": "pc-rr",
+      "uf": "RR"
+    },
+    {
+      "dominio": "pc.sc.gov.br",
+      "origens": [
+        "policia"
+      ],
+      "papel": "confirma",
+      "grupo": "pc-sc",
+      "uf": "SC"
+    },
+    {
+      "dominio": "procon.sc.gov.br",
+      "origens": [
+        "procon"
+      ],
+      "papel": "confirma",
+      "grupo": "procon-sc",
+      "uf": "SC"
+    },
+    {
+      "dominio": "procon.sp.gov.br",
+      "origens": [
+        "procon"
+      ],
+      "papel": "confirma",
+      "grupo": "procon-sp",
+      "uf": "SP"
+    },
+    {
+      "dominio": "goias.gov.br",
+      "origens": [
+        "orgao",
+        "policia",
+        "procon"
+      ],
+      "papel": "confirma",
+      "grupo": "caminho",
+      "uf": "GO",
+      "exato": true,
+      "nota": "Domínio amplo: o grupo é o órgão do caminho (/policiacivil, /procon, /ssp)"
+    },
+    {
+      "dominio": "ba.gov.br",
+      "origens": [
+        "orgao",
+        "policia",
+        "procon"
+      ],
+      "papel": "confirma",
+      "grupo": "caminho",
+      "uf": "BA",
+      "exato": true,
+      "nota": "Domínio amplo: o grupo é o órgão do caminho (/policiacivil, /procon, /ssp)"
+    },
+    {
+      "dominio": "pi.gov.br",
+      "origens": [
+        "orgao",
+        "policia",
+        "procon"
+      ],
+      "papel": "confirma",
+      "grupo": "governo-pi",
+      "uf": "PI",
+      "exato": true,
+      "nota": "Agência de notícias do governo estadual: se só republica a nota de um órgão, conta como o órgão"
+    },
+    {
+      "dominio": "rondonia.ro.gov.br",
+      "origens": [
+        "orgao",
+        "policia",
+        "procon"
+      ],
+      "papel": "confirma",
+      "grupo": "governo-ro",
+      "uf": "RO",
+      "exato": true,
+      "nota": "Agência de notícias do governo estadual: se só republica a nota de um órgão, conta como o órgão"
+    },
+    {
+      "dominio": "parana.pr.gov.br",
+      "origens": [
+        "orgao",
+        "policia",
+        "procon"
+      ],
+      "papel": "confirma",
+      "grupo": "governo-pr",
+      "uf": "PR",
+      "exato": true,
+      "nota": "Agência de notícias do governo estadual: se só republica a nota de um órgão, conta como o órgão"
+    },
+    {
+      "dominio": "policiacivil.ap.gov.br",
+      "origens": [
+        "policia"
+      ],
+      "papel": "sinal",
+      "grupo": "policiacivil.ap.gov.br",
+      "uf": "AP",
+      "nota": "A ferramenta encontra, mas a página não abre ou vem sem texto"
+    },
+    {
+      "dominio": "procon.al.gov.br",
+      "origens": [
+        "procon"
+      ],
+      "papel": "sinal",
+      "grupo": "procon.al.gov.br",
+      "uf": "AL",
+      "nota": "A ferramenta encontra, mas a página não abre ou vem sem texto"
+    },
+    {
+      "dominio": "procon.am.gov.br",
+      "origens": [
+        "procon"
+      ],
+      "papel": "sinal",
+      "grupo": "procon.am.gov.br",
+      "uf": "AM",
+      "nota": "A ferramenta encontra, mas a página não abre ou vem sem texto"
+    },
+    {
+      "dominio": "mpce.mp.br",
+      "origens": [
+        "procon"
+      ],
+      "papel": "sinal",
+      "grupo": "mpce.mp.br",
+      "uf": "CE",
+      "nota": "A ferramenta encontra, mas a página não abre ou vem sem texto"
+    },
+    {
+      "dominio": "pcdf.df.gov.br",
+      "origens": [
+        "policia"
+      ],
+      "papel": "sinal",
+      "grupo": "pcdf.df.gov.br",
+      "uf": "DF",
+      "nota": "A ferramenta encontra, mas a página não abre ou vem sem texto"
+    },
+    {
+      "dominio": "procon.df.gov.br",
+      "origens": [
+        "procon"
+      ],
+      "papel": "sinal",
+      "grupo": "procon.df.gov.br",
+      "uf": "DF",
+      "nota": "A ferramenta encontra, mas a página não abre ou vem sem texto"
+    },
+    {
+      "dominio": "pjc.mt.gov.br",
+      "origens": [
+        "policia"
+      ],
+      "papel": "sinal",
+      "grupo": "pjc.mt.gov.br",
+      "uf": "MT",
+      "nota": "A ferramenta encontra, mas a página não abre ou vem sem texto"
+    },
+    {
+      "dominio": "procon.mt.gov.br",
+      "origens": [
+        "procon"
+      ],
+      "papel": "sinal",
+      "grupo": "procon.mt.gov.br",
+      "uf": "MT",
+      "nota": "A ferramenta encontra, mas a página não abre ou vem sem texto"
+    },
+    {
+      "dominio": "policiacivil.mg.gov.br",
+      "origens": [
+        "policia"
+      ],
+      "papel": "sinal",
+      "grupo": "policiacivil.mg.gov.br",
+      "uf": "MG",
+      "nota": "A ferramenta encontra, mas a página não abre ou vem sem texto"
+    },
+    {
+      "dominio": "policiacivil.pa.gov.br",
+      "origens": [
+        "policia"
+      ],
+      "papel": "sinal",
+      "grupo": "policiacivil.pa.gov.br",
+      "uf": "PA",
+      "nota": "A ferramenta encontra, mas a página não abre ou vem sem texto"
+    },
+    {
+      "dominio": "procon.pa.gov.br",
+      "origens": [
+        "procon"
+      ],
+      "papel": "sinal",
+      "grupo": "procon.pa.gov.br",
+      "uf": "PA",
+      "nota": "A ferramenta encontra, mas a página não abre ou vem sem texto"
+    },
+    {
+      "dominio": "policiacivil.pb.gov.br",
+      "origens": [
+        "policia"
+      ],
+      "papel": "sinal",
+      "grupo": "policiacivil.pb.gov.br",
+      "uf": "PB",
+      "nota": "A ferramenta encontra, mas a página não abre ou vem sem texto"
+    },
+    {
+      "dominio": "procon.pb.gov.br",
+      "origens": [
+        "procon"
+      ],
+      "papel": "sinal",
+      "grupo": "procon.pb.gov.br",
+      "uf": "PB",
+      "nota": "A ferramenta encontra, mas a página não abre ou vem sem texto"
+    },
+    {
+      "dominio": "procon.pr.gov.br",
+      "origens": [
+        "procon"
+      ],
+      "papel": "sinal",
+      "grupo": "procon.pr.gov.br",
+      "uf": "PR",
+      "nota": "A ferramenta encontra, mas a página não abre ou vem sem texto"
+    },
+    {
+      "dominio": "policiacivil.pe.gov.br",
+      "origens": [
+        "policia"
+      ],
+      "papel": "sinal",
+      "grupo": "policiacivil.pe.gov.br",
+      "uf": "PE",
+      "nota": "A ferramenta encontra, mas a página não abre ou vem sem texto"
+    },
+    {
+      "dominio": "sds.pe.gov.br",
+      "origens": [
+        "policia"
+      ],
+      "papel": "sinal",
+      "grupo": "sds.pe.gov.br",
+      "uf": "PE",
+      "nota": "A ferramenta encontra, mas a página não abre ou vem sem texto"
+    },
+    {
+      "dominio": "mppi.mp.br",
+      "origens": [
+        "procon"
+      ],
+      "papel": "sinal",
+      "grupo": "mppi.mp.br",
+      "uf": "PI",
+      "nota": "A ferramenta encontra, mas a página não abre ou vem sem texto"
+    },
+    {
+      "dominio": "ssp.pi.gov.br",
+      "origens": [
+        "policia"
+      ],
+      "papel": "sinal",
+      "grupo": "ssp.pi.gov.br",
+      "uf": "PI",
+      "nota": "A ferramenta encontra, mas a página não abre ou vem sem texto"
+    },
+    {
+      "dominio": "policiacivil.rj.gov.br",
+      "origens": [
+        "policia"
+      ],
+      "papel": "sinal",
+      "grupo": "policiacivil.rj.gov.br",
+      "uf": "RJ",
+      "nota": "A ferramenta encontra, mas a página não abre ou vem sem texto"
+    },
+    {
+      "dominio": "boavista.rr.gov.br",
+      "origens": [
+        "procon"
+      ],
+      "papel": "sinal",
+      "grupo": "boavista.rr.gov.br",
+      "uf": "RR",
+      "nota": "A ferramenta encontra, mas a página não abre ou vem sem texto"
+    },
+    {
+      "dominio": "ssp.sp.gov.br",
+      "origens": [
+        "policia"
+      ],
+      "papel": "sinal",
+      "grupo": "ssp.sp.gov.br",
+      "uf": "SP",
+      "nota": "A ferramenta encontra, mas a página não abre ou vem sem texto"
+    },
+    {
+      "dominio": "ssp.se.gov.br",
+      "origens": [
+        "policia"
+      ],
+      "papel": "sinal",
+      "grupo": "ssp.se.gov.br",
+      "uf": "SE",
+      "nota": "A ferramenta encontra, mas a página não abre ou vem sem texto"
+    },
+    {
+      "dominio": "sejuc.se.gov.br",
+      "origens": [
+        "procon"
+      ],
+      "papel": "sinal",
+      "grupo": "sejuc.se.gov.br",
+      "uf": "SE",
+      "nota": "A ferramenta encontra, mas a página não abre ou vem sem texto"
+    },
+    {
+      "dominio": "to.gov.br",
+      "origens": [
+        "orgao"
+      ],
+      "papel": "sinal",
+      "grupo": "to.gov.br",
+      "uf": "TO",
+      "nota": "A ferramenta encontra, mas a página não abre ou vem sem texto"
+    },
+    {
+      "dominio": "natal.rn.gov.br",
+      "origens": [
+        "procon"
+      ],
+      "papel": "sinal",
+      "grupo": "natal.rn.gov.br",
+      "uf": "RN",
+      "nota": "A ferramenta encontra, mas a página não abre ou vem sem texto"
+    },
+    {
+      "dominio": "pc.al.gov.br",
+      "origens": [
+        "policia"
+      ],
+      "papel": "sinal",
+      "grupo": "pc.al.gov.br",
+      "uf": "AL",
+      "nota": "A ferramenta encontra, mas a página não abre ou vem sem texto"
+    }
+  ]
+}

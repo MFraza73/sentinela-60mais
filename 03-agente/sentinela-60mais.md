@@ -215,9 +215,11 @@ Depois de republicar a página do Claude, na pasta do repositório clonado:
 
 1. Copie o `dados.json` final para `05-produto/dados.json` e a imagem nova, se houver, para
    `05-produto/imagens/`. Não mexa em nenhum outro arquivo.
-2. Carregue a ferramenta `add_repo` (via ToolSearch) e peça acesso de envio (`access: "push"`) a
-   `MFraza73/sentinela-60mais`.
-3. Faça `git pull --rebase`, um commit com a mensagem `Execução de AAAA-MM-DD (modo)` e `git push`.
+2. Faça `git pull --rebase`, um commit com a mensagem `Execução de AAAA-MM-DD (modo)` e `git push`. O
+   ambiente da tarefa agendada já tem permissão de envio a este repositório (confirmado no ensaio de 08/11).
+3. Se o `git push` pedir credencial ou for recusado, procure a ferramenta `add_repo` via ToolSearch e, se
+   ela existir, peça acesso de envio (`access: "push"`) a `MFraza73/sentinela-60mais` e tente de novo uma
+   vez. Não tente outro caminho.
 
 Se o envio falhar, a página do Claude continua valendo: registre o passo e o erro na `observacao` da execução
 e no relatório.

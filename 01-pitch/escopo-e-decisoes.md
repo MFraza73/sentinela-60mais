@@ -29,6 +29,7 @@ Pitch editável: https://claude.ai/artifact/Ar6XfmaFShFphuWGdWwcKB
 - Bancos e ferramentas públicas no mapa de fontes (06/11): Febraban, Caixa, Itaú, Banco do Brasil, Nubank, Inter, Bradesco e Santander entram como fonte primária, mas o setor bancário inteiro vale como uma fonte só, e a ação de proteção nunca é recurso, seguro ou produto de um banco (todas as páginas de banco testadas, menos a da Caixa, promovem produto próprio; nenhuma menciona a Súmula 479 do STJ). BC Protege+, Registrato, Proteção do CPF, Celular Seguro e Qual Empresa Me Ligou entram como ferramentas para "o que fazer", só quando uma fonte as recomenda. Serasa AntiFraude (pago) e Detector de Site Confiável (privado) ficam de fora.
 - Imagem do alerta (07/11): todo alerta publicado ganha uma imagem de 1080 x 1350 para WhatsApp e status, gerada e conferida por `gerar_imagem.py` (limite de palavras, sem link, perfil, emoji ou telefone pessoal; letra mínima; contraste 7:1). Paleta "calma": grafite #1D2329 e laranja #F59A3C sobre branco. A primeira versão (azul-noite, âmbar e verde) foi trocada no mesmo dia por remeter à bandeira; a página do produto seguiu a mesma paleta, com azul só nos links; vermelho de alarme descartado por ser a estética do próprio golpe e por ficar em 5,2:1. Fonte Atkinson Hyperlegible (Braille Institute, licença OFL), embutida na skill. Instagram fica como possibilidade futura, voltado a quem cuida; a distribuição principal continua o WhatsApp.
 - Nível 1 de profissionalização (07/11): regras de fonte em código (`checar_fontes.py` + `fontes.json`), 31 testes de regressão (23 de fontes, tirados das execuções reais e de casos-limite) rodando no GitHub Actions a cada envio, casos de julgamento documentados, seção "Como verificamos" e política de correções no modelo da IFCN. Primeira correção registrada: fontes do alerta da biometria. Site público no GitHub Pages (pasta docs/), atualizado pelo agente a cada execução.
+- Site público no ar em 08/11 (https://mfraza73.github.io/sentinela-60mais/). A montagem passou para o GitHub Actions: o agente só envia dados.json e imagens; o GitHub roda os testes, monta docs/ e publica. Motivo: na execução de 08/11, o ambiente da tarefa agendada negou a execução dos scripts do repositório; a tarefa passou a autorizá-los de forma explícita, com regra manual de reserva.
 
 
 ## Arquitetura
@@ -52,10 +53,10 @@ Pitch editável: https://claude.ai/artifact/Ar6XfmaFShFphuWGdWwcKB
 - 27/11: entrega N2 (13/11 sem aula)
 
 ## Pendências
+- Confirmar na execução de 09/11 que a tarefa agendada consegue rodar os scripts e enviar os dados ao GitHub.
 - Nome final do produto ("Sentinela" conota vigilância; alternativas: "Antes de Clicar", "Confere?").
 - Recorte nacional de estelionato digital por faixa etária: não encontrado nas fontes consultadas.
 - Skill v2: definir "uma ação" como um comportamento num mesmo momento; rodar comparação com e sem a skill.
-- Ativar o GitHub Pages (Settings → Pages → main / docs) para o site público ficar no ar; o link público do Claude fica opcional.
 
 ## Fontes-chave
 - Lei 15.263/2025 (Câmara): https://www2.camara.leg.br/legin/fed/lei/2025/lei-15263-14-novembro-2025-798293-publicacaooriginal-177011-pl.html

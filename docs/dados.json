@@ -1,6 +1,6 @@
 {
   "projeto": "Sentinela 60+",
-  "atualizado_em": "2026-11-07",
+  "atualizado_em": "2026-11-08",
   "alertas": [
     {
       "id": "2026-11-06-falso-bloqueio-biometria-inss",
@@ -326,6 +326,92 @@
         }
       ],
       "observacao": "O pacote nordeste só devolveu páginas antigas (2019 a 2025). A notícia do INSS sobre falsa devolução de mensalidade pede login, e a página de notícia de Chapecó em pc.sc.gov.br abriu sem o texto do alerta."
+    },
+    {
+      "data": "2026-11-08",
+      "modo": "varredura",
+      "tipo": "automatica",
+      "consultas": 9,
+      "pacotes": [
+        "federal",
+        "bancos",
+        "imprensa",
+        "checadores",
+        "sul",
+        "recorte",
+        "sinal-norte"
+      ],
+      "candidatos": 7,
+      "aprovados": 0,
+      "resultado": "nada-novo",
+      "escolhido": "",
+      "motivo": "Nenhum candidato novo passou nas quatro perguntas: os alertas encontrados eram antigos ou não traziam orientação de proteção.",
+      "decisoes": [
+        {
+          "golpe": "Falsa prova de vida com ameaça de corte do benefício",
+          "decisao": "Recusado: a nota do INSS é de 14 de setembro, fora da janela de 14 dias, e o golpe é parecido com o alerta da biometria já publicado.",
+          "indicado_por": {
+            "nome": "INSS",
+            "url": "https://www.gov.br/inss/pt-br/assuntos/noticias/inss-alerta-aposentados-sao-vitimas-de-golpe-envolvendo-falsa-prova-de-vida",
+            "origem": "orgao"
+          }
+        },
+        {
+          "golpe": "Falso atendimento bancário presencial contra idosos (Rio de Janeiro)",
+          "decisao": "Recusado: notícia de 26 de outubro só na CNN Brasil, sem orientação de proteção e sem fonte primária; o golpe é feito em loja, não por meio digital.",
+          "indicado_por": {
+            "nome": "CNN Brasil",
+            "url": "https://www.cnnbrasil.com.br/nacional/sudeste/sp/policia-civil-combate-golpe-bancario-contra-idosos-no-rio-de-janeiro/",
+            "origem": "imprensa"
+          }
+        },
+        {
+          "golpe": "Golpes nas compras de fim de ano e Black Friday",
+          "decisao": "Recusado: a página da Senacon (atualizada em 25 de outubro) trata de preços e práticas abusivas, não de um golpe descrito; a notícia do Correio Braziliense não abriu. Reavaliar perto de 27 de novembro.",
+          "indicado_por": {
+            "nome": "Correio Braziliense",
+            "url": "https://correiobraziliense.com.br/cidades-df/2026/11/7534475-consumidores-estao-em-alerta-contra-golpes-nas-compras-de-fim-de-ano.html",
+            "origem": "imprensa"
+          }
+        },
+        {
+          "golpe": "Golpe do falso parente pelo WhatsApp (operação no Distrito Federal)",
+          "decisao": "Recusado: notícia de 7 de outubro, fora da janela, e sem orientação de proteção.",
+          "indicado_por": {
+            "nome": "Metrópoles",
+            "url": "https://www.metropoles.com/distrito-federal/na-mira/pcdf-prende-cinco-suspeitos-de-lucrar-r-73-mil-com-golpe-do-falso-parente",
+            "origem": "imprensa"
+          }
+        },
+        {
+          "golpe": "Falsa antecipação de precatórios para aposentados do Acre",
+          "decisao": "Recusado: alerta de 12 de maio de 2026, fora da janela de 14 dias.",
+          "indicado_por": {
+            "nome": "Acreprevidência",
+            "url": "https://www.acreprevidencia.ac.gov.br/noticias/2026/alerta-aposentados-e-pensionistas-sobre-golpes.html",
+            "origem": "outro"
+          }
+        },
+        {
+          "golpe": "Falsa devolução de descontos do INSS",
+          "decisao": "Recusado: a página do Correio Braziliense é de maio de 2025, fora da janela.",
+          "indicado_por": {
+            "nome": "Correio Braziliense",
+            "url": "https://www.correiobraziliense.com.br/cbradar/governo-emite-alerta-para-todos-que-possuem-valores-a-receber-do-inss/",
+            "origem": "imprensa"
+          }
+        },
+        {
+          "golpe": "Falso aviso de encomenda retida dos Correios",
+          "decisao": "Recusado: checagem de dezembro de 2024, fora da janela, e checador não confirma.",
+          "indicado_por": {
+            "nome": "Aos Fatos",
+            "url": "https://www.aosfatos.org/noticias/golpe-encomenda-retida-pelos-correios/",
+            "origem": "checador"
+          }
+        }
+      ],
+      "observacao": "O pacote sul e o sinal-norte só devolveram páginas antigas. A página da Decipex no gov.br pede login, e a notícia do Correio Braziliense sobre compras de fim de ano bloqueou a abertura. Nesta execução, o ambiente negou permissão para rodar checar_fontes.py e os testes do repositório; como nenhum candidato foi aprovado, nada dependia do verificador de fontes, mas, sem os testes, o site público no GitHub não foi atualizado (passo 3 de \"Atualize o site público\")."
     }
   ],
   "correcoes": [

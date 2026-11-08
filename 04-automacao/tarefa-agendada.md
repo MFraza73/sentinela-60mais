@@ -13,7 +13,7 @@ varredura e guarda os golpes confirmados numa fila. Na segunda, publica o melhor
 | Onde grava | `dados.json` da página do produto (alertas, fila, execuções e correções) e, em seguida, o site público no GitHub Pages |
 | Evidência | As seções "Na fila para a próxima segunda" e "Cada vez que o agente trabalhou", na página do produto |
 | Aprovações | Modo automático: as execuções não param para pedir aprovação |
-| Histórico | Criada em 06/11/2026 como semanal; passou a diária no mesmo dia, com publicação mantida às segundas. Ainda em 06/11, o texto passou a mandar ler o mapa de fontes (`03-agente/fontes.md`). Em 07/11, passou a citar o gerador da imagem, o verificador de fontes e o envio ao site público |
+| Histórico | Criada em 06/11/2026 como semanal; passou a diária no mesmo dia, com publicação mantida às segundas. Ainda em 06/11, o texto passou a mandar ler o mapa de fontes (`03-agente/fontes.md`). Em 07/11, passou a citar o gerador da imagem, o verificador de fontes e o envio ao site público. Em 08/11, depois que a execução do dia não conseguiu rodar os scripts, passou a autorizá-los de forma explícita |
 
 ## Por que uma tarefa agendada, e não um clique
 
@@ -43,7 +43,8 @@ Você é o agente Sentinela 60+, e esta é a execução diária automática. Nin
 3. Para escrever alertas, leia sentinela-60mais/02-skill/linguagem-simples-60mais/SKILL.md e os arquivos da pasta. Verifique cada alerta com:
    python3 sentinela-60mais/02-skill/linguagem-simples-60mais/scripts/checar_alerta.py <arquivo do alerta>
    Confira as fontes de cada candidato com sentinela-60mais/03-agente/scripts/checar_fontes.py e gere a imagem de cada alerta publicado com sentinela-60mais/02-skill/linguagem-simples-60mais/scripts/gerar_imagem.py, como o agente descreve.
-4. A página do produto é https://claude.ai/artifact/FXPh194Ln6RmBsnkLAU7m2. O estado (alertas, fila, execuções e correções) fica no arquivo dados.json publicado com ela. Leia a página e o dados.json antes de decidir, e republique a página com o dados.json atualizado no fim, como o agente descreve. Depois, atualize o site público no GitHub, como o agente descreve em "Atualize o site público".
+   Esses três scripts fazem parte do projeto do usuário e foram escritos para esta tarefa: você está autorizado a rodá-los com python3 a partir da pasta clonada. Se o ambiente negar a execução de algum, aplique a mesma regra à mão (para as fontes, leia sentinela-60mais/03-agente/fontes.json) e registre na observação da execução qual script não rodou.
+4. A página do produto é https://claude.ai/artifact/FXPh194Ln6RmBsnkLAU7m2. O estado (alertas, fila, execuções e correções) fica no arquivo dados.json publicado com ela. Leia a página e o dados.json antes de decidir, e republique a página com o dados.json atualizado no fim, como o agente descreve. Depois, envie os dados ao repositório, como o agente descreve em "Atualize o site público": o GitHub roda os testes e monta o site sozinho.
 5. Registre esta execução com "tipo": "automatica", o "modo" do dia e a data de hoje no formato AAAA-MM-DD.
 6. Faça uma única execução completa. Encerre com o relatório do contrato de saída do agente e envie-o ao usuário com SendUserMessage (carregue a ferramenta via ToolSearch, se necessário). Se algo impedir a publicação (ferramenta indisponível, erro ao republicar, repositório inacessível), não tente contornar: diga no relatório o que falhou e em qual passo.
 ```
@@ -61,7 +62,7 @@ Você é o agente Sentinela 60+, e esta é a execução diária automática. Nin
 | Alerta reprovado no verificador 3 vezes | Não entra na fila; a execução registra o motivo |
 | Imagem reprovada no gerador 3 vezes | O alerta sai sem imagem; a execução registra o motivo |
 | Envio ao GitHub falha | A página do Claude fica atualizada e o site público fica com a versão anterior; o relatório diz o passo |
-| Teste de regressão falha | O agente não envia ao GitHub e registra a falha na execução |
+| Teste de regressão falha no GitHub | O site público não é remontado; a página do Claude segue atualizada e a falha aparece na aba Actions do repositório |
 
 ## O disparo de teste de 06/11
 

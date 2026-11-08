@@ -28,8 +28,8 @@ flowchart LR
     A["Automação<br/>tarefa agendada, todo dia 7h40"] -->|dispara| B["Agente<br/>varre todo dia, publica na segunda"]
     S["Skill<br/>linguagem-simples-60mais"] -->|como escrever| B
     B -->|lê e grava dados.json| P["Página no Claude"]
-    B -->|envia ao repositório| G["Site público<br/>GitHub Pages"]
-    T["Testes de regressão<br/>a cada envio"] -.->|conferem| G
+    B -->|envia dados.json ao repositório| R["GitHub Actions<br/>testes e montagem do site"]
+    R --> G["Site público<br/>GitHub Pages"]
 ```
 
 | Componente | O que faz | Onde está |
@@ -56,8 +56,9 @@ flowchart LR
 4. **A automação:** [`04-automacao/tarefa-agendada.md`](04-automacao/tarefa-agendada.md), com o texto exato que a
    tarefa envia a cada disparo.
 5. **O produto:** [`05-produto/index.html`](05-produto/index.html) e [`05-produto/dados.json`](05-produto/dados.json).
-   A cada execução, o agente atualiza a página no Claude e envia os dados a este repositório;
-   [`05-produto/montar_site.py`](05-produto/montar_site.py) monta o site público em [`docs/`](docs/).
+   A cada execução, o agente atualiza a página no Claude e envia os dados a este repositório. O GitHub Actions
+   roda os testes e, se passarem, [`05-produto/montar_site.py`](05-produto/montar_site.py) monta o site público em
+   [`docs/`](docs/).
 6. **Os testes:** [`testes/rodar_testes.py`](testes/rodar_testes.py) roda tudo o que pode ser checado sem
    interpretação; [`testes/casos-de-julgamento.md`](testes/casos-de-julgamento.md) guarda as decisões que dependem
    de leitura.

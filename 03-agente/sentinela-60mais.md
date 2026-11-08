@@ -210,17 +210,17 @@ publicadas. Depois, leia `dados.json` de novo na página e confirme que a execu�
 ## Atualize o site público
 
 O mesmo conteúdo fica no site público do GitHub Pages (https://mfraza73.github.io/sentinela-60mais/), servido
-da pasta `docs/` do repositório. Depois de republicar a página do Claude, na pasta do repositório clonado:
+da pasta `docs/` do repositório. Você só envia os dados; o GitHub roda os testes, monta o site e o publica.
+Depois de republicar a página do Claude, na pasta do repositório clonado:
 
 1. Copie o `dados.json` final para `05-produto/dados.json` e a imagem nova, se houver, para
-   `05-produto/imagens/`.
-2. Rode `python3 05-produto/montar_site.py`.
-3. Rode `python3 testes/rodar_testes.py`. Se algum teste falhar, não envie: registre a falha na `observacao`.
-4. Carregue a ferramenta `add_repo` (via ToolSearch) e peça acesso de envio a `MFraza73/sentinela-60mais`.
-   Faça `git pull --rebase`, um commit com a mensagem `Execução de AAAA-MM-DD (modo)` e `git push`.
+   `05-produto/imagens/`. Não mexa em nenhum outro arquivo.
+2. Carregue a ferramenta `add_repo` (via ToolSearch) e peça acesso de envio (`access: "push"`) a
+   `MFraza73/sentinela-60mais`.
+3. Faça `git pull --rebase`, um commit com a mensagem `Execução de AAAA-MM-DD (modo)` e `git push`.
 
 Se o envio falhar, a página do Claude continua valendo: registre o passo e o erro na `observacao` da execução
-e no relatório. Nunca altere outros arquivos do repositório.
+e no relatório.
 
 ## Limites
 

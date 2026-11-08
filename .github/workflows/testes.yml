@@ -1,8 +1,16 @@
 name: Testes
 
+# A cada envio: roda os testes de regressão. Na main, se passarem, monta o site público em docs/,
+# grava a mudança e pede ao GitHub Pages uma nova publicação.
+
 on:
   push:
   pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
 
 jobs:
   testes:
@@ -18,3 +26,34 @@ jobs:
           python -m playwright install --with-deps chromium
       - name: Rodar os testes de regressão
         run: python testes/rodar_testes.py
+
+  site:
+    needs: testes
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Montar o site público em docs/
+        run: python 05-produto/montar_site.py
+      - name: Gravar docs/ se mudou
+        id: gravar
+        run: |
+          git add docs
+          if git diff --cached --quiet; then
+            echo "mudou=nao" >> "$GITHUB_OUTPUT"
+            echo "O site já estava atualizado."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Site público atualizado a partir de ${GITHUB_SHA::7}"
+            git push
+            echo "mudou=sim" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Pedir nova publicação ao GitHub Pages
+        if: steps.gravar.outputs.mudou == 'sim'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "O GitHub Pages publica pelo envio."

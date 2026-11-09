@@ -1,6 +1,6 @@
 {
   "projeto": "Sentinela 60+",
-  "atualizado_em": "2026-11-08",
+  "atualizado_em": "2026-11-09",
   "alertas": [
     {
       "id": "2026-11-06-falso-bloqueio-biometria-inss",
@@ -35,6 +35,34 @@
       "card_whatsapp": "*Falso aviso de bloqueio por biometria*\nMensagem ameaça bloquear sua aposentadoria e manda um link.\nQuem já recebe o benefício não precisa fazer biometria.\nNão clique. Na dúvida, ligue para o 135.\n*Ameaça de bloqueio com link? Não clique.*",
       "imagem": "imagens/2026-11-06-falso-bloqueio-biometria-inss.png",
       "imagem_alt": "Alerta de golpe do Sentinela 60+, 6 de novembro de 2026. Falso aviso de bloqueio por biometria: não clique no link. O sinal: Quem já recebe o benefício não precisa cadastrar biometria. O que fazer: Não clique no link; se tiver dúvida, ligue para o 135, a central do INSS. Para lembrar: Ameaça de bloqueio com link? Não clique."
+    },
+    {
+      "id": "2026-11-09-falso-gerente-banco",
+      "golpe": "falso-gerente-banco",
+      "publicado_em": "2026-11-09",
+      "titulo": "Golpe do falso gerente: desligue e ligue você para o banco",
+      "como_chega": "Uma ligação de alguém que diz ser do seu banco. Ele fala de uma movimentação suspeita na sua conta.",
+      "o_que_pedem": "Que você faça um Pix para uma \"conta segura\" ou diga sua senha e códigos.",
+      "sinal": "O banco não pede senha, código nem Pix para proteger seu dinheiro.",
+      "o_que_fazer": "Desligue e procure o banco pelo aplicativo ou pelo telefone do site.",
+      "para_lembrar": "Banco ligou pedindo Pix? Desligue e ligue você.",
+      "fontes": [
+        {
+          "nome": "PCPR alerta: recebeu uma ligação do banco pedindo Pix? Pode ser golpe — Polícia Civil do Paraná (16/10/2026)",
+          "url": "https://www.policiacivil.pr.gov.br/Noticia/PCPR-alerta-recebeu-uma-ligacao-do-banco-pedindo-Pix-Pode-ser-golpe",
+          "origem": "policia",
+          "data": "2026-10-16"
+        },
+        {
+          "nome": "Como se proteger do golpe da falsa central de atendimento — Blog do Nubank (atualizado em 17/08/2026)",
+          "url": "https://blog.nubank.com.br/golpe-da-falsa-central-de-atendimento/",
+          "origem": "banco",
+          "data": "2026-08-17"
+        }
+      ],
+      "card_whatsapp": "*Golpe do falso gerente*\nAlguém liga dizendo ser do seu banco e fala de movimentação suspeita.\nO banco não pede senha, código nem Pix para proteger seu dinheiro.\nDesligue e procure o banco pelo aplicativo ou pelo telefone do site.\n*Banco ligou pedindo Pix? Desligue e ligue você.*",
+      "imagem": "imagens/2026-11-09-falso-gerente-banco.png",
+      "imagem_alt": "Alerta de golpe do Sentinela 60+, 9 de novembro de 2026. Golpe do falso gerente: desligue e ligue você para o banco. O sinal: O banco não pede senha, código nem Pix para proteger seu dinheiro. O que fazer: Desligue e procure o banco pelo aplicativo ou pelo telefone do site. Para lembrar: Banco ligou pedindo Pix? Desligue e ligue você."
     }
   ],
   "fila": [
@@ -73,8 +101,8 @@
       "adicionado_em": "2026-11-06",
       "noticiado_em": "2026-11-06",
       "relevancia": 3,
-      "status": "aguardando",
-      "motivo_status": "Publicado num disparo de teste da automação; voltou para a fila na mudança para publicação semanal.",
+      "status": "publicado",
+      "motivo_status": "Publicado como alerta da semana em 09/11/2026, com as fontes trocadas pela Polícia Civil do Paraná e pelo blog do Nubank.",
       "alerta": {
         "golpe": "falso-gerente-banco",
         "titulo": "Golpe do falso gerente: desligue e ligue você para o banco",
@@ -85,12 +113,16 @@
         "para_lembrar": "Banco ligou pedindo Pix? Desligue e ligue você.",
         "fontes": [
           {
-            "nome": "Polícia Civil alerta para golpe da falsa central bancária e orienta como evitar prejuízos — MegaZine, com a Polícia Civil do Paraná (16/10/2026)",
-            "url": "https://www.megazinenews.com.br/noticia/policia-civil-alerta-para-golpe-da-falsa-central-bancaria-e-orienta-como-evitar-prejuizos"
+            "nome": "PCPR alerta: recebeu uma ligação do banco pedindo Pix? Pode ser golpe — Polícia Civil do Paraná (16/10/2026)",
+            "url": "https://www.policiacivil.pr.gov.br/Noticia/PCPR-alerta-recebeu-uma-ligacao-do-banco-pedindo-Pix-Pode-ser-golpe",
+            "origem": "policia",
+            "data": "2026-10-16"
           },
           {
-            "nome": "Polícia Civil de Pernambuco alerta para golpe do falso gerente de banco — Petrolândia Notícias (21/10/2026)",
-            "url": "https://petrolandianoticias.com.br/policia-civil-de-pernambuco-alerta-para-golpe-do-falso-gerente-de-banco-e-orienta-populacao-sobre-como-se-proteger/"
+            "nome": "Como se proteger do golpe da falsa central de atendimento — Blog do Nubank (atualizado em 17/08/2026)",
+            "url": "https://blog.nubank.com.br/golpe-da-falsa-central-de-atendimento/",
+            "origem": "banco",
+            "data": "2026-08-17"
           }
         ],
         "card_whatsapp": "*Golpe do falso gerente*\nAlguém liga dizendo ser do seu banco e fala de movimentação suspeita.\nO banco não pede senha, código nem Pix para proteger seu dinheiro.\nDesligue e procure o banco pelo aplicativo ou pelo telefone do site.\n*Banco ligou pedindo Pix? Desligue e ligue você.*"
@@ -412,6 +444,97 @@
         }
       ],
       "observacao": "O pacote sul e o sinal-norte só devolveram páginas antigas. A página da Decipex no gov.br pede login, e a notícia do Correio Braziliense sobre compras de fim de ano bloqueou a abertura. Nesta execução, o ambiente negou permissão para rodar checar_fontes.py e os testes do repositório; como nenhum candidato foi aprovado, nada dependia do verificador de fontes, mas, sem os testes, o site público no GitHub não foi atualizado (passo 3 de \"Atualize o site público\")."
+    },
+    {
+      "data": "2026-11-09",
+      "modo": "publicacao",
+      "tipo": "automatica",
+      "consultas": 11,
+      "pacotes": [
+        "federal",
+        "bancos",
+        "imprensa",
+        "checadores",
+        "sudeste-centro-oeste",
+        "recorte",
+        "sinal-sudeste-centro-oeste"
+      ],
+      "candidatos": 7,
+      "aprovados": 0,
+      "resultado": "publicado",
+      "escolhido": "falso-gerente-banco",
+      "motivo": "Item de maior relevância da fila (3); a revisão trocou os dois sites regionais pela nota da Polícia Civil do Paraná (16/10) e pelo blog do Nubank (atualizado em 17/08), que dão a mesma orientação: desligar e procurar o banco pelos canais oficiais.",
+      "decisoes": [
+        {
+          "golpe": "Golpe do falso gerente de banco (fila)",
+          "decisao": "Publicado: relevância 3. As fontes antigas eram sites regionais que não confirmam; foram trocadas pela nota da Polícia Civil do Paraná (16/10/2026) e pelo blog do Nubank (atualizado em 17/08/2026). As duas dizem que o banco não pede senha, código nem Pix e mandam desligar e procurar o banco pelos canais oficiais. A Agência Estadual de Notícias do Paraná só repete a polícia e não foi contada como segunda fonte.",
+          "indicado_por": {
+            "nome": "MegaZine, com a Polícia Civil do Paraná",
+            "url": "https://www.megazinenews.com.br/noticia/policia-civil-alerta-para-golpe-da-falsa-central-bancaria-e-orienta-como-evitar-prejuizos",
+            "origem": "outro"
+          }
+        },
+        {
+          "golpe": "Golpe do falso advogado (fila)",
+          "decisao": "Mantido na fila: fontes aprovadas (Febraban e Polícia Civil de Santa Catarina), mas relevância 2, abaixo do escolhido. Expira se não for renovado até 11/11.",
+          "indicado_por": {
+            "nome": "Febraban",
+            "url": "https://portal.febraban.org.br/noticia/4512/pt-br/",
+            "origem": "banco"
+          }
+        },
+        {
+          "golpe": "Número secundário de confiança no WhatsApp (fila)",
+          "decisao": "Mantido na fila, sem chance de publicação como está: as duas fontes são sites regionais, e o verificador de fontes reprova por falta de fonte primária. Nenhuma fonte primária foi buscada nesta execução porque o item não foi o escolhido.",
+          "indicado_por": null
+        },
+        {
+          "golpe": "Golpe do falso traficante por ligação (Espírito Santo)",
+          "decisao": "Recusado: a orientação da Polícia Civil do Espírito Santo é de outubro de 2025, fora da janela de 14 dias.",
+          "indicado_por": {
+            "nome": "Polícia Civil do Espírito Santo",
+            "url": "https://pc.es.gov.br/Not%C3%ADcia/policia-civil-orienta-sobre-golpe-do-falso-traficante",
+            "origem": "policia"
+          }
+        },
+        {
+          "golpe": "Perfis falsos com inteligência artificial em promoções",
+          "decisao": "Recusado: a página do Procon do Espírito Santo é de agosto de 2024, fora da janela.",
+          "indicado_por": {
+            "nome": "Procon do Espírito Santo",
+            "url": "https://procon.es.gov.br/Not%C3%ADcia/procon-es-alerta-golpes-pela-internet-usam-perfis-falsos-e-inteligencia-artificial-para-enganar-consumidores",
+            "origem": "procon"
+          }
+        },
+        {
+          "golpe": "Golpes nas compras de fim de ano",
+          "decisao": "Recusado: as páginas abertas (Polícia Civil do Espírito Santo, de 2021, e Procon de Goiás, de 2020) estão fora da janela. Reavaliar perto da Black Friday.",
+          "indicado_por": {
+            "nome": "Polícia Civil do Espírito Santo",
+            "url": "https://pc.es.gov.br/Not%C3%ADcia/policia-civil-da-dicas-para-nao-cair-em-golpes-nas-compras-de-fim-de-ano",
+            "origem": "policia"
+          }
+        },
+        {
+          "golpe": "Golpe do falso sequestro por telefone (Mato Grosso do Sul)",
+          "decisao": "Recusado: a dica da Polícia Civil do Mato Grosso do Sul é de 2017, fora da janela.",
+          "indicado_por": {
+            "nome": "Polícia Civil do Mato Grosso do Sul",
+            "url": "https://www.pc.ms.gov.br/dica-da-policia-civil-alerta-sobre-o-golpe-do-falso-sequestro/",
+            "origem": "policia"
+          }
+        },
+        {
+          "golpe": "Falsa prova de vida e falsa devolução de mensalidade do INSS",
+          "decisao": "Recusado: já avaliados nas varreduras de 07 e 08/11, com páginas fora da janela; nada novo apareceu.",
+          "indicado_por": {
+            "nome": "INSS",
+            "url": "https://www.gov.br/inss/pt-br/assuntos/noticias/inss-alerta-aposentados-sao-vitimas-de-golpe-envolvendo-falsa-prova-de-vida",
+            "origem": "orgao"
+          }
+        }
+      ],
+      "observacao": "Varredura sem golpe novo: os pacotes do dia só devolveram páginas de 2017 a 2025 ou já avaliadas. Revisão do alerta de 06/11 (biometria do INSS): as páginas do INSS e da Agência Brasil continuam no ar, com a mesma orientação; sem correção. Os três scripts rodaram normalmente."
     }
   ],
   "correcoes": [

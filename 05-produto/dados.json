@@ -1,6 +1,6 @@
 {
   "projeto": "Sentinela 60+",
-  "atualizado_em": "2026-11-09",
+  "atualizado_em": "2026-11-10",
   "alertas": [
     {
       "id": "2026-11-06-falso-bloqueio-biometria-inss",
@@ -161,6 +161,43 @@
           }
         ],
         "card_whatsapp": "*Golpe do falso advogado*\nAlguém diz ser advogado e fala de dinheiro de um processo seu.\nEle pede um Pix para liberar o valor.\nNão pague. Ligue para o seu advogado num número que você já conhece.\n*Advogado pediu Pix? Ligue você para confirmar.*"
+      }
+    },
+    {
+      "golpe": "link-falso-promocao",
+      "nome": "Golpe da promoção falsa (link de loja falsa)",
+      "adicionado_em": "2026-11-10",
+      "noticiado_em": "2026-11-07",
+      "relevancia": 2,
+      "indicado_por": {
+        "nome": "Correio Braziliense",
+        "url": "https://correiobraziliense.com.br/cidades-df/2026/11/7534475-consumidores-estao-em-alerta-contra-golpes-nas-compras-de-fim-de-ano.html",
+        "origem": "imprensa"
+      },
+      "status": "aguardando",
+      "alerta": {
+        "golpe": "link-falso-promocao",
+        "titulo": "Golpe da promoção falsa: não clique no link",
+        "como_chega": "Uma mensagem no WhatsApp, na rede social ou no e-mail, com oferta muito barata.",
+        "o_que_pedem": "Que você clique no link e pague a compra num site que imita a loja.",
+        "sinal": "O preço é bem mais baixo que o normal e a oferta chega por link.",
+        "o_que_fazer": "Não clique no link. Entre você mesmo no site ou no aplicativo oficial da loja.",
+        "para_lembrar": "Oferta chegou por link? Vá você mesmo à loja.",
+        "fontes": [
+          {
+            "nome": "Procon do Paraná: cuidados essenciais na Black Friday (04/11/2026)",
+            "url": "https://www.parana.pr.gov.br/aen/Noticia/Economia-sem-dor-de-cabeca-Procon-PR-alerta-para-cuidados-essenciais-na-Black-Friday",
+            "origem": "procon",
+            "data": "2026-11-04"
+          },
+          {
+            "nome": "Correio Braziliense: consumidores em alerta contra golpes nas compras de fim de ano (07/11/2026)",
+            "url": "https://correiobraziliense.com.br/cidades-df/2026/11/7534475-consumidores-estao-em-alerta-contra-golpes-nas-compras-de-fim-de-ano.html",
+            "origem": "imprensa",
+            "data": "2026-11-07"
+          }
+        ],
+        "card_whatsapp": "*Golpe da promoção falsa*\nChega uma oferta de loja muito barata, com um link.\nO link leva a um site que imita a loja.\nNão clique. Entre você mesmo no site ou no aplicativo oficial da loja.\n*Oferta chegou por link? Vá você mesmo à loja.*"
       }
     }
   ],
@@ -535,6 +572,73 @@
         }
       ],
       "observacao": "Varredura sem golpe novo: os pacotes do dia só devolveram páginas de 2017 a 2025 ou já avaliadas. Revisão do alerta de 06/11 (biometria do INSS): as páginas do INSS e da Agência Brasil continuam no ar, com a mesma orientação; sem correção. Os três scripts rodaram normalmente."
+    },
+    {
+      "data": "2026-11-10",
+      "modo": "varredura",
+      "tipo": "automatica",
+      "consultas": 8,
+      "pacotes": [
+        "federal",
+        "bancos",
+        "imprensa",
+        "checadores",
+        "sul",
+        "recorte"
+      ],
+      "candidatos": 5,
+      "aprovados": 1,
+      "resultado": "na-fila",
+      "escolhido": "link-falso-promocao",
+      "motivo": "Um golpe novo e confirmado entrou na fila: links de promoções falsas que levam a sites que imitam lojas, com nota do Procon do Paraná (04/11) e reportagem do Correio Braziliense (07/11). Relevância 2: não cabe alerta extra.",
+      "decisoes": [
+        {
+          "golpe": "Golpe da promoção falsa (link de loja falsa)",
+          "decisao": "Guardado na fila: é golpe digital contra pessoa física, noticiado em 07/11 e ainda não publicado. O Procon do Paraná (04/11) e o Correio Braziliense (07/11) mandam não clicar no link e entrar direto no site ou aplicativo oficial da loja. Relevância 2: chega pelo WhatsApp, mas não é tema próprio de 60+.",
+          "indicado_por": {
+            "nome": "Correio Braziliense",
+            "url": "https://correiobraziliense.com.br/cidades-df/2026/11/7534475-consumidores-estao-em-alerta-contra-golpes-nas-compras-de-fim-de-ano.html",
+            "origem": "imprensa"
+          }
+        },
+        {
+          "golpe": "Falso crachá do INSS em visita a aposentados",
+          "decisao": "Recusado: não é golpe digital, é visita em casa, e o próprio INSS diz que a imagem circula desde 2024 sem denúncia dessa abordagem. A página foi atualizada em 28/10, mas o conteúdo é antigo.",
+          "indicado_por": {
+            "nome": "INSS",
+            "url": "https://www.gov.br/inss/pt-br/noticias/imagem-recorrente-falso-cracha-volta-a-circular-em-aplicativo-de-mensagem",
+            "origem": "orgao"
+          }
+        },
+        {
+          "golpe": "Golpe do falso Procon (Paraná)",
+          "decisao": "Recusado: a nota da Polícia Civil do Paraná é de maio de 2023, fora da janela de 14 dias.",
+          "indicado_por": {
+            "nome": "Polícia Civil do Paraná",
+            "url": "https://www.policiacivil.pr.gov.br/Noticia/Alerta-golpistas-usam-nome-do-Procon-para-aplicar-golpes-virtuais",
+            "origem": "policia"
+          }
+        },
+        {
+          "golpe": "Falso gerente pedindo Pix de teste (Procon do Paraná)",
+          "decisao": "Recusado: a nota é de maio de 2022 e repete o golpe do falso gerente, publicado em 09/11.",
+          "indicado_por": {
+            "nome": "Procon do Paraná",
+            "url": "https://www.parana.pr.gov.br/aen/Noticia/Procon-PR-alerta-para-novo-golpe-envolvendo-o-uso-do-Pix",
+            "origem": "procon"
+          }
+        },
+        {
+          "golpe": "Golpes em nome da Receita Federal",
+          "decisao": "Recusado: o blog do banco foi atualizado em agosto e não traz alerta novo com data; não há fonte de fora do setor bancário na janela.",
+          "indicado_por": {
+            "nome": "Blog Nubank",
+            "url": "https://blog.nubank.com.br/golpes-recentes-receita-federal/",
+            "origem": "banco"
+          }
+        }
+      ],
+      "observacao": "Os pacotes federal, sul e checadores só devolveram páginas antigas ou já avaliadas. A página do Procon do Rio Grande do Sul sobre Black Friday é de 2022, e a do Procon de Goiás, de 2023. O golpe do falso advogado continua na fila e expira amanhã, 11/11. O checar_fontes.py e o checar_alerta.py rodaram normalmente; o gerar_imagem.py não foi usado, porque nenhum alerta foi publicado."
     }
   ],
   "correcoes": [

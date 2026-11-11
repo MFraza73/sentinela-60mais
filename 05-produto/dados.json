@@ -1,6 +1,6 @@
 {
   "projeto": "Sentinela 60+",
-  "atualizado_em": "2026-11-10",
+  "atualizado_em": "2026-11-11",
   "alertas": [
     {
       "id": "2026-11-06-falso-bloqueio-biometria-inss",
@@ -639,6 +639,92 @@
         }
       ],
       "observacao": "Os pacotes federal, sul e checadores só devolveram páginas antigas ou já avaliadas. A página do Procon do Rio Grande do Sul sobre Black Friday é de 2022, e a do Procon de Goiás, de 2023. O golpe do falso advogado continua na fila e expira amanhã, 11/11. O checar_fontes.py e o checar_alerta.py rodaram normalmente; o gerar_imagem.py não foi usado, porque nenhum alerta foi publicado."
+    },
+    {
+      "data": "2026-11-11",
+      "modo": "varredura",
+      "tipo": "automatica",
+      "consultas": 12,
+      "pacotes": [
+        "federal",
+        "bancos",
+        "imprensa",
+        "checadores",
+        "nordeste",
+        "recorte",
+        "sinal-nordeste"
+      ],
+      "candidatos": 7,
+      "aprovados": 0,
+      "resultado": "nada-novo",
+      "escolhido": "",
+      "motivo": "Nenhum golpe novo foi confirmado: o candidato mais forte, a falsa pendência no gov.br pelo WhatsApp, só tem uma reportagem que repete a nota oficial de fevereiro.",
+      "decisoes": [
+        {
+          "golpe": "Golpe da falsa pendência no gov.br pelo WhatsApp",
+          "decisao": "Recusado: é golpe digital e relevante (nota 2), e o checar_fontes.py aprovou as fontes, mas a reportagem do Metrópoles (05/11) só reproduz a nota do Centro Integrado de Segurança Cibernética do gov.br, de fevereiro, com as mesmas orientações. Não há segunda fonte independente na janela de 14 dias.",
+          "indicado_por": {
+            "nome": "Metrópoles",
+            "url": "https://metropoles.com/distrito-federal/golpistas-usam-logo-do-governo-para-tentar-roubar-dados-de-moradores-do-df",
+            "origem": "imprensa"
+          }
+        },
+        {
+          "golpe": "Golpe do Pix recebido por engano",
+          "decisao": "Recusado: a reportagem do Correio Braziliense sobre o aposentado que devolveu um Pix pelo WhatsApp não abriu, e nenhuma fonte primária dos últimos 14 dias trata do golpe. As notícias encontradas são de setembro, sobre a regra nova do Pix.",
+          "indicado_por": {
+            "nome": "Correio Braziliense",
+            "url": "https://correiobraziliense.com.br/cbradar/aposentado-recebe-pix-de-r-1-300-por-engano-devolve-o-dinheiro-para-uma-chave-informada-pelo-suposto-remetente-no-whatsapp-e-dias-depois-descobre-que-a-transferencia-original-tambem-foi-contestada-n",
+            "origem": "imprensa"
+          }
+        },
+        {
+          "golpe": "Falsa prova de vida on-line do INSS",
+          "decisao": "Recusado: a nota do INSS é de dezembro de 2023; a atualização de 26/10 não traz golpe novo. O tema também é próximo do alerta da biometria do INSS, publicado em 06/11.",
+          "indicado_por": {
+            "nome": "INSS",
+            "url": "https://www.gov.br/inss/pt-br/noticias/inss-alerta-segurados-sobre-o-golpe-da-prova-de-vida-on-line",
+            "origem": "orgao"
+          }
+        },
+        {
+          "golpe": "Abordagem de idosos perto de agências bancárias",
+          "decisao": "Recusado: a operação da Polícia Civil do Paraná (04/11) trata de abordagem pessoal na rua, não de golpe por meio digital ou telefone.",
+          "indicado_por": {
+            "nome": "Polícia Civil do Paraná",
+            "url": "https://www.policiacivil.pr.gov.br/Noticia/PCPR-cumpre-mandados-contra-grupo-investigado-por-golpes-em-idosos",
+            "origem": "policia"
+          }
+        },
+        {
+          "golpe": "Falsas campanhas de doação com vídeos falsos de famosos",
+          "decisao": "Recusado: a reportagem do Metrópoles (28/10) descreve a prisão do grupo, mas não traz ação de proteção, e a Polícia Civil do Distrito Federal só serve como sinal.",
+          "indicado_por": {
+            "nome": "Metrópoles",
+            "url": "https://www.metropoles.com/distrito-federal/na-mira/golpe-de-r-10-milhoes-quadrilha-usava-ia-de-famosos-e-para-pedir-doacoes",
+            "origem": "imprensa"
+          }
+        },
+        {
+          "golpe": "Golpe do falso advogado",
+          "decisao": "Recusado: já está na fila, com status aguardando.",
+          "indicado_por": {
+            "nome": "Febraban",
+            "url": "https://portal.febraban.org.br/noticia/4512/pt-br/",
+            "origem": "banco"
+          }
+        },
+        {
+          "golpe": "Falso ressarcimento de descontos do INSS",
+          "decisao": "Recusado: a nota do Procon do Espírito Santo é de maio de 2025, fora da janela de 14 dias.",
+          "indicado_por": {
+            "nome": "Procon do Espírito Santo",
+            "url": "https://procon.es.gov.br/Not%C3%ADcia/procon-es-alerta-aposentados-e-pensionistas-do-inss-sobre-golpe-do-falso-ressarcimento",
+            "origem": "procon"
+          }
+        }
+      ],
+      "observacao": "Os pacotes nordeste e sinal-nordeste só devolveram páginas de 2019 a 2025. A reportagem do Correio Braziliense sobre Pix por engano deu erro ao abrir, e a página do jornal A União (auniao.pb.gov.br) bloqueia a ferramenta. O checar_fontes.py rodou normalmente; o checar_alerta.py e o gerar_imagem.py não foram usados, porque nenhum alerta foi escrito. O golpe do falso advogado completa hoje 14 dias desde a última notícia e deve expirar na limpeza da fila de segunda."
     }
   ],
   "correcoes": [

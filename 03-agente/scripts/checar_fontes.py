@@ -10,7 +10,10 @@ Transforma em código as regras de confirmação de 03-agente/fontes.md, lidas d
   - origem declarada coerente com o domínio;
   - toda fonte com data, nenhuma no futuro; o golpe noticiado nos últimos 14 dias (pela data mais recente entre
     noticiado_em e as datas de todas as fontes); orientação com mais de 90 dias gera aviso;
-  - com --dados, o golpe não pode ter sido publicado nas últimas 8 semanas nem estar na fila.
+  - com --dados, o golpe não pode ter sido publicado nas últimas 8 semanas nem estar na fila;
+  - item que já está na fila vale por 28 dias desde a última notícia (a entrada exige 14);
+  - golpe recorrente ("tipo": "recorrente") dispensa a janela de notícia, mas exige orientação de fonte
+    primária com no máximo 12 meses e 26 semanas sem publicar o mesmo golpe.
 
 O que exige leitura (se as fontes descrevem o mesmo mecanismo e a mesma ação, se uma só reproduz a outra) continua
 com o agente. Este script só barra o que pode ser checado sem interpretação.
@@ -192,7 +195,10 @@ def checar(item, lista, hoje, dados=None):
             aviso("DOMINIO_AMPLO", f"{v['dominio']} reúne vários órgãos: confira quem publicou a página")
             break
 
-    janela = lista.get("janela_dias", 14)
+    recorrente = item.get("tipo") == "recorrente"
+    regras_rec = lista.get("recorrente", {})
+    na_fila = bool(item.get("adicionado_em"))
+    janela = lista.get("validade_fila_dias", 28) if na_fila else lista.get("janela_dias", 14)
     noticiado = item.get("noticiado_em")
     if noticiado:
         try:
@@ -201,15 +207,24 @@ def checar(item, lista, hoje, dados=None):
                 todas_datas.append(d)
         except ValueError:
             erro("SEM_DATA", f"noticiado_em inválido: {noticiado}")
-    if todas_datas and max(todas_datas) < hoje - timedelta(days=janela):
-        erro("FORA_DA_JANELA", f"a notícia mais recente do golpe é de {max(todas_datas)}; "
-                               f"a janela é de {janela} dias até {hoje}")
     datas_conf = [v["data"] for v in validas if v["data"]]
-    if datas_conf and max(datas_conf) < hoje - timedelta(days=DIAS_ORIENTACAO_ANTIGA):
-        aviso("ORIENTACAO_ANTIGA", f"a orientação mais recente é de {max(datas_conf)}: confira se continua válida")
+    if recorrente:
+        limite_or = regras_rec.get("orientacao_max_dias", 365)
+        datas_prim = [v["data"] for v in validas if v["data"] and v["origem"] in primarias]
+        if datas_prim and max(datas_prim) < hoje - timedelta(days=limite_or):
+            erro("ORIENTACAO_VENCIDA", f"golpe recorrente: a orientação primária mais recente é de {max(datas_prim)}; "
+                                       f"o limite é de {limite_or} dias")
+        aviso("RECORRENTE", "golpe recorrente: confirme, na página aberta hoje, que a orientação continua valendo")
+    else:
+        if todas_datas and max(todas_datas) < hoje - timedelta(days=janela):
+            erro("FORA_DA_JANELA", f"a notícia mais recente do golpe é de {max(todas_datas)}; "
+                                   f"a janela é de {janela} dias até {hoje}")
+        if datas_conf and max(datas_conf) < hoje - timedelta(days=DIAS_ORIENTACAO_ANTIGA):
+            aviso("ORIENTACAO_ANTIGA", f"a orientação mais recente é de {max(datas_conf)}: confira se continua válida")
 
     if dados is not None and golpe:
-        limite = hoje - timedelta(weeks=SEMANAS_PUBLICADO)
+        semanas = regras_rec.get("semanas_sem_republicar", 26) if recorrente else SEMANAS_PUBLICADO
+        limite = hoje - timedelta(weeks=semanas)
         for a in dados.get("alertas", []):
             if a.get("golpe") == golpe and a.get("publicado_em", "") >= limite.isoformat() and a is not item:
                 erro("JA_PUBLICADO", f"o golpe {golpe} foi publicado em {a.get('publicado_em')}")

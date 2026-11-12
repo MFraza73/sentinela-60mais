@@ -19,6 +19,12 @@ mudar este arquivo, mude o `fontes.json` e rode `python3 testes/rodar_testes.py`
 | **Apoio** | Cartilha do CERT.br, SaferNet | Não | Não. Serve para conferir a redação de "o que fazer" |
 | **Ferramenta** | Serviços públicos e gratuitos de proteção: BC Protege+, Registrato, Proteção do CPF, Celular Seguro, Qual Empresa Me Ligou | Não | Não. Pode entrar em "o que fazer" quando uma das fontes que confirmam o golpe a recomenda |
 
+**Golpe novo e golpe recorrente.** Um golpe novo precisa de notícia nos últimos 14 dias para entrar na fila, e
+vale nela por 28 dias. Um golpe recorrente (falsa central, falso parente, falsa prova de vida) dispensa a notícia
+recente, mas exige relevância máxima, orientação de fonte primária com data nos últimos 12 meses e 26 semanas
+sem publicar o mesmo golpe. O recorrente só sai numa segunda sem golpe novo na fila. Os números estão em
+`fontes.json`.
+
 **Regra de confirmação.** Um golpe está confirmado quando duas fontes independentes, abertas pelo agente, descrevem
 o mesmo mecanismo e a mesma ação de proteção, **e pelo menos uma delas é primária**.
 
@@ -83,7 +89,33 @@ Cada candidato também registra `indicado_por`: a primeira fonte em que o agente
 9. **O site do Banco Central não abre** (a página só carrega com JavaScript). Use a orientação do Banco Central
    quando ela estiver publicada em `gov.br` ou na Agência Brasil.
 
+## Leitura direta: páginas de notícias
+
+A busca não ordena por data, e nos primeiros cinco dias de varredura os pacotes regionais devolveram quase só
+páginas de 2017 a 2025. A página de notícias de cada fonte traz o mais recente primeiro. A ferramenta só abre
+endereço que tenha vindo de uma busca, por isso cada leitura começa por uma busca-ponte, que devolve o endereço da
+página. Validado em 12/11/2026: cada linha abaixo passou pela busca-ponte e pela abertura.
+
+| Fonte | Busca-ponte (`allowed_domains` e consulta) | Página de notícias | Quando | Observação |
+| --- | --- | --- | --- | --- |
+| Febraban | `["portal.febraban.org.br"]`, "Febraban notícias" | https://portal.febraban.org.br/ | Todo dia | Notícias com data; em 10/11 trazia dicas para a Black Friday |
+| Procon de Santa Catarina | `["procon.sc.gov.br"]`, "notícias" | https://www.procon.sc.gov.br/ | Todo dia | Com data; em 11/11 trazia orientação para a Black Friday |
+| Procon de São Paulo | `["procon.sp.gov.br"]`, "Procon-SP notícias" | https://www.procon.sp.gov.br/noticias/ | Todo dia | Vem a data e o título, sem o endereço: busque o título no mesmo domínio |
+| Senacon | `["gov.br"]`, "Senacon notícias Ministério da Justiça últimas notícias" | https://www.gov.br/mj/pt-br/assuntos/seus-direitos/consumidor/noticias-consumidor | Todo dia | Com data |
+| Polícia Civil do Paraná | `["policiacivil.pr.gov.br"]`, "PCPR notícias" | https://www.policiacivil.pr.gov.br/noticias | Pacote `sul` | Com data e hora; muitas notícias por dia, quase todas de outros crimes |
+| Polícia Civil de Santa Catarina | `["pc.sc.gov.br"]`, "notícias" | https://pc.sc.gov.br/?page_id=1258 | Pacote `sul` | Com data |
+| Polícia Civil de Goiás | `["goias.gov.br"]`, "notícias" | https://goias.gov.br/policiacivil/ | Pacote `sudeste-centro-oeste` | Com data |
+| Polícia Civil de Mato Grosso do Sul | `["pc.ms.gov.br"]`, "notícias" | https://www.pc.ms.gov.br/noticias/ | Pacote `sudeste-centro-oeste` | Com data |
+
+**Não servem para leitura direta:** a página de últimas notícias do INSS pede login, e a lista em
+`gov.br/inss/pt-br/assuntos/noticias` vem da mais antiga para a mais nova; a do Procon do Rio Grande do Sul está
+parada desde abril de 2026; a da Polícia Civil do Rio Grande do Sul vem sem data confiável. Para essas fontes,
+continue com a busca. Nos pacotes `nordeste` e `norte` nenhuma página foi validada ainda.
+
 ## Pacotes de busca
+
+Ponha o mês e o ano na consulta ("golpe alerta novembro 2026"): no teste de 12/11, o pacote `sul` passou a
+devolver notícias recentes da Polícia Civil do Paraná.
 
 ### Todos os dias
 

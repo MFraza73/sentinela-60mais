@@ -44,13 +44,14 @@ zero e lê o estado de lá. A página lê o mesmo arquivo: o que o agente grava 
   (o texto alternativo que o gerador devolve), só no alerta extra `"extra": true` e, só se o alerta for
   retirado, `"retirado": true`.
 - `fila`: um item por golpe confirmado e ainda não publicado, com `golpe`, `nome`, `adicionado_em`,
-  `noticiado_em` (a data mais recente em que o golpe apareceu nas fontes), `relevancia` (2 ou 3),
+  `noticiado_em` (a data mais recente em que o golpe apareceu nas fontes), `relevancia` (2 ou 3), só no
+  golpe recorrente `"tipo": "recorrente"` (o alerta guardado leva o mesmo campo),
   `indicado_por` (`{nome, url, origem}`: a primeira fonte em que o agente encontrou o golpe), `status`
   (`aguardando`, `publicado`, `expirado` ou `descartado`), `motivo_status` (uma frase, quando o status muda)
   e `alerta` (os campos de um alerta, já escrito e aprovado no verificador, sem `id` nem `publicado_em`).
 - `execucoes`: um item por execução, com `data`, `modo` (`varredura` ou `publicacao`), `tipo` (`automatica`
   ou `teste`), `consultas` (número de buscas), `pacotes` (os nomes dos pacotes de `fontes.md` usados),
-  `candidatos` (número), `aprovados` (número), `resultado`, `escolhido` (o `golpe`, ou vazio), `motivo` e
+  `leituras` (os nomes das fontes lidas direto), `candidatos` (número), `aprovados` (número), `resultado`, `escolhido` (o `golpe`, ou vazio), `motivo` e
   `decisoes` (lista de `{golpe, decisao, indicado_por}`, uma frase por candidato). O `resultado` é um destes:
   `na-fila`, `nada-novo` ou `alerta-extra` na varredura; `publicado` ou `sem-alerta` na publicação.
 - `correcoes`: um item por correção de alerta publicado, com `data`, `alerta_id`, `tipo` (`fontes`,
@@ -73,15 +74,24 @@ chegar duas vezes, e cada execução extra publicaria de novo.
    informa: ele é republicado no fim. Liste os golpes publicados nas últimas 8 semanas e os que estão na
    fila com status `aguardando`. Leia também `03-agente/fontes.md`, no repositório: ele traz os papéis das
    fontes, os pacotes de busca e o rodízio da semana.
-2. **Varra o ambiente.** Faça as 6 buscas do dia, cada uma com um pacote de `fontes.md` no filtro
-   `allowed_domains`, com foco nos últimos 3 dias:
+2. **Varra o ambiente,** em duas partes, com foco nos últimos 3 dias.
+
+   **Leitura direta, primeiro.** A busca não ordena por data; a página de notícias de cada fonte, sim. Leia
+   as páginas de notícias da seção "Leitura direta" de `fontes.md`: as quatro de todo dia e as do pacote
+   regional do dia. A ferramenta só abre endereço que veio de uma busca, então faça antes a busca-ponte
+   indicada na tabela e abra o endereço da página de notícias que ela devolver. Em cada página, olhe só os
+   títulos dos últimos 14 dias que falem de golpe, fraude, alerta ou orientação de segurança, e abra a
+   notícia que interessar. Se a busca-ponte não devolver a página, siga adiante e anote na `observacao`.
+
+   **Buscas, depois.** Cada uma com um pacote de `fontes.md` no filtro `allowed_domains`, com o mês e o ano
+   na consulta (por exemplo, "golpe alerta novembro 2026"):
    - os quatro pacotes fixos: `federal`, `bancos`, `imprensa` e `checadores`;
    - o pacote regional do dia, conforme o rodízio;
    - uma busca aberta, sem filtro, com termos do público: aposentado, INSS, parente, WhatsApp, ligação do
      banco.
 
-   Se sobrar fôlego, faça a sétima busca, com o pacote de sinal do dia. Siga as regras de busca de
-   `fontes.md`: nunca ponha no filtro um domínio recusado pela ferramenta. Anote cada consulta e o pacote.
+   Se sobrar fôlego, faça a busca com o pacote de sinal do dia. Siga as regras de busca de `fontes.md`:
+   nunca ponha no filtro um domínio recusado pela ferramenta. Anote cada consulta, o pacote e as leituras.
 3. **Monte de 3 a 8 candidatos.** Para cada um, registre o nome do golpe, o canal, o que o golpista pede,
    a ação de proteção, as URLs encontradas e `indicado_por`: a primeira fonte em que você o encontrou, com
    `nome`, `url` e `origem`. Agência de checagem, busca aberta e site que não abre podem indicar um
@@ -91,7 +101,8 @@ chegar duas vezes, e cada execução extra publicaria de novo.
    1. **É golpe?** Ação criminosa de engano contra pessoa física, por meio digital ou telefone. Vazamento
       de dados, falha de sistema e golpe contra empresa ficam de fora.
    2. **É novo?** Foi noticiado nos últimos 14 dias, não foi publicado nas últimas 8 semanas e não está na
-      fila com status `aguardando`. Uma variação que muda o sinal ou a ação conta como nova.
+      fila com status `aguardando`. Uma variação que muda o sinal ou a ação conta como nova. Se a resposta
+      for não só por falta de notícia recente, veja "Golpe recorrente" antes de recusar.
    3. **Está confirmado?** Duas fontes independentes, abertas por você, descrevem o mesmo mecanismo e a
       mesma ação de proteção, e **pelo menos uma é primária**: órgão público, polícia, Procon, banco ou
       Febraban (`origem` igual a `orgao`, `policia`, `procon` ou `banco`). A segunda pode ser outra primária
@@ -133,7 +144,18 @@ chegar duas vezes, e cada execução extra publicaria de novo.
    `checar_fontes.py` aprova as fontes do alerta escrito. Aprovado nos dois, acrescente-o à
    `fila` com status `aguardando`, com `indicado_por` e com a `origem` de cada fonte. Reprovado 3 vezes, não
    guarde, e registre o motivo nas decisões.
-6. **Alerta extra, só em caso grave.** Publique na hora, sem esperar a segunda, apenas se um golpe recém-
+   **Golpe recorrente.** Os golpes que mais atingem quem tem 60+ são antigos e continuam circulando: falsa
+   central, falso parente, falsa prova de vida. Um candidato que só falha na pergunta 2 por falta de
+   notícia recente pode entrar na fila como recorrente, com `"tipo": "recorrente"` no item e no alerta, se:
+   - passa nas perguntas 1, 3 e 4, com relevância 3;
+   - uma fonte primária, aberta hoje, mantém a orientação, e a página tem data de publicação ou de
+     atualização nos últimos 12 meses;
+   - o mesmo golpe não foi publicado nas últimas 26 semanas;
+   - o `checar_fontes.py` aprova o candidato com `"tipo": "recorrente"`;
+   - a fila tem menos de 2 recorrentes com status `aguardando`. Guarde no máximo 1 recorrente por execução.
+
+   No recorrente, `noticiado_em` é a data da orientação primária mais recente.
+6. **Alerta extra, só em caso grave.** Nunca para golpe recorrente. Publique na hora, sem esperar a segunda, apenas se um golpe recém-
    guardado cumprir as três condições:
    - relevância 3;
    - a fonte primária foi publicada nas últimas 48 horas;
@@ -148,16 +170,20 @@ chegar duas vezes, e cada execução extra publicaria de novo.
 ## Publicação (segunda-feira)
 
 1. **Faça a varredura** dos passos 1 a 6 acima, mas sem registrar a execução separadamente.
-2. **Limpe a fila.** Itens `aguardando` com `noticiado_em` de mais de 14 dias passam a `expirado`, com o
-   motivo.
-3. **Escolha um.** Entre os itens `aguardando`, fique com o de maior relevância; no empate, o de
-   `noticiado_em` mais recente. Abra de novo as duas fontes do escolhido e confira se elas cumprem a regra
+2. **Limpe a fila.** Um golpe entra na fila com notícia de até 14 dias, mas vale nela por 28 dias: itens
+   `aguardando` com `noticiado_em` de mais de 28 dias passam a `expirado`, com o motivo. Um recorrente
+   expira 60 dias depois de `adicionado_em`.
+3. **Escolha um.** Golpe novo vem antes de recorrente: o recorrente só é escolhido quando não há golpe novo
+   `aguardando` que passe no verificador de fontes. Entre os novos, fique com o de maior relevância; no
+   empate, o de `noticiado_em` mais antigo, que é o que expira primeiro. Um golpe novo de relevância 2 que
+   já perdeu a vez em duas segundas passa na frente de um de relevância 3 recém-chegado. Abra de novo as duas fontes do escolhido e confira se elas cumprem a regra
    de confirmação atual: rode `checar_fontes.py --dados <dados.json> --golpe <golpe>`. Se falta fonte
    primária, procure-a nos pacotes de confirmação: achou e
    abriu, troque a fonte mais fraca pela primária, com `origem`, e registre a troca na decisão; não achou,
    mude o item para `descartado`, com o motivo. Se alguma fonte saiu do ar ou mudou a orientação, faça o
    mesmo. Descartado um item, passe ao próximo.
-4. **Publique.** Acrescente o alerta escolhido em `alertas`, com `id` e `publicado_em` de hoje, gere a
+4. **Publique.** Acrescente o alerta escolhido em `alertas`, com `id` e `publicado_em` de hoje (e
+   `"tipo": "recorrente"`, se for o caso), gere a
    imagem (veja "A imagem do alerta") e mude o item da fila para `publicado`. Fila vazia? O resultado é
    `sem-alerta`.
 5. **Revise os alertas recentes.** Abra de novo as fontes dos 4 alertas publicados mais recentes. Se alguma

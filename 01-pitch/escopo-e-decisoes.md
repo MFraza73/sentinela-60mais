@@ -30,6 +30,7 @@ Pitch editável: https://claude.ai/artifact/Ar6XfmaFShFphuWGdWwcKB
 - Imagem do alerta (07/11): todo alerta publicado ganha uma imagem de 1080 x 1350 para WhatsApp e status, gerada e conferida por `gerar_imagem.py` (limite de palavras, sem link, perfil, emoji ou telefone pessoal; letra mínima; contraste 7:1). Paleta "calma": grafite #1D2329 e laranja #F59A3C sobre branco. A primeira versão (azul-noite, âmbar e verde) foi trocada no mesmo dia por remeter à bandeira; a página do produto seguiu a mesma paleta, com azul só nos links; vermelho de alarme descartado por ser a estética do próprio golpe e por ficar em 5,2:1. Fonte Atkinson Hyperlegible (Braille Institute, licença OFL), embutida na skill. Instagram fica como possibilidade futura, voltado a quem cuida; a distribuição principal continua o WhatsApp.
 - Nível 1 de profissionalização (07/11): regras de fonte em código (`checar_fontes.py` + `fontes.json`), 31 testes de regressão (23 de fontes, tirados das execuções reais e de casos-limite) rodando no GitHub Actions a cada envio, casos de julgamento documentados, seção "Como verificamos" e política de correções no modelo da IFCN. Primeira correção registrada: fontes do alerta da biometria. Site público no GitHub Pages (pasta docs/), atualizado pelo agente a cada execução.
 - Site público no ar em 08/11 (https://mfraza73.github.io/sentinela-60mais/). A montagem passou para o GitHub Actions: o agente só envia dados.json e imagens; o GitHub roda os testes, monta docs/ e publica. Motivo: na execução de 08/11, o ambiente da tarefa agendada negou a execução dos scripts do repositório; a tarefa passou a autorizá-los de forma explícita, com regra manual de reserva.
+- Ajustes de 12/11, depois de cinco dias de execução (32 golpes avaliados, 2 guardados): leitura direta das páginas de notícias (busca-ponte e abertura) antes das buscas, com mês e ano nas consultas; validade da fila de 28 dias, com entrada em 14 e desempate pelo item que expira primeiro; categoria de golpe recorrente (relevância 3, orientação primária de até 12 meses, 26 semanas sem repetir, só em segunda sem golpe novo). Ensaiado no ambiente da tarefa antes de valer. Ideia em espera: captar relatos de vítimas como sinal (busca aberta com termos de relato; Reclame Aqui); a skill de terceiros last30days foi avaliada e descartada para o agente.
 
 
 ## Arquitetura
@@ -53,7 +54,8 @@ Pitch editável: https://claude.ai/artifact/Ar6XfmaFShFphuWGdWwcKB
 - 27/11: entrega N2 (13/11 sem aula)
 
 ## Pendências
-- Confirmar na execução de 09/11 que a tarefa agendada consegue rodar os scripts e enviar os dados ao GitHub.
+- Medir, até 16/11, se a leitura direta melhora o rendimento da varredura.
+- Entregas para 27/11: atualizar o pitch, a skill salva na conta, a comparação com e sem a skill, o roteiro e o nome final.
 - Nome final do produto ("Sentinela" conota vigilância; alternativas: "Antes de Clicar", "Confere?").
 - Recorte nacional de estelionato digital por faixa etária: não encontrado nas fontes consultadas.
 - Skill v2: definir "uma ação" como um comportamento num mesmo momento; rodar comparação com e sem a skill.

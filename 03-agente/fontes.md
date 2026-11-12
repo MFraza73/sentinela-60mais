@@ -166,8 +166,9 @@ Testado com "golpe falsa central nunca liga pedindo senha": devolveu páginas do
 | Sábado | `nordeste` | `sinal-nordeste` |
 | Domingo | `sul` | `sinal-norte` |
 
-São 6 buscas por dia, ou 7 com o pacote de sinal. Na hora de confirmar um candidato específico, o agente pode
-buscar o nome do golpe em qualquer pacote de confirmação, de qualquer região, fora do rodízio.
+São 6 buscas por dia, ou 7 com o pacote de sinal, mais as buscas-ponte da leitura direta (4 nos dias sem
+página regional validada, 6 nos demais). Na hora de confirmar um candidato específico, o agente pode buscar o nome
+do golpe em qualquer pacote de confirmação, de qualquer região, fora do rodízio.
 
 ## Polícias civis e Procons, estado por estado
 

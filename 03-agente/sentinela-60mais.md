@@ -52,7 +52,8 @@ zero e lê o estado de lá. A página lê o mesmo arquivo: o que o agente grava 
 - `execucoes`: um item por execução, com `data`, `modo` (`varredura` ou `publicacao`), `tipo` (`automatica`
   ou `teste`), `consultas` (número de buscas), `pacotes` (os nomes dos pacotes de `fontes.md` usados),
   `leituras` (os nomes das fontes lidas direto), `candidatos` (número), `aprovados` (número), `resultado`, `escolhido` (o `golpe`, ou vazio), `motivo` e
-  `decisoes` (lista de `{golpe, decisao, indicado_por}`, uma frase por candidato). O `resultado` é um destes:
+  `decisoes` (lista de `{golpe, decisao, indicado_por}`, uma frase por candidato) e, quando houver algo a
+  registrar (fonte que falhou, script que não rodou, envio que falhou), `observacao`. O `resultado` é um destes:
   `na-fila`, `nada-novo` ou `alerta-extra` na varredura; `publicado` ou `sem-alerta` na publicação.
 - `correcoes`: um item por correção de alerta publicado, com `data`, `alerta_id`, `tipo` (`fontes`,
   `orientacao`, `texto` ou `retirado`), `o_que_mudou`, `por_que` e `feita_por` (`agente` ou `revisão do
@@ -79,9 +80,13 @@ chegar duas vezes, e cada execução extra publicaria de novo.
    **Leitura direta, primeiro.** A busca não ordena por data; a página de notícias de cada fonte, sim. Leia
    as páginas de notícias da seção "Leitura direta" de `fontes.md`: as quatro de todo dia e as do pacote
    regional do dia. A ferramenta só abre endereço que veio de uma busca, então faça antes a busca-ponte
-   indicada na tabela e abra o endereço da página de notícias que ela devolver. Em cada página, olhe só os
-   títulos dos últimos 14 dias que falem de golpe, fraude, alerta ou orientação de segurança, e abra a
-   notícia que interessar. Se a busca-ponte não devolver a página, siga adiante e anote na `observacao`.
+   indicada na tabela e abra o endereço da página de notícias que ela devolver. Leia só a primeira página
+   da lista, sem paginar, e só o primeiro trecho que a ferramenta devolver: como a leitura é diária, a
+   primeira página basta. Nela, olhe os títulos dos últimos 14 dias que falem de golpe, fraude, alerta ou
+   orientação de segurança, e abra a notícia que interessar. Operação policial sem orientação ao público
+   não vira candidato. Nos dias em que o pacote regional (`nordeste` ou `norte`) não tem página validada,
+   leia só as quatro de todo dia. Se a busca-ponte não devolver a página, siga adiante e anote na
+   `observacao`.
 
    **Buscas, depois.** Cada uma com um pacote de `fontes.md` no filtro `allowed_domains`, com o mês e o ano
    na consulta (por exemplo, "golpe alerta novembro 2026"):
@@ -92,6 +97,7 @@ chegar duas vezes, e cada execução extra publicaria de novo.
 
    Se sobrar fôlego, faça a busca com o pacote de sinal do dia. Siga as regras de busca de `fontes.md`:
    nunca ponha no filtro um domínio recusado pela ferramenta. Anote cada consulta, o pacote e as leituras.
+   O campo `consultas` conta todas as buscas do dia, inclusive as buscas-ponte.
 3. **Monte de 3 a 8 candidatos.** Para cada um, registre o nome do golpe, o canal, o que o golpista pede,
    a ação de proteção, as URLs encontradas e `indicado_por`: a primeira fonte em que você o encontrou, com
    `nome`, `url` e `origem`. Agência de checagem, busca aberta e site que não abre podem indicar um

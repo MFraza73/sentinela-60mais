@@ -690,6 +690,264 @@
           "JA_PUBLICADO"
         ]
       }
+    },
+    {
+      "nome": "fila-19-dias-ainda-vale",
+      "tipo": "validade da fila (12/11)",
+      "descricao": "Item na fila com notícia de 19 dias: vale até 28",
+      "hoje": "2026-11-16",
+      "item": {
+        "golpe": "falso-advogado",
+        "adicionado_em": "2026-11-07",
+        "noticiado_em": "2026-10-28",
+        "status": "aguardando",
+        "fontes": [
+          {
+            "nome": "PCPR",
+            "url": "https://www.policiacivil.pr.gov.br/Noticia/a",
+            "origem": "policia",
+            "data": "2026-10-28"
+          },
+          {
+            "nome": "Procon-SP",
+            "url": "https://www.procon.sp.gov.br/a/",
+            "origem": "procon",
+            "data": "2026-10-21"
+          }
+        ]
+      },
+      "esperado": {
+        "status": "APROVADO",
+        "erros": []
+      }
+    },
+    {
+      "nome": "candidato-19-dias-nao-entra",
+      "tipo": "validade da fila (12/11)",
+      "descricao": "Candidato novo com notícia de 19 dias: a entrada exige 14",
+      "hoje": "2026-11-16",
+      "item": {
+        "golpe": "x",
+        "noticiado_em": "2026-10-28",
+        "fontes": [
+          {
+            "nome": "PCPR",
+            "url": "https://www.policiacivil.pr.gov.br/Noticia/a",
+            "origem": "policia",
+            "data": "2026-10-28"
+          },
+          {
+            "nome": "Procon-SP",
+            "url": "https://www.procon.sp.gov.br/a/",
+            "origem": "procon",
+            "data": "2026-10-21"
+          }
+        ]
+      },
+      "esperado": {
+        "status": "REPROVADO",
+        "erros": [
+          "FORA_DA_JANELA"
+        ]
+      }
+    },
+    {
+      "nome": "fila-30-dias-expira",
+      "tipo": "validade da fila (12/11)",
+      "descricao": "Item na fila com notícia de 30 dias",
+      "hoje": "2026-11-27",
+      "item": {
+        "golpe": "x",
+        "adicionado_em": "2026-11-07",
+        "noticiado_em": "2026-10-28",
+        "fontes": [
+          {
+            "nome": "PCPR",
+            "url": "https://www.policiacivil.pr.gov.br/Noticia/a",
+            "origem": "policia",
+            "data": "2026-10-28"
+          },
+          {
+            "nome": "Procon-SP",
+            "url": "https://www.procon.sp.gov.br/a/",
+            "origem": "procon",
+            "data": "2026-10-21"
+          }
+        ]
+      },
+      "esperado": {
+        "status": "REPROVADO",
+        "erros": [
+          "FORA_DA_JANELA"
+        ]
+      }
+    },
+    {
+      "nome": "recorrente-orientacao-vigente",
+      "tipo": "golpe recorrente (12/11)",
+      "descricao": "Falso parente: sem notícia nova, orientação primária de 5 meses",
+      "hoje": "2026-11-16",
+      "item": {
+        "golpe": "falso-parente",
+        "tipo": "recorrente",
+        "fontes": [
+          {
+            "nome": "PCPR",
+            "url": "https://www.policiacivil.pr.gov.br/Noticia/a",
+            "origem": "policia",
+            "data": "2026-06-10"
+          },
+          {
+            "nome": "Procon-SP",
+            "url": "https://www.procon.sp.gov.br/a/",
+            "origem": "procon",
+            "data": "2026-03-02"
+          }
+        ]
+      },
+      "esperado": {
+        "status": "APROVADO",
+        "erros": [],
+        "avisos": [
+          "RECORRENTE"
+        ]
+      }
+    },
+    {
+      "nome": "recorrente-orientacao-vencida",
+      "tipo": "golpe recorrente (12/11)",
+      "descricao": "Orientação primária mais recente com mais de 12 meses",
+      "hoje": "2026-11-16",
+      "item": {
+        "golpe": "falso-parente",
+        "tipo": "recorrente",
+        "fontes": [
+          {
+            "nome": "PCPR",
+            "url": "https://www.policiacivil.pr.gov.br/Noticia/a",
+            "origem": "policia",
+            "data": "2025-06-10"
+          },
+          {
+            "nome": "Procon-SP",
+            "url": "https://www.procon.sp.gov.br/a/",
+            "origem": "procon",
+            "data": "2024-03-02"
+          }
+        ]
+      },
+      "esperado": {
+        "status": "REPROVADO",
+        "erros": [
+          "ORIENTACAO_VENCIDA"
+        ]
+      }
+    },
+    {
+      "nome": "recorrente-publicado-ha-10-semanas",
+      "tipo": "golpe recorrente (12/11)",
+      "descricao": "Recorrente não repete antes de 26 semanas",
+      "hoje": "2027-01-18",
+      "dados": {
+        "alertas": [
+          {
+            "golpe": "falso-gerente-banco",
+            "publicado_em": "2026-11-09"
+          }
+        ],
+        "fila": []
+      },
+      "item": {
+        "golpe": "falso-gerente-banco",
+        "tipo": "recorrente",
+        "fontes": [
+          {
+            "nome": "PCPR",
+            "url": "https://www.policiacivil.pr.gov.br/Noticia/a",
+            "origem": "policia",
+            "data": "2026-10-16"
+          },
+          {
+            "nome": "Procon-SP",
+            "url": "https://www.procon.sp.gov.br/a/",
+            "origem": "procon",
+            "data": "2026-09-02"
+          }
+        ]
+      },
+      "esperado": {
+        "status": "REPROVADO",
+        "erros": [
+          "JA_PUBLICADO"
+        ]
+      }
+    },
+    {
+      "nome": "recorrente-publicado-ha-30-semanas",
+      "tipo": "golpe recorrente (12/11)",
+      "descricao": "Depois de 26 semanas, o recorrente pode voltar",
+      "hoje": "2027-06-14",
+      "dados": {
+        "alertas": [
+          {
+            "golpe": "falso-gerente-banco",
+            "publicado_em": "2026-11-09"
+          }
+        ],
+        "fila": []
+      },
+      "item": {
+        "golpe": "falso-gerente-banco",
+        "tipo": "recorrente",
+        "fontes": [
+          {
+            "nome": "PCPR",
+            "url": "https://www.policiacivil.pr.gov.br/Noticia/a",
+            "origem": "policia",
+            "data": "2027-02-16"
+          },
+          {
+            "nome": "Procon-SP",
+            "url": "https://www.procon.sp.gov.br/a/",
+            "origem": "procon",
+            "data": "2026-12-02"
+          }
+        ]
+      },
+      "esperado": {
+        "status": "APROVADO",
+        "erros": []
+      }
+    },
+    {
+      "nome": "recorrente-ainda-exige-primaria",
+      "tipo": "golpe recorrente (12/11)",
+      "descricao": "Recorrente só com imprensa",
+      "hoje": "2026-11-16",
+      "item": {
+        "golpe": "x",
+        "tipo": "recorrente",
+        "fontes": [
+          {
+            "nome": "Agência Brasil",
+            "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-09/a",
+            "origem": "imprensa",
+            "data": "2026-09-01"
+          },
+          {
+            "nome": "CNN",
+            "url": "https://www.cnnbrasil.com.br/a/",
+            "origem": "imprensa",
+            "data": "2026-08-01"
+          }
+        ]
+      },
+      "esperado": {
+        "status": "REPROVADO",
+        "erros": [
+          "SEM_PRIMARIA"
+        ]
+      }
     }
   ]
 }

@@ -101,6 +101,21 @@ O limite apareceu no primeiro uso: o alerta da biometria, corrigido em 07/11, pa
 INSS e a notícia da Agência Brasil, mas a notícia só repete a nota. O código vê duas organizações; só a leitura
 vê uma fonte. Por isso a correção diz isso ao público.
 
+## O que cinco dias de execução ensinaram (ajustes de 12/11)
+
+De 07 a 11/11, o agente avaliou 32 golpes e guardou 2. A maioria foi recusada por data. Três ajustes saíram daí:
+
+- **Leitura direta.** A busca não ordena por data, e os pacotes regionais devolviam páginas de 2017 a 2025. O
+  agente passou a ler primeiro a página de notícias das fontes que a ferramenta abre, onde o mais recente vem
+  primeiro, e só depois buscar. Como a ferramenta só abre endereço vindo de uma busca, cada leitura começa por
+  uma busca-ponte.
+- **Validade da fila.** Com publicação semanal e validade de 14 dias, o segundo colocado quase nunca saía: o
+  falso advogado passou em tudo e ia expirar sem publicação. A entrada continua exigindo notícia de até 14 dias,
+  mas o item vale 28 dias na fila, e o desempate favorece o que expira primeiro.
+- **Golpe recorrente.** A janela de 14 dias mede notícia, não golpe. Os golpes que mais atingem quem tem 60+ são
+  crônicos e raramente viram notícia nova. Um recorrente pode virar alerta numa segunda sem golpe novo, com
+  relevância máxima, orientação primária vigente e intervalo de 26 semanas.
+
 ## Correções e transparência
 
 Um alerta publicado nunca é apagado. Fonte fora do ar, orientação mudada ou erro viram uma correção registrada em

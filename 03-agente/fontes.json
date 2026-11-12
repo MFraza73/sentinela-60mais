@@ -1,5 +1,5 @@
 {
-  "atualizado_em": "2026-11-07",
+  "atualizado_em": "2026-11-12",
   "descricao": "Lista legível por máquina do mapa de fontes (fontes.md). O verificador checar_fontes.py lê este arquivo. Mantenha os dois em sincronia.",
   "origens_primarias": [
     "orgao",
@@ -744,6 +744,102 @@
       "grupo": "pc.al.gov.br",
       "uf": "AL",
       "nota": "A ferramenta encontra, mas a página não abre ou vem sem texto"
+    }
+  ],
+  "validade_fila_dias": 28,
+  "recorrente": {
+    "orientacao_max_dias": 365,
+    "semanas_sem_republicar": 26,
+    "validade_fila_dias": 60
+  },
+  "leitura_direta": [
+    {
+      "fonte": "Febraban",
+      "busca_ponte": {
+        "allowed_domains": [
+          "portal.febraban.org.br"
+        ],
+        "consulta": "Febraban notícias"
+      },
+      "pagina": "https://portal.febraban.org.br/",
+      "quando": "todo dia"
+    },
+    {
+      "fonte": "Procon de Santa Catarina",
+      "busca_ponte": {
+        "allowed_domains": [
+          "procon.sc.gov.br"
+        ],
+        "consulta": "notícias"
+      },
+      "pagina": "https://www.procon.sc.gov.br/",
+      "quando": "todo dia"
+    },
+    {
+      "fonte": "Procon de São Paulo",
+      "busca_ponte": {
+        "allowed_domains": [
+          "procon.sp.gov.br"
+        ],
+        "consulta": "Procon-SP notícias"
+      },
+      "pagina": "https://www.procon.sp.gov.br/noticias/",
+      "quando": "todo dia"
+    },
+    {
+      "fonte": "Senacon",
+      "busca_ponte": {
+        "allowed_domains": [
+          "gov.br"
+        ],
+        "consulta": "Senacon notícias Ministério da Justiça últimas notícias"
+      },
+      "pagina": "https://www.gov.br/mj/pt-br/assuntos/seus-direitos/consumidor/noticias-consumidor",
+      "quando": "todo dia"
+    },
+    {
+      "fonte": "Polícia Civil do Paraná",
+      "busca_ponte": {
+        "allowed_domains": [
+          "policiacivil.pr.gov.br"
+        ],
+        "consulta": "PCPR notícias"
+      },
+      "pagina": "https://www.policiacivil.pr.gov.br/noticias",
+      "quando": "pacote sul"
+    },
+    {
+      "fonte": "Polícia Civil de Santa Catarina",
+      "busca_ponte": {
+        "allowed_domains": [
+          "pc.sc.gov.br"
+        ],
+        "consulta": "notícias"
+      },
+      "pagina": "https://pc.sc.gov.br/?page_id=1258",
+      "quando": "pacote sul"
+    },
+    {
+      "fonte": "Polícia Civil de Goiás",
+      "busca_ponte": {
+        "allowed_domains": [
+          "goias.gov.br"
+        ],
+        "consulta": "notícias"
+      },
+      "pagina": "https://goias.gov.br/policiacivil/",
+      "quando": "pacote sudeste-centro-oeste"
+    },
+    {
+      "fonte": "Polícia Civil de Mato Grosso do Sul",
+      "busca_ponte": {
+        "allowed_domains": [
+          "pc.ms.gov.br"
+        ],
+        "consulta": "notícias"
+      },
+      "pagina": "https://www.pc.ms.gov.br/noticias/",
+      "quando": "pacote sudeste-centro-oeste"
     }
   ]
 }

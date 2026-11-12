@@ -404,7 +404,7 @@ a.botao:hover { color: var(--tinta); }
         <li><div><b>Todo dia, às 7h40, uma tarefa agendada acorda o agente.</b><span>Ninguém precisa apertar um botão.</span></div></li>
         <li><div><b>O agente pesquisa órgãos públicos, bancos, polícias, Procons, imprensa e agências de checagem.</b><span>Cada golpe novo, confirmado em duas fontes independentes e ligado a quem tem 60 anos ou mais, entra numa fila. Uma das fontes tem de ser um órgão público, a polícia, o Procon ou um banco.</span></div></li>
         <li><div><b>Uma skill escreve o alerta em linguagem simples.</b><span>Um verificador confere as regras da Lei 15.263/2025, a Política Nacional de Linguagem Simples.</span></div></li>
-        <li><div><b>Toda segunda, o golpe mais importante da fila vira o alerta da semana.</b><span>Um golpe muito grave, com orientação oficial nova, pode sair antes, no máximo uma vez por semana. Se a fila estiver vazia, a semana fica sem alerta.</span></div></li>
+        <li><div><b>Toda segunda, o golpe mais importante da fila vira o alerta da semana.</b><span>Um golpe muito grave, com orientação oficial nova, pode sair antes, no máximo uma vez por semana. Numa semana sem golpe novo, o alerta pode lembrar um golpe antigo que continua circulando. Se a fila estiver vazia, a semana fica sem alerta.</span></div></li>
         <li><div><b>O alerta aparece aqui.</b><span>Com as fontes, uma imagem e um texto prontos para o WhatsApp.</span></div></li>
       </ol>
       <div class="fila" id="bloco-fila" hidden>
@@ -598,7 +598,7 @@ a.botao:hover { color: var(--tinta); }
   });
 
   function renderAlerta(a) {
-    texto("eyebrow-alerta", (a.extra ? "Alerta extra · " : "Alerta da semana · ") + dataLonga(a.publicado_em));
+    texto("eyebrow-alerta", (a.extra ? "Alerta extra · " : a.tipo === "recorrente" ? "Alerta da semana · golpe que continua circulando · " : "Alerta da semana · ") + dataLonga(a.publicado_em));
     texto("titulo-alerta", a.titulo);
     texto("c-como", a.como_chega);
     texto("c-pedem", a.o_que_pedem);
@@ -751,6 +751,7 @@ a.botao:hover { color: var(--tinta); }
       b.textContent = f.nome;
       var s = document.createElement("span");
       s.textContent = "Confirmado em " + dataLonga(f.adicionado_em) + " · relevância " + f.relevancia + " de 3" +
+        (f.tipo === "recorrente" ? " · golpe que continua circulando" : "") +
         (f.indicado_por ? " · indicado por " + nomeIndicador(f.indicado_por) : "");
       li.appendChild(b); li.appendChild(s);
       ul.appendChild(li);

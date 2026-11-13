@@ -1,6 +1,6 @@
 {
   "projeto": "Sentinela 60+",
-  "atualizado_em": "2026-11-12",
+  "atualizado_em": "2026-11-13",
   "alertas": [
     {
       "id": "2026-11-06-falso-bloqueio-biometria-inss",
@@ -198,6 +198,43 @@
           }
         ],
         "card_whatsapp": "*Golpe da promoção falsa*\nChega uma oferta de loja muito barata, com um link.\nO link leva a um site que imita a loja.\nNão clique. Entre você mesmo no site ou no aplicativo oficial da loja.\n*Oferta chegou por link? Vá você mesmo à loja.*"
+      }
+    },
+    {
+      "golpe": "falsa-suspensao-cnh",
+      "nome": "Falso aviso de carteira de motorista suspensa",
+      "adicionado_em": "2026-11-13",
+      "noticiado_em": "2026-10-30",
+      "relevancia": 2,
+      "indicado_por": {
+        "nome": "Metrópoles",
+        "url": "https://www.metropoles.com/distrito-federal/golpe-da-cnh-policia-orienta-quem-recebeu-mensagens-a-registrar-ocorrencia",
+        "origem": "imprensa"
+      },
+      "status": "aguardando",
+      "alerta": {
+        "golpe": "falsa-suspensao-cnh",
+        "titulo": "Falso aviso de carteira de motorista suspensa: não clique no link",
+        "como_chega": "Uma mensagem no WhatsApp ou no celular que imita o Departamento de Trânsito (Detran).",
+        "o_que_pedem": "Que você clique no link e coloque seu CPF e seu celular numa página falsa.",
+        "sinal": "O Detran não manda link de cobrança nem aviso de suspensão por mensagem.",
+        "o_que_fazer": "Não clique no link. Consulte sua carteira só no site ou no aplicativo oficial do Detran.",
+        "para_lembrar": "Aviso do Detran chegou por mensagem? Não clique.",
+        "fontes": [
+          {
+            "nome": "Detran de Goiás: alerta para golpe com falsas notificações de multa e suspensão da CNH (11/11/2024)",
+            "url": "https://goias.gov.br/detran/detran-go-alerta-para-novo-golpe-que-envia-falsas-notificacoes-de-multa-e-suspensao-de-cnh/",
+            "origem": "orgao",
+            "data": "2024-11-11"
+          },
+          {
+            "nome": "Metrópoles: golpe da CNH, polícia orienta quem recebeu mensagens a registrar ocorrência (30/10/2026)",
+            "url": "https://www.metropoles.com/distrito-federal/golpe-da-cnh-policia-orienta-quem-recebeu-mensagens-a-registrar-ocorrencia",
+            "origem": "imprensa",
+            "data": "2026-10-30"
+          }
+        ],
+        "card_whatsapp": "*Falso aviso de carteira de motorista suspensa*\nChega uma mensagem que imita o Detran, com um link.\nO Detran não manda link de cobrança nem aviso de suspensão por mensagem.\nNão clique. Consulte sua carteira só no site ou no aplicativo oficial do Detran.\n*Aviso do Detran chegou por mensagem? Não clique.*"
       }
     }
   ],
@@ -820,6 +857,109 @@
         }
       ],
       "observacao": "Os pacotes norte e sinal-norte só devolveram páginas de 2019 a 2025 (rondonia.ro.gov.br e policiacivil.am.gov.br mostram a data do dia no topo, mas as notas são antigas). Duas páginas do gov.br (uma do INSS e uma do Portal do Servidor) pediram login e não abriram. As buscas de confirmação da falsa votação usaram domínios de pacotes de confirmação de várias regiões. O checar_fontes.py rodou normalmente; o checar_alerta.py e o gerar_imagem.py não foram usados, porque nenhum alerta foi escrito. O golpe do falso advogado já passa de 14 dias desde a última notícia e deve expirar na limpeza da fila de segunda."
+    },
+    {
+      "data": "2026-11-13",
+      "modo": "varredura",
+      "tipo": "automatica",
+      "consultas": 20,
+      "pacotes": [
+        "federal",
+        "bancos",
+        "imprensa",
+        "checadores",
+        "sudeste-centro-oeste",
+        "recorte",
+        "sinal-sudeste-centro-oeste"
+      ],
+      "leituras": [
+        "Febraban",
+        "Procon de Santa Catarina",
+        "Procon de São Paulo",
+        "Senacon",
+        "Polícia Civil de Goiás",
+        "Polícia Civil de Mato Grosso do Sul"
+      ],
+      "candidatos": 8,
+      "aprovados": 1,
+      "resultado": "na-fila",
+      "escolhido": "falsa-suspensao-cnh",
+      "motivo": "Um golpe novo e confirmado entrou na fila: o falso aviso de carteira de motorista suspensa pelo WhatsApp, com nota do Detran de Goiás e reportagem do Metrópoles (30/10). Relevância 2: não cabe alerta extra.",
+      "decisoes": [
+        {
+          "golpe": "Falso aviso de carteira de motorista suspensa",
+          "decisao": "Guardado na fila: é golpe digital contra pessoa física, noticiado em 30/10. O Detran de Goiás e o Metrópoles mandam não clicar no link e consultar a carteira só no site ou aplicativo oficial do Detran. Relevância 2: chega pelo WhatsApp, mas não é tema próprio de 60+. A nota do Detran de Goiás é de novembro de 2024 e continua no ar; a revisão de segunda deve procurar uma orientação primária mais recente.",
+          "indicado_por": {
+            "nome": "Metrópoles",
+            "url": "https://www.metropoles.com/distrito-federal/golpe-da-cnh-policia-orienta-quem-recebeu-mensagens-a-registrar-ocorrencia",
+            "origem": "imprensa"
+          }
+        },
+        {
+          "golpe": "Golpe do código QR do Pix trocado em lojas virtuais",
+          "decisao": "Recusado: o Procon de São Paulo (16/09) e o Correio Braziliense (17/10) tratam do golpe, mas a notícia mais recente está fora da janela de 14 dias. O alerta do Procon de Mato Grosso não abriu. O checar_fontes.py reprovou (fora da janela).",
+          "indicado_por": {
+            "nome": "Procon de São Paulo",
+            "url": "https://www.procon.sp.gov.br/procon-sp-orienta-consumidores-sobre-novo-golpe-que-altera-qr-code-do-pix-em-compras-online/",
+            "origem": "procon"
+          }
+        },
+        {
+          "golpe": "Falso gerente que leva idosos ao caixa eletrônico (Distrito Federal)",
+          "decisao": "Recusado: a reportagem de 11/11 descreve a investigação, mas não traz ação de proteção nem fonte primária que abra. O golpe do falso gerente foi publicado em 09/11.",
+          "indicado_por": {
+            "nome": "Metrópoles",
+            "url": "https://www.metropoles.com/distrito-federal/na-mira/golpe-da-falsa-central-bancaria-causa-prejuizo-de-r-450-mil-a-idosos-do-df",
+            "origem": "imprensa"
+          }
+        },
+        {
+          "golpe": "Golpe do falso advogado",
+          "decisao": "Recusado: já está na fila, com status aguardando. A nota da Febraban de 28/10 trata do mesmo golpe.",
+          "indicado_por": {
+            "nome": "Febraban",
+            "url": "https://portal.febraban.org.br/noticia/4512/pt-br/",
+            "origem": "banco"
+          }
+        },
+        {
+          "golpe": "Golpe do falso traficante (Espírito Santo)",
+          "decisao": "Recusado: a nota da Polícia Civil do Espírito Santo é de outubro de 2025, fora da janela de 14 dias.",
+          "indicado_por": {
+            "nome": "Polícia Civil do Espírito Santo",
+            "url": "https://pc.es.gov.br/Not%C3%ADcia/policia-civil-orienta-sobre-golpe-do-falso-traficante",
+            "origem": "policia"
+          }
+        },
+        {
+          "golpe": "Falsa intimação em nome da Secretaria da Segurança de São Paulo",
+          "decisao": "Recusado: a reportagem da CNN Brasil é de julho de 2026, fora da janela, e a página da secretaria só serve como sinal.",
+          "indicado_por": {
+            "nome": "CNN Brasil",
+            "url": "https://www.cnnbrasil.com.br/nacional/sudeste/sp/ssp-alerta-sobre-golpe-digital-com-falsa-intimacao-veja-como-identificar/",
+            "origem": "imprensa"
+          }
+        },
+        {
+          "golpe": "Golpe do falso parente (avaliado como recorrente)",
+          "decisao": "Recusado: a reportagem do Correio Braziliense (07/10) não traz ação de proteção, e a página da Anatel deu erro ao abrir. Nenhuma fonte primária com data dos últimos 12 meses foi aberta hoje.",
+          "indicado_por": {
+            "nome": "Correio Braziliense",
+            "url": "https://www.correiobraziliense.com.br/cidades-df/2026/10/7516458-organizacao-criminosa-aplicava-e-vendia-golpe-do-falso-parente.html",
+            "origem": "imprensa"
+          }
+        },
+        {
+          "golpe": "Golpes com ofertas falsas na Black Friday",
+          "decisao": "Recusado: a Febraban (10/11) e o Procon de Santa Catarina (11/11) tratam do mesmo golpe que já está na fila, a promoção falsa por link.",
+          "indicado_por": {
+            "nome": "Febraban",
+            "url": "https://portal.febraban.org.br/noticia/4520/pt-br/",
+            "origem": "banco"
+          }
+        }
+      ],
+      "observacao": "Na leitura direta, a Senacon não tem notícia desde 29/10, e as Polícias Civis de Goiás e de Mato Grosso do Sul só trazem operações, sem orientação ao público. O alerta do Procon de Mato Grosso bloqueia a ferramenta, e uma página da Anatel deu erro ao abrir. Os sites dos Detrans estaduais aparecem na busca, mas não estão no mapa de fontes; só a página do Detran de Goiás, em goias.gov.br, pôde confirmar. O checar_fontes.py e o checar_alerta.py rodaram normalmente; o gerar_imagem.py não foi usado, porque nenhum alerta foi publicado."
     }
   ],
   "correcoes": [

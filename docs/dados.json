@@ -1,6 +1,6 @@
 {
   "projeto": "Sentinela 60+",
-  "atualizado_em": "2026-11-13",
+  "atualizado_em": "2026-11-14",
   "alertas": [
     {
       "id": "2026-11-06-falso-bloqueio-biometria-inss",
@@ -235,6 +235,86 @@
           }
         ],
         "card_whatsapp": "*Falso aviso de carteira de motorista suspensa*\nChega uma mensagem que imita o Detran, com um link.\nO Detran não manda link de cobrança nem aviso de suspensão por mensagem.\nNão clique. Consulte sua carteira só no site ou no aplicativo oficial do Detran.\n*Aviso do Detran chegou por mensagem? Não clique.*"
+      }
+    },
+    {
+      "golpe": "falso-namoro-internet",
+      "nome": "Golpe do falso namoro pela internet",
+      "adicionado_em": "2026-11-14",
+      "noticiado_em": "2026-11-12",
+      "relevancia": 3,
+      "indicado_por": {
+        "nome": "Metrópoles",
+        "url": "https://metropoles.com/sao-paulo/aposentada-perde-quase-r-40-mil-ao-acreditar-em-namoro-com-elon-musk",
+        "origem": "imprensa"
+      },
+      "status": "aguardando",
+      "alerta": {
+        "golpe": "falso-namoro-internet",
+        "titulo": "Golpe do falso namoro pela internet: não mande dinheiro",
+        "como_chega": "Alguém puxa conversa na rede social ou no WhatsApp e diz que gosta de você.",
+        "o_que_pedem": "Dinheiro, empréstimo ou pagamentos, sempre com uma história de emergência.",
+        "sinal": "A pessoa nunca aparece ao vivo nem em chamada de vídeo, mas pede dinheiro.",
+        "o_que_fazer": "Não mande dinheiro a quem você só conhece pela internet.",
+        "para_lembrar": "Conheceu só pela internet e pediu dinheiro? Não mande.",
+        "fontes": [
+          {
+            "nome": "Polícia Civil do Paraná: alerta para golpes amorosos e orienta sobre prevenção (12/06/2026)",
+            "url": "https://www.parana.pr.gov.br/aen/Noticia/Dia-dos-Namorados-PCPR-alerta-para-golpes-amorosos-e-orienta-sobre-formas-de-prevencao",
+            "origem": "policia",
+            "data": "2026-06-12"
+          },
+          {
+            "nome": "Polícia Civil do Rio Grande do Sul: idosos são principal alvo do golpe do amor (20/08/2025)",
+            "url": "https://www.pc.rs.gov.br/idosos-sao-principal-alvo-do-golpe-do-amor-em-casos-atendidos-pela-policia-civil",
+            "origem": "policia",
+            "data": "2025-08-20"
+          }
+        ],
+        "card_whatsapp": "*Golpe do falso namoro pela internet*\nAlguém puxa conversa na rede social ou no WhatsApp e diz que gosta de você.\nA pessoa nunca aparece ao vivo nem em vídeo, mas pede dinheiro.\nNão mande dinheiro a quem você só conhece pela internet.\n*Conheceu só pela internet e pediu dinheiro? Não mande.*"
+      }
+    },
+    {
+      "golpe": "falsa-cobranca-governo-whatsapp",
+      "nome": "Falsa cobrança do governo pelo WhatsApp",
+      "adicionado_em": "2026-11-14",
+      "noticiado_em": "2026-11-05",
+      "relevancia": 2,
+      "indicado_por": {
+        "nome": "Metrópoles",
+        "url": "https://www.metropoles.com/distrito-federal/golpistas-usam-logo-do-governo-para-tentar-roubar-dados-de-moradores-do-df",
+        "origem": "imprensa"
+      },
+      "status": "aguardando",
+      "alerta": {
+        "golpe": "falsa-cobranca-governo-whatsapp",
+        "titulo": "Falsa cobrança do governo pelo WhatsApp: não pague",
+        "como_chega": "Mensagem no WhatsApp que imita o governo, às vezes com seu nome e CPF.",
+        "o_que_pedem": "Que você pague uma dívida por boleto ou Pix, num link que eles mandam.",
+        "sinal": "O governo não manda cobrança de dívida pelo WhatsApp.",
+        "o_que_fazer": "Não pague boleto nem Pix que chegou por mensagem.",
+        "para_lembrar": "Cobrança do governo no WhatsApp? Não pague.",
+        "fontes": [
+          {
+            "nome": "Centro Integrado de Segurança Cibernética do Governo Digital: golpistas enviam mensagens no WhatsApp se passando por entidades do governo (13/02/2026)",
+            "url": "https://www.gov.br/cisc/pt-br/alertas-de-golpes-digitais/golpistas-enviam-mensagens-no-whatsapp-se-passando-por-entidades-do-governo",
+            "origem": "orgao",
+            "data": "2026-02-13"
+          },
+          {
+            "nome": "Metrópoles: golpistas usam logo do governo para tentar roubar dados de moradores do DF (05/11/2026)",
+            "url": "https://www.metropoles.com/distrito-federal/golpistas-usam-logo-do-governo-para-tentar-roubar-dados-de-moradores-do-df",
+            "origem": "imprensa",
+            "data": "2026-11-05"
+          },
+          {
+            "nome": "Procuradoria-Geral da Fazenda Nacional: recebeu mensagem da PGFN? Cuidado, pode ser golpe (02/12/2025)",
+            "url": "https://www.gov.br/pgfn/pt-br/assuntos/noticias/2025/recebeu-mensagem-da-pgfn-cuidado-pode-ser-golpe",
+            "origem": "orgao",
+            "data": "2025-12-02"
+          }
+        ],
+        "card_whatsapp": "*Falsa cobrança do governo pelo WhatsApp*\nChega uma mensagem que imita o governo, às vezes com seu nome e seu CPF.\nO governo não manda cobrança de dívida pelo WhatsApp.\nNão pague boleto nem Pix que chegou por mensagem.\n*Cobrança do governo no WhatsApp? Não pague.*"
       }
     }
   ],
@@ -960,6 +1040,89 @@
         }
       ],
       "observacao": "Na leitura direta, a Senacon não tem notícia desde 29/10, e as Polícias Civis de Goiás e de Mato Grosso do Sul só trazem operações, sem orientação ao público. O alerta do Procon de Mato Grosso bloqueia a ferramenta, e uma página da Anatel deu erro ao abrir. Os sites dos Detrans estaduais aparecem na busca, mas não estão no mapa de fontes; só a página do Detran de Goiás, em goias.gov.br, pôde confirmar. O checar_fontes.py e o checar_alerta.py rodaram normalmente; o gerar_imagem.py não foi usado, porque nenhum alerta foi publicado."
+    },
+    {
+      "data": "2026-11-14",
+      "modo": "varredura",
+      "tipo": "automatica",
+      "consultas": 15,
+      "pacotes": [
+        "federal",
+        "bancos",
+        "imprensa",
+        "checadores",
+        "nordeste",
+        "recorte",
+        "sinal-nordeste"
+      ],
+      "leituras": [
+        "Febraban",
+        "Procon de Santa Catarina",
+        "Procon de São Paulo",
+        "Senacon"
+      ],
+      "candidatos": 6,
+      "aprovados": 2,
+      "resultado": "na-fila",
+      "escolhido": "falso-namoro-internet",
+      "motivo": "Dois golpes novos e confirmados entraram na fila: o falso namoro pela internet (relevância 3) e a falsa cobrança do governo pelo WhatsApp (relevância 2). Nenhum cabe em alerta extra, porque nenhuma fonte primária é das últimas 48 horas.",
+      "decisoes": [
+        {
+          "golpe": "Golpe do falso namoro pela internet",
+          "decisao": "Guardado na fila: o Metrópoles noticiou em 12/11 uma aposentada que perdeu quase R$ 40 mil para um falso namorado, mas sem orientação. A Polícia Civil do Paraná (12/06/2026, pela agência do governo do estado) e a Polícia Civil do Rio Grande do Sul (20/08/2025) descrevem o mesmo golpe e mandam desconfiar de pedido de dinheiro de quem se conhece só pela internet. Relevância 3: a polícia gaúcha diz que os idosos são o principal alvo. Não vira alerta extra: a fonte primária não é das últimas 48 horas.",
+          "indicado_por": {
+            "nome": "Metrópoles",
+            "url": "https://metropoles.com/sao-paulo/aposentada-perde-quase-r-40-mil-ao-acreditar-em-namoro-com-elon-musk",
+            "origem": "imprensa"
+          }
+        },
+        {
+          "golpe": "Falsa cobrança do governo pelo WhatsApp",
+          "decisao": "Guardado na fila: o Metrópoles (05/11) mostra perfis no WhatsApp com a marca do governo cobrando dívidas por boleto ou Pix, com nome e CPF da vítima. O Centro Integrado de Segurança Cibernética do Governo Digital (13/02/2026) descreve o mesmo golpe e manda não pagar boleto nem Pix recebido por mensagem; a Procuradoria-Geral da Fazenda Nacional (02/12/2025) diz que não cobra pelo WhatsApp. O Metrópoles repete parte da orientação do centro, por isso a terceira fonte entrou. Relevância 2: chega pelo WhatsApp, mas não é tema próprio de 60+.",
+          "indicado_por": {
+            "nome": "Metrópoles",
+            "url": "https://www.metropoles.com/distrito-federal/golpistas-usam-logo-do-governo-para-tentar-roubar-dados-de-moradores-do-df",
+            "origem": "imprensa"
+          }
+        },
+        {
+          "golpe": "Ataque à Caixa Seguridade com vazamento de dados de 7,6 milhões de clientes",
+          "decisao": "Recusado: é vazamento de dados contra empresa, não golpe contra pessoa. A Agência Brasil (12/11) diz que os clientes recebem recomendações contra golpes, mas não diz quais. Se surgir golpe usando esses dados, com orientação oficial, ele pode virar candidato.",
+          "indicado_por": {
+            "nome": "Correio Braziliense",
+            "url": "https://www.correiobraziliense.com.br/economia/2026/11/7537711-onda-de-ataques-hackers-acende-alerta-em-grandes-servicos-no-brasil.html",
+            "origem": "imprensa"
+          }
+        },
+        {
+          "golpe": "Falsa devolução de descontos do INSS",
+          "decisao": "Recusado: a operação da polícia mineira saiu no Correio Braziliense em 28/10, fora da janela de 14 dias, e sem orientação ao público. As orientações do Procon do Espírito Santo e da CNN Brasil são de 2025.",
+          "indicado_por": {
+            "nome": "Correio Braziliense",
+            "url": "https://www.correiobraziliense.com.br/brasil/2026/10/7529355-golpe-contra-idosos-faz-21-vitimas-em-minas-prejuizo-e-de-rs-300-mil.html",
+            "origem": "imprensa"
+          }
+        },
+        {
+          "golpe": "Golpe do falso advogado",
+          "decisao": "Recusado: já está na fila, com status aguardando. A Agência Brasil noticiou em novembro as denúncias recebidas pela OAB do Rio de Janeiro, e o INSS mantém no ar o alerta sobre falso advogado que liga oferecendo ação contra o instituto.",
+          "indicado_por": {
+            "nome": "INSS",
+            "url": "https://www.gov.br/inss/pt-br/noticias/inss-alerta-segurados-para-nova-modalidade-de-tentativa-de-golpe-3",
+            "origem": "orgao"
+          }
+        },
+        {
+          "golpe": "Golpe do cartão por aproximação",
+          "decisao": "Recusado: a página do Procon de Pernambuco não tem data de publicação e parece ser de 2021. Não há notícia recente do golpe.",
+          "indicado_por": {
+            "nome": "Procon de Pernambuco",
+            "url": "https://www.procon.pe.gov.br/blog/10-blog/187-procon-pe-alerta-para-o-golpe-do-cartao-por-aproximacao",
+            "origem": "procon"
+          }
+        }
+      ],
+      "observacao": "Na leitura direta, Febraban, Procon de Santa Catarina, Procon de São Paulo e Senacon não trouxeram golpe novo além da Black Friday, que já está na fila; a Senacon segue sem notícia desde 29/10. O pacote nordeste não tem página de notícias validada e, na busca, devolveu sobretudo prefeituras e páginas antigas; o sinal-nordeste só trouxe páginas de 2025. Uma abertura da Agência Brasil foi limitada por excesso de acessos e funcionou na segunda tentativa. O checar_fontes.py e o checar_alerta.py rodaram normalmente; o gerar_imagem.py não foi usado, porque nenhum alerta foi publicado."
     }
   ],
   "correcoes": [

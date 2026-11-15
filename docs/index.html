@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Sentinela 60+</title>
-<meta name="description" content="Um golpe digital por semana, explicado em linguagem simples para quem tem 60 anos ou mais.">
+<meta name="description" content="Alertas de golpes digitais toda segunda, quarta e sexta, em linguagem simples para quem tem 60 anos ou mais.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
@@ -337,6 +337,49 @@ a.botao:hover { color: var(--tinta); }
   padding: 1rem 1.1rem;
 }
 
+/* Agenda e tema */
+.agenda { font-size: var(--t-s); color: var(--tinta-2); }
+.agenda b { color: var(--tinta); }
+.selo-tema {
+  justify-self: start;
+  font-size: var(--t-xs);
+  font-weight: 700;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  background: var(--sinal-fundo);
+  color: var(--sinal);
+  border: 1px solid var(--sinal);
+}
+
+/* É golpe ou não? */
+.quiz { display: grid; gap: 1rem; }
+.quiz .canal { font-size: var(--t-s); font-weight: 700; color: var(--tinta-2); }
+.conversa.recebida { justify-items: start; }
+.bolha.recebida {
+  background: var(--papel);
+  border-radius: 12px 12px 12px 4px;
+  border: 1px solid var(--linha);
+  font-size: var(--t-m);
+}
+.quiz .pergunta { font-size: var(--t-xl); font-weight: 700; }
+.quiz .espera {
+  background: var(--lavado);
+  border-radius: var(--raio);
+  padding: 1rem 1.1rem;
+}
+.resposta-quiz { display: grid; gap: 0.75rem; }
+.resposta-quiz .veredito {
+  font-size: var(--t-xl);
+  font-weight: 700;
+  padding: 0.9rem 1.1rem;
+  border-radius: var(--raio);
+  background: var(--tinta);
+  color: var(--papel);
+}
+.resposta-quiz .veredito.nao-golpe { background: var(--lavado); color: var(--tinta); border: 2px solid var(--tinta); }
+.resposta-quiz p b { display: block; font-size: var(--t-s); text-transform: uppercase; letter-spacing: 0.05em; color: var(--tinta-2); }
+.resposta-quiz .fontes-quiz { font-size: var(--t-s); }
+
 @media (prefers-reduced-motion: no-preference) {
   .alerta[data-pronto="sim"] { animation: surge 280ms ease-out; }
   @keyframes surge { from { opacity: 0.6; transform: translateY(4px); } to { opacity: 1; transform: none; } }
@@ -347,15 +390,17 @@ a.botao:hover { color: var(--tinta); }
   <header class="topo">
     <div class="marca">
       <strong>Sentinela 60+</strong>
-      <span>Um golpe por semana, explicado em linguagem simples.</span>
+      <span>Golpes digitais explicados em linguagem simples, toda segunda, quarta e sexta.</span>
     </div>
     <button type="button" class="botao" id="btn-letra" aria-pressed="false">Letra maior</button>
   </header>
 
   <main class="pagina-conteudo" style="display:grid; gap:2.5rem;">
     <section class="alerta" id="semana" aria-labelledby="titulo-alerta" aria-busy="true">
-      <p class="eyebrow" id="eyebrow-alerta">Alerta da semana</p>
-      <h1 id="titulo-alerta">Carregando o alerta da semana…</h1>
+      <p class="eyebrow" id="eyebrow-alerta">Alerta</p>
+      <h1 id="titulo-alerta">Carregando o alerta mais recente…</h1>
+      <p class="selo-tema" id="selo-tema" hidden></p>
+      <p class="agenda" id="agenda" hidden></p>
       <div class="acoes-alerta" id="acoes-alerta" hidden>
         <button type="button" class="botao" id="btn-ouvir" hidden>Ouvir o alerta</button>
       </div>
@@ -400,6 +445,31 @@ a.botao:hover { color: var(--tinta); }
       <textarea id="card-texto" readonly hidden aria-label="Texto do alerta para copiar"></textarea>
     </section>
 
+    <section class="secao quiz" id="quiz" aria-labelledby="titulo-quiz" hidden>
+      <h2 id="titulo-quiz">É golpe ou não?</h2>
+      <p class="intro" id="quiz-intro">Todo sábado, uma mensagem real para você testar o olho. A resposta sai no domingo.</p>
+      <p class="canal" id="quiz-canal"></p>
+      <div class="conversa recebida"><div class="bolha recebida" id="quiz-mensagem"></div></div>
+      <p class="pergunta">E aí, o que você acha?</p>
+      <p class="espera" id="quiz-espera" hidden></p>
+      <div class="resposta-quiz" id="quiz-resposta" hidden>
+        <p class="veredito" id="quiz-veredito"></p>
+        <p><b>O sinal</b><span id="quiz-sinal"></span></p>
+        <p><b>Por quê</b><span id="quiz-explicacao"></span></p>
+        <blockquote class="lembrar">
+          <p class="rotulo">Para lembrar</p>
+          <p class="frase" id="quiz-lembrar"></p>
+        </blockquote>
+        <div class="fontes-quiz"><b>De onde veio</b><ol id="quiz-fontes"></ol></div>
+      </div>
+      <div class="copiar-linha">
+        <button type="button" class="botao cheio" id="btn-quiz-pergunta">Copiar a pergunta</button>
+        <button type="button" class="botao" id="btn-quiz-resposta" hidden>Copiar a resposta</button>
+        <span class="aviso-copia" id="aviso-quiz" role="status" aria-live="polite"></span>
+      </div>
+      <textarea id="quiz-texto" readonly hidden aria-label="Texto do quiz para copiar"></textarea>
+    </section>
+
     <section class="secao" id="anteriores" aria-labelledby="titulo-anteriores" hidden>
       <h2 id="titulo-anteriores">Alertas anteriores</h2>
       <div class="lista-anteriores" id="lista-anteriores"></div>
@@ -411,11 +481,12 @@ a.botao:hover { color: var(--tinta); }
         <li><div><b>Todo dia, às 7h40, uma tarefa agendada acorda o agente.</b><span>Ninguém precisa apertar um botão.</span></div></li>
         <li><div><b>O agente pesquisa órgãos públicos, bancos, polícias, Procons, imprensa e agências de checagem.</b><span>Cada golpe novo, confirmado em duas fontes independentes e ligado a quem tem 60 anos ou mais, entra numa fila. Uma das fontes tem de ser um órgão público, a polícia, o Procon ou um banco.</span></div></li>
         <li><div><b>Uma skill escreve o alerta em linguagem simples.</b><span>Um verificador confere as regras da Lei 15.263/2025, a Política Nacional de Linguagem Simples.</span></div></li>
-        <li><div><b>Toda segunda, o golpe mais importante da fila vira o alerta da semana.</b><span>Um golpe muito grave, com orientação oficial nova, pode sair antes, no máximo uma vez por semana. Numa semana sem golpe novo, o alerta pode lembrar um golpe antigo que continua circulando. Se a fila estiver vazia, a semana fica sem alerta.</span></div></li>
-        <li><div><b>O alerta aparece aqui.</b><span>Com as fontes, uma imagem e um texto prontos para o WhatsApp.</span></div></li>
+        <li><div><b>Toda segunda, quarta e sexta, o golpe mais importante da fila vira alerta.</b><span>Num dia sem golpe novo, o alerta lembra um golpe antigo que continua circulando. Em datas como Black Friday, Natal e Imposto de Renda, os golpes da época têm prioridade. Um golpe muito grave, com orientação oficial nova, pode sair no sábado, no máximo uma vez por semana.</span></div></li>
+        <li><div><b>Aos sábados, o "É golpe ou não?".</b><span>Uma mensagem real, tirada das fontes, para você e sua família testarem o olho. A resposta sai no domingo.</span></div></li>
+        <li><div><b>Tudo aparece aqui.</b><span>Com as fontes, uma imagem e um texto prontos para o WhatsApp.</span></div></li>
       </ol>
       <div class="fila" id="bloco-fila" hidden>
-        <h3>Na fila para a próxima segunda</h3>
+        <h3>Na fila para os próximos alertas</h3>
         <ul id="lista-fila"></ul>
         <p class="vazio" id="fila-vazia" hidden>A fila está vazia. Nenhum golpe novo foi confirmado desde o último alerta.</p>
       </div>
@@ -441,6 +512,7 @@ a.botao:hover { color: var(--tinta); }
         <ul>
           <li>As fontes: se estão na nossa lista, se têm data e se são de organizações diferentes.</li>
           <li>O texto: as regras da Lei 15.263/2025, a Política Nacional de Linguagem Simples.</li>
+          <li>O "É golpe ou não?": a mensagem vem de uma fonte, sem link, sem telefone e sem nome de empresa.</li>
           <li>A imagem: letra grande, cores com bom contraste, sem link e sem telefone pessoal.</li>
           <li>Testes automáticos rodam a cada mudança nessas regras.</li>
         </ul>
@@ -480,6 +552,36 @@ a.botao:hover { color: var(--tinta); }
     var p = String(iso || "").split("-").map(Number);
     if (p.length !== 3 || !p[0]) return String(iso || "");
     return p[2] + " de " + MESES[p[1] - 1] + " de " + p[0];
+  }
+  var DIAS = ["domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado"];
+  function diaDaSemana(iso) {
+    var p = String(iso || "").split("-").map(Number);
+    if (p.length !== 3 || !p[0]) return "";
+    return DIAS[new Date(Date.UTC(p[0], p[1] - 1, p[2])).getUTCDay()];
+  }
+  function dataComDia(iso) {
+    var d = diaDaSemana(iso);
+    return (d ? d + ", " : "") + dataLonga(iso);
+  }
+  /* Hoje no horário de São Paulo, no formato AAAA-MM-DD */
+  function hojeSP() {
+    try { return new Date().toLocaleDateString("en-CA", { timeZone: "America/Sao_Paulo" }); }
+    catch (e) { return new Date().toISOString().slice(0, 10); }
+  }
+  function somarDias(iso, n) {
+    var p = iso.split("-").map(Number);
+    var d = new Date(Date.UTC(p[0], p[1] - 1, p[2] + n));
+    return d.toISOString().slice(0, 10);
+  }
+  /* Próximo dia de alerta: segunda, quarta ou sexta, a partir de amanhã */
+  function proximoAlerta(hoje) {
+    for (var i = 1; i <= 7; i++) {
+      var dia = somarDias(hoje, i);
+      var p = dia.split("-").map(Number);
+      var sem = new Date(Date.UTC(p[0], p[1] - 1, p[2])).getUTCDay();
+      if (sem === 1 || sem === 3 || sem === 5) return dia;
+    }
+    return "";
   }
   function el(id) { return document.getElementById(id); }
   function texto(id, valor) { el(id).textContent = valor || ""; }
@@ -605,7 +707,10 @@ a.botao:hover { color: var(--tinta); }
   });
 
   function renderAlerta(a) {
-    texto("eyebrow-alerta", (a.extra ? "Alerta extra · " : a.tipo === "recorrente" ? "Alerta da semana · golpe que continua circulando · " : "Alerta da semana · ") + dataLonga(a.publicado_em));
+    texto("eyebrow-alerta", (a.extra ? "Alerta extra · " : a.tipo === "recorrente" ? "Golpe que continua circulando · " : "Alerta · ") + dataComDia(a.publicado_em));
+    var selo = el("selo-tema");
+    selo.textContent = a.tema ? "Golpe da época: " + a.tema : "";
+    selo.hidden = !a.tema;
     texto("titulo-alerta", a.titulo);
     texto("c-como", a.como_chega);
     texto("c-pedem", a.o_que_pedem);
@@ -646,6 +751,86 @@ a.botao:hover { color: var(--tinta); }
     var secao = el("semana");
     secao.setAttribute("aria-busy", "false");
     secao.setAttribute("data-pronto", "sim");
+  }
+
+  function copiarTexto(t, aviso, sucesso) {
+    function plano() {
+      var area = el("quiz-texto");
+      area.value = t;
+      area.hidden = false;
+      area.focus();
+      area.select();
+      aviso.textContent = "Selecionei o texto. Copie com o menu do seu aparelho.";
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(t).then(function () { aviso.textContent = sucesso; }, plano);
+    } else { plano(); }
+  }
+
+  var quizAtual = null;
+  el("btn-quiz-pergunta").addEventListener("click", function () {
+    if (quizAtual) copiarTexto(String(quizAtual.card_pergunta || ""), el("aviso-quiz"), "Pergunta copiada. Mande no grupo da família.");
+  });
+  el("btn-quiz-resposta").addEventListener("click", function () {
+    if (quizAtual) copiarTexto(String(quizAtual.card_resposta || ""), el("aviso-quiz"), "Resposta copiada. Agora é só colar no WhatsApp.");
+  });
+
+  var CANAIS = {
+    "WhatsApp": "Chegou pelo WhatsApp:",
+    "mensagem de texto": "Chegou por mensagem de texto:",
+    "ligação": "Você atende uma ligação e ouve:",
+    "e-mail": "Chegou por e-mail:",
+    "rede social": "Chegou pela rede social:"
+  };
+
+  function renderQuiz(lista) {
+    var q = maisRecentes(lista, "publicado_em")[0];
+    if (!q) return;
+    quizAtual = q;
+    texto("quiz-canal", CANAIS[q.canal] || "Chegou assim:");
+    texto("quiz-mensagem", q.mensagem);
+    var revelada = hojeSP() >= String(q.resposta_em || "");
+    el("quiz-espera").hidden = revelada;
+    el("quiz-resposta").hidden = !revelada;
+    el("btn-quiz-resposta").hidden = !revelada;
+    if (!revelada) {
+      texto("quiz-espera", "Pense um pouco ou pergunte no grupo da família. A resposta sai " + dataComDia(q.resposta_em) + ".");
+    } else {
+      var v = el("quiz-veredito");
+      var golpe = q.resposta !== "nao-golpe";
+      v.textContent = golpe ? "É golpe." : "Não é golpe.";
+      v.className = "veredito" + (golpe ? "" : " nao-golpe");
+      texto("quiz-sinal", q.sinal);
+      texto("quiz-explicacao", q.explicacao);
+      texto("quiz-lembrar", "“" + q.para_lembrar + "”");
+      var ol = el("quiz-fontes");
+      ol.innerHTML = "";
+      (q.fontes || []).forEach(function (f) {
+        var li = document.createElement("li");
+        var link = document.createElement("a");
+        link.href = linkSeguro(f.url);
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = f.nome;
+        li.appendChild(link);
+        ol.appendChild(li);
+      });
+    }
+    texto("quiz-intro", "Publicado " + dataComDia(q.publicado_em) + ". Uma mensagem tirada das fontes, para você testar o olho.");
+    el("quiz").hidden = false;
+  }
+
+  function renderAgenda() {
+    var prox = proximoAlerta(hojeSP());
+    if (!prox) return;
+    var a = el("agenda");
+    a.textContent = "";
+    a.appendChild(document.createTextNode("Alertas toda segunda, quarta e sexta. Próximo: "));
+    var b = document.createElement("b");
+    b.textContent = dataComDia(prox);
+    a.appendChild(b);
+    a.appendChild(document.createTextNode("."));
+    a.hidden = false;
   }
 
   function renderCorrecoes(lista, alertas) {
@@ -740,8 +925,8 @@ a.botao:hover { color: var(--tinta); }
   }
 
   var RESULTADOS = {
-    "publicado": "Publicou o alerta da semana",
-    "sem-alerta": "Semana sem alerta",
+    "publicado": "Publicou um alerta",
+    "sem-alerta": "Sem alerta neste dia",
     "na-fila": "Guardou na fila",
     "nada-novo": "Nada novo confirmado",
     "alerta-extra": "Publicou alerta extra"
@@ -787,6 +972,12 @@ a.botao:hover { color: var(--tinta); }
         tipo.className = "chip tipo";
         tipo.textContent = "Teste";
         l1.appendChild(tipo);
+      }
+      if (x.quiz) {
+        var cq = document.createElement("span");
+        cq.className = "chip modo";
+        cq.textContent = "É golpe ou não?";
+        l1.appendChild(cq);
       }
       art.appendChild(l1);
       var n = document.createElement("p");
@@ -874,6 +1065,8 @@ a.botao:hover { color: var(--tinta); }
       var alertas = vigentes.length ? [vigentes[0]].concat(todos.filter(function (a) { return a !== vigentes[0]; })) : todos;
       var execucoes = maisRecentes(d.execucoes, "data");
       renderFila(d.fila || []);
+      renderQuiz(d.quizzes || []);
+      renderAgenda();
       renderCorrecoes(d.correcoes || [], d.alertas || []);
       if (vigentes.length) {
         renderAlerta(alertas[0]);

@@ -22,7 +22,8 @@ mudar este arquivo, mude o `fontes.json` e rode `python3 testes/rodar_testes.py`
 **Golpe novo e golpe recorrente.** Um golpe novo precisa de notícia nos últimos 14 dias para entrar na fila, e
 vale nela por 28 dias. Um golpe recorrente (falsa central, falso parente, falsa prova de vida) dispensa a notícia
 recente, mas exige relevância máxima, orientação de fonte primária com data nos últimos 12 meses e 26 semanas
-sem publicar o mesmo golpe. O recorrente só sai numa segunda sem golpe novo na fila. Os números estão em
+sem publicar o mesmo golpe. O recorrente só sai num dia de publicação (segunda, quarta ou sexta) sem golpe novo na
+fila. Os números estão em
 `fontes.json`.
 
 **Regra de confirmação.** Um golpe está confirmado quando duas fontes independentes, abertas pelo agente, descrevem

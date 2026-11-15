@@ -1,10 +1,12 @@
 # Sentinela 60+
 
-Um golpe digital por semana, explicado em linguagem simples para quem tem 60 anos ou mais e para quem cuida
-dessas pessoas. Todo dia, um agente feito com Claude pesquisa os golpes noticiados e guarda numa fila os que
+Golpes digitais explicados em linguagem simples para quem tem 60 anos ou mais e para quem cuida dessas
+pessoas, toda segunda, quarta e sexta. Todo dia, um agente feito com Claude pesquisa os golpes noticiados e guarda numa fila os que
 forem novos, confirmados em duas fontes independentes (uma delas órgão público, polícia, Procon ou
-banco) e relevantes para esse público. Toda segunda, o mais
-importante da fila vira o alerta da semana, com um texto e uma imagem prontos para o WhatsApp.
+banco) e relevantes para esse público. Toda segunda, quarta e sexta, o mais
+importante da fila vira alerta, com um texto e uma imagem prontos para o WhatsApp. Num dia sem golpe novo,
+sai um golpe recorrente; nas datas de golpes da época (Black Friday, Natal, Imposto de Renda), eles têm
+prioridade. Aos sábados, o "É golpe ou não?" traz uma mensagem real, com a resposta no domingo.
 
 **Site público:** https://mfraza73.github.io/sentinela-60mais/ (sem login, servido da pasta [`docs/`](docs/))
 
@@ -25,7 +27,7 @@ importante da fila vira o alerta da semana, com um texto e uma imagem prontos pa
 
 ```mermaid
 flowchart LR
-    A["Automação<br/>tarefa agendada, todo dia 7h40"] -->|dispara| B["Agente<br/>varre todo dia, publica na segunda"]
+    A["Automação<br/>tarefa agendada, todo dia 7h40"] -->|dispara| B["Agente<br/>varre todo dia, publica seg/qua/sex,<br/>quiz no sábado"]
     S["Skill<br/>linguagem-simples-60mais"] -->|como escrever| B
     B -->|lê e grava dados.json| P["Página no Claude"]
     B -->|envia dados.json ao repositório| R["GitHub Actions<br/>testes e montagem do site"]
@@ -35,9 +37,9 @@ flowchart LR
 | Componente | O que faz | Onde está |
 | --- | --- | --- |
 | Skill | Escreve e revisa alertas de golpe em linguagem simples, pelo art. 5º da Lei 15.263/2025, com verificador automático | [`02-skill/`](02-skill/) |
-| Agente | Varre todo dia órgãos públicos, bancos, imprensa, agências de checagem e um pacote regional de polícias e Procons; aplica 4 perguntas de decisão a cada golpe, guarda os aprovados numa fila e publica o melhor às segundas | [`03-agente/`](03-agente/) |
+| Agente | Varre todo dia órgãos públicos, bancos, imprensa, agências de checagem e um pacote regional de polícias e Procons; aplica 4 perguntas de decisão a cada golpe, guarda os aprovados numa fila, publica o melhor às segundas, quartas e sextas e o "É golpe ou não?" aos sábados | [`03-agente/`](03-agente/) |
 | Automação | Tarefa agendada do Claude que dispara o agente todo dia às 7h40, sem intervenção humana | [`04-automacao/`](04-automacao/) |
-| Produto | Página com o alerta da semana, imagem e card para WhatsApp, leitura em voz alta, a fila, o histórico de execuções, o método e as correções | [`05-produto/`](05-produto/) e [`docs/`](docs/) |
+| Produto | Página com o alerta mais recente, o "É golpe ou não?", imagem e card para WhatsApp, leitura em voz alta, a fila, o histórico de execuções, o método e as correções | [`05-produto/`](05-produto/) e [`docs/`](docs/) |
 | Testes | Verificador de fontes, imagem, linguagem, sincronia do mapa de fontes e coerência dos dados, rodados no GitHub a cada envio | [`testes/`](testes/) |
 
 ## Por onde começar
@@ -74,6 +76,7 @@ Os verificadores, um a um:
 
 ```bash
 python3 02-skill/linguagem-simples-60mais/scripts/checar_alerta.py 03-agente/execucoes/2026-11-06-teste/alerta.md
+python3 02-skill/linguagem-simples-60mais/scripts/checar_quiz.py testes/quiz/bom.json --hoje 2026-11-21
 python3 03-agente/scripts/checar_fontes.py --dados 05-produto/dados.json --golpe falso-advogado
 python3 02-skill/linguagem-simples-60mais/scripts/gerar_imagem.py --dados 05-produto/dados.json --id 2026-11-06-falso-bloqueio-biometria-inss
 ```

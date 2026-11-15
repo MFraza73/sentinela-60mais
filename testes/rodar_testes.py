@@ -6,7 +6,8 @@ Roda tudo o que pode ser checado sem interpretação:
   2. gerador da imagem do alerta contra os casos de testes/imagem/ (precisa do Playwright com Chromium);
   3. verificador de linguagem simples contra o alerta da primeira execução;
   4. sincronia entre 03-agente/fontes.json e 03-agente/fontes.md;
-  5. coerência do 05-produto/dados.json (campos dos alertas, imagens e correções).
+  5. coerência do 05-produto/dados.json (campos dos alertas, imagens, correções e quizzes);
+  6. verificador do "É golpe ou não?" contra os casos de testes/quiz/.
 
 Uso: python3 testes/rodar_testes.py [--sem-imagem]
 Rode sempre antes de mudar regras do agente, a skill ou o mapa de fontes. Código de saída 0 só se tudo passar.
@@ -120,6 +121,34 @@ def testar_dados():
     for c in dados.get("correcoes", []):
         ok = c.get("alerta_id") in ids and c.get("data") and c.get("o_que_mudou") and c.get("por_que")
         registrar("dados", f"correção de {c.get('data')} aponta para um alerta e explica o porquê", bool(ok))
+    cq = carregar_modulo(SKILL / "scripts" / "checar_quiz.py", "checar_quiz")
+    for q in dados.get("quizzes", []):
+        rel = cq.verificar(q, date.fromisoformat(q.get("publicado_em", "2000-01-01")))
+        registrar("dados", f"quiz {q.get('id')} passa no checar_quiz.py", rel["status"] == "APROVADO",
+                  "; ".join(e["mensagem"] for e in rel["erros"]))
+
+
+def testar_quiz():
+    print("6. Verificador do É golpe ou não?")
+    cq = carregar_modulo(SKILL / "scripts" / "checar_quiz.py", "checar_quiz")
+    casos = [
+        ("bom.json", "APROVADO", []),
+        ("ruim-link-telefone.json", "REPROVADO", ["skill-sem-link", "skill-sem-telefone"]),
+        ("ruim-entrega-resposta.json", "REPROVADO", ["skill-card"]),
+        ("ruim-sem-primaria.json", "REPROVADO", ["fontes-sem-primaria"]),
+        ("ruim-tom.json", "REPROVADO", ["art5-5", "art5-7", "skill-tom"]),
+    ]
+    for arquivo, status, regras in casos:
+        q = json.loads((TESTES / "quiz" / arquivo).read_text(encoding="utf-8"))
+        rel = cq.verificar(q, date(2026, 11, 21))
+        achadas = {e["regra"] for e in rel["erros"]}
+        problemas = []
+        if rel["status"] != status:
+            problemas.append(f"status {rel['status']}, esperado {status}")
+        faltam = [r for r in regras if r not in achadas]
+        if faltam:
+            problemas.append(f"faltam erros {faltam}")
+        registrar("quiz", arquivo, not problemas, "; ".join(problemas))
 
 
 def main():
@@ -132,6 +161,7 @@ def main():
     testar_alerta()
     testar_sincronia()
     testar_dados()
+    testar_quiz()
     falhas = [r for r in resultados if not r[2]]
     print(f"\n{len(resultados) - len(falhas)} de {len(resultados)} testes passaram.")
     return 1 if falhas else 0

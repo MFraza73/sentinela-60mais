@@ -1,0 +1,22 @@
+{
+ "id": "2026-11-21-quiz",
+ "publicado_em": "2026-11-21",
+ "resposta_em": "2026-11-22",
+ "canal": "ligação",
+ "golpe": "falso-sequestro",
+ "mensagem": "Uma voz chorando: \"Mãe, me pegaram! Eles vão me machucar.\" Depois, um homem: \"Faz o Pix agora. Se desligar, ela morre. Qual o nome da sua filha?\"",
+ "resposta": "golpe",
+ "sinal": "Choro, ameaça e pressa para pagar, e ainda perguntam o nome da sua filha.",
+ "explicacao": "É o golpe do falso sequestro. Quem liga não sabe quem é seu parente. Por isso pergunta o nome. Desligue e ligue para o parente no número que você já tem.",
+ "para_lembrar": "Choro e pressa no telefone? Desligue e ligue você mesmo.",
+ "fontes": [
+  {
+   "nome": "Polícia Civil do Paraná: orienta sobre o golpe do falso sequestro (13/11/2026)",
+   "url": "https://www.policiacivil.pr.gov.br/Noticia/PCPR-orienta-populacao-sobre-como-identificar-e-evitar-golpe-do-falso-sequestro",
+   "origem": "policia",
+   "data": "2026-11-13"
+  }
+ ],
+ "card_pergunta": "*É golpe ou não?*\nVocê atende o telefone e ouve alguém chorando: \"Mãe, me pegaram!\"\nUm homem pede um Pix agora e pergunta o nome da sua filha.\nO que você acha? A resposta sai amanhã.",
+ "card_resposta": "*É golpe: o falso sequestro.*\nQuem liga não sabe quem é seu parente. Por isso pergunta o nome.\nDesligue e ligue para o parente no número que você já tem.\n*Choro e pressa no telefone? Desligue e ligue você mesmo.*"
+}

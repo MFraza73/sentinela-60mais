@@ -1,6 +1,6 @@
 # Sentinela 60+ — Escopo e decisões (N2 Vibe Coding)
 
-Atualizado em 06/11/2026.
+Atualizado em 15/11/2026.
 
 ## Identificação
 - FAAP — Tecnologia em Inteligência Artificial
@@ -8,7 +8,7 @@ Atualizado em 06/11/2026.
 - Trabalho individual — N2, entrega 27/11/2026
 
 ## Tema
-Sentinela 60+ (nome provisório): alertas semanais sobre golpes digitais, em linguagem simples, para pessoas com 60+ e quem cuida delas.
+Sentinela 60+: alertas sobre golpes digitais toda segunda, quarta e sexta, em linguagem simples, para pessoas com 60+ e quem cuida delas.
 
 Pitch editável: https://claude.ai/artifact/Ar6XfmaFShFphuWGdWwcKB
 
@@ -31,13 +31,14 @@ Pitch editável: https://claude.ai/artifact/Ar6XfmaFShFphuWGdWwcKB
 - Nível 1 de profissionalização (07/11): regras de fonte em código (`checar_fontes.py` + `fontes.json`), 31 testes de regressão (23 de fontes, tirados das execuções reais e de casos-limite) rodando no GitHub Actions a cada envio, casos de julgamento documentados, seção "Como verificamos" e política de correções no modelo da IFCN. Primeira correção registrada: fontes do alerta da biometria. Site público no GitHub Pages (pasta docs/), atualizado pelo agente a cada execução.
 - Site público no ar em 08/11 (https://mfraza73.github.io/sentinela-60mais/). A montagem passou para o GitHub Actions: o agente só envia dados.json e imagens; o GitHub roda os testes, monta docs/ e publica. Motivo: na execução de 08/11, o ambiente da tarefa agendada negou a execução dos scripts do repositório; a tarefa passou a autorizá-los de forma explícita, com regra manual de reserva.
 - Ajustes de 12/11, depois de cinco dias de execução (32 golpes avaliados, 2 guardados): leitura direta das páginas de notícias (busca-ponte e abertura) antes das buscas, com mês e ano nas consultas; validade da fila de 28 dias, com entrada em 14 e desempate pelo item que expira primeiro; categoria de golpe recorrente (relevância 3, orientação primária de até 12 meses, 26 semanas sem repetir, só em segunda sem golpe novo). Ensaiado no ambiente da tarefa antes de valer. Ideia em espera: captar relatos de vítimas como sinal (busca aberta com termos de relato; Reclame Aqui); a skill de terceiros last30days foi avaliada e descartada para o agente.
+- Frequência e engajamento (15/11): de 06 a 15/11, 8 golpes confirmados entraram na fila, mas só 1 saía por semana, e o falso advogado ia expirar sem ser publicado. A publicação passou a três dias fixos (segunda, quarta e sexta), com a mesma régua de confirmação. Três apoios ao calendário: (1) num dia sem golpe novo, sai um golpe recorrente, e o agente mantém uma reserva de até 3 recorrentes na fila; (2) temas da época (IPVA, Imposto de Renda, Black Friday, 13º, Natal e outros) ganham uma busca a mais e prioridade no desempate; (3) aos sábados, o "É golpe ou não?": uma mensagem tirada das fontes, sem link, telefone ou marca, com a resposta no domingo, conferida por `checar_quiz.py`. O alerta extra passou a valer só no sábado, o único dia com 2 dias até a próxima publicação. Distribuição por canal ou lista de transmissão do WhatsApp fica em avaliação.
 
 
 ## Arquitetura
 1. Automação: tarefa agendada no Claude, todo dia às 7h40, dispara o agente.
-2. Agente: de terça a domingo, varre órgãos públicos, Febraban e bancos, imprensa, agências de checagem e um pacote regional de polícias e Procons, e guarda numa fila os golpes novos, confirmados em 2 fontes (uma delas primária) e relevantes para 60+, já escritos e aprovados no verificador; na segunda, publica o mais relevante da fila.
+2. Agente: todo dia, varre órgãos públicos, Febraban e bancos, imprensa, agências de checagem e um pacote regional de polícias e Procons, e guarda numa fila os golpes novos, confirmados em 2 fontes (uma delas primária) e relevantes para 60+, já escritos e aprovados no verificador; na segunda, na quarta e na sexta, publica o mais relevante da fila; no sábado, publica o "É golpe ou não?".
 3. Skill `linguagem-simples-60mais`: art. 5º da Lei 15.263/2025 + ISO 24495-1:2023 + regras próprias (um golpe, um sinal, uma ação, uma frase para lembrar; tom de autonomia, não de medo).
-4. Produto: página pública com alerta da semana, arquivo, fila, histórico de execuções, imagem e card para WhatsApp (repassado por pessoa de confiança; sem disparo automático a pessoas idosas).
+4. Produto: página pública com o alerta mais recente, o "É golpe ou não?", arquivo, fila, histórico de execuções, imagem e card para WhatsApp (repassado por pessoa de confiança; sem disparo automático a pessoas idosas).
 
 ## Critérios de sucesso
 - Skill: 10 casos de teste aprovados no checklist do art. 5º (pares antes/depois no repositório).

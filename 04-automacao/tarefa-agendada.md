@@ -1,8 +1,9 @@
 # Automação: a tarefa agendada diária
 
 A automação é uma tarefa agendada do próprio Claude. Todo dia, às 7h40 (horário de São Paulo), ela abre uma
-sessão nova, sem ninguém apertar botão, e manda o agente trabalhar. De terça a domingo, o agente faz a
-varredura e guarda os golpes confirmados numa fila. Na segunda, publica o melhor da fila como alerta da semana.
+sessão nova, sem ninguém apertar botão, e manda o agente trabalhar. Todo dia, o agente faz a varredura e
+guarda os golpes confirmados numa fila. Na segunda, na quarta e na sexta, publica o melhor da fila como alerta.
+No sábado, publica o "É golpe ou não?", com a resposta no domingo.
 
 | Item | Valor |
 | --- | --- |
@@ -11,22 +12,27 @@ varredura e guarda os golpes confirmados numa fila. Na segunda, publica o melhor
 | Expressão de agenda | `CRON_TZ=America/Sao_Paulo 40 7 * * *` |
 | O que dispara | O agente `03-agente/sentinela-60mais.md`, lido deste repositório a cada execução |
 | Onde grava | `dados.json` da página do produto (alertas, fila, execuções e correções) e, em seguida, o site público no GitHub Pages |
-| Evidência | As seções "Na fila para a próxima segunda" e "Cada vez que o agente trabalhou", na página do produto |
+| Evidência | As seções "Na fila para os próximos alertas", "É golpe ou não?" e "Cada vez que o agente trabalhou", na página do produto |
 | Aprovações | Modo automático: as execuções não param para pedir aprovação |
-| Histórico | Criada em 06/11/2026 como semanal; passou a diária no mesmo dia, com publicação mantida às segundas. Ainda em 06/11, o texto passou a mandar ler o mapa de fontes (`03-agente/fontes.md`). Em 07/11, passou a citar o gerador da imagem, o verificador de fontes e o envio ao site público. Em 08/11, depois que a execução do dia não conseguiu rodar os scripts, passou a autorizá-los de forma explícita |
+| Histórico | Criada em 06/11/2026 como semanal; passou a diária no mesmo dia, com publicação mantida às segundas. Ainda em 06/11, o texto passou a mandar ler o mapa de fontes (`03-agente/fontes.md`). Em 07/11, passou a citar o gerador da imagem, o verificador de fontes e o envio ao site público. Em 08/11, depois que a execução do dia não conseguiu rodar os scripts, passou a autorizá-los de forma explícita. Em 15/11, passou a publicar na segunda, na quarta e na sexta, com o "É golpe ou não?" aos sábados, e a autorizar o `checar_quiz.py` |
 
 ## Por que uma tarefa agendada, e não um clique
 
 Um agente que só roda quando alguém pede é uma ferramenta. A automação transforma o agente num serviço: o
-noticiário é varrido todo dia e o alerta da semana sai mesmo que ninguém se lembre dele. Cada disparo começa
+noticiário é varrido todo dia e o alerta sai nos dias marcados mesmo que ninguém se lembre dele. Cada disparo começa
 uma sessão nova, sem memória da anterior. Por isso o agente lê o estado de `dados.json` antes de decidir, e a
 tarefa lê a skill e o agente direto deste repositório: a versão publicada aqui é sempre a que roda.
 
-## Por que varrer todo dia e publicar só na segunda
+## Por que varrer todo dia e publicar três vezes por semana
 
 - Golpe novo, confirmado em duas fontes e relevante para quem tem 60+ não aparece todo dia. Publicar
   diariamente obrigaria a baixar a régua.
 - Aviso repetido vira papel de parede, e um alerta por dia no WhatsApp da família vira corrente.
+- Uma vez por semana era pouco: de 06 a 15/11, 8 golpes confirmados entraram na fila, mas só 1 saía por
+  semana, e o falso advogado ia expirar sem ser publicado. Três dias fixos (segunda, quarta e sexta) dão vazão
+  à fila sem mudar a régua, e a regularidade cria o hábito de esperar o alerta.
+- Nos dias sem golpe novo, um golpe recorrente garante o calendário; em datas como Black Friday e Imposto de
+  Renda, os golpes da época têm prioridade. O "É golpe ou não?" do sábado engaja sem depender de golpe novo.
 - Varrer todo dia, por outro lado, dá mais candidatos para escolher, reação mais rápida a um golpe grave
   (o alerta extra) e um histórico de decisões muito mais rico.
 
@@ -39,12 +45,12 @@ Você é o agente Sentinela 60+, e esta é a execução diária automática. Nin
 
 1. Clone o repositório público do projeto:
    git clone https://github.com/MFraza73/sentinela-60mais.git
-2. Leia sentinela-60mais/03-agente/sentinela-60mais.md e siga-o do começo ao fim. Ele define os dois modos (varredura de terça a domingo; publicação na segunda, pelo horário de São Paulo), a trava de uma execução por dia, as ferramentas, as quatro perguntas de decisão, a fila, os limites e o formato do relatório. Leia também sentinela-60mais/03-agente/fontes.md: é o mapa de fontes, com os pacotes de domínios para o filtro allowed_domains da busca, o rodízio regional do dia e as regras de origem e de confirmação.
-3. Para escrever alertas, leia sentinela-60mais/02-skill/linguagem-simples-60mais/SKILL.md e os arquivos da pasta. Verifique cada alerta com:
+2. Leia sentinela-60mais/03-agente/sentinela-60mais.md e siga-o do começo ao fim. Ele define os modos pelo horário de São Paulo (publicação na segunda, na quarta e na sexta; varredura nos outros dias, com o "É golpe ou não?" no sábado), os temas da época, a trava de uma execução por dia, as ferramentas, as quatro perguntas de decisão, a fila, os limites e o formato do relatório. Leia também sentinela-60mais/03-agente/fontes.md: é o mapa de fontes, com os pacotes de domínios para o filtro allowed_domains da busca, o rodízio regional do dia e as regras de origem e de confirmação.
+3. Para escrever alertas e o "É golpe ou não?", leia sentinela-60mais/02-skill/linguagem-simples-60mais/SKILL.md e os arquivos da pasta. Verifique cada alerta com:
    python3 sentinela-60mais/02-skill/linguagem-simples-60mais/scripts/checar_alerta.py <arquivo do alerta>
-   Confira as fontes de cada candidato com sentinela-60mais/03-agente/scripts/checar_fontes.py e gere a imagem de cada alerta publicado com sentinela-60mais/02-skill/linguagem-simples-60mais/scripts/gerar_imagem.py, como o agente descreve.
-   Esses três scripts fazem parte do projeto do usuário e foram escritos para esta tarefa: você está autorizado a rodá-los com python3 a partir da pasta clonada. Se o ambiente negar a execução de algum, aplique a mesma regra à mão (para as fontes, leia sentinela-60mais/03-agente/fontes.json) e registre na observação da execução qual script não rodou.
-4. A página do produto é https://claude.ai/artifact/FXPh194Ln6RmBsnkLAU7m2. O estado (alertas, fila, execuções e correções) fica no arquivo dados.json publicado com ela. Leia a página e o dados.json antes de decidir, e republique a página com o dados.json atualizado no fim, como o agente descreve. Depois, envie os dados ao repositório, como o agente descreve em "Atualize o site público": o GitHub roda os testes e monta o site sozinho.
+   Verifique o "É golpe ou não?" com sentinela-60mais/02-skill/linguagem-simples-60mais/scripts/checar_quiz.py. Confira as fontes de cada candidato com sentinela-60mais/03-agente/scripts/checar_fontes.py e gere a imagem de cada alerta publicado com sentinela-60mais/02-skill/linguagem-simples-60mais/scripts/gerar_imagem.py, como o agente descreve.
+   Esses quatro scripts fazem parte do projeto do usuário e foram escritos para esta tarefa: você está autorizado a rodá-los com python3 a partir da pasta clonada. Se o ambiente negar a execução de algum, aplique a mesma regra à mão (para as fontes, leia sentinela-60mais/03-agente/fontes.json) e registre na observação da execução qual script não rodou.
+4. A página do produto é https://claude.ai/artifact/FXPh194Ln6RmBsnkLAU7m2. O estado (alertas, fila, quizzes, execuções e correções) fica no arquivo dados.json publicado com ela. Leia a página e o dados.json antes de decidir, e republique a página com o dados.json atualizado no fim, como o agente descreve. Depois, envie os dados ao repositório, como o agente descreve em "Atualize o site público": o GitHub roda os testes e monta o site sozinho.
 5. Registre esta execução com "tipo": "automatica", o "modo" do dia e a data de hoje no formato AAAA-MM-DD.
 6. Faça uma única execução completa. Encerre com o relatório do contrato de saída do agente e envie-o ao usuário com SendUserMessage (carregue a ferramenta via ToolSearch, se necessário). Se algo impedir a publicação (ferramenta indisponível, erro ao republicar, repositório inacessível), não tente contornar: diga no relatório o que falhou e em qual passo.
 ```
@@ -57,7 +63,8 @@ Você é o agente Sentinela 60+, e esta é a execução diária automática. Nin
 | Domínio da lista de fontes some, muda de endereço ou passa a bloquear | O agente anota na `observacao` da execução; a lista é revisada à mão |
 | O mesmo disparo chega duas vezes | A trava de uma execução por dia faz a segunda parar sem gravar nada |
 | Nenhum golpe passa nas 4 perguntas | A página ganha uma varredura "Nada novo confirmado" |
-| Fila vazia na segunda | A página ganha uma publicação "Semana sem alerta" |
+| Dia de publicação sem golpe novo nem recorrente | A página ganha uma publicação "Sem alerta neste dia" |
+| Sábado sem mensagem com fonte para o quiz | Não sai "É golpe ou não?"; a execução registra o motivo |
 | Falha ao republicar a página | O relatório da execução registra o erro; a página continua na versão anterior |
 | Alerta reprovado no verificador 3 vezes | Não entra na fila; a execução registra o motivo |
 | Imagem reprovada no gerador 3 vezes | O alerta sai sem imagem; a execução registra o motivo |

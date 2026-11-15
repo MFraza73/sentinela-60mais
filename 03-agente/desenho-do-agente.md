@@ -43,20 +43,26 @@ agente age sobre uma crença do estado do mundo, não sobre o estado em si.
 | Estado | Alertas, fila de golpes confirmados e histórico de execuções | `dados.json`, publicado junto da página (`../05-produto/`) |
 | Gatilho | Tarefa agendada diária no Claude, às 7h40 | `../04-automacao/` |
 
-## Dois ritmos: varredura diária, publicação semanal
+## Dois ritmos: varredura diária, publicação em dias fixos
 
-O agente olha o noticiário todo dia, mas publica uma vez por semana. As duas frequências foram separadas de
-propósito:
+O agente olha o noticiário todo dia, mas publica três vezes por semana, sempre nos mesmos dias. As duas
+frequências foram separadas de propósito:
 
-- **Varredura diária (terça a domingo).** Cada golpe que passa nas quatro perguntas é escrito, aprovado no
+- **Varredura diária.** Cada golpe que passa nas quatro perguntas é escrito, aprovado no
   verificador e guardado numa fila. Mais olhares por semana dão mais candidatos para escolher e mais tempo para
   as fontes amadurecerem.
-- **Publicação semanal (segunda).** O golpe mais relevante da fila vira o alerta da semana. Publicar todo dia
+- **Publicação na segunda, na quarta e na sexta.** O golpe mais relevante da fila vira alerta. Até 15/11, a
+  publicação era só na segunda; em 10 dias, 8 golpes confirmados entraram na fila, e o falso advogado ia
+  expirar sem sair. Três dias fixos dão vazão à fila sem mudar a régua, e a regularidade cria o hábito de
+  esperar o alerta. Num dia sem golpe novo, sai um golpe recorrente (o agente mantém uma reserva); nos temas
+  da época (Imposto de Renda, Black Friday, Natal), o golpe do tema passa na frente no desempate. Publicar todo dia
   baixaria a régua de confirmação, cansaria quem recebe (avisos repetidos viram papel de parede, como mostram
   Anderson e colegas no *Journal of Management Information Systems*, 2016) e transformaria o repasse no
   WhatsApp em corrente.
 - **Alerta extra.** Um golpe de relevância máxima, com fonte oficial e noticiado nas últimas 48 horas, pode sair
-  antes da segunda, no máximo uma vez por semana.
+  no sábado, o único dia com 2 dias até a próxima publicação, no máximo uma vez por semana.
+- **É golpe ou não? (sábado).** Uma mensagem tirada das fontes, sem link, telefone ou marca, com a resposta no
+  domingo. Engaja sem depender de golpe novo e treina o olho para o sinal. Conferido por `checar_quiz.py`.
 
 ## Onde o agente procura: sinal, confirmação e origem
 
@@ -113,7 +119,7 @@ De 07 a 11/11, o agente avaliou 32 golpes e guardou 2. A maioria foi recusada po
   falso advogado passou em tudo e ia expirar sem publicação. A entrada continua exigindo notícia de até 14 dias,
   mas o item vale 28 dias na fila, e o desempate favorece o que expira primeiro.
 - **Golpe recorrente.** A janela de 14 dias mede notícia, não golpe. Os golpes que mais atingem quem tem 60+ são
-  crônicos e raramente viram notícia nova. Um recorrente pode virar alerta numa segunda sem golpe novo, com
+  crônicos e raramente viram notícia nova. Um recorrente pode virar alerta num dia de publicação sem golpe novo, com
   relevância máxima, orientação primária vigente e intervalo de 26 semanas.
 
 ## Correções e transparência
@@ -155,7 +161,7 @@ qualquer visitante. O custo é que cada execução republica a página inteira, 
 | Regra mudar e quebrar decisão antiga | Testes de regressão a cada envio ao GitHub |
 | Alerta publicado ficar errado | Correção registrada e visível, ou retirada; nada é apagado |
 | Disparo repetido publicar duas vezes | Trava de uma execução por dia e por modo, conferida no `dados.json` |
-| Excesso de alertas | No máximo um alerta normal e um extra por semana |
+| Excesso de alertas | Só em dias fixos: no máximo um alerta normal por dia de publicação (segunda, quarta e sexta), um extra e um quiz por semana; dois alertas seguidos não repetem canal e assunto |
 
 ## Nível de capacidade na matriz da Gartner
 

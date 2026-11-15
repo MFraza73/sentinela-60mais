@@ -11,14 +11,14 @@
 
 ## Introdução
 
-O Sentinela 60+ acompanha todo dia os golpes digitais em circulação e, toda semana, transforma o mais
-importante deles num alerta curto e em linguagem simples para pessoas com 60 anos ou mais e para quem cuida
+O Sentinela 60+ acompanha todo dia os golpes digitais em circulação e, toda segunda, quarta e sexta,
+transforma o mais importante deles num alerta curto e em linguagem simples para pessoas com 60 anos ou mais e para quem cuida
 delas.
 
 O produto foi construído com Claude para a N2 de Vibe Coding & Arquitetura de Produtos com IA (FAAP, Profª
 Drª Eliana Loureiro). Ele integra os três componentes pedidos: uma skill de linguagem simples, um agente que
-pesquisa e verifica, e uma automação diária que varre o noticiário e publica toda semana sem intervenção
-humana.
+pesquisa e verifica, e uma automação diária que varre o noticiário e publica três vezes por semana sem
+intervenção humana.
 
 Tudo é aberto: a skill está neste repositório público e o produto, numa página com link.
 
@@ -91,15 +91,15 @@ flowchart TD
     C -- sim --> E["3 · Agente redige com a skill<br/>linguagem-simples-60mais"]
     E --> F["Verificador: regras da Lei 15.263/2025"]
     F --> Q["Fila de golpes confirmados"]
-    Q -->|"toda segunda, o mais relevante"| G["4 · Página pública<br/>Alerta, fontes, card para WhatsApp, fila e histórico"]
+    Q -->|"segunda, quarta e sexta, o mais relevante"| G["4 · Página pública<br/>Alerta, fontes, card para WhatsApp, fila e histórico"]
     D --> G
 ```
 
-Só o golpe novo e confirmado em duas fontes entra na fila; toda segunda, o mais relevante vira o alerta da semana. Um golpe muito grave, com orientação oficial nova, pode sair antes, no máximo uma vez por semana.
+Só o golpe novo e confirmado em duas fontes entra na fila; toda segunda, quarta e sexta, o mais relevante vira alerta. Num dia sem golpe novo, sai um golpe recorrente; em datas como Black Friday e Imposto de Renda, os golpes da época têm prioridade. Aos sábados, o "É golpe ou não?" traz uma mensagem real, com a resposta no domingo.
 
 ## Diferenciação e critérios de sucesso
 
-O diferencial não é ter alertas, e sim o padrão: varredura diária com publicação semanal, uma ação por alerta e linguagem simples
+O diferencial não é ter alertas, e sim o padrão: varredura diária com publicação em dias fixos, uma ação por alerta e linguagem simples
 verificável contra uma norma pública.
 
 | Componente | Critério de sucesso | Evidência na entrega |

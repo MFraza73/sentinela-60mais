@@ -1,6 +1,6 @@
 ---
 name: linguagem-simples-60mais
-description: Transforma notícias, comunicados de bancos, Procons ou polícias e descrições de golpes digitais (falsa central, falso parente, voz clonada por IA, falso INSS, boleto falso, Pix, QR code, anúncio de empréstimo) em alertas curtos em linguagem simples para pessoas com 60 anos ou mais e para quem cuida delas, com um golpe, um sinal, uma ação e uma frase para lembrar, mais uma versão para WhatsApp. Também revisa alertas já escritos contra as técnicas do art. 5º da Lei 15.263/2025 (Política Nacional de Linguagem Simples). Use sempre que alguém pedir para explicar, resumir, traduzir ou divulgar um golpe para idosos, pais, avós ou o grupo da família, mesmo sem dizer "linguagem simples".
+description: Transforma notícias, comunicados de bancos, Procons ou polícias e descrições de golpes digitais (falsa central, falso parente, voz clonada por IA, falso INSS, boleto falso, Pix, QR code, anúncio de empréstimo) em alertas curtos em linguagem simples para pessoas com 60 anos ou mais e para quem cuida delas, com um golpe, um sinal, uma ação e uma frase para lembrar, mais uma versão para WhatsApp. Também escreve o exercício "É golpe ou não?", com uma mensagem real e a resposta no dia seguinte. Também revisa alertas já escritos contra as técnicas do art. 5º da Lei 15.263/2025 (Política Nacional de Linguagem Simples). Use sempre que alguém pedir para explicar, resumir, traduzir ou divulgar um golpe para idosos, pais, avós ou o grupo da família, mesmo sem dizer "linguagem simples".
 ---
 
 # Linguagem simples 60+
@@ -112,6 +112,15 @@ Garantia do Tempo de Serviço (FGTS); boletim de ocorrência (BO). Pix e CPF dis
 | `references/exemplos.md` | Na primeira vez: dois pares antes/depois comentados |
 | `scripts/checar_alerta.py` | Sempre, antes de entregar |
 | `scripts/gerar_imagem.py` e `assets/imagem/` | Quando o alerta for publicado e precisar da imagem para WhatsApp |
+| `references/quiz.md` e `scripts/checar_quiz.py` | Ao escrever ou revisar um "É golpe ou não?" |
+
+## É golpe ou não?
+
+Além do alerta, a skill escreve um exercício curto: uma mensagem como chegaria no celular, a pergunta "É golpe
+ou não?" e a resposta, que sai no dia seguinte. A mensagem vem sempre de uma fonte; link, telefone e nome de
+empresa viram `[link]`, `[número]` e "seu banco". A mensagem pode ter o tom do golpe, porque é assim que ela
+chega; o resto segue as regras do alerta. Os campos, os limites e um exemplo estão em `references/quiz.md`.
+Verifique com `python scripts/checar_quiz.py <quiz.json>` e só entregue com status APROVADO.
 
 ## Imagem do alerta
 

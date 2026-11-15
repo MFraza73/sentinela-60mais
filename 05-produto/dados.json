@@ -1,6 +1,6 @@
 {
   "projeto": "Sentinela 60+",
-  "atualizado_em": "2026-11-14",
+  "atualizado_em": "2026-11-15",
   "alertas": [
     {
       "id": "2026-11-06-falso-bloqueio-biometria-inss",
@@ -315,6 +315,43 @@
           }
         ],
         "card_whatsapp": "*Falsa cobrança do governo pelo WhatsApp*\nChega uma mensagem que imita o governo, às vezes com seu nome e seu CPF.\nO governo não manda cobrança de dívida pelo WhatsApp.\nNão pague boleto nem Pix que chegou por mensagem.\n*Cobrança do governo no WhatsApp? Não pague.*"
+      }
+    },
+    {
+      "golpe": "falso-sequestro",
+      "nome": "Golpe do falso sequestro por telefone",
+      "adicionado_em": "2026-11-15",
+      "noticiado_em": "2026-11-13",
+      "relevancia": 3,
+      "indicado_por": {
+        "nome": "Polícia Civil do Paraná",
+        "url": "https://www.policiacivil.pr.gov.br/Noticia/PCPR-orienta-populacao-sobre-como-identificar-e-evitar-golpe-do-falso-sequestro",
+        "origem": "policia"
+      },
+      "status": "aguardando",
+      "alerta": {
+        "golpe": "falso-sequestro",
+        "titulo": "Golpe do falso sequestro: desligue e ligue para o seu parente",
+        "como_chega": "Uma ligação com alguém chorando, que diz ser seu parente e estar sequestrado.",
+        "o_que_pedem": "Dinheiro na hora, por Pix, transferência ou entrega em mãos.",
+        "sinal": "Muita pressão para pagar já e perguntas sobre os nomes da sua família.",
+        "o_que_fazer": "Desligue e ligue você mesmo para o parente, no número que você já tem.",
+        "para_lembrar": "Choro e pressa no telefone? Desligue e ligue você mesmo.",
+        "fontes": [
+          {
+            "nome": "Polícia Civil do Paraná: orienta sobre o golpe do falso sequestro (13/11/2026)",
+            "url": "https://www.policiacivil.pr.gov.br/Noticia/PCPR-orienta-populacao-sobre-como-identificar-e-evitar-golpe-do-falso-sequestro",
+            "origem": "policia",
+            "data": "2026-11-13"
+          },
+          {
+            "nome": "Polícia Civil de Mato Grosso do Sul: alerta sobre o golpe do falso sequestro (28/07/2017)",
+            "url": "https://www.pc.ms.gov.br/dica-da-policia-civil-alerta-sobre-o-golpe-do-falso-sequestro/",
+            "origem": "policia",
+            "data": "2017-07-28"
+          }
+        ],
+        "card_whatsapp": "*Golpe do falso sequestro*\nAlguém liga chorando, diz ser seu parente e estar sequestrado.\nPede dinheiro na hora e pergunta os nomes da sua família.\nDesligue e ligue você mesmo para o parente, no número que você já tem.\n*Choro e pressa no telefone? Desligue e ligue você mesmo.*"
       }
     }
   ],
@@ -1123,6 +1160,75 @@
         }
       ],
       "observacao": "Na leitura direta, Febraban, Procon de Santa Catarina, Procon de São Paulo e Senacon não trouxeram golpe novo além da Black Friday, que já está na fila; a Senacon segue sem notícia desde 29/10. O pacote nordeste não tem página de notícias validada e, na busca, devolveu sobretudo prefeituras e páginas antigas; o sinal-nordeste só trouxe páginas de 2025. Uma abertura da Agência Brasil foi limitada por excesso de acessos e funcionou na segunda tentativa. O checar_fontes.py e o checar_alerta.py rodaram normalmente; o gerar_imagem.py não foi usado, porque nenhum alerta foi publicado."
+    },
+    {
+      "data": "2026-11-15",
+      "modo": "varredura",
+      "tipo": "automatica",
+      "consultas": 21,
+      "pacotes": [
+        "federal",
+        "bancos",
+        "imprensa",
+        "checadores",
+        "sul",
+        "recorte",
+        "sinal-norte",
+        "sudeste-centro-oeste",
+        "nordeste"
+      ],
+      "leituras": [
+        "Febraban",
+        "Procon de Santa Catarina",
+        "Procon de São Paulo",
+        "Senacon",
+        "Polícia Civil do Paraná",
+        "Polícia Civil de Santa Catarina"
+      ],
+      "candidatos": 4,
+      "aprovados": 1,
+      "resultado": "na-fila",
+      "escolhido": "falso-sequestro",
+      "motivo": "O golpe do falso sequestro por telefone foi confirmado pelas Polícias Civis do Paraná e de Mato Grosso do Sul e entrou na fila.",
+      "decisoes": [
+        {
+          "golpe": "Golpe do falso sequestro por telefone",
+          "decisao": "Guardado na fila: a Polícia Civil do Paraná orientou em 13/11 sobre ligações com alguém chorando, que finge ser um parente sequestrado e exige dinheiro na hora. A Polícia Civil de Mato Grosso do Sul descreve o mesmo golpe e dá a mesma ação: desligar e ligar para o parente. Relevância 3, porque chega por ligação e usa a família. Não saiu como alerta extra, embora cumpra as condições: a segunda fonte é de 2017, e a publicação de segunda é amanhã, quando as fontes serão conferidas de novo.",
+          "indicado_por": {
+            "nome": "Polícia Civil do Paraná",
+            "url": "https://www.policiacivil.pr.gov.br/Noticia/PCPR-orienta-populacao-sobre-como-identificar-e-evitar-golpe-do-falso-sequestro",
+            "origem": "policia"
+          }
+        },
+        {
+          "golpe": "Falsa mensagem do gov.br pedindo e-mail de recuperação",
+          "decisao": "Recusado: o Boatos.org (14/11) mostra perfis falsos no WhatsApp que levam a uma página falsa do gov.br para roubar CPF e senha. O Ministério da Gestão (06/11) confirma que manda avisos verdadeiros pelo WhatsApp, mas não descreve o golpe nem dá orientação. O alerta do Centro Integrado de Segurança Cibernética do Governo Digital é do mesmo ministério e não trata do e-mail de recuperação. Falta uma segunda fonte independente.",
+          "indicado_por": {
+            "nome": "Boatos.org",
+            "url": "https://www.boatos.org/tecnologia/mensagem-do-gov-br-no-whatsapp-para-cadastrar-e-mail-de-recuperacao-de-conta-e-golpe.html",
+            "origem": "checador"
+          }
+        },
+        {
+          "golpe": "Falsas ameaças de facção por mensagem",
+          "decisao": "Recusado: a nota da Polícia Civil do Paraná é de outubro de 2025, fora da janela de 14 dias.",
+          "indicado_por": {
+            "nome": "Polícia Civil do Paraná",
+            "url": "https://www.policiacivil.pr.gov.br/Noticia/Golpes-por-mensagens-PCPR-reforca-orientacoes-populacao-sobre-falsas-ameacas",
+            "origem": "policia"
+          }
+        },
+        {
+          "golpe": "Golpes com ofertas falsas na Black Friday",
+          "decisao": "Recusado: a Febraban (10/11) trata do mesmo golpe que já está na fila, a promoção falsa por link.",
+          "indicado_por": {
+            "nome": "Febraban",
+            "url": "https://portal.febraban.org.br/noticia/4520/pt-br/",
+            "origem": "banco"
+          }
+        }
+      ],
+      "observacao": "Na leitura direta, o Procon de Santa Catarina, o Procon de São Paulo e a Polícia Civil de Santa Catarina não trouxeram golpe novo; a Senacon segue sem notícia desde 29/10. A primeira abertura da nota da Polícia Civil do Paraná foi recusada pela ferramenta e funcionou depois que o endereço veio de uma busca; o mesmo aconteceu com duas páginas do gov.br citadas pelo Boatos.org. A Agência Estadual de Notícias do Paraná só republica a nota da Polícia Civil e não contou como segunda fonte. O pacote sinal-norte só trouxe páginas antigas do Tocantins e do Pará. O checar_fontes.py e o checar_alerta.py rodaram normalmente; o gerar_imagem.py não foi usado, porque nenhum alerta foi publicado."
     }
   ],
   "correcoes": [

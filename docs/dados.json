@@ -1,6 +1,6 @@
 {
   "projeto": "Sentinela 60+",
-  "atualizado_em": "2026-11-15",
+  "atualizado_em": "2026-11-16",
   "alertas": [
     {
       "id": "2026-11-06-falso-bloqueio-biometria-inss",
@@ -63,6 +63,34 @@
       "card_whatsapp": "*Golpe do falso gerente*\nAlguém liga dizendo ser do seu banco e fala de movimentação suspeita.\nO banco não pede senha, código nem Pix para proteger seu dinheiro.\nDesligue e procure o banco pelo aplicativo ou pelo telefone do site.\n*Banco ligou pedindo Pix? Desligue e ligue você.*",
       "imagem": "imagens/2026-11-09-falso-gerente-banco.png",
       "imagem_alt": "Alerta de golpe do Sentinela 60+, 9 de novembro de 2026. Golpe do falso gerente: desligue e ligue você para o banco. O sinal: O banco não pede senha, código nem Pix para proteger seu dinheiro. O que fazer: Desligue e procure o banco pelo aplicativo ou pelo telefone do site. Para lembrar: Banco ligou pedindo Pix? Desligue e ligue você."
+    },
+    {
+      "id": "2026-11-16-falso-namoro-internet",
+      "golpe": "falso-namoro-internet",
+      "publicado_em": "2026-11-16",
+      "titulo": "Golpe do falso namoro pela internet: não mande dinheiro",
+      "como_chega": "Alguém puxa conversa na rede social ou no WhatsApp e diz que gosta de você.",
+      "o_que_pedem": "Dinheiro, empréstimo ou pagamentos, sempre com uma história de emergência.",
+      "sinal": "A pessoa nunca aparece ao vivo nem em chamada de vídeo, mas pede dinheiro.",
+      "o_que_fazer": "Não mande dinheiro a quem você só conhece pela internet.",
+      "para_lembrar": "Conheceu só pela internet e pediu dinheiro? Não mande.",
+      "fontes": [
+        {
+          "nome": "Polícia Civil do Paraná: alerta para golpes amorosos e orienta sobre prevenção (12/06/2026)",
+          "url": "https://www.parana.pr.gov.br/aen/Noticia/Dia-dos-Namorados-PCPR-alerta-para-golpes-amorosos-e-orienta-sobre-formas-de-prevencao",
+          "origem": "policia",
+          "data": "2026-06-12"
+        },
+        {
+          "nome": "Polícia Civil do Rio Grande do Sul: idosos são principal alvo do golpe do amor (20/08/2025)",
+          "url": "https://www.pc.rs.gov.br/idosos-sao-principal-alvo-do-golpe-do-amor-em-casos-atendidos-pela-policia-civil",
+          "origem": "policia",
+          "data": "2025-08-20"
+        }
+      ],
+      "card_whatsapp": "*Golpe do falso namoro pela internet*\nAlguém puxa conversa na rede social ou no WhatsApp e diz que gosta de você.\nA pessoa nunca aparece ao vivo nem em vídeo, mas pede dinheiro.\nNão mande dinheiro a quem você só conhece pela internet.\n*Conheceu só pela internet e pediu dinheiro? Não mande.*",
+      "imagem": "imagens/2026-11-16-falso-namoro-internet.png",
+      "imagem_alt": "Alerta de golpe do Sentinela 60+, 16 de novembro de 2026. Golpe do falso namoro pela internet: não mande dinheiro. O sinal: A pessoa nunca aparece ao vivo nem em chamada de vídeo, mas pede dinheiro. O que fazer: Não mande dinheiro a quem você só conhece pela internet. Para lembrar: Conheceu só pela internet e pediu dinheiro? Não mande."
     }
   ],
   "fila": [
@@ -248,7 +276,7 @@
         "url": "https://metropoles.com/sao-paulo/aposentada-perde-quase-r-40-mil-ao-acreditar-em-namoro-com-elon-musk",
         "origem": "imprensa"
       },
-      "status": "aguardando",
+      "status": "publicado",
       "alerta": {
         "golpe": "falso-namoro-internet",
         "titulo": "Golpe do falso namoro pela internet: não mande dinheiro",
@@ -272,7 +300,8 @@
           }
         ],
         "card_whatsapp": "*Golpe do falso namoro pela internet*\nAlguém puxa conversa na rede social ou no WhatsApp e diz que gosta de você.\nA pessoa nunca aparece ao vivo nem em vídeo, mas pede dinheiro.\nNão mande dinheiro a quem você só conhece pela internet.\n*Conheceu só pela internet e pediu dinheiro? Não mande.*"
-      }
+      },
+      "motivo_status": "Publicado como alerta em 16/11/2026, com as fontes das Polícias Civis do Paraná e do Rio Grande do Sul abertas de novo no dia."
     },
     {
       "golpe": "falsa-cobranca-governo-whatsapp",
@@ -1229,6 +1258,134 @@
         }
       ],
       "observacao": "Na leitura direta, o Procon de Santa Catarina, o Procon de São Paulo e a Polícia Civil de Santa Catarina não trouxeram golpe novo; a Senacon segue sem notícia desde 29/10. A primeira abertura da nota da Polícia Civil do Paraná foi recusada pela ferramenta e funcionou depois que o endereço veio de uma busca; o mesmo aconteceu com duas páginas do gov.br citadas pelo Boatos.org. A Agência Estadual de Notícias do Paraná só republica a nota da Polícia Civil e não contou como segunda fonte. O pacote sinal-norte só trouxe páginas antigas do Tocantins e do Pará. O checar_fontes.py e o checar_alerta.py rodaram normalmente; o gerar_imagem.py não foi usado, porque nenhum alerta foi publicado."
+    },
+    {
+      "data": "2026-11-16",
+      "modo": "publicacao",
+      "tipo": "automatica",
+      "consultas": 21,
+      "pacotes": [
+        "federal",
+        "bancos",
+        "imprensa",
+        "checadores",
+        "sudeste-centro-oeste",
+        "recorte"
+      ],
+      "leituras": [
+        "Febraban",
+        "Procon de Santa Catarina",
+        "Procon de São Paulo",
+        "Senacon",
+        "Polícia Civil de Goiás"
+      ],
+      "candidatos": 7,
+      "aprovados": 0,
+      "resultado": "publicado",
+      "escolhido": "falso-namoro-internet",
+      "motivo": "Nenhum golpe novo passou hoje nas quatro perguntas; da fila, saiu o golpe do falso namoro pela internet, de relevância 3 e o mais antigo entre os de maior relevância.",
+      "decisoes": [
+        {
+          "golpe": "Golpe do falso namoro pela internet (fila)",
+          "decisao": "Publicado: relevância 3, empatado com o falso sequestro; nenhum dos dois é de um tema da época, e o falso namoro foi noticiado antes (12/11), então expira primeiro. As duas fontes foram abertas de novo hoje: a Polícia Civil do Paraná (12/06/2026, pela Agência Estadual de Notícias) orienta a não fazer transferências a quem se conhece só pela internet, e a Polícia Civil do Rio Grande do Sul descreve o mesmo golpe e orienta a desconfiar de relação baseada em ajuda financeira. Não repete o canal nem o assunto do último alerta (falso gerente de banco, por ligação).",
+          "indicado_por": {
+            "nome": "Metrópoles",
+            "url": "https://metropoles.com/sao-paulo/aposentada-perde-quase-r-40-mil-ao-acreditar-em-namoro-com-elon-musk",
+            "origem": "imprensa"
+          }
+        },
+        {
+          "golpe": "Golpe do falso sequestro por telefone (fila)",
+          "decisao": "Mantido na fila: fontes aprovadas e relevância 3, mas noticiado depois do falso namoro (13/11). É o mais provável para quarta-feira.",
+          "indicado_por": {
+            "nome": "Polícia Civil do Paraná",
+            "url": "https://www.policiacivil.pr.gov.br/Noticia/PCPR-orienta-populacao-sobre-como-identificar-e-evitar-golpe-do-falso-sequestro",
+            "origem": "policia"
+          }
+        },
+        {
+          "golpe": "Golpe da promoção falsa (fila, Black Friday)",
+          "decisao": "Mantido na fila: fontes aprovadas, mas relevância 2, abaixo dos golpes de relevância 3. Ainda não perdeu a vez em 3 publicações.",
+          "indicado_por": {
+            "nome": "Correio Braziliense",
+            "url": "https://correiobraziliense.com.br/cidades-df/2026/11/7534475-consumidores-estao-em-alerta-contra-golpes-nas-compras-de-fim-de-ano.html",
+            "origem": "imprensa"
+          }
+        },
+        {
+          "golpe": "Golpe do falso advogado, falsa suspensão da CNH e falsa cobrança do governo (fila)",
+          "decisao": "Mantidos na fila: fontes aprovadas no verificador, mas relevância 2. Nenhum passou de 28 dias desde a última notícia."
+        },
+        {
+          "golpe": "Golpe do número secundário no WhatsApp (fila)",
+          "decisao": "Mantido na fila, sem chance de publicação como está: as duas fontes são sites regionais, e o verificador reprova por falta de fonte primária. Expira em 26/11 se nada mudar."
+        },
+        {
+          "golpe": "Golpe do falso traficante por telefone",
+          "decisao": "Recusado: a nota da Polícia Civil do Espírito Santo é de 08/10/2025, fora da janela de 14 dias.",
+          "indicado_por": {
+            "nome": "Polícia Civil do Espírito Santo",
+            "url": "https://pc.es.gov.br/Not%C3%ADcia/policia-civil-orienta-sobre-golpe-do-falso-traficante",
+            "origem": "policia"
+          }
+        },
+        {
+          "golpe": "Promoção falsa com perfis falsos e voz feita por inteligência artificial",
+          "decisao": "Recusado: a nota do Procon do Espírito Santo é de 19/08/2024, fora da janela.",
+          "indicado_por": {
+            "nome": "Procon do Espírito Santo",
+            "url": "https://procon.es.gov.br/Not%C3%ADcia/procon-es-alerta-golpes-pela-internet-usam-perfis-falsos-e-inteligencia-artificial-para-enganar-consumidores",
+            "origem": "procon"
+          }
+        },
+        {
+          "golpe": "Golpe do falso intermediário em compra e venda",
+          "decisao": "Recusado: a orientação da Polícia Civil de Goiás é de 30/11/2025, atualizada em 23/02/2026, fora da janela; relevância baixa para 60+.",
+          "indicado_por": {
+            "nome": "Polícia Civil de Goiás",
+            "url": "https://goias.gov.br/policiacivil/policia-civil-de-goias-divulga-orientacoes-sobre-o-golpe-do-falso-intermediario/",
+            "origem": "policia"
+          }
+        },
+        {
+          "golpe": "Falso ressarcimento de descontos do INSS",
+          "decisao": "Recusado: a nota do Procon do Espírito Santo é de 07/05/2025, fora da janela.",
+          "indicado_por": {
+            "nome": "Procon do Espírito Santo",
+            "url": "https://procon.es.gov.br/Not%C3%ADcia/procon-es-alerta-aposentados-e-pensionistas-do-inss-sobre-golpe-do-falso-ressarcimento",
+            "origem": "procon"
+          }
+        },
+        {
+          "golpe": "Falsa central bancária contra idosos no Distrito Federal",
+          "decisao": "Recusado: reportagem de operação policial sobre o mesmo golpe do falso gerente de banco, publicado em 09/11.",
+          "indicado_por": {
+            "nome": "Metrópoles",
+            "url": "https://www.metropoles.com/distrito-federal/na-mira/golpe-da-falsa-central-bancaria-causa-prejuizo-de-r-450-mil-a-idosos-do-df",
+            "origem": "imprensa"
+          }
+        },
+        {
+          "golpe": "Falsa prova de vida do INSS (avaliado como recorrente)",
+          "decisao": "Recusado como reserva: o INSS mantém a orientação (nota de 14/09/2026), mas o golpe é próximo do alerta da falsa biometria do INSS, publicado em 06/11, e faltou abrir hoje uma segunda fonte independente.",
+          "indicado_por": {
+            "nome": "INSS",
+            "url": "https://www.gov.br/inss/pt-br/assuntos/noticias/inss-alerta-aposentados-sao-vitimas-de-golpe-envolvendo-falsa-prova-de-vida",
+            "origem": "orgao"
+          }
+        },
+        {
+          "golpe": "Golpe do falso parente pelo WhatsApp (avaliado como recorrente)",
+          "decisao": "Recusado como reserva: a orientação primária encontrada (Polícia Civil de Goiás) é de 08/01/2021, fora dos 12 meses, e a reportagem do Correio Braziliense (07/10/2026) não traz ação de proteção.",
+          "indicado_por": {
+            "nome": "Polícia Civil de Goiás",
+            "url": "https://goias.gov.br/seguranca/policia-civil-da-dicas-para-evitar-cair-no-golpe-do-novo-numero/",
+            "origem": "policia"
+          }
+        }
+      ],
+      "tema": "Black Friday; 13º salário",
+      "observacao": "Na leitura direta, só a Febraban (Black Friday, já na fila) e a Polícia Civil de Goiás (operações, sem orientação ao público) tinham notícias recentes ligadas a fraude; a Senacon segue sem notícia desde 29/10, e a página de notícias da Polícia Civil de Mato Grosso do Sul deu erro ao abrir. As buscas dos temas Black Friday (pacote federal) e 13º salário (pacote imprensa) só devolveram páginas antigas, de prefeituras ou sem golpe. A fila não tem nenhum recorrente de reserva: as buscas da falsa prova de vida e do falso parente não acharam orientação primária nova que valesse. Na revisão de segunda, as páginas do INSS, da Polícia Civil do Paraná e do blog do Nubank abriram e mantêm a orientação; a da Agência Brasil sobre a biometria recusou a abertura duas vezes por limite de acesso, e nenhuma correção foi feita. O checar_fontes.py, o checar_alerta.py e o gerar_imagem.py rodaram normalmente."
     }
   ],
   "correcoes": [

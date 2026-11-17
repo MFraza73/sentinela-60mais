@@ -1,6 +1,6 @@
 {
   "projeto": "Sentinela 60+",
-  "atualizado_em": "2026-11-16",
+  "atualizado_em": "2026-11-17",
   "alertas": [
     {
       "id": "2026-11-06-falso-bloqueio-biometria-inss",
@@ -1386,6 +1386,92 @@
       ],
       "tema": "Black Friday; 13º salário",
       "observacao": "Na leitura direta, só a Febraban (Black Friday, já na fila) e a Polícia Civil de Goiás (operações, sem orientação ao público) tinham notícias recentes ligadas a fraude; a Senacon segue sem notícia desde 29/10, e a página de notícias da Polícia Civil de Mato Grosso do Sul deu erro ao abrir. As buscas dos temas Black Friday (pacote federal) e 13º salário (pacote imprensa) só devolveram páginas antigas, de prefeituras ou sem golpe. A fila não tem nenhum recorrente de reserva: as buscas da falsa prova de vida e do falso parente não acharam orientação primária nova que valesse. Na revisão de segunda, as páginas do INSS, da Polícia Civil do Paraná e do blog do Nubank abriram e mantêm a orientação; a da Agência Brasil sobre a biometria recusou a abertura duas vezes por limite de acesso, e nenhuma correção foi feita. O checar_fontes.py, o checar_alerta.py e o gerar_imagem.py rodaram normalmente."
+    },
+    {
+      "data": "2026-11-17",
+      "modo": "varredura",
+      "tipo": "automatica",
+      "consultas": 20,
+      "pacotes": [
+        "federal",
+        "bancos",
+        "imprensa",
+        "checadores",
+        "sul",
+        "recorte",
+        "sudeste-centro-oeste"
+      ],
+      "leituras": [
+        "Febraban",
+        "Procon de Santa Catarina",
+        "Procon de São Paulo",
+        "Senacon",
+        "Polícia Civil do Paraná",
+        "Polícia Civil de Santa Catarina"
+      ],
+      "candidatos": 6,
+      "aprovados": 0,
+      "resultado": "nada-novo",
+      "escolhido": "",
+      "motivo": "Nenhum golpe novo foi confirmado em duas fontes independentes hoje, e a busca de um golpe recorrente para a reserva não achou orientação primária dos últimos 12 meses com segunda fonte.",
+      "decisoes": [
+        {
+          "golpe": "Golpe do falso servidor do INSS que vai à casa do aposentado",
+          "decisao": "Recusado por enquanto: a Polícia Civil do Paraná noticiou em 16/11 a prisão de um homem que usava crachá falso do INSS para pegar cartão e senha de idosos, mas a nota não traz orientação ao público. O INSS orienta a não abrir a porta e a ligar para a Central 135 (páginas atualizadas em 03/07/2026 e 28/10/2026), mas as duas são do mesmo órgão, e o checar_fontes.py reprovou por MESMO_GRUPO. O Correio Braziliense (17/10) só reproduz a nota do INSS. Falta uma segunda fonte independente; é o candidato mais forte para os próximos dias.",
+          "indicado_por": {
+            "nome": "Polícia Civil do Paraná",
+            "url": "https://www.policiacivil.pr.gov.br/Noticia/PCPR-prende-investigado-por-aplicar-golpes-contra-idosos-no-interior-do-Parana",
+            "origem": "policia"
+          }
+        },
+        {
+          "golpe": "Golpe do QR Code do Pix alterado em compras pela internet",
+          "decisao": "Recusado: a orientação do Procon de São Paulo é de 16/09/2026, fora da janela de 14 dias, e a relevância para 60+ é 2, abaixo do exigido para golpe recorrente.",
+          "indicado_por": {
+            "nome": "Procon de São Paulo",
+            "url": "https://www.procon.sp.gov.br/procon-sp-orienta-consumidores-sobre-novo-golpe-que-altera-qr-code-do-pix-em-compras-online/",
+            "origem": "procon"
+          }
+        },
+        {
+          "golpe": "Golpes com ofertas falsas na Black Friday",
+          "decisao": "Recusado: a Febraban (10/11) e a Senacon (página atualizada em 25/10) tratam do mesmo golpe que já está na fila, a promoção falsa por link. O alerta da Serasa citado pelo Correio Braziliense não conta, porque a empresa vende serviço contra fraude.",
+          "indicado_por": {
+            "nome": "Febraban",
+            "url": "https://portal.febraban.org.br/noticia/4520/pt-br/",
+            "origem": "banco"
+          }
+        },
+        {
+          "golpe": "Falsa plataforma de investimento com nome de políticos e empresários",
+          "decisao": "Recusado: só apareceu numa checagem do Boatos.org, que indica mas não confirma, e nenhuma fonte primária sobre o golpe apareceu nas buscas do dia.",
+          "indicado_por": {
+            "nome": "Boatos.org",
+            "url": "https://www.boatos.org/politica/tarcisio-de-freitas-e-jorge-lehmann-lancaram-fintech-de-investimentos-em-plataforma-exclusiva.html",
+            "origem": "checador"
+          }
+        },
+        {
+          "golpe": "Golpe do falso motoboy que busca o cartão (avaliado como recorrente)",
+          "decisao": "Recusado como reserva: as orientações primárias abertas são antigas (Polícia Civil do Espírito Santo, 04/08/2021; Polícia Civil de Rondônia, 29/06/2020; Procon de Goiás, 14/12/2020), fora dos 12 meses.",
+          "indicado_por": {
+            "nome": "Polícia Civil do Espírito Santo",
+            "url": "https://pc.es.gov.br/Not%C3%ADcia/policia-civil-orienta-sobre-o-golpe-do-motoboy",
+            "origem": "policia"
+          }
+        },
+        {
+          "golpe": "Golpe do falso parente pelo WhatsApp (avaliado como recorrente)",
+          "decisao": "Recusado como reserva: a orientação da Polícia Civil de Goiás é de 08/01/2021, fora dos 12 meses, e a página da Polícia Civil do Rio Grande do Sul é de operação, sem orientação ao público.",
+          "indicado_por": {
+            "nome": "Polícia Civil de Goiás",
+            "url": "https://goias.gov.br/seguranca/policia-civil-da-dicas-para-evitar-cair-no-golpe-do-novo-numero/",
+            "origem": "policia"
+          }
+        }
+      ],
+      "tema": "Black Friday; 13º salário",
+      "observacao": "Na leitura direta, a Febraban e o Procon de Santa Catarina só trouxeram orientações de Black Friday, já na fila; o Procon de São Paulo não teve notícia de golpe em novembro; a Senacon segue sem notícia desde 29/10; a Polícia Civil de Santa Catarina só trouxe operações. As buscas do tema 13º salário não acharam golpe noticiado. A fila continua sem nenhum recorrente de reserva: o próximo dia de publicação sem golpe novo pode ficar sem alerta. O pacote sudeste-centro-oeste foi usado só para confirmar candidatos. O checar_fontes.py rodou normalmente; o checar_alerta.py e o gerar_imagem.py não foram usados, porque nenhum alerta foi escrito nem publicado."
     }
   ],
   "correcoes": [

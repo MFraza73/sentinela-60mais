@@ -1,6 +1,6 @@
 {
   "projeto": "Sentinela 60+",
-  "atualizado_em": "2026-11-17",
+  "atualizado_em": "2026-11-18",
   "alertas": [
     {
       "id": "2026-11-06-falso-bloqueio-biometria-inss",
@@ -91,6 +91,34 @@
       "card_whatsapp": "*Golpe do falso namoro pela internet*\nAlguém puxa conversa na rede social ou no WhatsApp e diz que gosta de você.\nA pessoa nunca aparece ao vivo nem em vídeo, mas pede dinheiro.\nNão mande dinheiro a quem você só conhece pela internet.\n*Conheceu só pela internet e pediu dinheiro? Não mande.*",
       "imagem": "imagens/2026-11-16-falso-namoro-internet.png",
       "imagem_alt": "Alerta de golpe do Sentinela 60+, 16 de novembro de 2026. Golpe do falso namoro pela internet: não mande dinheiro. O sinal: A pessoa nunca aparece ao vivo nem em chamada de vídeo, mas pede dinheiro. O que fazer: Não mande dinheiro a quem você só conhece pela internet. Para lembrar: Conheceu só pela internet e pediu dinheiro? Não mande."
+    },
+    {
+      "id": "2026-11-18-falso-sequestro",
+      "golpe": "falso-sequestro",
+      "publicado_em": "2026-11-18",
+      "titulo": "Golpe do falso sequestro: desligue e ligue para o seu parente",
+      "como_chega": "Uma ligação com alguém chorando, que diz ser seu parente e estar sequestrado.",
+      "o_que_pedem": "Dinheiro na hora, por Pix, transferência ou entrega em mãos.",
+      "sinal": "Muita pressão para pagar já e perguntas sobre os nomes da sua família.",
+      "o_que_fazer": "Desligue e ligue você mesmo para o parente, no número que você já tem.",
+      "para_lembrar": "Choro e pressa no telefone? Desligue e ligue você mesmo.",
+      "fontes": [
+        {
+          "nome": "Polícia Civil do Paraná: orienta sobre o golpe do falso sequestro (13/11/2026)",
+          "url": "https://www.policiacivil.pr.gov.br/Noticia/PCPR-orienta-populacao-sobre-como-identificar-e-evitar-golpe-do-falso-sequestro",
+          "origem": "policia",
+          "data": "2026-11-13"
+        },
+        {
+          "nome": "Polícia Civil de Mato Grosso do Sul: alerta sobre o golpe do falso sequestro (28/07/2017)",
+          "url": "https://www.pc.ms.gov.br/dica-da-policia-civil-alerta-sobre-o-golpe-do-falso-sequestro/",
+          "origem": "policia",
+          "data": "2017-07-28"
+        }
+      ],
+      "card_whatsapp": "*Golpe do falso sequestro*\nAlguém liga chorando, diz ser seu parente e estar sequestrado.\nPede dinheiro na hora e pergunta os nomes da sua família.\nDesligue e ligue você mesmo para o parente, no número que você já tem.\n*Choro e pressa no telefone? Desligue e ligue você mesmo.*",
+      "imagem": "imagens/2026-11-18-falso-sequestro.png",
+      "imagem_alt": "Alerta de golpe do Sentinela 60+, 18 de novembro de 2026. Golpe do falso sequestro: desligue e ligue para o seu parente. O sinal: Muita pressão para pagar já e perguntas sobre os nomes da sua família. O que fazer: Desligue e ligue você mesmo para o parente, no número que você já tem. Para lembrar: Choro e pressa no telefone? Desligue e ligue você mesmo."
     }
   ],
   "fila": [
@@ -357,7 +385,7 @@
         "url": "https://www.policiacivil.pr.gov.br/Noticia/PCPR-orienta-populacao-sobre-como-identificar-e-evitar-golpe-do-falso-sequestro",
         "origem": "policia"
       },
-      "status": "aguardando",
+      "status": "publicado",
       "alerta": {
         "golpe": "falso-sequestro",
         "titulo": "Golpe do falso sequestro: desligue e ligue para o seu parente",
@@ -381,6 +409,46 @@
           }
         ],
         "card_whatsapp": "*Golpe do falso sequestro*\nAlguém liga chorando, diz ser seu parente e estar sequestrado.\nPede dinheiro na hora e pergunta os nomes da sua família.\nDesligue e ligue você mesmo para o parente, no número que você já tem.\n*Choro e pressa no telefone? Desligue e ligue você mesmo.*"
+      },
+      "motivo_status": "Publicado como alerta em 18/11/2026, com as fontes das Polícias Civis do Paraná e de Mato Grosso do Sul abertas de novo no dia."
+    },
+    {
+      "golpe": "falsa-prova-de-vida",
+      "nome": "Golpe da falsa prova de vida do INSS",
+      "adicionado_em": "2026-11-18",
+      "noticiado_em": "2026-09-14",
+      "relevancia": 3,
+      "tipo": "recorrente",
+      "indicado_por": {
+        "nome": "INSS",
+        "url": "https://www.gov.br/inss/pt-br/assuntos/noticias/inss-alerta-aposentados-sao-vitimas-de-golpe-envolvendo-falsa-prova-de-vida",
+        "origem": "orgao"
+      },
+      "status": "aguardando",
+      "alerta": {
+        "golpe": "falsa-prova-de-vida",
+        "tipo": "recorrente",
+        "titulo": "Golpe da falsa prova de vida: confira no 135",
+        "como_chega": "Uma mensagem ou ligação diz que você precisa fazer a prova de vida. Ela usa o nome do Instituto Nacional do Seguro Social (INSS).",
+        "o_que_pedem": "Seus dados, sua senha ou que você clique num link ou aperte uma tecla.",
+        "sinal": "Ameaça de cortar o benefício se você não responder na hora.",
+        "o_que_fazer": "Não responda; na dúvida, ligue para o 135, a central do INSS.",
+        "para_lembrar": "Pedido de prova de vida? Confira no 135.",
+        "fontes": [
+          {
+            "nome": "INSS: aposentados são vítimas de golpe envolvendo falsa prova de vida (14/09/2026)",
+            "url": "https://www.gov.br/inss/pt-br/assuntos/noticias/inss-alerta-aposentados-sao-vitimas-de-golpe-envolvendo-falsa-prova-de-vida",
+            "origem": "orgao",
+            "data": "2026-09-14"
+          },
+          {
+            "nome": "Radioagência Nacional: ligação pedindo prova de vida do INSS é golpe (19/11/2025)",
+            "url": "https://agenciabrasil.ebc.com.br/radioagencia-nacional/geral/audio/2025-11/ligacao-pedindo-prova-de-vida-do-inss-e-golpe-saiba-o-que-fazer",
+            "origem": "imprensa",
+            "data": "2025-11-19"
+          }
+        ],
+        "card_whatsapp": "*Golpe da falsa prova de vida*\nMensagem ou ligação diz que você precisa fazer a prova de vida.\nAmeaça cortar o benefício se você não responder na hora.\nNão responda. Na dúvida, ligue para o 135.\n*Pedido de prova de vida? Confira no 135.*"
       }
     }
   ],
@@ -1472,6 +1540,94 @@
       ],
       "tema": "Black Friday; 13º salário",
       "observacao": "Na leitura direta, a Febraban e o Procon de Santa Catarina só trouxeram orientações de Black Friday, já na fila; o Procon de São Paulo não teve notícia de golpe em novembro; a Senacon segue sem notícia desde 29/10; a Polícia Civil de Santa Catarina só trouxe operações. As buscas do tema 13º salário não acharam golpe noticiado. A fila continua sem nenhum recorrente de reserva: o próximo dia de publicação sem golpe novo pode ficar sem alerta. O pacote sudeste-centro-oeste foi usado só para confirmar candidatos. O checar_fontes.py rodou normalmente; o checar_alerta.py e o gerar_imagem.py não foram usados, porque nenhum alerta foi escrito nem publicado."
+    },
+    {
+      "data": "2026-11-18",
+      "modo": "publicacao",
+      "tipo": "automatica",
+      "consultas": 17,
+      "pacotes": [
+        "federal",
+        "bancos",
+        "imprensa",
+        "checadores",
+        "nordeste",
+        "recorte"
+      ],
+      "leituras": [
+        "Febraban",
+        "Procon de Santa Catarina",
+        "Procon de São Paulo",
+        "Senacon"
+      ],
+      "candidatos": 6,
+      "aprovados": 1,
+      "resultado": "publicado",
+      "escolhido": "falso-sequestro",
+      "motivo": "Nenhum golpe novo passou hoje nas quatro perguntas; da fila, saiu o golpe do falso sequestro por telefone, o único golpe novo de relevância 3. A falsa prova de vida entrou como recorrente de reserva.",
+      "decisoes": [
+        {
+          "golpe": "Golpe do falso sequestro por telefone (fila)",
+          "decisao": "Publicado: é o único golpe novo de relevância 3 na fila e não repete o canal nem o assunto do último alerta (falso namoro pela internet). As duas fontes foram abertas de novo hoje: a Polícia Civil do Paraná (13/11/2026) orienta a encerrar a chamada e falar direto com a pessoa supostamente sequestrada, e a Polícia Civil de Mato Grosso do Sul orienta a ligar para quem o bandido diz ter sequestrado. O checar_fontes.py aprovou.",
+          "indicado_por": {
+            "nome": "Polícia Civil do Paraná",
+            "url": "https://www.policiacivil.pr.gov.br/Noticia/PCPR-orienta-populacao-sobre-como-identificar-e-evitar-golpe-do-falso-sequestro",
+            "origem": "policia"
+          }
+        },
+        {
+          "golpe": "Golpe da falsa prova de vida do INSS (recorrente)",
+          "decisao": "Guardado na fila como recorrente de reserva, com relevância 3: o INSS (14/09/2026) descreve mensagens que ameaçam cortar o benefício e orienta a tirar dúvidas na Central 135 ou no Meu INSS; a Radioagência Nacional (19/11/2025) descreve a ligação falsa e dá a mesma orientação. Não foi publicado nas últimas 26 semanas, e a fila não tinha nenhum recorrente.",
+          "indicado_por": {
+            "nome": "INSS",
+            "url": "https://www.gov.br/inss/pt-br/assuntos/noticias/inss-alerta-aposentados-sao-vitimas-de-golpe-envolvendo-falsa-prova-de-vida",
+            "origem": "orgao"
+          }
+        },
+        {
+          "golpe": "Falsa mensagem do gov.br sobre e-mail de recuperação",
+          "decisao": "Não confirmado: só o Boatos.org (14/11/2026), uma agência de checagem, descreve o golpe; a nota do Ministério da Gestão (06/11/2026) confirma que as notificações verdadeiras existem, mas não traz alerta nem orientação sobre a versão falsa. É uma variação da falsa cobrança do governo pelo WhatsApp, que já está na fila.",
+          "indicado_por": {
+            "nome": "Boatos.org",
+            "url": "https://www.boatos.org/tecnologia/mensagem-do-gov-br-no-whatsapp-para-cadastrar-e-mail-de-recuperacao-de-conta-e-golpe.html",
+            "origem": "checador"
+          }
+        },
+        {
+          "golpe": "QR Code do Pix trocado em lojas virtuais",
+          "decisao": "Não é novo: a orientação do Procon de São Paulo é de 16/09/2026, fora da janela de 14 dias, e nenhuma fonte recente foi encontrada, nem na busca do tema Black Friday. Relevância 2, abaixo da exigida para recorrente.",
+          "indicado_por": {
+            "nome": "Procon de São Paulo",
+            "url": "https://www.procon.sp.gov.br/procon-sp-orienta-consumidores-sobre-novo-golpe-que-altera-qr-code-do-pix-em-compras-online/",
+            "origem": "procon"
+          }
+        },
+        {
+          "golpe": "Falso advogado com lista de benefícios negados do INSS",
+          "decisao": "Não é novo: a página do INSS é de 2024, e o golpe do falso advogado já está na fila com status aguardando.",
+          "indicado_por": {
+            "nome": "INSS",
+            "url": "https://www.gov.br/inss/pt-br/noticias/inss-alerta-segurados-para-nova-modalidade-de-tentativa-de-golpe-3",
+            "origem": "orgao"
+          }
+        },
+        {
+          "golpe": "Golpes com inteligência artificial na Black Friday",
+          "decisao": "Não confirmado: só uma reportagem do Correio Braziliense, baseada em empresa que vende serviço de proteção contra fraude, sem órgão público, polícia, Procon ou banco.",
+          "indicado_por": {
+            "nome": "Correio Braziliense",
+            "url": "https://correiobraziliense.com.br/economia/2026/11/7539236-golpes-com-ia-ampliam-riscos-na-black-friday-alerta-serasa.html",
+            "origem": "imprensa"
+          }
+        },
+        {
+          "golpe": "Demais itens da fila",
+          "decisao": "Mantidos: falso advogado, link falso de promoção, falsa suspensão da carteira de motorista, falsa cobrança do governo e número secundário no WhatsApp são de relevância 2 e nenhum passou de 28 dias desde a última notícia. O número secundário no WhatsApp é reprovado pelo checar_fontes.py (fontes sem origem, fora da lista) e será descartado se chegar a vez dele.",
+          "indicado_por": null
+        }
+      ],
+      "tema": "Black Friday; 13º salário",
+      "observacao": "Na leitura direta, a Febraban e o Procon de Santa Catarina só trouxeram orientações de Black Friday, já cobertas pela fila; o Procon de São Paulo não teve notícia de golpe nos últimos 14 dias; a Senacon segue sem notícia desde 29/10. O pacote nordeste não tem página de notícias validada e, na busca, devolveu sobretudo prefeituras e páginas antigas; o pacote opcional sinal-nordeste não foi usado. As buscas dos temas Black Friday (pacote federal) e 13º salário (pacote imprensa) só trouxeram páginas antigas, de prefeituras ou sem golpe. Na revisão de quarta, as duas fontes do alerta do falso namoro (Polícias Civis do Paraná e do Rio Grande do Sul) abriram e mantêm a orientação; nenhuma correção foi feita. O checar_fontes.py, o checar_alerta.py e o gerar_imagem.py rodaram normalmente."
     }
   ],
   "correcoes": [

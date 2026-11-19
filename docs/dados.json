@@ -1,6 +1,6 @@
 {
   "projeto": "Sentinela 60+",
-  "atualizado_em": "2026-11-18",
+  "atualizado_em": "2026-11-19",
   "alertas": [
     {
       "id": "2026-11-06-falso-bloqueio-biometria-inss",
@@ -1628,6 +1628,92 @@
       ],
       "tema": "Black Friday; 13º salário",
       "observacao": "Na leitura direta, a Febraban e o Procon de Santa Catarina só trouxeram orientações de Black Friday, já cobertas pela fila; o Procon de São Paulo não teve notícia de golpe nos últimos 14 dias; a Senacon segue sem notícia desde 29/10. O pacote nordeste não tem página de notícias validada e, na busca, devolveu sobretudo prefeituras e páginas antigas; o pacote opcional sinal-nordeste não foi usado. As buscas dos temas Black Friday (pacote federal) e 13º salário (pacote imprensa) só trouxeram páginas antigas, de prefeituras ou sem golpe. Na revisão de quarta, as duas fontes do alerta do falso namoro (Polícias Civis do Paraná e do Rio Grande do Sul) abriram e mantêm a orientação; nenhuma correção foi feita. O checar_fontes.py, o checar_alerta.py e o gerar_imagem.py rodaram normalmente."
+    },
+    {
+      "data": "2026-11-19",
+      "modo": "varredura",
+      "tipo": "automatica",
+      "consultas": 18,
+      "pacotes": [
+        "federal",
+        "bancos",
+        "imprensa",
+        "checadores",
+        "norte",
+        "recorte",
+        "sinal-norte",
+        "sul",
+        "sudeste-centro-oeste"
+      ],
+      "leituras": [
+        "Febraban",
+        "Procon de Santa Catarina",
+        "Procon de São Paulo",
+        "Senacon"
+      ],
+      "candidatos": 6,
+      "aprovados": 0,
+      "resultado": "nada-novo",
+      "escolhido": "",
+      "motivo": "Nenhum golpe novo foi confirmado em duas fontes independentes hoje, e a busca de um golpe recorrente para a reserva não achou orientação primária dos últimos 12 meses.",
+      "decisoes": [
+        {
+          "golpe": "Falso advogado que oferece ação contra o INSS",
+          "decisao": "Recusado: é uma variação do golpe do falso advogado, que já está na fila; a página do INSS foi publicada em 2024 e atualizada em 28/10/2026, fora da janela de 14 dias, e nenhuma segunda fonte apareceu. O checar_fontes.py reprovou por POUCAS_FONTES e FORA_DA_JANELA.",
+          "indicado_por": {
+            "nome": "INSS",
+            "url": "https://www.gov.br/inss/pt-br/noticias/inss-alerta-segurados-para-nova-modalidade-de-tentativa-de-golpe-3",
+            "origem": "orgao"
+          }
+        },
+        {
+          "golpe": "Falsa mensagem do gov.br sobre e-mail de recuperação da conta",
+          "decisao": "Recusado: a checagem do Boatos.org (14/11) mostra que o aviso do gov.br pelo WhatsApp é verdadeiro, e o Ministério da Gestão (06/11) confirma o envio, mas não descreve golpe que imite a mensagem. Checagem não confirma; o checar_fontes.py reprovou por POUCAS_FONTES. A imitação de mensagens do governo já está na fila.",
+          "indicado_por": {
+            "nome": "Boatos.org",
+            "url": "https://www.boatos.org/tecnologia/mensagem-do-gov-br-no-whatsapp-para-cadastrar-e-mail-de-recuperacao-de-conta-e-golpe.html",
+            "origem": "checador"
+          }
+        },
+        {
+          "golpe": "Golpe do precatório contra aposentados e pensionistas",
+          "decisao": "Recusado: o alerta da Acreprevidência é de 12/11/2024, fora da janela de 14 dias e dos 12 meses exigidos para golpe recorrente.",
+          "indicado_por": {
+            "nome": "Agência de Notícias do Acre",
+            "url": "https://agencia.ac.gov.br/acreprevidencia-alerta-aposentados-e-pensionistas-contra-golpe-de-precatorio/",
+            "origem": "orgao"
+          }
+        },
+        {
+          "golpe": "Falsa ameaça de facção criminosa por mensagem",
+          "decisao": "Recusado: a orientação da Polícia Civil do Paraná é de 14/10/2025, fora da janela de 14 dias, e nenhuma notícia recente apareceu.",
+          "indicado_por": {
+            "nome": "Polícia Civil do Paraná",
+            "url": "https://www.policiacivil.pr.gov.br/Noticia/Golpes-por-mensagens-PCPR-reforca-orientacoes-populacao-sobre-falsas-ameacas",
+            "origem": "policia"
+          }
+        },
+        {
+          "golpe": "Site falso que cobra pela emissão da carteira de identidade",
+          "decisao": "Recusado: o alerta do Tocantins só indica (a página não abre para a ferramenta), e as orientações abertas são antigas (IGP do Rio Grande do Sul, 02/06/2025).",
+          "indicado_por": {
+            "nome": "Governo do Tocantins",
+            "url": "https://www.to.gov.br/secom/noticias/seguranca-publica-alerta-sobre-golpes-envolvendo-emissao-de-carteira-de-identidade-por-links-falsos/v44kr9rhfy",
+            "origem": "outro"
+          }
+        },
+        {
+          "golpe": "Golpe do falso parente pelo WhatsApp (avaliado como recorrente)",
+          "decisao": "Recusado como reserva: a orientação primária aberta é da Polícia Civil de Mato Grosso do Sul, de 11/06/2024, fora dos 12 meses; as notícias recentes (Correio Braziliense, 07/10/2026; Polícia Civil do Rio Grande do Sul, 10/12/2025) são de operações, sem orientação ao público. O checar_fontes.py reprovou por ORIENTACAO_VENCIDA.",
+          "indicado_por": {
+            "nome": "Polícia Civil de Mato Grosso do Sul",
+            "url": "https://www.pc.ms.gov.br/golpes-e-fraudes-financeiras-contra-pessoas-idosas/",
+            "origem": "policia"
+          }
+        }
+      ],
+      "tema": "Black Friday; 13º salário",
+      "observacao": "Na leitura direta, a Febraban, o Procon de Santa Catarina e o Procon de São Paulo só trouxeram orientações de Black Friday, já cobertas pela fila; a Senacon segue sem notícia desde 29/10. O pacote norte não tem página de leitura direta validada e devolveu só alertas antigos (2019 a 2025); no sinal-norte, a página do Tocantins bloqueou a abertura (robots). As buscas dos temas Black Friday e 13º salário não acharam golpe novo além da promoção falsa já na fila. A fila segue com só 1 recorrente de reserva. O aviso verdadeiro do gov.br sobre e-mail de recuperação (Ministério da Gestão, 06/11) pode servir ao \"É golpe ou não?\" de sábado, se uma fonte disser como conferir o aviso. A primeira abertura da página do Ministério da Gestão falhou por falta de busca-ponte e funcionou depois dela. Os pacotes sul e sudeste-centro-oeste foram usados só para confirmar candidatos. O checar_fontes.py rodou normalmente; o checar_alerta.py, o checar_quiz.py e o gerar_imagem.py não foram usados, porque nenhum alerta nem quiz foi escrito."
     }
   ],
   "correcoes": [

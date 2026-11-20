@@ -1,6 +1,6 @@
 {
   "projeto": "Sentinela 60+",
-  "atualizado_em": "2026-11-19",
+  "atualizado_em": "2026-11-20",
   "alertas": [
     {
       "id": "2026-11-06-falso-bloqueio-biometria-inss",
@@ -119,6 +119,35 @@
       "card_whatsapp": "*Golpe do falso sequestro*\nAlguém liga chorando, diz ser seu parente e estar sequestrado.\nPede dinheiro na hora e pergunta os nomes da sua família.\nDesligue e ligue você mesmo para o parente, no número que você já tem.\n*Choro e pressa no telefone? Desligue e ligue você mesmo.*",
       "imagem": "imagens/2026-11-18-falso-sequestro.png",
       "imagem_alt": "Alerta de golpe do Sentinela 60+, 18 de novembro de 2026. Golpe do falso sequestro: desligue e ligue para o seu parente. O sinal: Muita pressão para pagar já e perguntas sobre os nomes da sua família. O que fazer: Desligue e ligue você mesmo para o parente, no número que você já tem. Para lembrar: Choro e pressa no telefone? Desligue e ligue você mesmo."
+    },
+    {
+      "id": "2026-11-20-link-falso-promocao",
+      "golpe": "link-falso-promocao",
+      "publicado_em": "2026-11-20",
+      "titulo": "Golpe da promoção falsa: não clique no link",
+      "como_chega": "Uma mensagem no WhatsApp, na rede social ou no e-mail, com oferta muito barata.",
+      "o_que_pedem": "Que você clique no link e pague a compra num site que imita a loja.",
+      "sinal": "O preço é bem mais baixo que o normal e a oferta chega por link.",
+      "o_que_fazer": "Não clique no link. Entre você mesmo no site ou no aplicativo oficial da loja.",
+      "para_lembrar": "Oferta chegou por link? Vá você mesmo à loja.",
+      "fontes": [
+        {
+          "nome": "Procon do Paraná: cuidados essenciais na Black Friday (04/11/2026)",
+          "url": "https://www.parana.pr.gov.br/aen/Noticia/Economia-sem-dor-de-cabeca-Procon-PR-alerta-para-cuidados-essenciais-na-Black-Friday",
+          "origem": "procon",
+          "data": "2026-11-04"
+        },
+        {
+          "nome": "Correio Braziliense: consumidores em alerta contra golpes nas compras de fim de ano (07/11/2026)",
+          "url": "https://correiobraziliense.com.br/cidades-df/2026/11/7534475-consumidores-estao-em-alerta-contra-golpes-nas-compras-de-fim-de-ano.html",
+          "origem": "imprensa",
+          "data": "2026-11-07"
+        }
+      ],
+      "card_whatsapp": "*Golpe da promoção falsa*\nChega uma oferta de loja muito barata, com um link.\nO link leva a um site que imita a loja.\nNão clique. Entre você mesmo no site ou no aplicativo oficial da loja.\n*Oferta chegou por link? Vá você mesmo à loja.*",
+      "tema": "Black Friday",
+      "imagem": "imagens/2026-11-20-link-falso-promocao.png",
+      "imagem_alt": "Alerta de golpe do Sentinela 60+, 20 de novembro de 2026. Golpe da promoção falsa: não clique no link. O sinal: O preço é bem mais baixo que o normal e a oferta chega por link. O que fazer: Não clique no link. Entre você mesmo no site ou no aplicativo oficial da loja. Para lembrar: Oferta chegou por link? Vá você mesmo à loja."
     }
   ],
   "fila": [
@@ -230,7 +259,7 @@
         "url": "https://correiobraziliense.com.br/cidades-df/2026/11/7534475-consumidores-estao-em-alerta-contra-golpes-nas-compras-de-fim-de-ano.html",
         "origem": "imprensa"
       },
-      "status": "aguardando",
+      "status": "publicado",
       "alerta": {
         "golpe": "link-falso-promocao",
         "titulo": "Golpe da promoção falsa: não clique no link",
@@ -253,8 +282,11 @@
             "data": "2026-11-07"
           }
         ],
-        "card_whatsapp": "*Golpe da promoção falsa*\nChega uma oferta de loja muito barata, com um link.\nO link leva a um site que imita a loja.\nNão clique. Entre você mesmo no site ou no aplicativo oficial da loja.\n*Oferta chegou por link? Vá você mesmo à loja.*"
-      }
+        "card_whatsapp": "*Golpe da promoção falsa*\nChega uma oferta de loja muito barata, com um link.\nO link leva a um site que imita a loja.\nNão clique. Entre você mesmo no site ou no aplicativo oficial da loja.\n*Oferta chegou por link? Vá você mesmo à loja.*",
+        "tema": "Black Friday"
+      },
+      "tema": "Black Friday",
+      "motivo_status": "Publicado em 20/11/2026, na semana da Black Friday: empatado em relevância com os outros golpes novos da fila, passou na frente por ser do tema da época."
     },
     {
       "golpe": "falsa-suspensao-cnh",
@@ -1714,6 +1746,97 @@
       ],
       "tema": "Black Friday; 13º salário",
       "observacao": "Na leitura direta, a Febraban, o Procon de Santa Catarina e o Procon de São Paulo só trouxeram orientações de Black Friday, já cobertas pela fila; a Senacon segue sem notícia desde 29/10. O pacote norte não tem página de leitura direta validada e devolveu só alertas antigos (2019 a 2025); no sinal-norte, a página do Tocantins bloqueou a abertura (robots). As buscas dos temas Black Friday e 13º salário não acharam golpe novo além da promoção falsa já na fila. A fila segue com só 1 recorrente de reserva. O aviso verdadeiro do gov.br sobre e-mail de recuperação (Ministério da Gestão, 06/11) pode servir ao \"É golpe ou não?\" de sábado, se uma fonte disser como conferir o aviso. A primeira abertura da página do Ministério da Gestão falhou por falta de busca-ponte e funcionou depois dela. Os pacotes sul e sudeste-centro-oeste foram usados só para confirmar candidatos. O checar_fontes.py rodou normalmente; o checar_alerta.py, o checar_quiz.py e o gerar_imagem.py não foram usados, porque nenhum alerta nem quiz foi escrito."
+    },
+    {
+      "data": "2026-11-20",
+      "modo": "publicacao",
+      "tipo": "automatica",
+      "consultas": 18,
+      "pacotes": [
+        "federal",
+        "bancos",
+        "imprensa",
+        "checadores",
+        "sudeste-centro-oeste",
+        "recorte",
+        "sul"
+      ],
+      "leituras": [
+        "Febraban",
+        "Procon de Santa Catarina",
+        "Procon de São Paulo",
+        "Senacon",
+        "Polícia Civil de Goiás",
+        "Polícia Civil de Mato Grosso do Sul"
+      ],
+      "candidatos": 6,
+      "aprovados": 0,
+      "resultado": "publicado",
+      "escolhido": "link-falso-promocao",
+      "motivo": "Nenhum golpe novo passou hoje nas quatro perguntas; da fila, saiu o golpe da promoção falsa por link, que desempata por ser do tema Black Friday, na semana da data.",
+      "decisoes": [
+        {
+          "golpe": "Golpe da promoção falsa por link (fila)",
+          "decisao": "Publicado: os cinco golpes novos da fila têm relevância 2, e este é o único do tema da época em vigor (Black Friday), o que decide o empate. Não repete o canal nem o assunto do último alerta (falso sequestro por ligação). As duas fontes foram abertas de novo hoje: o Procon do Paraná (04/11/2026) orienta a evitar links recebidos por mensagem e a entrar direto no site ou aplicativo oficial da loja; o Correio Braziliense (07/11/2026) descreve o site falso que imita a loja e orienta a não entrar em lojas por links de mensagem. O checar_fontes.py aprovou, com o aviso DOMINIO_AMPLO: a página é da Agência Estadual de Notícias e traz a orientação do Procon-PR.",
+          "indicado_por": {
+            "nome": "Correio Braziliense",
+            "url": "https://correiobraziliense.com.br/cidades-df/2026/11/7534475-consumidores-estao-em-alerta-contra-golpes-nas-compras-de-fim-de-ano.html",
+            "origem": "imprensa"
+          }
+        },
+        {
+          "golpe": "Falso juiz ou advogado que fala de valores a receber, com o nome do instituto de previdência",
+          "decisao": "Recusado: o alerta do IPREV de Santa Catarina (16/11/2026) é recente e voltado a pensionistas, mas o domínio está fora da lista de fontes e nenhuma segunda fonte apareceu. É uma variação do golpe do falso advogado, que já está na fila. O checar_fontes.py reprovou por DOMINIO_FORA_DA_LISTA e POUCAS_FONTES.",
+          "indicado_por": {
+            "nome": "IPREV-SC",
+            "url": "https://www.iprev.sc.gov.br/noticias/iprev-alerta-pensionistas-sobre-tentativa-de-golpe-pelo-whatsapp/",
+            "origem": "outro"
+          }
+        },
+        {
+          "golpe": "Golpe do falso traficante por ligação",
+          "decisao": "Recusado: a orientação da Polícia Civil do Espírito Santo é de 08/10/2025, fora da janela de 14 dias, e não cita o público 60+.",
+          "indicado_por": {
+            "nome": "Polícia Civil do Espírito Santo",
+            "url": "https://pc.es.gov.br/Not%C3%ADcia/policia-civil-orienta-sobre-golpe-do-falso-traficante",
+            "origem": "policia"
+          }
+        },
+        {
+          "golpe": "Perfis falsos e voz imitada por inteligência artificial em falsas campanhas",
+          "decisao": "Recusado: o alerta do Procon do Espírito Santo é de 19/08/2024, fora da janela de 14 dias e dos 12 meses exigidos para recorrente.",
+          "indicado_por": {
+            "nome": "Procon do Espírito Santo",
+            "url": "https://procon.es.gov.br/Not%C3%ADcia/procon-es-alerta-golpes-pela-internet-usam-perfis-falsos-e-inteligencia-artificial-para-enganar-consumidores",
+            "origem": "procon"
+          }
+        },
+        {
+          "golpe": "Links falsos de pagamento e Pix na Black Friday",
+          "decisao": "Não é novo: as dicas do Procon-MPMG (16/11/2026) não descrevem um golpe específico e repetem a orientação da promoção falsa por link, publicada hoje.",
+          "indicado_por": {
+            "nome": "Procon-MPMG",
+            "url": "https://www.mpmg.mp.br/portal/menu/comunicacao/noticias/black-friday-2026-tudo-pela-metade-do-dobro-veja-as-dicas-do-procon-mpmg-para-comprar-sem-cair-em-armadilhas.shtml",
+            "origem": "procon"
+          }
+        },
+        {
+          "golpe": "Golpe da falsa central do banco (avaliado como recorrente)",
+          "decisao": "Recusado como reserva: o golpe do falso gerente do banco, do mesmo mecanismo, foi publicado em 09/11/2026, dentro das 26 semanas.",
+          "indicado_por": {
+            "nome": "Polícia Civil do Paraná",
+            "url": "https://www.parana.pr.gov.br/aen/Noticia/PCPR-alerta-para-golpes-da-falsa-central-bancaria-saiba-como-se-proteger",
+            "origem": "policia"
+          }
+        },
+        {
+          "golpe": "Falso advogado, número secundário no WhatsApp, falso aviso de carteira de motorista suspensa e falsa cobrança do governo (fila)",
+          "decisao": "Ficam na fila: relevância 2, sem tema da época; nenhum expira hoje (o falso advogado expira depois de 25/11).",
+          "indicado_por": ""
+        }
+      ],
+      "tema": "Black Friday; 13º salário",
+      "observacao": "Na leitura direta, a Febraban, o Procon de Santa Catarina, o Procon de São Paulo e as Polícias Civis de Goiás e de Mato Grosso do Sul não trouxeram golpe novo com orientação ao público nos últimos 14 dias (só Black Friday, já na fila, e operações policiais); a Senacon segue sem notícia desde 29/10. As buscas dos temas Black Friday e 13º salário não acharam golpe novo confirmado. O pacote de sinal sinal-sudeste-centro-oeste não foi usado. O pacote sul só serviu para reabrir fontes (Procon-PR e Polícia Civil do Paraná). Revisão de sexta: as duas fontes do alerta do falso sequestro (18/11) seguem no ar com a mesma orientação; nenhuma correção. A fila segue com só 1 recorrente de reserva (falsa prova de vida). As páginas foram abertas por um agente de leitura de páginas, porque a ferramenta WebFetch não estava disponível direto nesta sessão. Os quatro scripts rodaram normalmente."
     }
   ],
   "correcoes": [

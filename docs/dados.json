@@ -1,6 +1,6 @@
 {
   "projeto": "Sentinela 60+",
-  "atualizado_em": "2026-11-20",
+  "atualizado_em": "2026-11-21",
   "alertas": [
     {
       "id": "2026-11-06-falso-bloqueio-biometria-inss",
@@ -1837,6 +1837,100 @@
       ],
       "tema": "Black Friday; 13º salário",
       "observacao": "Na leitura direta, a Febraban, o Procon de Santa Catarina, o Procon de São Paulo e as Polícias Civis de Goiás e de Mato Grosso do Sul não trouxeram golpe novo com orientação ao público nos últimos 14 dias (só Black Friday, já na fila, e operações policiais); a Senacon segue sem notícia desde 29/10. As buscas dos temas Black Friday e 13º salário não acharam golpe novo confirmado. O pacote de sinal sinal-sudeste-centro-oeste não foi usado. O pacote sul só serviu para reabrir fontes (Procon-PR e Polícia Civil do Paraná). Revisão de sexta: as duas fontes do alerta do falso sequestro (18/11) seguem no ar com a mesma orientação; nenhuma correção. A fila segue com só 1 recorrente de reserva (falsa prova de vida). As páginas foram abertas por um agente de leitura de páginas, porque a ferramenta WebFetch não estava disponível direto nesta sessão. Os quatro scripts rodaram normalmente."
+    },
+    {
+      "data": "2026-11-21",
+      "modo": "varredura",
+      "tipo": "automatica",
+      "consultas": 14,
+      "pacotes": [
+        "federal",
+        "bancos",
+        "imprensa",
+        "checadores",
+        "nordeste",
+        "recorte",
+        "sinal-nordeste"
+      ],
+      "leituras": [
+        "Febraban",
+        "Procon de Santa Catarina",
+        "Procon de São Paulo",
+        "Senacon"
+      ],
+      "candidatos": 6,
+      "aprovados": 0,
+      "resultado": "nada-novo",
+      "escolhido": "",
+      "motivo": "Nenhum golpe novo foi confirmado em duas fontes independentes hoje, e a busca de um golpe recorrente para a reserva não achou orientação primária dos últimos 12 meses.",
+      "decisoes": [
+        {
+          "golpe": "Golpe do QR Code do Pix alterado em compras pela internet",
+          "decisao": "Não é novo: a orientação do Procon de São Paulo, que voltou na leitura de hoje, é de 16/09/2026, fora da janela de 14 dias, e nenhuma fonte recente apareceu. Relevância 2, abaixo da exigida para recorrente.",
+          "indicado_por": {
+            "nome": "Procon de São Paulo",
+            "url": "https://www.procon.sp.gov.br/procon-sp-orienta-consumidores-sobre-novo-golpe-que-altera-qr-code-do-pix-em-compras-online/",
+            "origem": "procon"
+          }
+        },
+        {
+          "golpe": "Sites falsos que copiam grandes lojas na Black Friday",
+          "decisao": "Não é novo: a reportagem do Correio Braziliense (20/11/2026) descreve o mesmo golpe da promoção falsa por link, publicado ontem, com orientação parecida (conferir quem recebe o Pix e o endereço da loja).",
+          "indicado_por": {
+            "nome": "Correio Braziliense",
+            "url": "https://www.correiobraziliense.com.br/cbradar/golpes-black-friday-2026-cuidados-procon-evitar-fraudes/",
+            "origem": "imprensa"
+          }
+        },
+        {
+          "golpe": "Notificação da Senacon a plataformas e lojas para a Black Friday",
+          "decisao": "Não é golpe: é uma ação de fiscalização (18/11/2026), sem descrição de golpe nem orientação ao público.",
+          "indicado_por": {
+            "nome": "Senacon",
+            "url": "https://www.gov.br/mj/pt-br/assuntos/noticias/senacon-notifica-plataformas-e-varejistas-para-prevenir-problemas-durante-a-black-friday",
+            "origem": "orgao"
+          }
+        },
+        {
+          "golpe": "Golpe do falso advogado (Procon do Piauí)",
+          "decisao": "Não é novo: os alertas do Procon do Piauí são de agosto e dezembro de 2025, e o falso advogado já está na fila com status aguardando.",
+          "indicado_por": {
+            "nome": "Procon/MPPI",
+            "url": "https://www.mppi.mp.br/internet/2025/12/procon-mppi-alerta-golpe-do-falso-advogado-cresce-461-e-e-o-mais-recorrente-no-piaui-em-novembro/",
+            "origem": "procon"
+          }
+        },
+        {
+          "golpe": "Golpes envolvendo o Pix (Polícia Civil da Paraíba)",
+          "decisao": "Recusado: a página está no pacote de sinal, que a ferramenta não abre, e a busca não mostrou data recente. Sinal não confirma.",
+          "indicado_por": {
+            "nome": "Polícia Civil da Paraíba",
+            "url": "https://www.policiacivil.pb.gov.br/noticias/policia-civil-orienta-populacao-sobre-golpes-envolvendo-o-pix-1",
+            "origem": "policia"
+          }
+        },
+        {
+          "golpe": "Golpe do falso parente pelo WhatsApp (avaliado como recorrente)",
+          "decisao": "Recusado como reserva: a busca no gov.br só trouxe operações policiais (Polícia Civil de Goiás e do Rio Grande do Sul) e o alerta de uma prefeitura, sem orientação primária dos últimos 12 meses.",
+          "indicado_por": {
+            "nome": "Polícia Civil de Goiás",
+            "url": "https://goias.gov.br/policiacivil/pcgo-cumpre-buscas-em-operacao-contra-golpe-do-falso-parente/",
+            "origem": "policia"
+          }
+        },
+        {
+          "golpe": "Falsa prova de vida do INSS (É golpe ou não?)",
+          "decisao": "Usada no \"É golpe ou não?\" de hoje: a mensagem segue a descrição do INSS (14/09/2026), que fala de mensagens que pedem para atualizar a prova de vida e ameaçam cortar o benefício, com link falso. O item continua na fila como recorrente de reserva.",
+          "indicado_por": {
+            "nome": "INSS",
+            "url": "https://www.gov.br/inss/pt-br/assuntos/noticias/inss-alerta-aposentados-sao-vitimas-de-golpe-envolvendo-falsa-prova-de-vida",
+            "origem": "orgao"
+          }
+        }
+      ],
+      "tema": "Black Friday; 13º salário",
+      "quiz": "2026-11-21-quiz",
+      "observacao": "Na leitura direta, a Febraban, o Procon de Santa Catarina, o Procon de São Paulo e a Senacon não trouxeram alerta de golpe ao público entre 07/11 e 21/11 (só orientações de consumo para a Black Friday e a notificação da Senacon às plataformas). O pacote nordeste não tem página de leitura direta validada e devolveu sobretudo prefeituras e páginas antigas; o sinal-nordeste só trouxe alertas de 2024 e 2025. As buscas dos temas Black Friday e 13º salário não acharam golpe novo confirmado. A página do Procon do Paraná (parana.pr.gov.br) não abriu hoje (a ferramenta pediu procedência do endereço). As páginas foram abertas por um agente de leitura de páginas, porque a ferramenta WebFetch não estava disponível direto nesta sessão. Primeiro \"É golpe ou não?\": a falsa prova de vida do INSS, aprovado no checar_quiz.py. O checar_quiz.py rodou normalmente; o checar_fontes.py não precisou rodar, porque nenhum candidato chegou à pergunta 3; o checar_alerta.py e o gerar_imagem.py não rodaram, porque não houve alerta novo. A fila segue com só 1 recorrente de reserva (falsa prova de vida)."
     }
   ],
   "correcoes": [
@@ -1849,5 +1943,28 @@
       "por_que": "Depois da publicação, adotamos a regra de que uma das fontes tem de ser o órgão responsável. A orientação do alerta não mudou: o INSS confirma que a exigência de biometria vale só para pedidos novos. A notícia da Agência Brasil repete a nota do INSS, então, pela regra atual, este alerta ainda pediria uma segunda fonte independente."
     }
   ],
-  "quizzes": []
+  "quizzes": [
+    {
+      "id": "2026-11-21-quiz",
+      "publicado_em": "2026-11-21",
+      "resposta_em": "2026-11-22",
+      "golpe": "falsa-prova-de-vida",
+      "canal": "mensagem de texto",
+      "mensagem": "Aviso do INSS: sua prova de vida está pendente. Se você não atualizar seus dados agora, seu benefício será cortado. Clique aqui: [link]",
+      "resposta": "golpe",
+      "sinal": "Ameaça de cortar o benefício e um link para você atualizar seus dados.",
+      "explicacao": "É o golpe da falsa prova de vida. A mensagem imita o Instituto Nacional do Seguro Social (INSS) para pegar seus dados. Não clique e não passe senha. Na dúvida, ligue para o 135.",
+      "para_lembrar": "Aviso de prova de vida? Confira no 135.",
+      "fontes": [
+        {
+          "nome": "INSS: aposentados são vítimas de golpe envolvendo falsa prova de vida (14/09/2026)",
+          "url": "https://www.gov.br/inss/pt-br/assuntos/noticias/inss-alerta-aposentados-sao-vitimas-de-golpe-envolvendo-falsa-prova-de-vida",
+          "origem": "orgao",
+          "data": "2026-09-14"
+        }
+      ],
+      "card_pergunta": "*É golpe ou não?*\nChegou uma mensagem no celular: \"Aviso do INSS: sua prova de vida está pendente. Se não atualizar seus dados agora, seu benefício será cortado.\"\nNo fim, vem um link.\nO que você acha? A resposta sai amanhã.",
+      "card_resposta": "*É golpe: a falsa prova de vida.*\nA mensagem ameaça cortar o benefício e manda um link para pegar seus dados.\nNão clique e não passe senha. Na dúvida, ligue para o 135, a central do Instituto Nacional do Seguro Social (INSS).\n*Aviso de prova de vida? Confira no 135.*"
+    }
+  ]
 }

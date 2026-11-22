@@ -1,6 +1,6 @@
 {
   "projeto": "Sentinela 60+",
-  "atualizado_em": "2026-11-21",
+  "atualizado_em": "2026-11-22",
   "alertas": [
     {
       "id": "2026-11-06-falso-bloqueio-biometria-inss",
@@ -1931,6 +1931,92 @@
       "tema": "Black Friday; 13º salário",
       "quiz": "2026-11-21-quiz",
       "observacao": "Na leitura direta, a Febraban, o Procon de Santa Catarina, o Procon de São Paulo e a Senacon não trouxeram alerta de golpe ao público entre 07/11 e 21/11 (só orientações de consumo para a Black Friday e a notificação da Senacon às plataformas). O pacote nordeste não tem página de leitura direta validada e devolveu sobretudo prefeituras e páginas antigas; o sinal-nordeste só trouxe alertas de 2024 e 2025. As buscas dos temas Black Friday e 13º salário não acharam golpe novo confirmado. A página do Procon do Paraná (parana.pr.gov.br) não abriu hoje (a ferramenta pediu procedência do endereço). As páginas foram abertas por um agente de leitura de páginas, porque a ferramenta WebFetch não estava disponível direto nesta sessão. Primeiro \"É golpe ou não?\": a falsa prova de vida do INSS, aprovado no checar_quiz.py. O checar_quiz.py rodou normalmente; o checar_fontes.py não precisou rodar, porque nenhum candidato chegou à pergunta 3; o checar_alerta.py e o gerar_imagem.py não rodaram, porque não houve alerta novo. A fila segue com só 1 recorrente de reserva (falsa prova de vida)."
+    },
+    {
+      "data": "2026-11-22",
+      "modo": "varredura",
+      "tipo": "automatica",
+      "consultas": 17,
+      "pacotes": [
+        "federal",
+        "bancos",
+        "imprensa",
+        "checadores",
+        "sul",
+        "recorte",
+        "sinal-norte"
+      ],
+      "leituras": [
+        "Febraban",
+        "Procon de Santa Catarina",
+        "Procon de São Paulo",
+        "Senacon",
+        "Polícia Civil do Paraná",
+        "Polícia Civil de Santa Catarina"
+      ],
+      "candidatos": 6,
+      "aprovados": 0,
+      "resultado": "nada-novo",
+      "escolhido": "",
+      "motivo": "Nenhum golpe novo foi confirmado em duas fontes independentes hoje: os alertas recentes repetem golpes já publicados ou já na fila, e a busca de um recorrente para a reserva não achou orientação primária dos últimos 12 meses.",
+      "decisoes": [
+        {
+          "golpe": "Falsas vendas online na Black Friday (Polícia Civil do Paraná)",
+          "decisao": "Não é novo: a nota da PCPR de 19/11/2026 trata do mesmo golpe da promoção falsa por link, publicado em 20/11. A página também não abriu hoje (a ferramenta pediu procedência do endereço).",
+          "indicado_por": {
+            "nome": "Polícia Civil do Paraná",
+            "url": "https://www.policiacivil.pr.gov.br/Noticia/PCPR-orienta-populacao-sobre-golpes-de-falsas-vendas-online-durante-Black-Friday",
+            "origem": "policia"
+          }
+        },
+        {
+          "golpe": "Lojas falsas e QR Code de Pix adulterado na Black Friday (Correio Braziliense)",
+          "decisao": "Não é novo: a reportagem de 22/11/2026 repete o golpe da promoção falsa por link, já publicado, e se apoia sobretudo em empresas privadas, sem fonte primária nova.",
+          "indicado_por": {
+            "nome": "Correio Braziliense",
+            "url": "https://www.correiobraziliense.com.br/economia/2026/11/7542172-black-friday-golpes-digitais-ameacam-consumidores.html",
+            "origem": "imprensa"
+          }
+        },
+        {
+          "golpe": "Falso juiz ou advogado com valores a receber pelo WhatsApp (IPREV-SC)",
+          "decisao": "Não é novo: o alerta do IPREV de Santa Catarina (16/11/2026) descreve o mesmo mecanismo do falso advogado, que já está na fila com status aguardando. O domínio iprev.sc.gov.br também não está na lista de fontes.",
+          "indicado_por": {
+            "nome": "IPREV-SC",
+            "url": "https://iprev.sc.gov.br/noticias/iprev-alerta-pensionistas-sobre-tentativa-de-golpe-pelo-whatsapp",
+            "origem": "outro"
+          }
+        },
+        {
+          "golpe": "Perfil falso do Gov.br no WhatsApp que pede CPF e senha",
+          "decisao": "Não confirmado: só a checagem do Boatos.org (14/11/2026) descreve o golpe; a nota do Ministério da Gestão (06/11/2026) fala da recuperação de conta, não do golpe. O checar_fontes.py reprovou (POUCAS_FONTES).",
+          "indicado_por": {
+            "nome": "Boatos.org",
+            "url": "https://www.boatos.org/tecnologia/mensagem-do-gov-br-no-whatsapp-para-cadastrar-e-mail-de-recuperacao-de-conta-e-golpe.html",
+            "origem": "checador"
+          }
+        },
+        {
+          "golpe": "Falsas ameaças de facção por mensagem (Polícia Civil do Paraná)",
+          "decisao": "Não é novo nem serve de reserva: a nota da PCPR é de 14/10/2025, com mais de 12 meses, e não é um dos golpes recorrentes de relevância 3 para 60+.",
+          "indicado_por": {
+            "nome": "Polícia Civil do Paraná",
+            "url": "https://www.policiacivil.pr.gov.br/Noticia/Golpes-por-mensagens-PCPR-reforca-orientacoes-populacao-sobre-falsas-ameacas",
+            "origem": "policia"
+          }
+        },
+        {
+          "golpe": "Golpe do falso parente pelo WhatsApp (avaliado como recorrente)",
+          "decisao": "Recusado como reserva: a busca nas polícias do Sul, Sudeste e Centro-Oeste só achou a tabela da Polícia Civil de Mato Grosso do Sul, de 11/06/2024, sem orientação primária dos últimos 12 meses. A falsa central ficou de fora porque o falso gerente do banco saiu em 09/11.",
+          "indicado_por": {
+            "nome": "Polícia Civil de Mato Grosso do Sul",
+            "url": "https://www.pc.ms.gov.br/golpes-e-fraudes-financeiras-contra-pessoas-idosas/",
+            "origem": "policia"
+          }
+        }
+      ],
+      "tema": "Black Friday; 13º salário",
+      "observacao": "Na leitura direta, a Febraban, o Procon de Santa Catarina e a Senacon não trouxeram alerta de golpe ao público entre 08/11 e 22/11 (só orientações de consumo para a Black Friday e a notificação da Senacon às plataformas). A página do Procon de São Paulo veio cortada, com uma chamada \"Alerta de golpes\" sem data nem endereço. A Polícia Civil do Paraná trouxe a nota de 19/11 sobre falsas vendas na Black Friday, mas a notícia não abriu (a ferramenta pediu procedência do endereço); a Polícia Civil de Santa Catarina só trouxe prisões e operações. As buscas dos temas Black Friday e 13º salário não acharam golpe novo confirmado; o sinal-norte só trouxe alertas antigos. As páginas foram abertas por um agente de leitura de páginas, porque a ferramenta WebFetch não estava disponível direto nesta sessão. O checar_fontes.py rodou no candidato do perfil falso do Gov.br (REPROVADO); o checar_alerta.py e o gerar_imagem.py não rodaram, porque não houve alerta novo. A fila segue com só 1 recorrente de reserva (falsa prova de vida)."
     }
   ],
   "correcoes": [

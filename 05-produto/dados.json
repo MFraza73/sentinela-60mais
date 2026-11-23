@@ -1,6 +1,6 @@
 {
   "projeto": "Sentinela 60+",
-  "atualizado_em": "2026-11-22",
+  "atualizado_em": "2026-11-23",
   "alertas": [
     {
       "id": "2026-11-06-falso-bloqueio-biometria-inss",
@@ -148,6 +148,34 @@
       "tema": "Black Friday",
       "imagem": "imagens/2026-11-20-link-falso-promocao.png",
       "imagem_alt": "Alerta de golpe do Sentinela 60+, 20 de novembro de 2026. Golpe da promoção falsa: não clique no link. O sinal: O preço é bem mais baixo que o normal e a oferta chega por link. O que fazer: Não clique no link. Entre você mesmo no site ou no aplicativo oficial da loja. Para lembrar: Oferta chegou por link? Vá você mesmo à loja."
+    },
+    {
+      "id": "2026-11-23-falso-advogado",
+      "golpe": "falso-advogado",
+      "publicado_em": "2026-11-23",
+      "titulo": "Golpe do falso advogado: confirme antes de pagar",
+      "como_chega": "Uma mensagem ou ligação de alguém que diz ser advogado. Ele fala de dinheiro de um processo seu para receber.",
+      "o_que_pedem": "Um Pix para pagar uma taxa e liberar o dinheiro.",
+      "sinal": "Pedem pagamento antes de você receber o dinheiro do processo.",
+      "o_que_fazer": "Não pague. Ligue para o seu advogado num número que você já conhece.",
+      "para_lembrar": "Advogado pediu Pix? Ligue você para confirmar.",
+      "fontes": [
+        {
+          "nome": "Febraban: as abordagens do golpe do falso advogado e como se proteger (28/10/2026)",
+          "url": "https://portal.febraban.org.br/noticia/4512/pt-br/",
+          "origem": "banco",
+          "data": "2026-10-28"
+        },
+        {
+          "nome": "Polícia Civil de Santa Catarina: operação contra o golpe do falso advogado e orientação para confirmar com o advogado (21/10/2026)",
+          "url": "https://pc.sc.gov.br/?p=41731",
+          "origem": "policia",
+          "data": "2026-10-21"
+        }
+      ],
+      "card_whatsapp": "*Golpe do falso advogado*\nAlguém diz ser advogado e fala de dinheiro de um processo seu.\nEle pede um Pix para liberar o valor.\nNão pague. Ligue para o seu advogado num número que você já conhece.\n*Advogado pediu Pix? Ligue você para confirmar.*",
+      "imagem": "imagens/2026-11-23-falso-advogado.png",
+      "imagem_alt": "Alerta de golpe do Sentinela 60+, 23 de novembro de 2026. Golpe do falso advogado: confirme antes de pagar. O sinal: Pedem pagamento antes de você receber o dinheiro do processo. O que fazer: Não pague. Ligue para o seu advogado num número que você já conhece. Para lembrar: Advogado pediu Pix? Ligue você para confirmar."
     }
   ],
   "fila": [
@@ -224,7 +252,7 @@
         "url": "https://portal.febraban.org.br/noticia/4512/pt-br/",
         "origem": "banco"
       },
-      "status": "aguardando",
+      "status": "publicado",
       "alerta": {
         "golpe": "falso-advogado",
         "titulo": "Golpe do falso advogado: confirme antes de pagar",
@@ -237,16 +265,19 @@
           {
             "nome": "Febraban: as abordagens do golpe do falso advogado e como se proteger (28/10/2026)",
             "url": "https://portal.febraban.org.br/noticia/4512/pt-br/",
-            "origem": "banco"
+            "origem": "banco",
+            "data": "2026-10-28"
           },
           {
-            "nome": "Polícia Civil de Santa Catarina: operação contra o golpe do falso advogado (21/10/2026)",
+            "nome": "Polícia Civil de Santa Catarina: operação contra o golpe do falso advogado e orientação para confirmar com o advogado (21/10/2026)",
             "url": "https://pc.sc.gov.br/?p=41731",
-            "origem": "policia"
+            "origem": "policia",
+            "data": "2026-10-21"
           }
         ],
         "card_whatsapp": "*Golpe do falso advogado*\nAlguém diz ser advogado e fala de dinheiro de um processo seu.\nEle pede um Pix para liberar o valor.\nNão pague. Ligue para o seu advogado num número que você já conhece.\n*Advogado pediu Pix? Ligue você para confirmar.*"
-      }
+      },
+      "motivo_status": "Publicado em 23/11/2026: entre os golpes novos de relevância 2, era o de notícia mais antiga e já tinha perdido a vez em 4 publicações."
     },
     {
       "golpe": "link-falso-promocao",
@@ -2017,6 +2048,111 @@
       ],
       "tema": "Black Friday; 13º salário",
       "observacao": "Na leitura direta, a Febraban, o Procon de Santa Catarina e a Senacon não trouxeram alerta de golpe ao público entre 08/11 e 22/11 (só orientações de consumo para a Black Friday e a notificação da Senacon às plataformas). A página do Procon de São Paulo veio cortada, com uma chamada \"Alerta de golpes\" sem data nem endereço. A Polícia Civil do Paraná trouxe a nota de 19/11 sobre falsas vendas na Black Friday, mas a notícia não abriu (a ferramenta pediu procedência do endereço); a Polícia Civil de Santa Catarina só trouxe prisões e operações. As buscas dos temas Black Friday e 13º salário não acharam golpe novo confirmado; o sinal-norte só trouxe alertas antigos. As páginas foram abertas por um agente de leitura de páginas, porque a ferramenta WebFetch não estava disponível direto nesta sessão. O checar_fontes.py rodou no candidato do perfil falso do Gov.br (REPROVADO); o checar_alerta.py e o gerar_imagem.py não rodaram, porque não houve alerta novo. A fila segue com só 1 recorrente de reserva (falsa prova de vida)."
+    },
+    {
+      "data": "2026-11-23",
+      "modo": "publicacao",
+      "tipo": "automatica",
+      "consultas": 22,
+      "pacotes": [
+        "federal",
+        "bancos",
+        "imprensa",
+        "checadores",
+        "sudeste-centro-oeste",
+        "recorte"
+      ],
+      "leituras": [
+        "Febraban",
+        "Procon de Santa Catarina",
+        "Senacon",
+        "Polícia Civil de Goiás",
+        "Polícia Civil de Mato Grosso do Sul"
+      ],
+      "candidatos": 6,
+      "aprovados": 0,
+      "resultado": "publicado",
+      "escolhido": "falso-advogado",
+      "motivo": "A varredura não confirmou golpe novo; da fila saiu o golpe do falso advogado, o golpe novo de notícia mais antiga entre os de mesma relevância, com as duas fontes reabertas hoje.",
+      "decisoes": [
+        {
+          "golpe": "Falso delegado e falsa investigação sigilosa pelo WhatsApp (Correio Braziliense)",
+          "decisao": "Não é novo: a reportagem de 23/11/2026 descreve alguém que se diz da segurança do banco e pede transferências, o mesmo mecanismo e a mesma ação do falso gerente do banco, publicado em 09/11. Também é um caso individual, sem fonte primária com orientação ao público.",
+          "indicado_por": {
+            "nome": "Correio Braziliense",
+            "url": "https://www.correiobraziliense.com.br/economia/2026/11/7542414-golpe-com-falso-delegado-faz-servidor-transferir-rs-275-mil.html",
+            "origem": "imprensa"
+          }
+        },
+        {
+          "golpe": "Vídeos e vozes falsos feitos com inteligência artificial em promoções de Black Friday (Metrópoles e Procon-MPMG)",
+          "decisao": "Não é novo: a promoção falsa que leva a página falsa ou a Pix, com a orientação de conferir nos canais oficiais da loja, é o mesmo golpe do alerta de 20/11; o vídeo falso não muda o sinal nem a ação.",
+          "indicado_por": {
+            "nome": "Metrópoles",
+            "url": "https://www.metropoles.com/minas-gerais/procon-mineiro-alerta-para-golpes-com-ia-na-black-friday-veja-dicas",
+            "origem": "imprensa"
+          }
+        },
+        {
+          "golpe": "Falso advogado que oferece ação contra o INSS por telefone",
+          "decisao": "Não é novo: a nota do INSS (atualizada em 28/10/2026) trata do golpe do falso advogado, que já estava na fila e foi publicado hoje.",
+          "indicado_por": {
+            "nome": "INSS",
+            "url": "https://www.gov.br/inss/pt-br/noticias/inss-alerta-segurados-para-nova-modalidade-de-tentativa-de-golpe-3",
+            "origem": "orgao"
+          }
+        },
+        {
+          "golpe": "QR Code do Pix alterado em lojas virtuais (Procon-SP)",
+          "decisao": "Não é novo: a orientação do Procon-SP é de 16/09/2026, fora da janela de 14 dias, e o golpe atinge sobretudo o cadastro da loja, com relevância baixa para 60+.",
+          "indicado_por": {
+            "nome": "Procon de São Paulo",
+            "url": "https://www.procon.sp.gov.br/procon-sp-orienta-consumidores-sobre-novo-golpe-que-altera-qr-code-do-pix-em-compras-online/",
+            "origem": "procon"
+          }
+        },
+        {
+          "golpe": "Falso traficante ou facção que exige Pix por telefone (Polícia Civil do Espírito Santo)",
+          "decisao": "Não é novo nem serve de reserva: a orientação é de 08/10/2025, com mais de 12 meses, e não é um dos golpes recorrentes de relevância 3 para 60+.",
+          "indicado_por": {
+            "nome": "Polícia Civil do Espírito Santo",
+            "url": "https://pc.es.gov.br/Not%C3%ADcia/policia-civil-orienta-sobre-golpe-do-falso-traficante",
+            "origem": "policia"
+          }
+        },
+        {
+          "golpe": "Golpe do falso parente pelo WhatsApp (avaliado como recorrente)",
+          "decisao": "Recusado como reserva: as buscas no gov.br e nas polícias do Sul, Sudeste e Centro-Oeste só trouxeram operação policial da Polícia Civil de Goiás e páginas antigas, sem orientação primária aberta dos últimos 12 meses.",
+          "indicado_por": {
+            "nome": "Polícia Civil de Goiás",
+            "url": "https://goias.gov.br/policiacivil/pcgo-cumpre-buscas-em-operacao-contra-golpe-do-falso-parente/",
+            "origem": "policia"
+          }
+        },
+        {
+          "golpe": "Fila: golpe do falso advogado",
+          "decisao": "Publicado: entre os golpes novos de relevância 2, é o de notícia mais antiga (28/10) e já tinha perdido a vez em 4 publicações. As duas fontes foram abertas de novo: a Febraban (28/10) manda não fazer pagamento antecipado e confirmar com o advogado por um telefone já salvo; a Polícia Civil de Santa Catarina (21/10) manda verificar direto com o profissional por canais oficiais antes de qualquer transferência. O checar_fontes.py aprovou, com as datas das fontes acrescentadas.",
+          "indicado_por": {
+            "nome": "Febraban",
+            "url": "https://portal.febraban.org.br/noticia/4512/pt-br/",
+            "origem": "banco"
+          }
+        },
+        {
+          "golpe": "Fila: número secundário do WhatsApp",
+          "decisao": "Não escolhido: o checar_fontes.py reprovou (fontes fora da lista, sem fonte primária). Segue aguardando até expirar em 26/11."
+        },
+        {
+          "golpe": "Fila: falsa suspensão da CNH e falsa cobrança do governo pelo WhatsApp",
+          "decisao": "Não escolhidos: também têm relevância 2, mas notícia mais recente que a do falso advogado. Seguem aguardando."
+        },
+        {
+          "golpe": "Fila: falsa prova de vida (recorrente)",
+          "decisao": "Não escolhido: golpe novo vem antes de recorrente. Segue como reserva."
+        }
+      ],
+      "tema": "Black Friday; 13º salário",
+      "observacao": "Na leitura direta, a Febraban, o Procon de Santa Catarina, a Senacon e as Polícias Civis de Goiás e de Mato Grosso do Sul não trouxeram alerta de golpe ao público entre 09/11 e 23/11 (só orientações de Black Friday e operações policiais). A página de notícias do Procon de São Paulo não abriu (a ferramenta pediu procedência do endereço), e a da Senacon veio em parte resumida. Uma notícia do INSS sobre devolução de mensalidade pede login. As buscas dos temas Black Friday e 13º salário não acharam golpe novo confirmado. Revisão de segunda: as fontes dos 4 alertas mais recentes abriram e mantêm a orientação; nenhuma correção. As páginas foram abertas por um agente de leitura de páginas, porque a ferramenta WebFetch não estava disponível direto nesta sessão. O checar_fontes.py, o checar_alerta.py e o gerar_imagem.py rodaram. A fila segue com só 1 recorrente de reserva (falsa prova de vida)."
     }
   ],
   "correcoes": [

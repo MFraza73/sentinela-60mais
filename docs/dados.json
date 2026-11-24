@@ -1,6 +1,6 @@
 {
   "projeto": "Sentinela 60+",
-  "atualizado_em": "2026-11-23",
+  "atualizado_em": "2026-11-24",
   "alertas": [
     {
       "id": "2026-11-06-falso-bloqueio-biometria-inss",
@@ -2153,6 +2153,90 @@
       ],
       "tema": "Black Friday; 13º salário",
       "observacao": "Na leitura direta, a Febraban, o Procon de Santa Catarina, a Senacon e as Polícias Civis de Goiás e de Mato Grosso do Sul não trouxeram alerta de golpe ao público entre 09/11 e 23/11 (só orientações de Black Friday e operações policiais). A página de notícias do Procon de São Paulo não abriu (a ferramenta pediu procedência do endereço), e a da Senacon veio em parte resumida. Uma notícia do INSS sobre devolução de mensalidade pede login. As buscas dos temas Black Friday e 13º salário não acharam golpe novo confirmado. Revisão de segunda: as fontes dos 4 alertas mais recentes abriram e mantêm a orientação; nenhuma correção. As páginas foram abertas por um agente de leitura de páginas, porque a ferramenta WebFetch não estava disponível direto nesta sessão. O checar_fontes.py, o checar_alerta.py e o gerar_imagem.py rodaram. A fila segue com só 1 recorrente de reserva (falsa prova de vida)."
+    },
+    {
+      "data": "2026-11-24",
+      "modo": "varredura",
+      "tipo": "automatica",
+      "consultas": 18,
+      "pacotes": [
+        "federal",
+        "bancos",
+        "imprensa",
+        "checadores",
+        "sul",
+        "recorte"
+      ],
+      "leituras": [
+        "Febraban",
+        "Procon de São Paulo",
+        "Senacon",
+        "Polícia Civil do Paraná",
+        "Polícia Civil de Santa Catarina"
+      ],
+      "candidatos": 6,
+      "aprovados": 0,
+      "resultado": "nada-novo",
+      "escolhido": "",
+      "motivo": "Nenhum golpe novo foi confirmado em duas fontes independentes hoje: os alertas recentes repetem golpes já publicados, o único golpe recente só aparece numa agência de checagem, e a busca de um recorrente para a reserva não achou orientação primária dos últimos 12 meses.",
+      "decisoes": [
+        {
+          "golpe": "Dicas contra golpes na Black Friday (Febraban e Senacon)",
+          "decisao": "Não é novo: a nota da Febraban de 23/11/2026 e a página da Senacon (atualizada em 25/10/2026) tratam da promoção falsa por link, o mesmo golpe do alerta de 20/11.",
+          "indicado_por": {
+            "nome": "Febraban",
+            "url": "https://portal.febraban.org.br/noticia/4528/pt-br/",
+            "origem": "banco"
+          }
+        },
+        {
+          "golpe": "Falsa caixa de presente de Natal por questionário e corrente de compartilhamento",
+          "decisao": "Não confirmado: só a checagem do Boatos.org (22/11/2026) descreve o golpe, e a busca na Senacon, na Febraban e na imprensa listada não achou fonte primária. O checar_fontes.py reprovou (POUCAS_FONTES).",
+          "indicado_por": {
+            "nome": "Boatos.org",
+            "url": "https://www.boatos.org/brasil/cacau-show-esta-dando-caixa-de-presente-de-natal-para-quem-responder-a-um-questionario.html",
+            "origem": "checador"
+          }
+        },
+        {
+          "golpe": "Falsa devolução de descontos do INSS por telefone e WhatsApp",
+          "decisao": "Não é novo: a reportagem da CNN Brasil é de 25/04/2025, e a nota do INSS sobre o assunto pede login, sem data legível.",
+          "indicado_por": {
+            "nome": "CNN Brasil",
+            "url": "https://www.cnnbrasil.com.br/economia/financas/golpe-do-inss-aposentados-sao-alvo-de-falsas-promessas-de-devolucao/",
+            "origem": "imprensa"
+          }
+        },
+        {
+          "golpe": "Falso assistente social que oferece cesta básica (Governo do Acre)",
+          "decisao": "Não é novo nem serve de reserva: a nota é de 21/02/2026, fora da janela de 14 dias, e não é um dos golpes recorrentes de relevância 3 para 60+.",
+          "indicado_por": {
+            "nome": "Agência de Notícias do Acre",
+            "url": "https://agencia.ac.gov.br/governo-faz-alerta-para-golpe-envolvendo-falso-assistente-social-e-reforca-orientacoes-a-populacao/",
+            "origem": "orgao"
+          }
+        },
+        {
+          "golpe": "Falsa central do banco (Polícia Civil de Santa Catarina)",
+          "decisao": "Não é novo: a notícia de 19/11/2026 é uma prisão, sem orientação nova ao público, e o golpe é o mesmo do falso gerente do banco, publicado em 09/11.",
+          "indicado_por": {
+            "nome": "Polícia Civil de Santa Catarina",
+            "url": "https://pc.sc.gov.br/?p=42507",
+            "origem": "policia"
+          }
+        },
+        {
+          "golpe": "Golpe do falso parente pelo WhatsApp (avaliado como recorrente)",
+          "decisao": "Recusado como reserva: a busca no gov.br e nas polícias do Nordeste e do Norte só achou a nota da Polícia Civil do Acre de 10/03/2021, com mais de 12 meses; a página da Anatel sobre WhatsApp falso não abriu.",
+          "indicado_por": {
+            "nome": "Agência de Notícias do Acre",
+            "url": "https://agencia.ac.gov.br/policia-civil-alerta-usuarios-sobre-golpe-do-whatsapp/",
+            "origem": "policia"
+          }
+        }
+      ],
+      "tema": "Black Friday; 13º salário",
+      "observacao": "Na leitura direta, a Febraban só trouxe dicas para a Black Friday (23/11), já cobertas; a Senacon trouxe só a notificação às plataformas (18/11); a Polícia Civil do Paraná trouxe a nota de falsas vendas na Black Friday, já avaliada; a Polícia Civil de Santa Catarina trouxe só prisões e operações. A busca-ponte do Procon de Santa Catarina não devolveu a página inicial de notícias (só páginas antigas da lista), e a leitura ficou de fora. A página do Procon de São Paulo veio cortada, com a chamada \"Alerta de golpes\" sem data nem endereço. A busca do tema 13º salário não achou golpe; a do tema Black Friday só trouxe Procons municipais e a página da Senacon. As páginas foram abertas por um agente de leitura de páginas, porque a ferramenta WebFetch não estava disponível direto nesta sessão. O checar_fontes.py rodou no candidato da falsa caixa de Natal (REPROVADO); o checar_alerta.py e o gerar_imagem.py não rodaram, porque não houve alerta novo. A fila segue com só 1 recorrente de reserva (falsa prova de vida)."
     }
   ],
   "correcoes": [

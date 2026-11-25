@@ -1,6 +1,6 @@
 {
   "projeto": "Sentinela 60+",
-  "atualizado_em": "2026-11-24",
+  "atualizado_em": "2026-11-25",
   "alertas": [
     {
       "id": "2026-11-06-falso-bloqueio-biometria-inss",
@@ -167,15 +167,43 @@
           "data": "2026-10-28"
         },
         {
-          "nome": "Polícia Civil de Santa Catarina: operação contra o golpe do falso advogado e orientação para confirmar com o advogado (21/10/2026)",
-          "url": "https://pc.sc.gov.br/?p=41731",
+          "nome": "Polícia Civil do Paraná: PCPR orienta população sobre como identificar e evitar o golpe do falso advogado (30/10/2026)",
+          "url": "https://www.policiacivil.pr.gov.br/Noticia/PCPR-orienta-populacao-sobre-como-identificar-e-evitar-o-golpe-do-falso-advogado",
           "origem": "policia",
-          "data": "2026-10-21"
+          "data": "2026-10-30"
         }
       ],
       "card_whatsapp": "*Golpe do falso advogado*\nAlguém diz ser advogado e fala de dinheiro de um processo seu.\nEle pede um Pix para liberar o valor.\nNão pague. Ligue para o seu advogado num número que você já conhece.\n*Advogado pediu Pix? Ligue você para confirmar.*",
       "imagem": "imagens/2026-11-23-falso-advogado.png",
       "imagem_alt": "Alerta de golpe do Sentinela 60+, 23 de novembro de 2026. Golpe do falso advogado: confirme antes de pagar. O sinal: Pedem pagamento antes de você receber o dinheiro do processo. O que fazer: Não pague. Ligue para o seu advogado num número que você já conhece. Para lembrar: Advogado pediu Pix? Ligue você para confirmar."
+    },
+    {
+      "id": "2026-11-25-falsa-suspensao-cnh",
+      "golpe": "falsa-suspensao-cnh",
+      "publicado_em": "2026-11-25",
+      "titulo": "Falso aviso de carteira de motorista suspensa: não clique no link",
+      "como_chega": "Uma mensagem no WhatsApp ou no celular que imita o Departamento de Trânsito (Detran).",
+      "o_que_pedem": "Que você clique no link e coloque seu CPF e seu celular numa página falsa.",
+      "sinal": "O Detran não manda link de cobrança nem aviso de suspensão por mensagem.",
+      "o_que_fazer": "Não clique no link. Consulte sua carteira só no site ou no aplicativo oficial do Detran.",
+      "para_lembrar": "Aviso do Detran chegou por mensagem? Não clique.",
+      "fontes": [
+        {
+          "nome": "Detran de Goiás: alerta para golpe com falsas notificações de multa e suspensão da CNH (11/11/2024)",
+          "url": "https://goias.gov.br/detran/detran-go-alerta-para-novo-golpe-que-envia-falsas-notificacoes-de-multa-e-suspensao-de-cnh/",
+          "origem": "orgao",
+          "data": "2024-11-11"
+        },
+        {
+          "nome": "Metrópoles: golpe da CNH, polícia orienta quem recebeu mensagens a registrar ocorrência (30/10/2026)",
+          "url": "https://www.metropoles.com/distrito-federal/golpe-da-cnh-policia-orienta-quem-recebeu-mensagens-a-registrar-ocorrencia",
+          "origem": "imprensa",
+          "data": "2026-10-30"
+        }
+      ],
+      "card_whatsapp": "*Falso aviso de carteira de motorista suspensa*\nChega uma mensagem que imita o Detran, com um link.\nO Detran não manda link de cobrança nem aviso de suspensão por mensagem.\nNão clique. Consulte sua carteira só no site ou no aplicativo oficial do Detran.\n*Aviso do Detran chegou por mensagem? Não clique.*",
+      "imagem": "imagens/2026-11-25-falsa-suspensao-cnh.png",
+      "imagem_alt": "Alerta de golpe do Sentinela 60+, 25 de novembro de 2026. Falso aviso de carteira de motorista suspensa: não clique no link. O sinal: O Detran não manda link de cobrança nem aviso de suspensão por mensagem. O que fazer: Não clique no link. Consulte sua carteira só no site ou no aplicativo oficial do Detran. Para lembrar: Aviso do Detran chegou por mensagem? Não clique."
     }
   ],
   "fila": [
@@ -185,8 +213,8 @@
       "adicionado_em": "2026-11-06",
       "noticiado_em": "2026-10-29",
       "relevancia": 2,
-      "status": "aguardando",
-      "motivo_status": "Publicado num disparo de teste da automação; voltou para a fila na mudança para publicação semanal.",
+      "status": "descartado",
+      "motivo_status": "Descartado em 25/11/2026: as duas fontes são sites regionais fora da lista, e a busca no gov.br e nas polícias não achou fonte primária que descreva o golpe do número secundário (a página de golpes da Anatel não o cita).",
       "alerta": {
         "golpe": "numero-secundario-whatsapp",
         "titulo": "Golpe do número secundário: não deixe usar o seu número",
@@ -330,7 +358,7 @@
         "url": "https://www.metropoles.com/distrito-federal/golpe-da-cnh-policia-orienta-quem-recebeu-mensagens-a-registrar-ocorrencia",
         "origem": "imprensa"
       },
-      "status": "aguardando",
+      "status": "publicado",
       "alerta": {
         "golpe": "falsa-suspensao-cnh",
         "titulo": "Falso aviso de carteira de motorista suspensa: não clique no link",
@@ -354,7 +382,8 @@
           }
         ],
         "card_whatsapp": "*Falso aviso de carteira de motorista suspensa*\nChega uma mensagem que imita o Detran, com um link.\nO Detran não manda link de cobrança nem aviso de suspensão por mensagem.\nNão clique. Consulte sua carteira só no site ou no aplicativo oficial do Detran.\n*Aviso do Detran chegou por mensagem? Não clique.*"
-      }
+      },
+      "motivo_status": "Publicado em 25/11/2026: o golpe do número secundário, mais antigo, foi descartado sem fonte primária; entre os golpes novos de relevância 2, este era o de notícia mais antiga, com as duas fontes reabertas hoje."
     },
     {
       "golpe": "falso-namoro-internet",
@@ -2237,6 +2266,106 @@
       ],
       "tema": "Black Friday; 13º salário",
       "observacao": "Na leitura direta, a Febraban só trouxe dicas para a Black Friday (23/11), já cobertas; a Senacon trouxe só a notificação às plataformas (18/11); a Polícia Civil do Paraná trouxe a nota de falsas vendas na Black Friday, já avaliada; a Polícia Civil de Santa Catarina trouxe só prisões e operações. A busca-ponte do Procon de Santa Catarina não devolveu a página inicial de notícias (só páginas antigas da lista), e a leitura ficou de fora. A página do Procon de São Paulo veio cortada, com a chamada \"Alerta de golpes\" sem data nem endereço. A busca do tema 13º salário não achou golpe; a do tema Black Friday só trouxe Procons municipais e a página da Senacon. As páginas foram abertas por um agente de leitura de páginas, porque a ferramenta WebFetch não estava disponível direto nesta sessão. O checar_fontes.py rodou no candidato da falsa caixa de Natal (REPROVADO); o checar_alerta.py e o gerar_imagem.py não rodaram, porque não houve alerta novo. A fila segue com só 1 recorrente de reserva (falsa prova de vida)."
+    },
+    {
+      "data": "2026-11-25",
+      "modo": "publicacao",
+      "tipo": "automatica",
+      "consultas": 22,
+      "pacotes": [
+        "federal",
+        "bancos",
+        "imprensa",
+        "checadores",
+        "nordeste",
+        "recorte",
+        "sinal-nordeste"
+      ],
+      "leituras": [
+        "Febraban",
+        "Procon de São Paulo",
+        "Senacon"
+      ],
+      "candidatos": 6,
+      "aprovados": 0,
+      "resultado": "publicado",
+      "escolhido": "falsa-suspensao-cnh",
+      "motivo": "A varredura não confirmou golpe novo; o primeiro da fila, o número secundário, foi descartado sem fonte primária, e saiu o falso aviso de carteira de motorista suspensa, o golpe novo de notícia mais antiga, com as duas fontes reabertas hoje.",
+      "decisoes": [
+        {
+          "golpe": "Dicas contra golpes na Black Friday (Febraban, Correio Braziliense, Metrópoles, Procon-RJ)",
+          "decisao": "Não é novo: a nota da Febraban de 23/11/2026 e as reportagens da semana tratam da promoção falsa por link, o mesmo golpe do alerta de 20/11.",
+          "indicado_por": {
+            "nome": "Febraban",
+            "url": "https://portal.febraban.org.br/noticia/4528/pt-br/",
+            "origem": "banco"
+          }
+        },
+        {
+          "golpe": "Golpe da recuperação: falso escritório promete devolver o dinheiro de quem caiu num golpe",
+          "decisao": "Não confirmado: só a reportagem do Correio Braziliense de 12/11/2026 descreve o golpe; a busca no gov.br, nos Procons e nas polícias da lista só achou um Procon municipal, fora da lista, e uma nota antiga de Goiás sobre outro golpe.",
+          "indicado_por": {
+            "nome": "Correio Braziliense",
+            "url": "https://www.correiobraziliense.com.br/economia/2026/11/7537663-golpes-na-black-friday-saiba-como-agir-para-tentar-reaver-o-dinheiro.html",
+            "origem": "imprensa"
+          }
+        },
+        {
+          "golpe": "Falso juiz ou advogado que procura pensionistas pelo WhatsApp (IPREV-SC)",
+          "decisao": "Não é novo: a nota do instituto de previdência de Santa Catarina, de 16/11/2026, descreve o mesmo mecanismo e a mesma ação do golpe do falso advogado, publicado em 23/11.",
+          "indicado_por": {
+            "nome": "IPREV-SC",
+            "url": "https://www.iprev.sc.gov.br/noticias/iprev-alerta-pensionistas-sobre-tentativa-de-golpe-pelo-whatsapp/",
+            "origem": "outro"
+          }
+        },
+        {
+          "golpe": "Perfil falso do gov.br no WhatsApp que pede CPF e senha",
+          "decisao": "Não confirmado: só a checagem do Boatos.org (14/11/2026) descreve os perfis falsos; a nota do Ministério da Gestão (06/11/2026) confirma que o gov.br manda de verdade, pelo WhatsApp, o aviso para cadastrar o e-mail de recuperação, mas não descreve golpe. Pode servir a um \"É golpe ou não?\" com resposta \"não é golpe\".",
+          "indicado_por": {
+            "nome": "Boatos.org",
+            "url": "https://www.boatos.org/tecnologia/mensagem-do-gov-br-no-whatsapp-para-cadastrar-e-mail-de-recuperacao-de-conta-e-golpe.html",
+            "origem": "checador"
+          }
+        },
+        {
+          "golpe": "Falsa central bancária (Agência Estadual de Notícias do Paraná, com a PCPR)",
+          "decisao": "Não é novo nem serve de reserva: a nota é de 16/10/2026, fora da janela de 14 dias, e o golpe é o mesmo do falso gerente do banco, publicado em 09/11, dentro das 26 semanas.",
+          "indicado_por": {
+            "nome": "Agência Estadual de Notícias do Paraná",
+            "url": "https://www.parana.pr.gov.br/aen/Noticia/PCPR-alerta-para-golpes-da-falsa-central-bancaria-saiba-como-se-proteger",
+            "origem": "policia"
+          }
+        },
+        {
+          "golpe": "Golpe do falso parente pelo WhatsApp (avaliado como recorrente)",
+          "decisao": "Recusado como reserva: a orientação primária encontrada, da Polícia Civil de Mato Grosso do Sul, é de 11/06/2024, com mais de 12 meses; a busca no gov.br não achou orientação mais nova.",
+          "indicado_por": {
+            "nome": "Polícia Civil de Mato Grosso do Sul",
+            "url": "https://www.pc.ms.gov.br/golpes-e-fraudes-financeiras-contra-pessoas-idosas/",
+            "origem": "policia"
+          }
+        },
+        {
+          "golpe": "Golpe do número secundário no WhatsApp (fila)",
+          "decisao": "Descartado: era o primeiro da fila, mas as fontes são sites regionais fora da lista e a busca não achou fonte primária; o checar_fontes.py reprovou (POUCAS_FONTES)."
+        },
+        {
+          "golpe": "Falso aviso de carteira de motorista suspensa (fila)",
+          "decisao": "Publicado: as duas fontes foram reabertas hoje; o Detran de Goiás orienta não clicar em links e diz que avisos de multa e sanção vão pelos Correios, e a reportagem do Metrópoles (30/10/2026) traz a nota do Detran-DF de que não cobra nem manda link de pagamento por WhatsApp. O checar_fontes.py aprovou.",
+          "indicado_por": {
+            "nome": "Metrópoles",
+            "url": "https://www.metropoles.com/distrito-federal/golpe-da-cnh-policia-orienta-quem-recebeu-mensagens-a-registrar-ocorrencia",
+            "origem": "imprensa"
+          }
+        },
+        {
+          "golpe": "Falsa cobrança do governo pelo WhatsApp e falsa prova de vida (fila)",
+          "decisao": "Ficam na fila: a falsa cobrança tem notícia mais nova (05/11) que a da carteira de motorista, e a falsa prova de vida é recorrente, que só sai sem golpe novo."
+        }
+      ],
+      "tema": "Black Friday; 13º salário",
+      "observacao": "Na leitura direta, a Febraban só trouxe dicas para a Black Friday (23/11); a Senacon, só a notificação às plataformas (18/11); a página do Procon de São Paulo veio cortada, com a chamada \"Alerta de golpes\" sem data. A busca-ponte do Procon de Santa Catarina de novo não devolveu a página inicial de notícias (só páginas antigas da lista), e a leitura ficou de fora; é a segunda execução seguida. O pacote nordeste só trouxe prefeituras e páginas antigas; o sinal-nordeste, notas de 2024 e 2025. A busca do tema 13º salário não achou golpe. Na revisão do alerta de 23/11, o link da Polícia Civil de Santa Catarina passou a abrir outra página (intimação falsa) e foi trocado pela orientação da Polícia Civil do Paraná de 30/10/2026. As páginas foram abertas por um agente de leitura de páginas, porque a ferramenta WebFetch não estava disponível direto nesta sessão. A fila segue com só 1 recorrente de reserva (falsa prova de vida)."
     }
   ],
   "correcoes": [
@@ -2247,6 +2376,14 @@
       "feita_por": "revisão do projeto",
       "o_que_mudou": "Entrou a nota do próprio INSS, de 27 de outubro. A cópia publicada pelo Diario de Pernambuco deu lugar à notícia original da Agência Brasil.",
       "por_que": "Depois da publicação, adotamos a regra de que uma das fontes tem de ser o órgão responsável. A orientação do alerta não mudou: o INSS confirma que a exigência de biometria vale só para pedidos novos. A notícia da Agência Brasil repete a nota do INSS, então, pela regra atual, este alerta ainda pediria uma segunda fonte independente."
+    },
+    {
+      "data": "2026-11-25",
+      "alerta_id": "2026-11-23-falso-advogado",
+      "tipo": "fontes",
+      "o_que_mudou": "Trocamos a fonte da Polícia Civil de Santa Catarina pela orientação da Polícia Civil do Paraná, de 30 de outubro de 2026. O alerta continua o mesmo.",
+      "por_que": "O link da Polícia Civil de Santa Catarina passou a abrir outra página, sobre intimação falsa. A Polícia Civil do Paraná dá a mesma orientação: confirme com o advogado por um número que você já conhece e, na dúvida, não pague.",
+      "feita_por": "agente"
     }
   ],
   "quizzes": [

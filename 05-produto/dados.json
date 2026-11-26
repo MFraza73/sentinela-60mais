@@ -1,6 +1,6 @@
 {
   "projeto": "Sentinela 60+",
-  "atualizado_em": "2026-11-25",
+  "atualizado_em": "2026-11-26",
   "alertas": [
     {
       "id": "2026-11-06-falso-bloqueio-biometria-inss",
@@ -541,6 +541,45 @@
           }
         ],
         "card_whatsapp": "*Golpe da falsa prova de vida*\nMensagem ou ligação diz que você precisa fazer a prova de vida.\nAmeaça cortar o benefício se você não responder na hora.\nNão responda. Na dúvida, ligue para o 135.\n*Pedido de prova de vida? Confira no 135.*"
+      }
+    },
+    {
+      "golpe": "falso-parente",
+      "nome": "Golpe do falso parente pelo WhatsApp",
+      "adicionado_em": "2026-11-26",
+      "noticiado_em": "2026-04-30",
+      "relevancia": 3,
+      "tipo": "recorrente",
+      "indicado_por": {
+        "nome": "Anatel",
+        "url": "https://www.gov.br/anatel/pt-br/assuntos/dicas-contra-fraudes/golpes-atuais-mais-comuns",
+        "origem": "orgao"
+      },
+      "status": "aguardando",
+      "alerta": {
+        "golpe": "falso-parente",
+        "tipo": "recorrente",
+        "titulo": "Golpe do falso parente: confirme no número antigo",
+        "como_chega": "Mensagem no WhatsApp de um número novo, com foto de um filho ou parente.",
+        "o_que_pedem": "Dinheiro com pressa, por Pix ou depósito, contando uma história de emergência.",
+        "sinal": "A pessoa diz que trocou de número e logo pede dinheiro.",
+        "o_que_fazer": "Ligue para o número antigo da pessoa e confirme antes de pagar.",
+        "para_lembrar": "Número novo pedindo dinheiro? Ligue para o antigo.",
+        "fontes": [
+          {
+            "nome": "Anatel: golpes atuais mais comuns (atualizada em 30/04/2026)",
+            "url": "https://www.gov.br/anatel/pt-br/assuntos/dicas-contra-fraudes/golpes-atuais-mais-comuns",
+            "origem": "orgao",
+            "data": "2026-04-30"
+          },
+          {
+            "nome": "Polícia Civil de Goiás: dicas para evitar cair no golpe do novo número (08/01/2021)",
+            "url": "https://goias.gov.br/seguranca/policia-civil-da-dicas-para-evitar-cair-no-golpe-do-novo-numero/",
+            "origem": "policia",
+            "data": "2021-01-08"
+          }
+        ],
+        "card_whatsapp": "*Golpe do falso parente*\nChega mensagem de um número novo, com foto de um filho ou parente.\nA pessoa diz que trocou de número e logo pede dinheiro.\nLigue para o número antigo da pessoa e confirme antes de pagar.\n*Número novo pedindo dinheiro? Ligue para o antigo.*"
       }
     }
   ],
@@ -2366,6 +2405,103 @@
       ],
       "tema": "Black Friday; 13º salário",
       "observacao": "Na leitura direta, a Febraban só trouxe dicas para a Black Friday (23/11); a Senacon, só a notificação às plataformas (18/11); a página do Procon de São Paulo veio cortada, com a chamada \"Alerta de golpes\" sem data. A busca-ponte do Procon de Santa Catarina de novo não devolveu a página inicial de notícias (só páginas antigas da lista), e a leitura ficou de fora; é a segunda execução seguida. O pacote nordeste só trouxe prefeituras e páginas antigas; o sinal-nordeste, notas de 2024 e 2025. A busca do tema 13º salário não achou golpe. Na revisão do alerta de 23/11, o link da Polícia Civil de Santa Catarina passou a abrir outra página (intimação falsa) e foi trocado pela orientação da Polícia Civil do Paraná de 30/10/2026. As páginas foram abertas por um agente de leitura de páginas, porque a ferramenta WebFetch não estava disponível direto nesta sessão. A fila segue com só 1 recorrente de reserva (falsa prova de vida)."
+    },
+    {
+      "data": "2026-11-26",
+      "modo": "varredura",
+      "tipo": "automatica",
+      "consultas": 16,
+      "pacotes": [
+        "federal",
+        "bancos",
+        "imprensa",
+        "checadores",
+        "norte",
+        "recorte",
+        "sinal-norte"
+      ],
+      "leituras": [
+        "Febraban",
+        "Procon de Santa Catarina",
+        "Procon de São Paulo",
+        "Senacon"
+      ],
+      "candidatos": 7,
+      "aprovados": 1,
+      "resultado": "na-fila",
+      "escolhido": "",
+      "motivo": "Nenhum golpe novo foi confirmado em duas fontes independentes; o golpe do falso parente entrou na fila como recorrente de reserva, com orientação da Anatel atualizada em 30/04/2026.",
+      "decisoes": [
+        {
+          "golpe": "Falsa cesta de Natal ou panetone grátis por questionário e corrente de compartilhamento",
+          "decisao": "Não confirmado: só a checagem do Boatos.org (25/11/2026) descreve a versão que imita uma marca de panetones, e nenhuma fonte primária foi achada; o checar_fontes.py reprovou (POUCAS_FONTES). É o mesmo golpe da caixa de presente avaliado em 24/11.",
+          "indicado_por": {
+            "nome": "Boatos.org",
+            "url": "https://www.boatos.org/brasil/bauducco-esta-distribuindo-panetones-e-cestas-de-natal-gratis-para-quem-responder-a-questionarios-e-compartilhar-links.html",
+            "origem": "checador"
+          }
+        },
+        {
+          "golpe": "QR Code do Pix alterado em loja virtual",
+          "decisao": "Não é novo e não é recorrente de relevância 3: a orientação do Procon de São Paulo é de 16/09/2026, fora da janela de 14 dias, e o golpe acontece na compra online, com relevância 2 para 60+.",
+          "indicado_por": {
+            "nome": "Procon de São Paulo",
+            "url": "https://www.procon.sp.gov.br/procon-sp-orienta-consumidores-sobre-novo-golpe-que-altera-qr-code-do-pix-em-compras-online/",
+            "origem": "procon"
+          }
+        },
+        {
+          "golpe": "Falso advogado que liga em nome do INSS",
+          "decisao": "Não é novo: a nota do INSS (24/10/2024, atualizada em 28/10/2026) descreve o golpe do falso advogado, publicado em 23/11.",
+          "indicado_por": {
+            "nome": "INSS",
+            "url": "https://www.gov.br/inss/pt-br/noticias/inss-alerta-segurados-para-nova-modalidade-de-tentativa-de-golpe-3",
+            "origem": "orgao"
+          }
+        },
+        {
+          "golpe": "Falsos servidores do Procon pelo WhatsApp (Acre)",
+          "decisao": "Não é novo: a nota do Procon do Acre é de 29/10/2025, fora da janela de 14 dias.",
+          "indicado_por": {
+            "nome": "Agência de Notícias do Acre",
+            "url": "https://agencia.ac.gov.br/procon-alerta-consumidores-sobre-golpes-por-whatsapp-envolvendo-falsos-servidores/",
+            "origem": "procon"
+          }
+        },
+        {
+          "golpe": "Falsa liberação de precatório para aposentados (Acreprevidência)",
+          "decisao": "Não é novo: a nota é de 12/11/2024, fora da janela de 14 dias, e o golpe não está entre os recorrentes de reserva.",
+          "indicado_por": {
+            "nome": "Agência de Notícias do Acre",
+            "url": "https://agencia.ac.gov.br/acreprevidencia-alerta-aposentados-e-pensionistas-contra-golpe-de-precatorio/",
+            "origem": "orgao"
+          }
+        },
+        {
+          "golpe": "Principais crimes cibernéticos do ano (Polícia Civil do Amazonas)",
+          "decisao": "Não é novo: a matéria é de 03/10/2024 e repete o falso advogado e a falsa central, já publicados.",
+          "indicado_por": {
+            "nome": "Polícia Civil do Amazonas",
+            "url": "https://www.policiacivil.am.gov.br/?p=13537",
+            "origem": "policia"
+          }
+        },
+        {
+          "golpe": "Golpe do falso parente pelo WhatsApp (avaliado como recorrente)",
+          "decisao": "Guardado na fila como recorrente, relevância 3: a página da Anatel, aberta hoje e atualizada em 30/04/2026, descreve a mensagem de número novo e orienta confirmar a identidade antes de tudo; a Polícia Civil de Goiás orienta conferir no número de costume. O golpe não foi publicado nas últimas 26 semanas. O checar_fontes.py e o checar_alerta.py aprovaram.",
+          "indicado_por": {
+            "nome": "Anatel",
+            "url": "https://www.gov.br/anatel/pt-br/assuntos/dicas-contra-fraudes/golpes-atuais-mais-comuns",
+            "origem": "orgao"
+          }
+        },
+        {
+          "golpe": "Falsa cobrança do governo pelo WhatsApp e falsa prova de vida (fila)",
+          "decisao": "Ficam na fila, aguardando o próximo dia de publicação (sexta, 27/11)."
+        }
+      ],
+      "tema": "Black Friday; 13º salário",
+      "observacao": "Na leitura direta, a Febraban só trouxe dicas para a Black Friday (23/11), já cobertas; o Procon de Santa Catarina (a busca-ponte devolveu a página inicial desta vez), o Procon de São Paulo e a Senacon não trouxeram alerta de golpe entre 12/11 e 26/11, só orientações de consumo para a Black Friday. O pacote norte e o sinal-norte só trouxeram notas de 2023 a 2025; a página da Segurança Pública do Tocantins não abriu. A busca do tema 13º salário não achou golpe; a do tema Black Friday só repetiu a promoção falsa por link, já publicada. A página da Anatel sobre WhatsApp falso (assuntos/noticias) de novo não abriu; a página de golpes atuais da mesma agência abriu. As páginas foram abertas por um agente de leitura de páginas, porque a ferramenta WebFetch não estava disponível direto nesta sessão. O checar_fontes.py e o checar_alerta.py rodaram; o gerar_imagem.py e o checar_quiz.py não rodaram, porque não houve alerta publicado nem é sábado. A fila passa a ter 2 recorrentes de reserva (falsa prova de vida e falso parente)."
     }
   ],
   "correcoes": [

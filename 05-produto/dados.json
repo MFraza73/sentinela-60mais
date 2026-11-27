@@ -1,6 +1,6 @@
 {
   "projeto": "Sentinela 60+",
-  "atualizado_em": "2026-11-26",
+  "atualizado_em": "2026-11-27",
   "alertas": [
     {
       "id": "2026-11-06-falso-bloqueio-biometria-inss",
@@ -204,6 +204,40 @@
       "card_whatsapp": "*Falso aviso de carteira de motorista suspensa*\nChega uma mensagem que imita o Detran, com um link.\nO Detran não manda link de cobrança nem aviso de suspensão por mensagem.\nNão clique. Consulte sua carteira só no site ou no aplicativo oficial do Detran.\n*Aviso do Detran chegou por mensagem? Não clique.*",
       "imagem": "imagens/2026-11-25-falsa-suspensao-cnh.png",
       "imagem_alt": "Alerta de golpe do Sentinela 60+, 25 de novembro de 2026. Falso aviso de carteira de motorista suspensa: não clique no link. O sinal: O Detran não manda link de cobrança nem aviso de suspensão por mensagem. O que fazer: Não clique no link. Consulte sua carteira só no site ou no aplicativo oficial do Detran. Para lembrar: Aviso do Detran chegou por mensagem? Não clique."
+    },
+    {
+      "id": "2026-11-27-falsa-cobranca-governo-whatsapp",
+      "golpe": "falsa-cobranca-governo-whatsapp",
+      "publicado_em": "2026-11-27",
+      "titulo": "Falsa cobrança do governo pelo WhatsApp: não pague",
+      "como_chega": "Mensagem no WhatsApp que imita o governo, às vezes com seu nome e CPF.",
+      "o_que_pedem": "Que você pague uma dívida por boleto ou Pix, num link que eles mandam.",
+      "sinal": "O governo não manda cobrança de dívida pelo WhatsApp.",
+      "o_que_fazer": "Não pague boleto nem Pix que chegou por mensagem.",
+      "para_lembrar": "Cobrança do governo no WhatsApp? Não pague.",
+      "fontes": [
+        {
+          "nome": "Centro Integrado de Segurança Cibernética do Governo Digital: golpistas enviam mensagens no WhatsApp se passando por entidades do governo (13/02/2026)",
+          "url": "https://www.gov.br/cisc/pt-br/alertas-de-golpes-digitais/golpistas-enviam-mensagens-no-whatsapp-se-passando-por-entidades-do-governo",
+          "origem": "orgao",
+          "data": "2026-02-13"
+        },
+        {
+          "nome": "Metrópoles: golpistas usam logo do governo para tentar roubar dados de moradores do DF (05/11/2026)",
+          "url": "https://www.metropoles.com/distrito-federal/golpistas-usam-logo-do-governo-para-tentar-roubar-dados-de-moradores-do-df",
+          "origem": "imprensa",
+          "data": "2026-11-05"
+        },
+        {
+          "nome": "Procuradoria-Geral da Fazenda Nacional: recebeu mensagem da PGFN? Cuidado, pode ser golpe (02/12/2025)",
+          "url": "https://www.gov.br/pgfn/pt-br/assuntos/noticias/2025/recebeu-mensagem-da-pgfn-cuidado-pode-ser-golpe",
+          "origem": "orgao",
+          "data": "2025-12-02"
+        }
+      ],
+      "card_whatsapp": "*Falsa cobrança do governo pelo WhatsApp*\nChega uma mensagem que imita o governo, às vezes com seu nome e seu CPF.\nO governo não manda cobrança de dívida pelo WhatsApp.\nNão pague boleto nem Pix que chegou por mensagem.\n*Cobrança do governo no WhatsApp? Não pague.*",
+      "imagem": "imagens/2026-11-27-falsa-cobranca-governo-whatsapp.png",
+      "imagem_alt": "Alerta de golpe do Sentinela 60+, 27 de novembro de 2026. Falsa cobrança do governo pelo WhatsApp: não pague. O sinal: O governo não manda cobrança de dívida pelo WhatsApp. O que fazer: Não pague boleto nem Pix que chegou por mensagem. Para lembrar: Cobrança do governo no WhatsApp? Não pague."
     }
   ],
   "fila": [
@@ -434,7 +468,7 @@
         "url": "https://www.metropoles.com/distrito-federal/golpistas-usam-logo-do-governo-para-tentar-roubar-dados-de-moradores-do-df",
         "origem": "imprensa"
       },
-      "status": "aguardando",
+      "status": "publicado",
       "alerta": {
         "golpe": "falsa-cobranca-governo-whatsapp",
         "titulo": "Falsa cobrança do governo pelo WhatsApp: não pague",
@@ -464,7 +498,8 @@
           }
         ],
         "card_whatsapp": "*Falsa cobrança do governo pelo WhatsApp*\nChega uma mensagem que imita o governo, às vezes com seu nome e seu CPF.\nO governo não manda cobrança de dívida pelo WhatsApp.\nNão pague boleto nem Pix que chegou por mensagem.\n*Cobrança do governo no WhatsApp? Não pague.*"
-      }
+      },
+      "motivo_status": "Publicado em 27/11/2026: era o único golpe novo da fila, e as fontes foram reabertas e aprovadas hoje."
     },
     {
       "golpe": "falso-sequestro",
@@ -2502,6 +2537,105 @@
       ],
       "tema": "Black Friday; 13º salário",
       "observacao": "Na leitura direta, a Febraban só trouxe dicas para a Black Friday (23/11), já cobertas; o Procon de Santa Catarina (a busca-ponte devolveu a página inicial desta vez), o Procon de São Paulo e a Senacon não trouxeram alerta de golpe entre 12/11 e 26/11, só orientações de consumo para a Black Friday. O pacote norte e o sinal-norte só trouxeram notas de 2023 a 2025; a página da Segurança Pública do Tocantins não abriu. A busca do tema 13º salário não achou golpe; a do tema Black Friday só repetiu a promoção falsa por link, já publicada. A página da Anatel sobre WhatsApp falso (assuntos/noticias) de novo não abriu; a página de golpes atuais da mesma agência abriu. As páginas foram abertas por um agente de leitura de páginas, porque a ferramenta WebFetch não estava disponível direto nesta sessão. O checar_fontes.py e o checar_alerta.py rodaram; o gerar_imagem.py e o checar_quiz.py não rodaram, porque não houve alerta publicado nem é sábado. A fila passa a ter 2 recorrentes de reserva (falsa prova de vida e falso parente)."
+    },
+    {
+      "data": "2026-11-27",
+      "modo": "publicacao",
+      "tipo": "automatica",
+      "consultas": 14,
+      "pacotes": [
+        "federal",
+        "bancos",
+        "imprensa",
+        "checadores",
+        "sudeste-centro-oeste",
+        "recorte"
+      ],
+      "leituras": [
+        "Febraban",
+        "Senacon",
+        "Polícia Civil de Mato Grosso do Sul"
+      ],
+      "candidatos": 6,
+      "aprovados": 0,
+      "resultado": "publicado",
+      "escolhido": "falsa-cobranca-governo-whatsapp",
+      "motivo": "Nenhum golpe novo foi confirmado na varredura; a falsa cobrança do governo pelo WhatsApp era o único golpe novo da fila, e as fontes foram reabertas e aprovadas hoje.",
+      "decisoes": [
+        {
+          "golpe": "Falsa prova de vida por mensagem de texto (SMS) com link",
+          "decisao": "Não é novo: a reportagem do Metrópoles de 24/11/2026, com a nota do INSS, descreve o mesmo golpe da falsa prova de vida, que já está na fila como recorrente de reserva.",
+          "indicado_por": {
+            "nome": "Metrópoles",
+            "url": "https://www.metropoles.com/distrito-federal/golpistas-enviam-mensagens-falsas-solicitando-atualizacao-cadastral-do-inss",
+            "origem": "imprensa"
+          }
+        },
+        {
+          "golpe": "Vídeos e vozes feitos com inteligência artificial em promoções falsas da Black Friday",
+          "decisao": "Não é novo nem confirmado como variação: a CNN Brasil e o Metrópoles (23/11/2026) reproduzem o Procon de Minas Gerais, mas a nota do Procon-MPMG (16/11/2026) só cita a manipulação por inteligência artificial de passagem, e a ação de proteção é a mesma da promoção falsa por link, publicada em 20/11.",
+          "indicado_por": {
+            "nome": "CNN Brasil",
+            "url": "https://www.cnnbrasil.com.br/economia/seu-bolso/meu-dinheiro/procon-alerta-para-o-uso-de-ia-em-golpes-na-black-friday-veja-dicas/",
+            "origem": "imprensa"
+          }
+        },
+        {
+          "golpe": "Golpe do falso traficante por ligação",
+          "decisao": "Não é novo nem serve de reserva: a orientação da Polícia Civil do Espírito Santo é de 08/10/2025, fora da janela de 14 dias e com mais de 12 meses.",
+          "indicado_por": {
+            "nome": "Polícia Civil do Espírito Santo",
+            "url": "https://pc.es.gov.br/Not%C3%ADcia/policia-civil-orienta-sobre-golpe-do-falso-traficante",
+            "origem": "policia"
+          }
+        },
+        {
+          "golpe": "Perfis falsos de famosos com inteligência artificial (Procon do Espírito Santo)",
+          "decisao": "Não é novo: a nota do Procon do Espírito Santo é de 19/08/2024, fora da janela de 14 dias.",
+          "indicado_por": {
+            "nome": "Procon do Espírito Santo",
+            "url": "https://procon.es.gov.br/Not%C3%ADcia/procon-es-alerta-golpes-pela-internet-usam-perfis-falsos-e-inteligencia-artificial-para-enganar-consumidores",
+            "origem": "procon"
+          }
+        },
+        {
+          "golpe": "Falso prêmio de Natal de supermercado por questionário no WhatsApp",
+          "decisao": "Não confirmado: só a checagem do Boatos.org descreve a mensagem, e nenhuma fonte primária foi achada; é o mesmo golpe da caixa de presente avaliado em 24/11 e 26/11.",
+          "indicado_por": {
+            "nome": "Boatos.org",
+            "url": "https://www.boatos.org/brasil/assai-esta-dando-premio-de-r-1-000-em-promocao-de-natal-de-2026-por-meio-de-questionario-no-whatsapp.html",
+            "origem": "checador"
+          }
+        },
+        {
+          "golpe": "Golpe \"Boa noite, Cinderela\" (Polícia Civil de Mato Grosso do Sul)",
+          "decisao": "Não é golpe digital: a notícia de 26/11/2026 trata da condenação de autoras de um crime presencial, sem orientação ao público.",
+          "indicado_por": {
+            "nome": "Polícia Civil de Mato Grosso do Sul",
+            "url": "https://www.pc.ms.gov.br/investigacao-da-policia-civil-sobre-golpe-boa-noite-cinderela-na-expogrande-resulta-em-condenacao-de-mae-e-filha-a-25-anos-de-prisao/",
+            "origem": "policia"
+          }
+        },
+        {
+          "golpe": "Falsa cobrança do governo pelo WhatsApp (fila)",
+          "decisao": "Publicado: era o único golpe novo aguardando (noticiado em 05/11, vale até 03/12). As fontes foram reabertas hoje: o Centro Integrado de Segurança Cibernética do Governo Digital (atualizado em 08/04/2026) diz que nenhum órgão cobra dívida pelo WhatsApp e orienta não pagar boleto nem Pix recebido por mensagem; a Procuradoria-Geral da Fazenda Nacional diz que não entra em contato pelo WhatsApp; o Metrópoles (05/11/2026) traz a mesma orientação. O checar_fontes.py aprovou, com o aviso de domínio amplo conferido (os dois órgãos publicaram as páginas). Repete o canal do alerta de 25/11, mas não havia outro golpe novo da mesma relevância.",
+          "indicado_por": {
+            "nome": "Metrópoles",
+            "url": "https://www.metropoles.com/distrito-federal/golpistas-usam-logo-do-governo-para-tentar-roubar-dados-de-moradores-do-df",
+            "origem": "imprensa"
+          }
+        },
+        {
+          "golpe": "Falsa prova de vida e falso parente (fila)",
+          "decisao": "Ficam na fila como recorrentes de reserva: só saem num dia de publicação sem golpe novo."
+        },
+        {
+          "golpe": "Revisão do alerta de 25/11 (carteira de motorista)",
+          "decisao": "Sem correção: as duas fontes foram reabertas hoje, continuam no ar e mantêm a orientação (Detran de Goiás: não clicar em links e avisos de multa e sanção vão pelos Correios; Detran-DF: não cobra nem manda link de pagamento por WhatsApp)."
+        }
+      ],
+      "tema": "Black Friday; 13º salário",
+      "observacao": "Na leitura direta, a página de notícias da Febraban abriu sem a lista e sem datas; a Senacon só trouxe a notificação às plataformas (18/11 e 19/11) e a cartilha da Black Friday (25/11), sem golpe novo; a Polícia Civil de Mato Grosso do Sul só trouxe a condenação de um crime presencial. A página do Procon de São Paulo não abriu (a ferramenta não conseguiu ler o robots.txt do site), a busca-ponte do Procon de Santa Catarina devolveu só páginas antigas da lista e a página aberta deu erro, e a busca-ponte da Polícia Civil de Goiás não devolveu a página de notícias. A busca do tema 13º salário só trouxe calendários de pagamento; a do tema Black Friday só repetiu dicas gerais e a promoção falsa por link, já publicada. O pacote de sinal do dia não foi usado. As páginas foram abertas por um agente de leitura de páginas, porque a ferramenta WebFetch não estava disponível direto nesta sessão. O checar_fontes.py, o checar_alerta.py e o gerar_imagem.py rodaram; o checar_quiz.py não rodou, porque não é sábado."
     }
   ],
   "correcoes": [

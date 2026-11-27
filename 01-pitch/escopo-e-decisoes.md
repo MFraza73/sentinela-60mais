@@ -1,6 +1,6 @@
 # Sentinela 60+ — Escopo e decisões (N2 Vibe Coding)
 
-Atualizado em 15/11/2026.
+Atualizado em 26/11/2026.
 
 ## Identificação
 - FAAP — Tecnologia em Inteligência Artificial
@@ -54,12 +54,20 @@ Pitch editável: https://claude.ai/artifact/Ar6XfmaFShFphuWGdWwcKB
 - 24 a 26/11: repositório aberto, revisão final, roteiro da apresentação
 - 27/11: entrega N2 (13/11 sem aula)
 
-## Pendências
-- Medir, até 16/11, se a leitura direta melhora o rendimento da varredura.
-- Entregas para 27/11: atualizar o pitch, a skill salva na conta, a comparação com e sem a skill, o roteiro e o nome final.
-- Nome final do produto ("Sentinela" conota vigilância; alternativas: "Antes de Clicar", "Confere?").
+## Situação na véspera da entrega (26/11)
+- Automação: 20 dias seguidos de execução (07 a 26/11), sem falha e sem intervenção. 23 execuções registradas, 357 buscas, 145 golpes avaliados.
+- Publicações: 7 alertas (06, 09, 16, 18, 20, 23 e 25/11), 1 "É golpe ou não?" (21/11) e 2 correções. A execução de 27/11 é dia de publicação.
+- Testes: 59 de 59 passando no GitHub Actions.
+- Leitura direta (medida pedida em 12/11): de 13 a 26/11, a fila recebeu golpe em 5 das 14 execuções, contra 2 em 6 antes. A amostra é pequena e coincide com a Black Friday; não dá para atribuir a diferença ao método.
+- Pitch atualizado com resultados e limites; roteiro de apresentação pronto (fica só na pasta local).
+- Nome: mantido "Sentinela 60+". Trocar na véspera quebraria os endereços do repositório e do site.
+
+## Pendências (ficam depois da entrega)
+- Teste de compreensão com pessoas de 60+.
+- Comparação com e sem a skill; skill v2 com "uma ação" definida como um comportamento num mesmo momento.
+- Canal ou lista de transmissão do WhatsApp.
+- Relatos de vítimas como sinal.
 - Recorte nacional de estelionato digital por faixa etária: não encontrado nas fontes consultadas.
-- Skill v2: definir "uma ação" como um comportamento num mesmo momento; rodar comparação com e sem a skill.
 
 ## Fontes-chave
 - Lei 15.263/2025 (Câmara): https://www2.camara.leg.br/legin/fed/lei/2025/lei-15263-14-novembro-2025-798293-publicacaooriginal-177011-pl.html

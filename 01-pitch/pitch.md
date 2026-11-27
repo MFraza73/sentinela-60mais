@@ -20,7 +20,8 @@ Drª Eliana Loureiro). Ele integra os três componentes pedidos: uma skill de li
 pesquisa e verifica, e uma automação diária que varre o noticiário e publica três vezes por semana sem
 intervenção humana.
 
-Tudo é aberto: a skill está neste repositório público e o produto, numa página com link.
+Tudo é aberto: a skill está no repositório público https://github.com/MFraza73/sentinela-60mais e o produto,
+no site https://mfraza73.github.io/sentinela-60mais/, sem login.
 
 ## A dor
 
@@ -51,7 +52,7 @@ e INSS ([Agência Pública](https://apublica.org/2026/05/depois-do-eca-esta-na-h
 O problema não é falta de aviso. Bancos, Procons e polícias publicam alertas, mas eles chegam dispersos, em
 linguagem institucional e sem uma ação clara.
 
-Hipótese do produto: um alerta curto, semanal, com uma única ação e uma frase de checagem é mais lembrado e
+Hipótese do produto: um alerta curto, em dias fixos, com uma única ação e uma frase de checagem é mais lembrado e
 mais repassado do que um comunicado. Validar essa hipótese com o público fica fora do escopo desta entrega.
 
 ## Inspiração: a SabedorIA
@@ -97,17 +98,57 @@ flowchart TD
 
 Só o golpe novo e confirmado em duas fontes entra na fila; toda segunda, quarta e sexta, o mais relevante vira alerta. Num dia sem golpe novo, sai um golpe recorrente; em datas como Black Friday e Imposto de Renda, os golpes da época têm prioridade. Aos sábados, o "É golpe ou não?" traz uma mensagem real, com a resposta no domingo.
 
+## Resultados até 26/11/2026
+
+A automação rodou 20 dias seguidos, de 07 a 26/11, sem falhar um dia e sem intervenção humana. Os números
+abaixo saem do histórico público de execuções, na própria página do produto.
+
+| O que foi medido | Resultado |
+| --- | --- |
+| Execuções registradas | 23 (20 diárias de 07 a 26/11; 3 em 06/11, dia de montagem e teste) |
+| Buscas feitas pelo agente | 357 |
+| Golpes avaliados | 145 |
+| Alertas publicados | 7, todos com duas fontes ou mais e ao menos uma fonte primária |
+| "É golpe ou não?" publicados | 1 (21/11, com a resposta em 22/11) |
+| Correções publicadas | 2, com o que mudou e por quê |
+| Testes automáticos | 59, rodados no GitHub a cada envio |
+
+De cada 20 golpes avaliados, 1 virou alerta. A recusa é o comportamento esperado: a maior parte do que
+aparece no noticiário é operação policial sem orientação ao público, golpe já publicado ou caso com uma
+fonte só.
+
+Três mudanças vieram do uso, não do plano:
+
+- **Fontes em código (07/11).** As regras de fonte saíram do texto do agente e viraram um verificador com
+  testes, depois que o primeiro alerta precisou de correção.
+- **Leitura direta e validade da fila (12/11).** Em cinco dias, o agente avaliou 32 golpes e guardou 2. Ele
+  passou a ler primeiro as páginas de notícias de órgãos e polícias, e a fila ganhou prazo de 28 dias.
+- **Três publicações por semana (15/11).** Oito golpes confirmados esperavam na fila e só um saía por
+  semana. A régua de confirmação não mudou; mudou a vazão.
+
+## Limites desta entrega
+
+- **Sem teste com o público.** Nenhuma pessoa de 60 anos ou mais leu os alertas num teste controlado. A
+  clareza é verificada contra a lei, não contra a compreensão real.
+- **Sem comparação com e sem a skill.** Os 10 casos mostram que a skill atende ao verificador; não mostram
+  quanto o Claude erraria sem ela.
+- **O agente só enxerga o que as fontes publicam.** Golpe que circula sem nota oficial não vira alerta. Três
+  grandes jornais e 11 das 27 polícias civis ficam fora do alcance das ferramentas de busca.
+- **Distribuição manual.** O card depende de alguém repassar. Não há canal nem lista de transmissão.
+- **Um alerta ainda abaixo da régua atual.** O da biometria do INSS (06/11) foi publicado antes da regra da
+  fonte primária; a correção está registrada na página.
+
 ## Diferenciação e critérios de sucesso
 
 O diferencial não é ter alertas, e sim o padrão: varredura diária com publicação em dias fixos, uma ação por alerta e linguagem simples
 verificável contra uma norma pública.
 
-| Componente | Critério de sucesso | Evidência na entrega |
-| --- | --- | --- |
-| Skill | 10 casos de teste aprovados no checklist do art. 5º da Lei 15.263/2025 | Pares antes/depois no repositório |
-| Agente | Todo alerta com ao menos duas fontes citadas; nenhum publicado sem fonte | Fontes visíveis em cada alerta |
-| Automação | Execuções diárias reais, sem intervenção humana, com ao menos duas publicações de segunda antes de 27/11 | Histórico de execuções e fila na página |
-| Produto | Página pública legível no celular, com fonte grande e contraste nível AA da WCAG | Link publicado e checagem de acessibilidade |
+| Componente | Critério de sucesso | Evidência na entrega | Situação em 26/11 |
+| --- | --- | --- | --- |
+| Skill | 10 casos de teste aprovados no checklist do art. 5º da Lei 15.263/2025 | Pares antes/depois no repositório | Cumprido: 10 de 10 |
+| Agente | Todo alerta com ao menos duas fontes citadas; nenhum publicado sem fonte | Fontes visíveis em cada alerta | Cumprido: 7 de 7 |
+| Automação | Execuções diárias reais, sem intervenção humana, com ao menos duas publicações de segunda antes de 27/11 | Histórico de execuções e fila na página | Cumprido: publicações em 9, 16 e 23/11, e mais 3 em quartas e sextas |
+| Produto | Página pública legível no celular, com fonte grande e contraste nível AA da WCAG | Link publicado e checagem de acessibilidade | Cumprido: site público sem login; imagem do alerta com contraste 7:1 |
 
 ## Fontes
 

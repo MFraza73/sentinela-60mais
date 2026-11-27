@@ -1,6 +1,6 @@
 # Desenho do agente Sentinela 60+
 
-Atualizado em 06/11/2026.
+Atualizado em 15/11/2026.
 
 ## Por que é um agente, e não um roteiro
 

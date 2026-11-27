@@ -47,8 +47,9 @@ flowchart LR
 1. **O pitch:** [`01-pitch/pitch.md`](01-pitch/pitch.md) — a dor, a inspiração, o propósito e os critérios de sucesso.
 2. **A skill:** [`02-skill/linguagem-simples-60mais/SKILL.md`](02-skill/linguagem-simples-60mais/SKILL.md).
    Os 10 casos de teste ficam em [`evals/`](02-skill/linguagem-simples-60mais/evals/), e os alertas gerados
-   e as avaliações em [`02-skill/testes/`](02-skill/testes/). Para ver tudo de uma vez, baixe e abra
-   `02-skill/testes/revisao-iteracao-1.html` no navegador.
+   e as avaliações em [`02-skill/testes/`](02-skill/testes/). Os 10 casos foram refeitos em 27/11 na versão
+   atual da skill: o registro está em [`02-skill/testes/iteracao-2.md`](02-skill/testes/iteracao-2.md). Para ver
+   tudo de uma vez, baixe e abra `02-skill/testes/revisao-iteracao-2.html` no navegador.
 3. **O agente:** [`03-agente/sentinela-60mais.md`](03-agente/sentinela-60mais.md) é a definição;
    [`03-agente/desenho-do-agente.md`](03-agente/desenho-do-agente.md) explica as decisões e a posição na matriz
    Gartner de capacidades; [`03-agente/fontes.md`](03-agente/fontes.md) é o mapa de fontes, com o papel de cada
@@ -64,7 +65,8 @@ flowchart LR
    [`docs/`](docs/).
 6. **Os testes:** [`testes/rodar_testes.py`](testes/rodar_testes.py) roda tudo o que pode ser checado sem
    interpretação; [`testes/casos-de-julgamento.md`](testes/casos-de-julgamento.md) guarda as decisões que dependem
-   de leitura.
+   de leitura; [`testes/acessibilidade-da-pagina.md`](testes/acessibilidade-da-pagina.md) registra a medição
+   de contraste e de tamanho de letra da página.
 
 ## Rodar os testes
 

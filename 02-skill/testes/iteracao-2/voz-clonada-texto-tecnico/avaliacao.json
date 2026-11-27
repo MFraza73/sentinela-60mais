@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "O alerta entregue passa em scripts/checar_alerta.py com status APROVADO (nenhum ERRO)",
+      "passed": true,
+      "evidence": "Status APROVADO: 0 erro(s), 0 aviso(s); 77 palavras no corpo, maior frase com 14 palavras, card com 299 caracteres, 2 fontes."
+    },
+    {
+      "text": "O alerta explica que a voz pode ser copiada por computador sem usar os termos deepfake nem clonagem de voz",
+      "passed": true,
+      "evidence": "\"A voz é falsa, copiada por computador de vídeos das redes sociais.\" Nenhum dos termos aparece no alerta nem no card: deepfake, clonagem de voz."
+    },
+    {
+      "text": "O campo 'O que fazer' traz uma única ação concreta, como desligar e ligar de volta para o parente ou pedir a palavra combinada",
+      "passed": true,
+      "evidence": "O que fazer: \"Desligue e ligue para o número que você já tem do seu parente.\""
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  }
+}

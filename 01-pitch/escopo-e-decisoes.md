@@ -1,6 +1,6 @@
 # Sentinela 60+ — Escopo e decisões (N2 Vibe Coding)
 
-Atualizado em 26/11/2026.
+Atualizado em 27/11/2026.
 
 ## Identificação
 - FAAP — Tecnologia em Inteligência Artificial
@@ -62,9 +62,17 @@ Pitch editável: https://claude.ai/artifact/Ar6XfmaFShFphuWGdWwcKB
 - Pitch atualizado com resultados e limites; roteiro de apresentação pronto (fica só na pasta local).
 - Nome: mantido "Sentinela 60+". Trocar na véspera quebraria os endereços do repositório e do site.
 
+## Situação no dia da entrega (27/11)
+- Automação: 21 dias seguidos de execução (07 a 27/11), sem falha e sem intervenção. 24 execuções registradas, 371 buscas, 151 golpes avaliados.
+- Publicações: 8 alertas (06, 09, 16, 18, 20, 23, 25 e 27/11), 1 "É golpe ou não?" (21/11) e 2 correções. O alerta de 27/11 é a falsa cobrança do governo pelo WhatsApp.
+- Testes: 61 de 61 passando (o total cresce a cada alerta publicado, porque cada um ganha testes de dados).
+- Correção simulada antes da entrega, contra o enunciado e os slides da aula. Seis pontos, todos tratados em 27/11: página do Claude compartilhada por link público; `03-agente/como-executar.md`, para rodar o agente sem publicar; skill reinstalada na conta do autor na versão completa; contraste da página medido (`testes/acessibilidade-da-pagina.md`); os 10 casos da skill refeitos na versão atual (`02-skill/testes/iteracao-2.md`); datas, números e descrição do repositório atualizados.
+- Evidências da automação reunidas em `04-automacao/evidencias-da-automacao.md`: 19 dias seguidos de commits, com o horário registrado pelo GitHub.
+- Defeito declarado e não corrigido: em tela de 320 px, a página passa 3 px da borda.
+
 ## Pendências (ficam depois da entrega)
 - Teste de compreensão com pessoas de 60+.
-- Comparação com e sem a skill; skill v2 com "uma ação" definida como um comportamento num mesmo momento.
+- Avaliação independente da skill (outra sessão ou outra pessoa conferindo as respostas) e comparação com e sem a skill; skill v2 com "uma ação" definida como um comportamento num mesmo momento.
 - Canal ou lista de transmissão do WhatsApp.
 - Relatos de vítimas como sinal.
 - Recorte nacional de estelionato digital por faixa etária: não encontrado nas fontes consultadas.

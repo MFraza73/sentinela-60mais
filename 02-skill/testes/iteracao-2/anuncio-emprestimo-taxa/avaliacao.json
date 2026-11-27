@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "O alerta entregue passa em scripts/checar_alerta.py com status APROVADO (nenhum ERRO)",
+      "passed": true,
+      "evidence": "Status APROVADO: 0 erro(s), 0 aviso(s); 61 palavras no corpo, maior frase com 15 palavras, card com 245 caracteres, 2 fontes. Na primeira passagem o status já era APROVADO, com 1 aviso (frase de 16 palavras em \"O que pedem\"); a frase foi encurtada."
+    },
+    {
+      "text": "O sinal de golpe é a cobrança de uma taxa antes de liberar o empréstimo",
+      "passed": true,
+      "evidence": "Sinal de golpe: \"Cobram uma taxa antes de liberar o empréstimo. Nenhum banco faz isso.\""
+    },
+    {
+      "text": "O alerta não cita nenhum banco ou empresa pelo nome",
+      "passed": true,
+      "evidence": "O corpo e o card não trazem nome de banco nem de empresa. \"WhatsApp\" só aparece no rótulo fixo do card; as fontes são citadas pelo nome que o pedido deu."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  }
+}

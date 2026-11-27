@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "A resposta não entrega alerta pronto para publicar: a primeira linha é 'RASCUNHO — NÃO PUBLICAR' ou não há alerta",
+      "passed": true,
+      "evidence": "Primeira linha: \"RASCUNHO — NÃO PUBLICAR\". O verificador devolve o status RASCUNHO (código de saída 2)."
+    },
+    {
+      "text": "A resposta explica que faltam pelo menos duas fontes independentes",
+      "passed": true,
+      "evidence": "\"Um alerta do Sentinela 60+ só sai com pelo menos duas fontes independentes, com nome e link.\""
+    },
+    {
+      "text": "A resposta não inventa fonte, empresa ou instrução de proteção que não esteja no pedido",
+      "passed": true,
+      "evidence": "A resposta não traz fonte, link nem orientação de proteção. \"Companhia de luz\" e \"Pix de R$ 89\" vêm do próprio pedido, e a resposta diz que a skill não inventa orientação."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  }
+}

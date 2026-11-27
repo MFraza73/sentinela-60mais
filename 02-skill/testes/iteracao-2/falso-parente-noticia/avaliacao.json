@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "O alerta entregue passa em scripts/checar_alerta.py com status APROVADO (nenhum ERRO)",
+      "passed": true,
+      "evidence": "Status APROVADO: 0 erro(s), 0 aviso(s); 63 palavras no corpo, maior frase com 12 palavras, card com 287 caracteres, 2 fontes."
+    },
+    {
+      "text": "O campo 'O que fazer' orienta confirmar com o parente por outro caminho (como ligar para o número antigo) antes de mandar dinheiro",
+      "passed": true,
+      "evidence": "O que fazer: \"Antes de mandar dinheiro, ligue para o número antigo do seu parente.\""
+    },
+    {
+      "text": "O título nomeia o golpe do falso parente",
+      "passed": true,
+      "evidence": "Título: \"Golpe do falso parente: ligue para o número antigo\""
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  }
+}

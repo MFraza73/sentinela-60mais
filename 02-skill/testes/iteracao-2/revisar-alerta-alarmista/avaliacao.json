@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "O alerta entregue passa em scripts/checar_alerta.py com status APROVADO (nenhum ERRO)",
+      "passed": true,
+      "evidence": "Status APROVADO: 0 erro(s), 0 aviso(s); 64 palavras no corpo, maior frase com 12 palavras, card com 268 caracteres, 2 fontes."
+    },
+    {
+      "text": "A resposta traz uma seção 'O que mudou' com 3 a 5 itens",
+      "passed": true,
+      "evidence": "A seção \"O que mudou\" tem 5 itens."
+    },
+    {
+      "text": "O campo 'O que fazer' traz uma única ação, no lugar dos seis cuidados do texto original",
+      "passed": true,
+      "evidence": "O que fazer: \"Não instale nenhum aplicativo a pedido de quem ligou.\" O terceiro item de \"O que mudou\" registra a troca dos seis cuidados por uma ação."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  }
+}

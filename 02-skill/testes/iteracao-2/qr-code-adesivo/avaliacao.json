@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "O alerta entregue passa em scripts/checar_alerta.py com status APROVADO (nenhum ERRO)",
+      "passed": true,
+      "evidence": "Status APROVADO: 0 erro(s), 1 aviso(s); 85 palavras no corpo, maior frase com 17 palavras, card com 289 caracteres, 2 fontes. Aviso mantido: frase de 17 palavras em \"Como chega\" (o ideal é até 15). A explicação entre parênteses é a forma que o glossário pede para \"código QR\"."
+    },
+    {
+      "text": "O alerta usa 'código QR' e explica o que é, sem a expressão 'QR code'",
+      "passed": true,
+      "evidence": "Usa \"código QR\" e explica: \"o quadradinho que a câmera lê\". A expressão \"QR code\" não aparece."
+    },
+    {
+      "text": "O campo 'O que fazer' orienta conferir o nome de quem vai receber antes de confirmar o pagamento",
+      "passed": true,
+      "evidence": "O que fazer: \"Antes de confirmar o Pix, confira na tela o nome de quem vai receber.\""
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  }
+}

@@ -98,22 +98,22 @@ flowchart TD
 
 Só o golpe novo e confirmado em duas fontes entra na fila; toda segunda, quarta e sexta, o mais relevante vira alerta. Num dia sem golpe novo, sai um golpe recorrente; em datas como Black Friday e Imposto de Renda, os golpes da época têm prioridade. Aos sábados, o "É golpe ou não?" traz uma mensagem real, com a resposta no domingo.
 
-## Resultados até 26/11/2026
+## Resultados até 27/11/2026
 
-A automação rodou 20 dias seguidos, de 07 a 26/11, sem falhar um dia e sem intervenção humana. Os números
+A automação rodou 21 dias seguidos, de 07 a 27/11, sem falhar um dia e sem intervenção humana. Os números
 abaixo saem do histórico público de execuções, na própria página do produto.
 
 | O que foi medido | Resultado |
 | --- | --- |
-| Execuções registradas | 23 (20 diárias de 07 a 26/11; 3 em 06/11, dia de montagem e teste) |
-| Buscas feitas pelo agente | 357 |
-| Golpes avaliados | 145 |
-| Alertas publicados | 7, todos com duas fontes ou mais e ao menos uma fonte primária |
+| Execuções registradas | 24 (21 diárias de 07 a 27/11; 3 em 06/11, dia de montagem e teste) |
+| Buscas feitas pelo agente | 371 |
+| Golpes avaliados | 151 |
+| Alertas publicados | 8, todos com duas fontes ou mais e ao menos uma fonte primária |
 | "É golpe ou não?" publicados | 1 (21/11, com a resposta em 22/11) |
 | Correções publicadas | 2, com o que mudou e por quê |
-| Testes automáticos | 59, rodados no GitHub a cada envio |
+| Testes automáticos | 61, rodados no GitHub a cada envio |
 
-De cada 20 golpes avaliados, 1 virou alerta. A recusa é o comportamento esperado: a maior parte do que
+De cada 19 golpes avaliados, 1 virou alerta. A recusa é o comportamento esperado: a maior parte do que
 aparece no noticiário é operação policial sem orientação ao público, golpe já publicado ou caso com uma
 fonte só.
 
@@ -131,24 +131,27 @@ Três mudanças vieram do uso, não do plano:
 - **Sem teste com o público.** Nenhuma pessoa de 60 anos ou mais leu os alertas num teste controlado. A
   clareza é verificada contra a lei, não contra a compreensão real.
 - **Sem comparação com e sem a skill.** Os 10 casos mostram que a skill atende ao verificador; não mostram
-  quanto o Claude erraria sem ela.
+  quanto o Claude erraria sem ela. A mesma sessão do Claude escreveu e conferiu as respostas; a parte
+  independente é o verificador em código.
 - **O agente só enxerga o que as fontes publicam.** Golpe que circula sem nota oficial não vira alerta. Três
   grandes jornais e 11 das 27 polícias civis ficam fora do alcance das ferramentas de busca.
 - **Distribuição manual.** O card depende de alguém repassar. Não há canal nem lista de transmissão.
-- **Um alerta ainda abaixo da régua atual.** O da biometria do INSS (06/11) foi publicado antes da regra da
-  fonte primária; a correção está registrada na página.
+- **Um alerta publicado antes da régua atual.** O da biometria do INSS (06/11) saiu antes da regra da fonte
+  primária; a correção das fontes está registrada na página.
+- **Rolagem lateral em tela de 320 px.** Em telas com essa largura, a página passa 3 px da borda. A partir de
+  340 px, cabe.
 
 ## Diferenciação e critérios de sucesso
 
 O diferencial não é ter alertas, e sim o padrão: varredura diária com publicação em dias fixos, uma ação por alerta e linguagem simples
 verificável contra uma norma pública.
 
-| Componente | Critério de sucesso | Evidência na entrega | Situação em 26/11 |
+| Componente | Critério de sucesso | Evidência na entrega | Situação em 27/11 |
 | --- | --- | --- | --- |
-| Skill | 10 casos de teste aprovados no checklist do art. 5º da Lei 15.263/2025 | Pares antes/depois no repositório | Cumprido: 10 de 10 |
-| Agente | Todo alerta com ao menos duas fontes citadas; nenhum publicado sem fonte | Fontes visíveis em cada alerta | Cumprido: 7 de 7 |
-| Automação | Execuções diárias reais, sem intervenção humana, com ao menos duas publicações de segunda antes de 27/11 | Histórico de execuções e fila na página | Cumprido: publicações em 9, 16 e 23/11, e mais 3 em quartas e sextas |
-| Produto | Página pública legível no celular, com fonte grande e contraste nível AA da WCAG | Link publicado e checagem de acessibilidade | Cumprido: site público sem login; imagem do alerta com contraste 7:1 |
+| Skill | 10 casos de teste aprovados no checklist do art. 5º da Lei 15.263/2025 | Respostas e avaliações no repositório | Cumprido: 10 de 10, refeito em 27/11 na versão atual da skill (30 de 30 critérios) |
+| Agente | Todo alerta com ao menos duas fontes citadas; nenhum publicado sem fonte | Fontes visíveis em cada alerta | Cumprido: 8 de 8 |
+| Automação | Execuções diárias reais, sem intervenção humana, com ao menos duas publicações de segunda antes de 27/11 | Histórico de execuções e fila na página | Cumprido: publicações em 9, 16 e 23/11, e mais 4 em quartas e sextas |
+| Produto | Página pública legível no celular, com fonte grande e contraste nível AA da WCAG | Link publicado e medição da página em `testes/acessibilidade-da-pagina.md` | Cumprido, com uma ressalva: site público sem login; menor contraste da página de 7,06:1 (nível AAA); letra a partir de 17 px; cabe na tela a partir de 340 px de largura, e a 320 px sobram 3 px de rolagem lateral |
 
 ## Fontes
 

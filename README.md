@@ -54,7 +54,8 @@ flowchart LR
    Gartner de capacidades; [`03-agente/fontes.md`](03-agente/fontes.md) é o mapa de fontes, com o papel de cada
    uma, os pacotes de busca e a situação de polícias e Procons nos 27 estados, testada com as ferramentas do
    agente; [`03-agente/execucoes/`](03-agente/execucoes/) guarda a primeira execução, com os 6
-   golpes avaliados. As execuções automáticas ficam registradas na própria página do produto.
+   golpes avaliados. As execuções automáticas ficam registradas na própria página do produto. Para rodar o
+   agente você mesmo, sem publicar nada, veja [`03-agente/como-executar.md`](03-agente/como-executar.md).
 4. **A automação:** [`04-automacao/tarefa-agendada.md`](04-automacao/tarefa-agendada.md), com o texto exato que a
    tarefa envia a cada disparo.
 5. **O produto:** [`05-produto/index.html`](05-produto/index.html) e [`05-produto/dados.json`](05-produto/dados.json).
@@ -77,7 +78,7 @@ Os verificadores, um a um:
 ```bash
 python3 02-skill/linguagem-simples-60mais/scripts/checar_alerta.py 03-agente/execucoes/2026-11-06-teste/alerta.md
 python3 02-skill/linguagem-simples-60mais/scripts/checar_quiz.py testes/quiz/bom.json --hoje 2026-11-21
-python3 03-agente/scripts/checar_fontes.py --dados 05-produto/dados.json --golpe falso-advogado
+python3 03-agente/scripts/checar_fontes.py --dados 05-produto/dados.json --golpe falso-parente
 python3 02-skill/linguagem-simples-60mais/scripts/gerar_imagem.py --dados 05-produto/dados.json --id 2026-11-06-falso-bloqueio-biometria-inss
 ```
 

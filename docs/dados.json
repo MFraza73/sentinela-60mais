@@ -1,6 +1,6 @@
 {
   "projeto": "Sentinela 60+",
-  "atualizado_em": "2026-11-27",
+  "atualizado_em": "2026-11-28",
   "alertas": [
     {
       "id": "2026-11-06-falso-bloqueio-biometria-inss",
@@ -2636,6 +2636,107 @@
       ],
       "tema": "Black Friday; 13º salário",
       "observacao": "Na leitura direta, a página de notícias da Febraban abriu sem a lista e sem datas; a Senacon só trouxe a notificação às plataformas (18/11 e 19/11) e a cartilha da Black Friday (25/11), sem golpe novo; a Polícia Civil de Mato Grosso do Sul só trouxe a condenação de um crime presencial. A página do Procon de São Paulo não abriu (a ferramenta não conseguiu ler o robots.txt do site), a busca-ponte do Procon de Santa Catarina devolveu só páginas antigas da lista e a página aberta deu erro, e a busca-ponte da Polícia Civil de Goiás não devolveu a página de notícias. A busca do tema 13º salário só trouxe calendários de pagamento; a do tema Black Friday só repetiu dicas gerais e a promoção falsa por link, já publicada. O pacote de sinal do dia não foi usado. As páginas foram abertas por um agente de leitura de páginas, porque a ferramenta WebFetch não estava disponível direto nesta sessão. O checar_fontes.py, o checar_alerta.py e o gerar_imagem.py rodaram; o checar_quiz.py não rodou, porque não é sábado."
+    },
+    {
+      "data": "2026-11-28",
+      "modo": "varredura",
+      "tipo": "automatica",
+      "consultas": 13,
+      "pacotes": [
+        "federal",
+        "bancos",
+        "imprensa",
+        "checadores",
+        "nordeste",
+        "recorte"
+      ],
+      "leituras": [
+        "Procon de Santa Catarina",
+        "Procon de São Paulo",
+        "Senacon"
+      ],
+      "candidatos": 7,
+      "aprovados": 0,
+      "resultado": "nada-novo",
+      "escolhido": "",
+      "motivo": "Nenhum golpe novo foi confirmado em duas fontes independentes hoje; a fila já tem dois recorrentes de reserva, então não foi preciso buscar outro.",
+      "decisoes": [
+        {
+          "golpe": "Falsos juízes e advogados que oferecem valores a receber a pensionistas pelo WhatsApp (IPREV de Santa Catarina)",
+          "decisao": "Não é novo: a nota do IPREV (16/11/2026) descreve o mesmo golpe do falso advogado, publicado em 23/11. Além disso, o domínio do IPREV não está na lista de fontes que confirmam, e o checar_fontes.py reprovou.",
+          "indicado_por": {
+            "nome": "IPREV de Santa Catarina",
+            "url": "https://www.iprev.sc.gov.br/noticias/iprev-alerta-pensionistas-sobre-tentativa-de-golpe-pelo-whatsapp/",
+            "origem": "outro"
+          }
+        },
+        {
+          "golpe": "Lojas falsas e pressão para pagar na Black Friday",
+          "decisao": "Não é novo: a Agência Brasil (26/11/2026), com a cartilha da Senacon (25/11/2026), descreve o mesmo golpe da promoção falsa por link, publicado em 20/11, com a mesma orientação (conferir o site e quem recebe o Pix). O checar_fontes.py aprovou as fontes, mas o golpe já saiu.",
+          "indicado_por": {
+            "nome": "Agência Brasil",
+            "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/black-friday-veja-dicas-para-evitar-golpes-nas-compras-line",
+            "origem": "imprensa"
+          }
+        },
+        {
+          "golpe": "Falso bloqueio de CPF pelo WhatsApp em nome do gov.br",
+          "decisao": "Não é novo: a página do Banco do Brasil é de 09/04/2026 (modificada em 06/05/2026), fora da janela de 14 dias, e é a única fonte; o checar_fontes.py reprovou. O mecanismo é próximo da falsa cobrança do governo, publicada ontem.",
+          "indicado_por": {
+            "nome": "Blog do Banco do Brasil",
+            "url": "https://blog.bb.com.br/falso-bloqueio-cpf-golpe/",
+            "origem": "banco"
+          }
+        },
+        {
+          "golpe": "Sites falsos do Novo Desenrola Brasil com taxa de adesão",
+          "decisao": "Não é novo nem confirmado: a única fonte é o blog de um banco (atualizado em 17/08/2026), que promove o próprio aplicativo; nenhuma fonte de fora do setor bancário apareceu.",
+          "indicado_por": {
+            "nome": "Blog do Nubank",
+            "url": "https://blog.nubank.com.br/golpe-desenrola-brasil/",
+            "origem": "banco"
+          }
+        },
+        {
+          "golpe": "Vídeo com crachá falso do INSS para visita de prova de vida",
+          "decisao": "Não é novo e não é golpe digital: a nota do INSS é de 15/11/2024 (atualizada em 28/10/2026), fora da janela, e o golpe acontece na porta de casa.",
+          "indicado_por": {
+            "nome": "INSS",
+            "url": "https://www.gov.br/inss/pt-br/noticias/imagem-recorrente-falso-cracha-volta-a-circular-em-aplicativo-de-mensagem",
+            "origem": "orgao"
+          }
+        },
+        {
+          "golpe": "Golpe do cartão por aproximação (Procon de Pernambuco)",
+          "decisao": "Não é novo nem digital: a página não tem data e cita números de 2020, e o golpe é feito com maquininha, em lugar cheio de gente.",
+          "indicado_por": {
+            "nome": "Procon de Pernambuco",
+            "url": "https://www.procon.pe.gov.br/blog/10-blog/187-procon-pe-alerta-para-o-golpe-do-cartao-por-aproximacao",
+            "origem": "procon"
+          }
+        },
+        {
+          "golpe": "Links falsos de pagamento de tributos por e-mail (Sefaz do Piauí)",
+          "decisao": "Não é novo: a nota é de 09/07/2024, e o golpe mira contribuintes que pagam tributos por e-mail, com relevância 1 para 60+.",
+          "indicado_por": {
+            "nome": "Governo do Piauí",
+            "url": "https://www.pi.gov.br/sefaz-faz-alerta-sobre-links-falsos-de-pagamentos-enviados-por-e-mail-1/",
+            "origem": "orgao"
+          }
+        },
+        {
+          "golpe": "Falso parente pelo WhatsApp (É golpe ou não?)",
+          "decisao": "Usado no \"É golpe ou não?\" de hoje: a mensagem segue os exemplos que a Anatel reproduz (\"Esse é o meu novo número de telefone. Salva aí.\") e o pedido de dinheiro por causa de conta bloqueada, na página modificada em 30/04/2026 e aberta hoje. O item continua na fila como recorrente de reserva.",
+          "indicado_por": {
+            "nome": "Anatel",
+            "url": "https://www.gov.br/anatel/pt-br/assuntos/dicas-contra-fraudes/golpes-atuais-mais-comuns",
+            "origem": "orgao"
+          }
+        }
+      ],
+      "tema": "Black Friday; 13º salário",
+      "quiz": "2026-11-28-quiz",
+      "observacao": "Na leitura direta, a página de notícias da Febraban não abriu (a ferramenta não conseguiu ler o robots.txt do site); o Procon de Santa Catarina só trouxe orientações de consumo (Black Friday, combustíveis, produtos infantis); o Procon de São Paulo só trouxe notícias sem dia e um destaque \"Alerta de golpes\" sem data; a Senacon só trouxe a cartilha da Black Friday (25/11). O pacote nordeste não tem página de notícias validada e só devolveu páginas antigas ou de prefeituras. A busca do tema 13º salário só trouxe calendários de pagamento; a do tema Black Friday repetiu a promoção falsa por link, já publicada. O pacote de sinal do dia não foi usado. As páginas foram abertas por um agente de leitura de páginas, porque a ferramenta WebFetch não estava disponível direto nesta sessão; a página da Anatel só abriu na segunda tentativa. O checar_fontes.py e o checar_quiz.py rodaram; o checar_alerta.py e o gerar_imagem.py não foram usados, porque nenhum alerta foi escrito."
     }
   ],
   "correcoes": [
@@ -2678,6 +2779,28 @@
       ],
       "card_pergunta": "*É golpe ou não?*\nChegou uma mensagem no celular: \"Aviso do INSS: sua prova de vida está pendente. Se não atualizar seus dados agora, seu benefício será cortado.\"\nNo fim, vem um link.\nO que você acha? A resposta sai amanhã.",
       "card_resposta": "*É golpe: a falsa prova de vida.*\nA mensagem ameaça cortar o benefício e manda um link para pegar seus dados.\nNão clique e não passe senha. Na dúvida, ligue para o 135, a central do Instituto Nacional do Seguro Social (INSS).\n*Aviso de prova de vida? Confira no 135.*"
+    },
+    {
+      "id": "2026-11-28-quiz",
+      "publicado_em": "2026-11-28",
+      "resposta_em": "2026-11-29",
+      "golpe": "falso-parente",
+      "canal": "WhatsApp",
+      "mensagem": "Oi, tudo bem? Esse é o meu novo número de telefone. Salva aí. Preciso de um favor urgente: meu banco bloqueou minha conta e tenho uma conta para pagar hoje. Você me faz um Pix? Amanhã eu te devolvo.",
+      "resposta": "golpe",
+      "sinal": "Um número novo, com a foto de alguém conhecido. Logo vem um pedido de dinheiro com pressa.",
+      "explicacao": "É o golpe do falso parente. O golpista usa a foto de alguém da família num número novo. Não faça o Pix. Ligue para o número antigo da pessoa e confirme.",
+      "para_lembrar": "Número novo pedindo dinheiro? Ligue para o antigo.",
+      "fontes": [
+        {
+          "nome": "Anatel: golpes atuais mais comuns (atualizada em 30/04/2026)",
+          "url": "https://www.gov.br/anatel/pt-br/assuntos/dicas-contra-fraudes/golpes-atuais-mais-comuns",
+          "origem": "orgao",
+          "data": "2026-04-30"
+        }
+      ],
+      "card_pergunta": "*É golpe ou não?*\nChegou no WhatsApp, de um número novo, com a foto de alguém da família: \"Esse é o meu novo número. Salva aí.\"\nLogo depois, a pessoa pede um Pix para uma conta urgente.\nO que você acha? A resposta sai amanhã.",
+      "card_resposta": "*É golpe: o falso parente.*\nO golpista usa a foto de alguém da família num número novo.\nLogo pede dinheiro com pressa.\nNão faça o Pix. Ligue para o número antigo da pessoa e confirme.\n*Número novo pedindo dinheiro? Ligue para o antigo.*"
     }
   ]
 }
